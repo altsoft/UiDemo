@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="585px" prefWidth="835px">
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <widget name="pnlPlayground" parent="Form" prefHeight="264px" prefWidth="192px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="264px" left="552px" top="120px" type="MarginConstraintsDesignInfo" width="192px"/>
+    <border type="LineBorderDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#bf9d7b" foregroundColor="#d81b1b" horizontalAlignment="4" name="label" parent="pnlPlayground" prefHeight="17px" prefWidth="132px" text="label" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="12px" type="MarginConstraintsDesignInfo" width="132px"/>
+    <border etcheHighlightColor="#000000" etcheShadowColor="#000000" type="EtchedBorderDesignInfo"/>
+  </widget>
+  <widget horizontalScrollBarPolicy="31" name="scrollPane1" parent="Form" prefHeight="564px" prefWidth="240px" type="ScrollDesignInfo">
+    <constraints bottom="9px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="240px"/>
+  </widget>
+  <widget name="pnlTopFoldingPanel" parent="scrollPane1" prefHeight="903px" prefWidth="250px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget name="pnlContainers" parent="pnlTopFoldingPanel" prefHeight="48px" prefWidth="204px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="48px" left="12px" top="276px" type="MarginConstraintsDesignInfo" width="204px"/>
+    <border type="LineBorderDesignInfo"/>
+  </widget>
+  <widget name="grpBtnContainers" parent="pnlContainers" prefHeight="29px" prefWidth="180px" text="Containers" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnLabel13" parent="pnlContainers" prefHeight="29px" prefWidth="180px" text="Label4" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="48px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnLabel111" parent="pnlContainers" prefHeight="29px" prefWidth="180px" text="Label5" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="84px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnLabel121" parent="pnlContainers" prefHeight="29px" prefWidth="180px" text="Label6" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="120px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="pnlStandardWidgets" parent="pnlTopFoldingPanel" prefHeight="84px" prefWidth="204px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="84px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="204px"/>
+    <border type="LineBorderDesignInfo"/>
+  </widget>
+  <widget name="grpBtnStandart" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text=" Standard widgets" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnButton" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="Button" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="84px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnLabel" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="Label" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="48px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnToggleButton" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="ToggleButton" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="120px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnCheckBox" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="CheckBox" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="156px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnRadioButton" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="RadioButton" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="192px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnButtonGroup" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="ButtonGroup" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="228px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnTextField" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="TextField" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="264px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnSlider" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="Slider" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="300px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnProgressBar" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="ProgressBar" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="336px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnFormattedField" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="FormattedField" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="372px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnPasswordField" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="PasswordField" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="408px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnTextArea" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="TextArea" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="444px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnHtmlArea" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text="HtmlArea" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="480px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="pnlModelWidgets" parent="pnlTopFoldingPanel" prefHeight="48px" prefWidth="204px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="48px" left="12px" top="108px" type="MarginConstraintsDesignInfo" width="204px"/>
+    <border type="LineBorderDesignInfo"/>
+  </widget>
+  <widget name="grpBtnModel" parent="pnlModelWidgets" prefHeight="29px" prefWidth="180px" text=" Model widgets" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnLabel1" parent="pnlModelWidgets" prefHeight="29px" prefWidth="180px" text="Label1" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="48px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnLabel11" parent="pnlModelWidgets" prefHeight="29px" prefWidth="180px" text="Label2" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="84px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="btnLabel12" parent="pnlModelWidgets" prefHeight="29px" prefWidth="180px" text="Label3" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="120px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="tabbedPane" parent="Form" prefHeight="372px" prefWidth="252px" type="TabsDesignInfo">
+    <constraints height="372px" left="276px" top="24px" type="MarginConstraintsDesignInfo" width="252px"/>
+  </widget>
+  <widget name="panel" parent="tabbedPane" prefHeight="335px" prefWidth="244px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="tab0" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="radioButton" parent="panel" prefHeight="24px" prefWidth="110px" text="radioButton" type="RadioDesignInfo">
+    <constraints height="24px" left="12px" top="144px" type="MarginConstraintsDesignInfo" width="110px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="radioButton2" parent="panel" prefHeight="24px" prefWidth="118px" text="radioButton2" type="RadioDesignInfo">
+    <constraints height="24px" left="12px" top="228px" type="MarginConstraintsDesignInfo" width="118px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="radioButton1" parent="panel" prefHeight="24px" prefWidth="118px" text="radioButton1" type="RadioDesignInfo">
+    <constraints height="24px" left="12px" top="180px" type="MarginConstraintsDesignInfo" width="118px"/>
+  </widget>
+  <widget name="tbVisibility" parent="panel" prefHeight="29px" prefWidth="107px" text="Visible" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="120px" top="12px" type="MarginConstraintsDesignInfo" width="107px"/>
+  </widget>
+  <widget name="textField" parent="panel" prefHeight="27px" prefWidth="108px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="27px" left="120px" top="48px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="toggleButton1" parent="panel" prefHeight="29px" prefWidth="115px" text="toggleButton1" type="ToggleButtonDesignInfo">
+    <constraints bottom="19px" height="29px" left="12px" type="MarginConstraintsDesignInfo" width="115px"/>
+  </widget>
+  <widget name="label1" parent="panel" prefHeight="17px" prefWidth="42px" text="label1" type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="42px"/>
+  </widget>
+  <widget name="label2" parent="panel" prefHeight="17px" prefWidth="42px" text="label2" type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="60px" type="MarginConstraintsDesignInfo" width="42px"/>
+  </widget>
+  <widget name="panel1" parent="tabbedPane" prefHeight="335px" prefWidth="244px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="tab1" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
