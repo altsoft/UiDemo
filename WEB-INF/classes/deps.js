@@ -118,13 +118,6 @@ try {
 }
 
 try {
-    load('classpath:platypus-servlet-support/http-script-context.js');
-    printf('platypus-servlet-support API loaded.');
-} catch (e) {
-    printf('platypus-servlet-support API skipped.');
-}
-
-try {
     load('classpath:reports/report-template.js');
     printf('reports API loaded.');
 } catch (e) {
@@ -136,6 +129,7 @@ try {
     load('classpath:rowsets/command.js');
     load('classpath:rowsets/delete.js');
     load('classpath:rowsets/field.js');
+    load('classpath:rowsets/filter.js');
     load('classpath:rowsets/insert.js');
     load('classpath:rowsets/parameter.js');
     load('classpath:rowsets/update.js');

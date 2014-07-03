@@ -59,20 +59,29 @@
             });
     ScriptUtils.setExtendFunc(
             function(Child, Parent) {
+                var prevChildProto = {};
+                for(var m in Child.prototype){
+                    var member = Child.prototype[m];
+                    if(typeof member === 'function'){
+                        prevChildProto[m] = member;
+                    }
+                }
                 var F = function() {
                 };
                 F.prototype = Parent.prototype;
                 Child.prototype = new F();
+                for(var m in prevChildProto)
+                    Child.prototype[m] = prevChildProto[m];
                 Child.prototype.constructor = Child;
                 Child.superclass = Parent.prototype;
             });
     ScriptUtils.setScalarDefFunc(
-            function(targetEntity, targetFieldName, sourceFieldName) {
+            function(targetPublishedEntity, targetFieldName, sourceFieldName) {
                 var _self = this;
                 _self.enumerable = true;
                 _self.configurable = false;
                 _self.get = function() {
-                    var found = targetEntity.find(targetEntity.schema[targetFieldName], this[sourceFieldName]);
+                    var found = targetPublishedEntity.find(targetPublishedEntity.schema[targetFieldName], this[sourceFieldName]);
                     return found.length === 0 ? null : (found.length === 1 ? found[0] : found);
                 };
                 _self.set = function(aValue) {
@@ -80,12 +89,12 @@
                 };
             });
     ScriptUtils.setCollectionDefFunc(
-            function(sourceEntity, targetFieldName, sourceFieldName) {
+            function(sourcePublishedEntity, targetFieldName, sourceFieldName) {
                 var _self = this;
                 _self.enumerable = true;
                 _self.configurable = false;
                 _self.get = function() {
-                    var res = sourceEntity.find(sourceEntity.schema[sourceFieldName], this[targetFieldName]);
+                    var res = sourcePublishedEntity.find(sourcePublishedEntity.schema[sourceFieldName], this[targetFieldName]);
                     if (res && res.length > 0) {
                         return res;
                     } else {

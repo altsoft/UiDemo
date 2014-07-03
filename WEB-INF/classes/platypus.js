@@ -1,18 +1,16 @@
-load("classpath:internals.js");
 (function() {
-    /** 
-     * Platypus library namespace global variable.
-     * @namespace P
-     */
-// this === global;
+    load("classpath:internals.js");
+    //this === global;
     var global = this;
     var oldP = global.P;
     global.P = {};
-    global.P.restore = function() {
-        var ns = global.P;
-        global.P = oldP;
-        return ns;
-    };
+    Object.defineProperty(global.P, "restore", {
+        value: function() {
+            var ns = global.P;
+            global.P = oldP;
+            return ns;
+        }
+    });
     /*
      global.P = this; // global scope of api - for legacy applications
      global.P.restore = function() {
@@ -22,12 +20,19 @@ load("classpath:internals.js");
 
     // core imports
     var ExecutorsClass = Java.type("java.util.concurrent.Executors");
+    var Lock = Java.type("java.util.concurrent.locks.ReentrantLock");
     var EngineUtilsClass = Java.type("jdk.nashorn.api.scripting.ScriptUtils");
     var JavaArrayClass = Java.type("java.lang.Object[]");
+    var JavaCollectionClass = Java.type("java.util.Collection");
     var FileClass = Java.type("java.io.File");
     var JavaDateClass = Java.type("java.util.Date");
     var LoggerClass = Java.type("java.util.logging.Logger");
+    var RowClass = Java.type("com.bearsoft.rowset.Row");
+    var FieldsClass = Java.type("com.bearsoft.rowset.metadata.Fields");
+    var ParamsClass = Java.type("com.bearsoft.rowset.metadata.Parameters");
     var IDGeneratorClass = Java.type("com.bearsoft.rowset.utils.IDGenerator");
+    var RowsetJSAdapterClass = Java.type("com.bearsoft.rowset.events.RowsetJSAdapter");
+    var RowsComparatorClass = Java.type("com.bearsoft.rowset.sorting.RowsComparator");
     var ScriptTimerTaskClass = Java.type("com.eas.client.scripts.ScriptTimerTask");
     var ScriptedResourceClass = Java.type("com.eas.client.scripts.PlatypusScriptedResource");
     var DeamonThreadFactoryClass = Java.type("com.eas.concurrent.DeamonThreadFactory");
@@ -115,6 +120,7 @@ load("classpath:internals.js");
         });
     };
     load("classpath:deps.js");
+    load("classpath:http-context.js");
 
     /**
      * @static
@@ -123,7 +129,7 @@ load("classpath:internals.js");
      * @param {type} aOnFailure
      * @returns {undefined}
      */
-    P.require = function(deps, aOnSuccess, aOnFailure) {
+    function require(deps, aOnSuccess, aOnFailure) {
         try {
             if (deps) {
                 if (Array.isArray(deps)) {
@@ -143,17 +149,36 @@ load("classpath:internals.js");
             else
                 throw e;
         }
-    };
+    }
+    Object.defineProperty(P, "require", {value: require});
+    function extend(Child, Parent) {
+        var prevChildProto = {};
+        for (var m in Child.prototype) {
+            var member = Child.prototype[m];
+            if (typeof member === 'function') {
+                prevChildProto[m] = member;
+            }
+        }
+        var F = function() {
+        };
+        F.prototype = Parent.prototype;
+        Child.prototype = new F();
+        for (var m in prevChildProto)
+            Child.prototype[m] = prevChildProto[m];
+        Child.prototype.constructor = Child;
+        Child.superclass = Parent.prototype;
+    }
+    Object.defineProperty(P, "extend", {value: extend});
+
     var cached = {};
-    var g = this;
-    var getModule = function(aName) {
+    function getModule(aName) {
         if (!cached[aName]) {
-            var c = g[aName];
+            var c = global[aName];
             if (c) {
                 cached[aName] = new c();
             } else {
                 ScriptedResourceClass.executeScriptResource(aName);
-                c = g[aName];
+                c = global[aName];
                 if (c) {
                     cached[aName] = new c();
                 } else {
@@ -162,7 +187,8 @@ load("classpath:internals.js");
             }
         }
         return cached[aName];
-    };
+    }
+    ;
     ScriptUtilsClass.setGetModuleFunc(getModule);
     var PModules = {};
     Object.defineProperty(P, "Modules", {
@@ -171,13 +197,307 @@ load("classpath:internals.js");
     Object.defineProperty(PModules, "get", {
         value: getModule
     });
+
+    function objectToInsertIniting(aObject) {
+        var jsIniting = [];
+        for (var pn in aObject) {
+            var pName = pn + '';
+            jsIniting[jsIniting.length] = pName;
+            jsIniting[jsIniting.length] = aObject[pName];
+        }
+        var initing = new JavaArrayClass(jsIniting.length);
+        for (var v = 0; v < jsIniting.length; v++)
+            initing[v] = boxAsJava(jsIniting[v]);
+        return initing;
+    }
+
+    function BoundArray() {
+        BoundArray.superclass.constructor.apply(this, arguments);
+        var target = this;
+        var rowset = this.unwrap().getRowset();
+        var adapter = new RowsetJSAdapterClass();
+        rowset.addRowsetListener(adapter);
+        adapter.rowsetFiltered = function() {
+            Array.prototype.splice.call(target, 0, target.length);
+            var rows = rowset.current;
+            var publishedRows = [];
+            for each (var aRow in rows) {
+                publishedRows.push(EngineUtilsClass.unwrap(aRow.getPublished()));
+            }
+            ;
+            Array.prototype.push.apply(target, publishedRows);
+        };
+        adapter.rowsetRequeried = function(event) {
+            adapter.rowsetFiltered(null);
+        };
+        adapter.rowsetNextPageFetched = function(event) {
+            adapter.rowsetFiltered(null);
+        };
+        adapter.rowsetSaved = function(event) {
+            // ignore
+        };
+        adapter.rowsetRolledback = function(event) {
+            // ignore
+        };
+        adapter.rowsetScrolled = function(event) {
+            // ignore
+        };
+        adapter.rowsetSorted = function(event) {
+            adapter.rowsetFiltered(null);
+        };
+        adapter.rowInserted = function(event) {
+            if (!event.ajusting)
+                adapter.rowsetFiltered(null);
+        };
+        adapter.rowChanged = function(event) {
+            if (event.oldRowCount != event.newRowCount) {
+                adapter.rowsetFiltered(null);
+            }
+        };
+        adapter.rowDeleted = function(event) {
+            if (!event.ajusting)
+                adapter.rowsetFiltered(null);
+        };
+
+        Object.defineProperty(target, "fill", {
+            value: function() {
+                throw '\'fill\' is unsupported in BoundArray because of it\'s distinct values requirement';
+            }
+        });
+        Object.defineProperty(target, "pop", {
+            value: function() {
+                if (!rowset.empty) {
+                    var res = rowset.getRow(rowset.size());
+                    rowset.deleteAt(rowset.size(), true);
+                    Array.prototype.pop.call(target);
+                    return res.getPublished();
+                }
+            }
+        });
+        Object.defineProperty(target, "push", {
+            value: function() {
+                if (arguments.length > 1) {
+                    for (var a = 0; a < arguments.length; a++) {
+                        rowset.insertAt(rowset.size() + 1, a < arguments.length - 1, objectToInsertIniting(arguments[a]));
+                    }
+                } else if (arguments.length === 1) {
+                    var justInserted = rowset.insertAt(rowset.size() + 1, true, objectToInsertIniting(arguments[0]));
+                    Array.prototype.push.call(target, justInserted.getPublished());
+                }
+                return target.length;
+            }
+        });
+        Object.defineProperty(target, "reverse", {
+            value: function() {
+                rowset.reverse();
+            }
+        });
+        Object.defineProperty(target, "shift", {
+            value: function() {
+                if (!rowset.empty) {
+                    var res = rowset.getRow(1);
+                    rowset.deleteAt(1, true);
+                    Array.prototype.shift.call(target);
+                    return res.getPublished();
+                }
+            }
+        });
+        var defaultCompareFunction = function(o1, o2) {
+            var s1 = (o1 + '');
+            var s2 = (o2 + '');
+            return s1 > s2 ? 1 : s1 < s2 ? -1 : 0;
+        };
+        Object.defineProperty(target, "sort", {
+            value: function() {
+                if (arguments.length > 0 && arguments[0] instanceof RowsComparatorClass) {
+                    rowset.sort(arguments[0]);
+                } else {
+                    var compareFunc = defaultCompareFunction;
+                    if (arguments.length > 0 && typeof arguments[0] === 'function') {
+                        compareFunc = arguments[0];
+                    }
+                    Array.prototype.sort.call(target, compareFunc);
+                }
+                return target;
+            }
+        });
+        Object.defineProperty(target, "splice", {
+            value: function() {
+                if (arguments.length > 0) {
+                    var beginToDeleteAt = arguments[0];
+                    var howManyToDelete = Number.MAX_VALUE;
+                    if (arguments.length > 1) {
+                        howManyToDelete = arguments[1];
+                    }
+                    var needToAdd = arguments.length > 2;
+                    var deleted = [];
+                    while (!rowset.empty && deleted.length < howManyToDelete) {
+                        var rowToDelete = rowset.getRow(beginToDeleteAt + 1);
+                        deleted.push(rowToDelete);
+                        rowset.deleteAt(beginToDeleteAt + 1, needToAdd);
+                    }
+                    var insertAt = beginToDeleteAt;
+                    for (var a = 2; a < arguments.length; a++) {
+                        rowset.insertAt(insertAt + 1, a < arguments.length - 1, objectToInsertIniting(arguments[a]));
+                        insertAt++;
+                    }
+                    return deleted;
+                } else {
+                    return [];
+                }
+            }
+        });
+
+        Object.defineProperty(target, "unshift", {
+            value: function() {
+                if (arguments.length > 1) {
+                    for (var a = 0; a < arguments.length; a++) {
+                        rowset.insertAt(a + 1, a < arguments.length - 1, objectToInsertIniting(arguments[a]));
+                    }
+                } else if (arguments.length === 1) {
+                    var justInserted = rowset.insertAt(1, true, objectToInsertIniting(arguments[0]));
+                    Array.prototype.unshift.call(target, justInserted.getPublished());
+                }
+                return target.length;
+            }
+        });
+
+        Object.defineProperty(target, "insert", {
+            value: function() {
+                var initing = new JavaArrayClass(arguments.length);
+                for (var v = 0; v < arguments.length; v++)
+                    initing[v] = boxAsJava(arguments[v]);
+                rowset.insert(initing);
+            }
+        });
+
+        Object.defineProperty(target, "insertAt", {
+            value: function() {
+                if (arguments.length > 0) {
+                    var index = arguments[0];
+                    var initing = new JavaArrayClass(arguments.length - 1);
+                    for (var v = 1; v < arguments.length; v++)
+                        initing[v - 1] = boxAsJava(arguments[v]);
+                    rowset.insertAt(index, false, initing);
+                }
+            }
+        });
+
+        Object.defineProperty(target, "createFilter", {
+            value: function() {
+                var nEntity = this.unwrap();
+                var varargs = new JavaArrayClass(arguments.length);
+                for (var v = 0; v < arguments.length; v++)
+                    varargs[v] = boxAsJava(arguments[v]);
+                return boxAsJs(nEntity.createFilter(varargs));
+            }
+        });
+
+        Object.defineProperty(target, "createSorting", {
+            value: function() {
+                var nEntity = this.unwrap();
+                var varargs = new JavaArrayClass(arguments.length);
+                for (var v = 0; v < arguments.length; v++)
+                    varargs[v] = boxAsJava(arguments[v]);
+                return boxAsJs(nEntity.createSorting(varargs));
+            }
+        });
+
+        Object.defineProperty(target, "find", {
+            value: function() {
+                var nEntity = this.unwrap();
+                var varargs = new JavaArrayClass(arguments.length);
+                for (var v = 0; v < arguments.length; v++)
+                    varargs[v] = boxAsJava(arguments[v]);
+                var found = nEntity.find(varargs);
+                var res = [];
+                for (var f = 0; f < found.size(); f++) {
+                    res.push(EngineUtilsClass.unwrap(found[f].getPublished()));
+                }
+                return res;
+            }
+        });
+    }
+
+    RowClass.setPublisher(function(aDelegate) {
+        var nnFields = aDelegate.getFields();
+        var instanceCTor = nnFields.getInstanceConstructor();
+        var target = !!instanceCTor ? new instanceCTor() : {};
+        var nFields = nnFields.toCollection();
+        // plain mutable properties
+        for (var n = 0; n < nFields.size(); n++) {
+            (function() {
+                var colIndex = n + 1;
+                var nField = nFields[n];
+                var valueAccessorDesc = {
+                    get: function() {
+                        return boxAsJs(aDelegate.getColumnObject(colIndex));
+                    },
+                    set: function(aValue) {
+                        aDelegate.setColumnObject(colIndex, boxAsJava(aValue));
+                    }
+                };
+                Object.defineProperty(target, nField.name, {get: valueAccessorDesc.get, set: valueAccessorDesc.set, enumerable: true});
+                Object.defineProperty(target, n, valueAccessorDesc);
+            })();
+        }
+        if (!target.schema)
+            Object.defineProperty(target, "schema", {value: nnFields.getPublished()});
+        // ORM mutable scalar and readonly collection properties
+        var ormDefs = nnFields.getOrmDefinitions();
+        for each (var o in ormDefs.keySet()) {
+            var def = EngineUtilsClass.unwrap(ormDefs.get(o));
+            Object.defineProperty(target, o, def);
+        }
+        Object.defineProperty(target, "unwrap", {
+            value: function() {
+                return aDelegate;
+            }});
+        return target;
+        // WARNING!!! Don't define target.length, because of possible conflict with subject area data properties.
+    });
+    FieldsClass.setPublisher(function(aDelegate) {
+        var target = {};
+        var nFields = aDelegate.toCollection();
+        for (var n = 0; n < nFields.size(); n++) {
+            (function() {
+                var nField = nFields[n];
+                var pField = EngineUtilsClass.unwrap(nField.getPublished());
+                Object.defineProperty(target, nField.name, {
+                    value: pField
+                });
+                Object.defineProperty(target, n, {
+                    value: pField
+                });
+            })();
+        }
+        Object.defineProperty(target, "length", {
+            value: nFields.size()
+        });
+        return target;
+    });
+
+    extend(BoundArray, Array);
+    extend(P.ApplicationDbEntity, BoundArray);
+    extend(P.ApplicationPlatypusEntity, BoundArray);
+    extend(P.ApplicationDbParametersEntity, BoundArray);
+    extend(P.ApplicationPlatypusParametersEntity, BoundArray);
+
+    P.Filter.prototype.apply = function() {
+        var varargs = new JavaArrayClass(arguments.length);
+        for (var v = 0; v < arguments.length; v++)
+            varargs[v] = boxAsJava(arguments[v]);
+        var nFilter = this.unwrap();
+        nFilter.apply(varargs);
+    };
+
     /**
      * @static
      * @param {type} aName
      * @param {type} aTarget
      * @returns {P.loadModel.publishTo}
      */
-    P.loadModel = function(aName, aTarget) {
+    function loadModel(aName, aTarget) {
         var model = ModelLoaderClass.load(ScriptedResourceClass.getClient(), aName);
         var modelCTor;
         if (model instanceof TwoTierModelClass) {
@@ -192,20 +512,90 @@ load("classpath:internals.js");
         } else {
             aTarget = new modelCTor(model);
         }
-        Object.defineProperty(aTarget, "params", {
-            value: model.getParametersEntity().getPublished()
-        });
-        var entities = model.entities();
-        for (var e in entities) {
-            var entity = entities[e];
-            if (entity.name) {
-                Object.defineProperty(aTarget, entity.name, {
-                    value: entity.getPublished()
+        function publishEntity(nEntity, aName) {
+            var published = EngineUtilsClass.unwrap(nEntity.getPublished());
+            var paramsSubject = published instanceof P.ApplicationDbParametersEntity
+                    || published instanceof P.ApplicationPlatypusParametersEntity;
+            var pSchema = {};
+            Object.defineProperty(published, "schema", {
+                value: pSchema
+            });
+            var nFields = nEntity.getFields().toCollection();
+            for (var n = 0; n < nFields.size(); n++) {
+                (function() {
+                    var nField = nFields[n];
+                    if (paramsSubject) {
+                        var valueDesc = {
+                            get: function() {
+                                return boxAsJs(nField.value);
+                            },
+                            set: function(aValue) {
+                                nField.value = boxAsJava(aValue);
+                            }
+                        };
+                        Object.defineProperty(published, nField.name, valueDesc);
+                        Object.defineProperty(published, n, valueDesc);
+                    }
+                    // schema
+                    var schemaDesc = {
+                        value: nField.getPublished()
+                    };
+                    Object.defineProperty(pSchema, nField.name, schemaDesc);
+                    Object.defineProperty(pSchema, n, schemaDesc);
+                })();
+            }
+            if (paramsSubject) {
+                Object.defineProperty(published, "length", {
+                    get: function() {
+                        return nFields.size();
+                    }
                 });
+            } else {
+                // entity.params.p1 syntax
+                var nParameters = nEntity.getQuery().getParameters();
+                var ncParameters = nParameters.toCollection();
+                var pParams = {};
+                for (var p = 0; p < ncParameters.size(); p++) {
+                    var nParameter = ncParameters[p];
+                    var pDesc = {
+                        get: function() {
+                            return boxAsJs(nParameter.value);
+                        },
+                        set: function(aValue) {
+                            nParameter.value = boxAsJava(aValue);
+                        }
+                    };
+                    Object.defineProperty(pParams, nParameter.name, pDesc);
+                    Object.defineProperty(pParams, p, pDesc);
+                }
+                Object.defineProperty(pParams, "length", {value: ncParameters.size()});
+                Object.defineProperty(published, "params", {value: pParams});
+                // entity.params.schema.p1 syntax
+                var pParamsSchema = EngineUtilsClass.unwrap(nParameters.getPublished());
+                Object.defineProperty(pParams, "schema", {value: pParamsSchema});
+            }
+            Object.defineProperty(pSchema, "length", {
+                get: function() {
+                    return nFields.size();
+                }
+            });
+            Object.defineProperty(aTarget, aName, {
+                value: published
+            });
+        }
+        var pEntity = model.getParametersEntity();
+        publishEntity(pEntity, "params");
+        var entities = model.entities();
+        for each (var enEntity in entities) {
+            enEntity.validateQuery();
+            if (enEntity.name) {
+                publishEntity(enEntity, enEntity.name);
             }
         }
+        model.createORMDefinitions();
         return aTarget;
-    };
+    }
+    Object.defineProperty(P, "loadModel", {value: loadModel});
     /**
      * @static
      * @param {type} aName
@@ -213,7 +603,7 @@ load("classpath:internals.js");
      * @param {type} aTarget
      * @returns {P.loadForm.publishTo}
      */
-    P.loadForm = function(aName, aModel, aTarget) {
+    function loadForm(aName, aModel, aTarget) {
         var designInfo = FormLoaderClass.load(ScriptedResourceClass.getClient(), aName);
         var form = new FormClass(aName, designInfo, aModel.unwrap());
         if (aTarget) {
@@ -238,7 +628,8 @@ load("classpath:internals.js");
             })();
         }
         return aTarget;
-    };
+    }
+    Object.defineProperty(P, "loadForm", {value: loadForm});
     /**
      * @static
      * @param {type} aName
@@ -246,7 +637,7 @@ load("classpath:internals.js");
      * @param {type} aTarget
      * @returns {P.loadTemplate.publishTo}
      */
-    P.loadTemplate = function(aName, aModel, aTarget) {
+    function loadTemplate(aName, aModel, aTarget) {
         var publishTo = aTarget ? aTarget : {};
         var template = TemplateLoaderClass.load(ScriptedResourceClass.getClient(), aName, aModel.unwrap());
         // publish
@@ -254,13 +645,14 @@ load("classpath:internals.js");
             return template.generateReport();
         };
         return publishTo;
-    };
+    }
+    Object.defineProperty(P, "loadTemplate", {value: loadTemplate});
     /**
      * Constructs server module network proxy.
      * @constructor
      * @param {String} aModuleName Name of server module (session stateless or statefull or rezident).
      */
-    P.ServerModule = function(aModuleName) {
+    function ServerModule(aModuleName) {
         var client = ScriptedResourceClass.getPlatypusClient();
         if (client) {
             var request = new CreateRequestClass(IDGeneratorClass.genID(), aModuleName);
@@ -308,14 +700,16 @@ load("classpath:internals.js");
         } else {
             throw "This architecture does not support server modules."
         }
-    };
+    }
+    ;
+    Object.defineProperty(P, "ServerModule", {value: ServerModule});
     var toPrimitive = ScriptUtilsClass.getToPrimitiveFunc();
     /**
      * @private
      * @param {type} aValue
      * @returns {unresolved}
      */
-    P.boxAsJava = function(aValue) {
+    function boxAsJava(aValue) {
         //---------------------- Don't change to !== because of undefined 
         if (arguments.length > 0 && aValue != null) {
             if (aValue.unwrap) {
@@ -327,38 +721,43 @@ load("classpath:internals.js");
         } else {// undefined -> null
             return null;
         }
-    };
+    }
+    ;
+    Object.defineProperty(P, "boxAsJava", {
+        value: boxAsJava
+    });
     /**
      * @private
      * @param {type} aValue
      * @returns {unresolved}
      */
-    P.boxAsJs = function(aValue) {
+    function boxAsJs(aValue) {
         if (aValue) {
             if (aValue.getPublished) {
-                if (arguments.length > 1) {
-                    var elementClass = arguments[1];
-                    aValue = aValue.getPublished(new elementClass());
-                } else {
-                    aValue = aValue.getPublished();
-                }
+                aValue = aValue.getPublished();
             } else if (aValue instanceof JavaDateClass) {
                 aValue = new Date(aValue.time);
             } else if (aValue instanceof JavaArrayClass) {
                 var converted = [];
                 for (var i = 0; i < aValue.length; i++) {
-                    if (arguments.length > 1) {
-                        converted[converted.length] = P.boxAsJs(aValue[i], arguments[1]);
-                    } else {
-                        converted[converted.length] = P.boxAsJs(aValue[i]);
-                    }
+                     converted[converted.length] = boxAsJs(aValue[i]);
+                }
+                return converted;
+            }else if(aValue instanceof JavaCollectionClass){
+                var converted = [];
+                for each (var v in aValue) {
+                     converted[converted.length] = boxAsJs(v);
                 }
                 return converted;
             }
             aValue = EngineUtilsClass.unwrap(aValue);
         }
         return aValue;
-    };
+    }
+    
+    Object.defineProperty(P, "boxAsJs", {
+        value: boxAsJs
+    });
 
     var Resource = {};
     Object.defineProperty(Resource, "load", {
@@ -677,7 +1076,7 @@ load("classpath:internals.js");
             return colorDialog(title, color);
         }
     }
-    
+
     Object.defineProperty(P, "selectColor", {
         value: selectColor
     });
@@ -905,3 +1304,92 @@ load("classpath:internals.js");
         value: FontStyle
     });
 })();
+if (!P) {
+    /** 
+     * Platypus library namespace global variable.
+     * @namespace P
+     */
+    var P;
+    P.HTML5 = "";
+    P.J2SE = "";
+    P.agent = "";
+    P.require = function() {
+    };
+    P.extend = function() {
+    };
+    P.Modules;
+    P.loadModel = function() {
+    };
+    P.loadForm = function() {
+    };
+    P.loadTemplate = function() {
+    };
+    /**
+     * Constructs server module network proxy.
+     * @constructor
+     */
+    P.ServerModule = function() {
+    };
+    P.boxAsJava = function() {
+    };
+    P.boxAsJs = function() {
+    };
+    P.Resource = {};
+    P.logout = function() {
+    };
+    P.Icon = {};
+    P.ID = {generate: function(aValue) {
+            return "";
+        }};
+
+    /**
+     * Md5 hash generator
+     * @type type
+     */
+    P.MD5 = {
+        /**
+         * Generates MD5 hash for given value. 
+         * @param aValue Value the hash is generated for. Converted to string.
+         * @return Generated MD5 hash
+         */
+        generate: function(aValue) {
+            return "";
+        }
+    };
+    P.Logger = {};
+    P.VK_ALT = 0;
+    P.VK_BACKSPACE = 0;
+    P.VK_DELETE = 0;
+    P.VK_DOWN = 0;
+    P.VK_END = 0;
+    P.VK_ENTER = 0;
+    P.VK_ESCAPE = 0;
+    P.VK_HOME = 0;
+    P.VK_LEFT = 0;
+    P.VK_PAGEDOWN = 0;
+    P.VK_PAGEUP = 0;
+    P.VK_RIGHT = 0;
+    P.VK_SHIFT = 0;
+    P.VK_TAB = 0;
+    P.VK_UP = 0;
+    P.selectFile = function() {
+    };
+    P.selectDirectory = function() {
+    };
+    P.selectColor = function() {
+    };
+    P.readString = function() {
+    };
+    P.writeString = function() {
+    };
+    P.msgBox = function() {
+    };
+    P.warn = function() {
+    };
+    P.prompt = function() {
+    };
+    P.HorizontalPosition = {};
+    P.VerticalPosition = {};
+    P.Orientation = {};
+    P.FontStyle = {};
+}

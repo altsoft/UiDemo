@@ -11,104 +11,177 @@ function demoForm() {
     var exPanelModel;
     var exPanelContainer;
     var cmplPanel;
+    var demoComponent = null;
+    var iconFold;
+    var iconUnfold;
+
+
+
+    function fold(aItemPanel, aContent) {
+        aItemPanel.folded = true;
+        aItemPanel.height = aContent.top;
+    }
+    function foldUnfold(aItemPanel, aContent, aEvent) {
+        if (aItemPanel.folded) {
+            aItemPanel.folded = false;
+            aItemPanel.height = aContent.top + aContent.height;
+            aEvent.source.icon = iconFold;
+        } else {
+            fold(aItemPanel, aContent);
+            aEvent.source.icon = iconUnfold;
+        }
+    }
+
+
     self.show = function() {
         form.show();
         (function() {
-            form.maximize();
+//            form.maximize();
         }).invokeLater();
-        var iconFold= P.Icon.load("icons/arrow-090.png");
-        var iconUnfold= P.Icon.load("icons/arrow-270.png");
-        exPanelStandard = new ExpandedPanel(form.pnlStandardWidgets);
-        exPanelStandard.setIconsFoldedUnfolded(iconFold,iconUnfold);
-        exPanelModel = new ExpandedPanel(form.pnlModelWidgets);
-        exPanelModel.setIconsFoldedUnfolded(iconFold,iconUnfold);
-        exPanelContainer = new ExpandedPanel(form.pnlContainers);
-        exPanelContainer.setIconsFoldedUnfolded(iconFold,iconUnfold);
-        cmplPanel = new ComplexPanel(form.pnlTopFoldingPanel,[exPanelStandard,exPanelModel,exPanelContainer]);    
-        cmplPanel.setFoldingAction(cmplPanel.FoldingComplex);
-        
+        iconFold = P.Icon.load("icons/arrow-090.png");
+        iconUnfold = P.Icon.load("icons/arrow-270.png");
+        form.pnlStandardWidgets.folded = false;
+        form.pnlModelWidgets.folded = false;
+        form.pnlContainers.folded = false;
+        fold(form.pnlModelWidgets, form.pnlModelContent);
+        fold(form.pnlContainers, form.pnlContainersContent);
+        form.grpBtnStandart.icon = iconFold;
+        form.grpBtnModel.icon = iconUnfold;
+        form.grpBtnContainers.icon = iconUnfold;
+        model.params.Background = "Hello";
+        model.params.Foreground = "World";
     };
 
-//    function componentsList() {
-//        var rbButtonGroup = new ButtonGroup();
-//        rbButtonGroup.add(self.rbLabel);
-//        rbButtonGroup.add(self.rbButton);
-//        rbButtonGroup.add(self.rbToggleButton);
-//        self.rbLabel.onActionPerformed = function(event) {
-//            self.demoComponent = new Label("demo");
-//            redrawComponent();
-//        };
-//        self.rbButton.onActionPerformed = function(event) {
-//            self.demoComponent = new Button("demo");
-//            redrawComponent();
-//        };
-//    }
-//
-//    self.btnLabel.onActionPerformed = function(event) {
-//        self.demoComponent = new Label("demo");
-//        redrawComponent();
-//    };
-//    self.btnButton.onActionPerformed = function(event) {
-//        self.demoComponent = new Button("demo");
-//        redrawComponent();
-//    };
-//    self.btnToggleButton.onActionPerformed = function(event) {
-//        self.demoComponent = new ToggleButton("demo");
-//        redrawComponent();
-//    };
-//    self.btnCheckBox.onActionPerformed = function(event) {
-//        self.demoComponent = new CheckBox("demo");
-//        redrawComponent();
-//    };
-//    self.btnRadioButton.onActionPerformed = function(event) {
-//        self.demoComponent = new RadioButton("demo");
-//        redrawComponent();
-//    };
-//    self.btnTextField.onActionPerformed = function(event) {
-//        self.demoComponent = new TextField("demo");
-//        redrawComponent();
-//    };
-//    self.btnSlider.onActionPerformed = function(event) {
-//        self.demoComponent = new Slider(0, 100, 10);
-//        redrawComponent();
-//    };
-//    self.btnProgressBar.onActionPerformed = function(event) {
-//        self.demoComponent = new ProgressBar(0, 100);
-//        redrawComponent();
-//    };
-//    self.btnFormattedField.onActionPerformed = function(event) {
-//        self.demoComponent = new FormattedField("demo");
-//        redrawComponent();
-//    };
-//    self.btnPasswordField.onActionPerformed = function(event) {
-//        self.demoComponent = new PasswordField("demo");
-//        redrawComponent();
-//    };
-//    self.btnTextArea.onActionPerformed = function(event) {
-//        self.demoComponent = new TextArea("demo");
-//        redrawComponent();
-//    };
-//    self.btnHtmlArea.onActionPerformed = function(event) {
-//        self.demoComponent = new HtmlArea("demo");
-//        redrawComponent();
-//    };
-//
-//    self.tbVisibility.onActionPerformed = function(event) {
-//        if (self.tbVisibility.selected) {
-//            self.tbVisibility.text = "Invisible";
-//            self.demoComponent.visible = false;
-//        } else {
-//            self.tbVisibility.text = "Visible";
-//            self.demoComponent.visible = true;
-//        }
-//    };
+    form.tglLabel.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.Label("demo");
+            redrawComponent();
+        }
+    };
+    form.tglButton.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.Button("demo");
+            redrawComponent();
+        }
+    };
+    form.tglToggleButton.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.ToggleButton("demo");
+            redrawComponent();
+        }
+    };
+    form.tglCheckBox.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.CheckBox("demo");
+            redrawComponent();
+        }
+    };
+    form.tglRadioButton.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.RadioButton("demo");
+            redrawComponent();
+        }
+    };
+    form.tglTextField.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.TextField("demo");
+            redrawComponent();
+        }
+    };
+    form.tglSlider.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.Slider(0, 100, 10);
+            redrawComponent();
+        }
+    };
+    form.tglProgressBar.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.ProgressBar(0, 100);
+            redrawComponent();
+        }
+    };
+    form.tglFormattedField.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.FormattedField("demo");
+            redrawComponent();
+        }
+    };
+    form.tglPasswordField.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.PasswordField("demo");
+            redrawComponent();
+        }
+    };
+    form.tglTextArea.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.TextArea("demo");
+            redrawComponent();
+        }
+    };
+    form.tglHtmlArea.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            demoComponent = new P.HtmlArea("demo");
+            redrawComponent();
+        }
+    };
+
+    form.tbVisibility.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            form.tbVisibility.text = "Invisible";
+            demoComponent.visible = false;
+        } else {
+            form.tbVisibility.text = "Visible";
+            demoComponent.visible = true;
+        }
+    };
 
 
-//    function redrawComponent() {
-//        self.pnlDemo.clear();
-//        self.pnlDemo.add(self.demoComponent, new Anchors(10, null, 10, 10, null, 20));
-//        self.txtText.text = self.demoComponent.text;
-//    }
+    function redrawComponent() {
+        form.pnlPlayground.clear();
+        form.pnlPlayground.add(demoComponent, new P.Anchors(10, null, 10, 10, null, 20));
+        form.txtToltip.text = demoComponent.toolTipText;
+        model.params.Background = demoComponent.background;
+        model.params.Foreground = demoComponent.foreground;
+
+//        demoComponent.font = new P.Font("Times New Roman", P.FontStyle.BOLD, 14);
+    }
+
+    form.tglEnabled.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            form.tbVisibility.text = "Disabled";
+            demoComponent.enabled = false;
+        } else {
+            form.tbVisibility.text = "Enabled";
+            demoComponent.enabled = true;
+        }
+    };
+
+    form.tglFocusable.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            form.tbVisibility.text = "UnFocusable";
+            demoComponent.focusable = false;
+        } else {
+            form.tbVisibility.text = "Focusable";
+            demoComponent.focusable = true;
+        }
+    };
+
+    form.tglOpaque.onActionPerformed = function(event) {
+        if (event.source.selected) {
+            form.tbVisibility.text = "Opaque";
+            demoComponent.opaque = false;
+        } else {
+            form.tbVisibility.text = "Solid";
+            demoComponent.opaque = true;
+        }
+    };
+
+    form.popupMenu.onActionPerformed = function(event) {
+        console.log("hello")
+    };
+
+
+
 //
 
 //    form.onWindowOpened = function() {
@@ -123,25 +196,36 @@ function demoForm() {
 ////        visibility();
 //
 //    };    
+
+
     form.grpBtnStandart.onActionPerformed = function(event) {
-        cmplPanel.setUnfolded(0);
-        
+        foldUnfold(form.pnlStandardWidgets, form.pnlStandardContent, event);
     };
     form.grpBtnModel.onActionPerformed = function(event) {
-        cmplPanel.setUnfolded(1);
-         
-//        form.grpBtnModel.icon = myIcon;
+        foldUnfold(form.pnlModelWidgets, form.pnlModelContent, event);
     };
     form.grpBtnContainers.onActionPerformed = function(event) {
-        cmplPanel.setUnfolded(2);
-        
-//        console.log("Folding 3");
-//        if (clickNum % 2 == 0) {
-//            exPanelContainer.fold();
-//        } else {
-//            exPanelContainer.unFold();
-//        }
-//        clickNum += 1;
-//        P.Logger.info(clickNum);
+        foldUnfold(form.pnlContainers, form.pnlContainersContent, event);
     };
+
+    form.modelForeground.onSelect = function(event) {
+        P.selectColor(function(result) {
+            demoComponent.foreground = new P.Color(result);
+            model.params.Foreground = result;
+
+        });
+    };
+    form.modelBackground.onSelect = function(event) {
+        P.selectColor(function(result) {
+            demoComponent.background = new P.Color(result);
+        });
+    };
+
+    form.modelFont.onSelect = function(event) {
+        var fontForm = new FormSelectionDialog();
+        fontForm.show();
+        
+
+    };
+
 }
