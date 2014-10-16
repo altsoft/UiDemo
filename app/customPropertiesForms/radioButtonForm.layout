@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="505px" prefWidth="432px">
+  <nonvisual name="btnGrpHorisontalPosition" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="buttonGroup1" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="buttonGroup2" type="ButtonGroupDesignInfo"/>
+  <widget name="scrollPane" parent="Form" prefHeight="505px" prefWidth="432px" type="ScrollDesignInfo">
+    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="panel" parent="scrollPane" prefHeight="491px" prefWidth="443px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget buttonGroup="buttonGroup2" name="tglHRight111" parent="panel" prefHeight="29px" prefWidth="72px" text="Bottom" type="ToggleButtonDesignInfo">
+    <constraints bottom="18px" height="29px" left="180px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup2" name="tglHCenter111" parent="panel" prefHeight="29px" prefWidth="72px" text="Center" type="ToggleButtonDesignInfo">
+    <constraints bottom="54px" height="29px" left="180px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup2" name="tglHLeft111" parent="panel" prefHeight="29px" prefWidth="72px" text="Top" type="ToggleButtonDesignInfo">
+    <constraints bottom="90px" height="29px" left="180px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup1" name="tglHRight11" parent="panel" prefHeight="29px" prefWidth="72px" text="Bottom" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="180px" top="288px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup1" name="tglHCenter11" parent="panel" prefHeight="29px" prefWidth="72px" text="Center" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="180px" top="252px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup1" name="tglHLeft11" parent="panel" prefHeight="29px" prefWidth="72px" text="Top" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="180px" top="216px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="tglHRight1" parent="panel" prefHeight="29px" prefWidth="48px" text="Right" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="323px" top="168px" type="MarginConstraintsDesignInfo" width="48px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="tglHCenter1" parent="panel" prefHeight="29px" prefWidth="72px" text="Center" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="240px" top="168px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="tglHLeft1" parent="panel" prefHeight="29px" prefWidth="48px" text="Left" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="180px" top="168px" type="MarginConstraintsDesignInfo" width="48px"/>
+  </widget>
+  <widget buttonGroup="btnGrpHorisontalPosition" name="tglHRight" parent="panel" prefHeight="29px" prefWidth="48px" text="Right" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="323px" top="120px" type="MarginConstraintsDesignInfo" width="48px"/>
+  </widget>
+  <widget buttonGroup="btnGrpHorisontalPosition" name="tglHCenter" parent="panel" prefHeight="29px" prefWidth="72px" text="Center" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="240px" top="120px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget horizontalTextPosition="4" name="label" parent="panel" prefHeight="17px" prefWidth="108px" text="Text" type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="17px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="label1" parent="panel" prefHeight="17px" prefWidth="34px" text="Icon" type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="53px" type="MarginConstraintsDesignInfo" width="34px"/>
+  </widget>
+  <widget name="label11" parent="panel" prefHeight="17px" prefWidth="96px" text="IconTextGap" type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="84px" type="MarginConstraintsDesignInfo" width="96px"/>
+  </widget>
+  <widget name="label2" parent="panel" prefHeight="17px" prefWidth="168px" text="HorizontalTextPositon" type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="126px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="label3" parent="panel" prefHeight="17px" prefWidth="156px" text="HorizontalAlignment" type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="174px" type="MarginConstraintsDesignInfo" width="156px"/>
+  </widget>
+  <widget name="label31" parent="panel" prefHeight="17px" prefWidth="156px" text="VerticalTextPositon" type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="258px" type="MarginConstraintsDesignInfo" width="156px"/>
+  </widget>
+  <widget name="label311" parent="panel" prefHeight="17px" prefWidth="156px" text="VerticalAlignment" type="LabelDesignInfo">
+    <constraints bottom="60px" height="17px" left="12px" type="MarginConstraintsDesignInfo" width="156px"/>
+  </widget>
+  <widget name="textField" parent="panel" prefHeight="27px" prefWidth="120px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="27px" left="180px" top="12px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="textField1" parent="panel" prefHeight="27px" prefWidth="120px" text="textField1" type="TextFieldDesignInfo">
+    <constraints height="27px" left="180px" top="48px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget buttonGroup="btnGrpHorisontalPosition" name="tglHLeft" parent="panel" prefHeight="29px" prefWidth="48px" text="Left" type="ToggleButtonDesignInfo">
+    <constraints height="29px" left="180px" top="120px" type="MarginConstraintsDesignInfo" width="48px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

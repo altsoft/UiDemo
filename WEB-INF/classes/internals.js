@@ -40,10 +40,11 @@
 
     var parseDates = function(aObject) {
         if (typeof aObject === 'string' || aObject && aObject.constructor && aObject.constructor.name === 'String') {
-            if(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/.test('' + aObject)){
-                return new Date('' + aObject);
+            var strValue = '' + aObject;
+            if(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/.test(strValue)){
+                return new Date(strValue);
             }
-        } else if (typeof aObject === 'object' || aObject && aObject.constructor && aObject.constructor.name === 'Object') {
+        } else if (typeof aObject === 'object') {
             for (var prop in aObject) {
                 aObject[prop] = parseDates(aObject[prop]);
             }
@@ -82,7 +83,7 @@
                 _self.configurable = false;
                 _self.get = function() {
                     var found = targetPublishedEntity.find(targetPublishedEntity.schema[targetFieldName], this[sourceFieldName]);
-                    return found.length === 0 ? null : (found.length === 1 ? found[0] : found);
+                    return found === null || found.length === 0 ? null : (found.length === 1 ? found[0] : found);
                 };
                 _self.set = function(aValue) {
                     this[sourceFieldName] = aValue ? aValue[targetFieldName] : null;
@@ -94,18 +95,10 @@
                 _self.enumerable = true;
                 _self.configurable = false;
                 _self.get = function() {
-                    var res = sourcePublishedEntity.find(sourcePublishedEntity.schema[sourceFieldName], this[targetFieldName]);
-                    if (res && res.length > 0) {
-                        return res;
-                    } else {
-                        var emptyCollectionPropName = '-x-empty-collection-' + sourceFieldName;
-                        var emptyCollection = this[emptyCollectionPropName];
-                        if (!emptyCollection) {
-                            emptyCollection = [];
-                            this[emptyCollectionPropName] = emptyCollection;
-                        }
-                        return emptyCollection;
-                    }
+                    return sourcePublishedEntity.find(sourcePublishedEntity.schema[sourceFieldName], this[targetFieldName]);
                 };
             });
+    ScriptUtils.setIsArrayFunc(function(aInstance){
+        return aInstance instanceof Array; 
+    });        
 })();
