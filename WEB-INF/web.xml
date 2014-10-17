@@ -6,7 +6,7 @@
   </context-param>
   <context-param>
     <param-name>url</param-name>
-    <param-value>file:/home/jskonst/workspace/aPlatypusUiDemo/</param-value>
+    <param-value>file:/home/user/workspace/platypusuidemo/</param-value>
   </context-param>
   <listener>
     <listener-class>com.eas.server.httpservlet.PlatypusSessionsSynchronizer</listener-class>
@@ -16,7 +16,7 @@
     <servlet-class>com.eas.server.httpservlet.PlatypusHttpServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
     <multipart-config>
-      <location>/home/jskonst/workspace/aPlatypusUiDemo/web/pub</location>
+      <location>/home/user/workspace/platypusuidemo/web/pub</location>
       <max-file-size>2097152</max-file-size>
       <max-request-size>2165824</max-request-size>
       <file-size-threshold>1048576</file-size-threshold>

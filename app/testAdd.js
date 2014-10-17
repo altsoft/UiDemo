@@ -1,8 +1,8 @@
 /**
  * 
- * @author jskonst
+ * @author user
  */
-function test() {
+function testAdd() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
@@ -11,11 +11,11 @@ function test() {
         form.show();
     };
     
+    self.getView = function () {
+        return form.view;
+    };
+    
     model.requery(/*function(){}*/);
     
     // TODO : place your code here
-    form.button.onActionPerformed = function(event) {
-        var anotherForm = new textFieldForm();
-        form.panel.add(anotherForm.getView());
-    };
 }

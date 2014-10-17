@@ -1,17 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="227px" prefWidth="688px">
-  <widget backgroundColor="#e01345" name="panel" parent="Form" prefHeight="180px" prefWidth="204px" type="PanelDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="518px" prefWidth="816px">
+  <widget name="button" parent="Form" prefHeight="29px" prefWidth="60px" text="button" type="ButtonDesignInfo">
+    <constraints height="29px" right="72px" top="24px" type="MarginConstraintsDesignInfo" width="60px"/>
+  </widget>
+  <widget name="panel" parent="Form" prefHeight="432px" prefWidth="480px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints height="180px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="204px"/>
-  </widget>
-  <widget name="tabbedPane" parent="Form" prefHeight="189px" prefWidth="352px" type="TabsDesignInfo">
-    <constraints height="189px" left="228px" top="12px" type="MarginConstraintsDesignInfo" width="352px"/>
-  </widget>
-  <widget name="panel1" parent="tabbedPane" prefHeight="152px" prefWidth="344px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <constraints tabTitle="tab0" type="TabsConstraintsDesignInfo"/>
-  </widget>
-  <widget dateFormat="dd.MM.yyyy" name="modelDate" parent="panel1" prefHeight="27px" prefWidth="302px" type="DbDateDesignInfo">
-    <constraints height="27px" left="24px" right="18px" top="12px" type="MarginConstraintsDesignInfo"/>
+    <constraints height="432px" left="24px" top="36px" type="MarginConstraintsDesignInfo" width="480px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

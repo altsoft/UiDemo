@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="527px" prefWidth="831px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="289px" prefWidth="831px">
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <nonvisual name="btnGroupStandard" type="ButtonGroupDesignInfo"/>
   <nonvisual name="btnGroupModel" type="ButtonGroupDesignInfo"/>
@@ -6,15 +6,7 @@
   <nonvisual name="popupMenu" prefHeight="0px" prefWidth="0px" type="PopupDesignInfo"/>
   <widget name="menuItem" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem2" type="MenuItemDesignInfo"/>
   <widget name="menuItem1" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem1" type="MenuItemDesignInfo"/>
-  <widget name="pnlPlayground" parent="Form" prefHeight="488px" prefWidth="309px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <constraints bottom="15px" left="516px" right="6px" top="24px" type="MarginConstraintsDesignInfo"/>
-    <border type="LineBorderDesignInfo"/>
-  </widget>
-  <widget name="checkBox" parent="pnlPlayground" prefHeight="24px" prefWidth="95px" text="checkBox" type="CheckDesignInfo">
-    <constraints height="24px" left="72px" top="96px" type="MarginConstraintsDesignInfo" width="95px"/>
-  </widget>
-  <widget horizontalScrollBarPolicy="31" name="scrollPane1" parent="Form" prefHeight="506px" prefWidth="216px" type="ScrollDesignInfo">
+  <widget horizontalScrollBarPolicy="31" name="scrollPane1" parent="Form" prefHeight="268px" prefWidth="216px" type="ScrollDesignInfo">
     <constraints bottom="9px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
   <widget name="pnlTopFoldingPanel" parent="scrollPane1" prefHeight="1270px" prefWidth="201px" type="PanelDesignInfo">
@@ -152,10 +144,10 @@
   <widget buttonGroup="btnGroupContainers" name="tglDesktopPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="DesktopPane" type="ToggleButtonDesignInfo">
     <constraints height="29px" left="24px" right="0px" top="396px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="tabbedPane" parent="Form" prefHeight="501px" prefWidth="276px" type="TabsDesignInfo">
-    <constraints bottom="14px" left="240px" top="12px" type="MarginConstraintsDesignInfo" width="276px"/>
+  <widget name="tabbedPane" parent="Form" prefHeight="263px" prefWidth="276px" type="TabsDesignInfo">
+    <constraints bottom="14px" left="240px" right="315px" top="12px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget horizontalScrollBarPolicy="31" name="scrollPane" parent="tabbedPane" prefHeight="464px" prefWidth="268px" type="ScrollDesignInfo">
+  <widget horizontalScrollBarPolicy="31" name="scrollPane" parent="tabbedPane" prefHeight="226px" prefWidth="268px" type="ScrollDesignInfo">
     <constraints tabTitle="Common" type="TabsConstraintsDesignInfo"/>
   </widget>
   <widget name="panel" parent="scrollPane" prefHeight="657px" prefWidth="393px" type="PanelDesignInfo">
@@ -221,9 +213,21 @@
   <widget name="tglEnabled" parent="panel" prefHeight="29px" prefWidth="107px" text="Enabled" type="ToggleButtonDesignInfo">
     <constraints height="29px" left="108px" top="240px" type="MarginConstraintsDesignInfo" width="107px"/>
   </widget>
-  <widget name="pnlCustom" parent="tabbedPane" prefHeight="464px" prefWidth="268px" type="PanelDesignInfo" visible="false">
-    <layout axis="1" type="BoxLayoutDesignInfo"/>
+  <widget name="pnlCustom" parent="tabbedPane" prefHeight="226px" prefWidth="268px" type="PanelDesignInfo" visible="false">
+    <layout type="BorderLayoutDesignInfo"/>
     <constraints tabTitle="Custom" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget name="panel1" parent="Form" prefHeight="240px" prefWidth="288px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="240px" left="528px" top="36px" type="MarginConstraintsDesignInfo" width="288px"/>
+  </widget>
+  <widget name="pnlPlayground" parent="panel1" prefHeight="238px" prefWidth="288px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints bottom="2px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+    <border type="LineBorderDesignInfo"/>
+  </widget>
+  <widget name="checkBox" parent="pnlPlayground" prefHeight="43px" prefWidth="307px" text="checkBox" type="CheckDesignInfo">
+    <constraints height="43px" left="0px" top="24px" type="MarginConstraintsDesignInfo" width="307px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

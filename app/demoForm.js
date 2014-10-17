@@ -57,15 +57,19 @@ function demoForm() {
     form.tglLabel.onActionPerformed = function (event) {
         if (event.source.selected) {
             demoComponent = new P.Label("demo");
-            var custumForm = new textFieldForm();
-            redrawComponent(custumForm);
+            var customForm = new labelForm(demoComponent);
+            redrawComponent(customForm);
+//            custumForm.show();
+//            form.panel1.add(custumForm.getView());
+            
             
         }
     };
     form.tglButton.onActionPerformed = function (event) {
         if (event.source.selected) {
             demoComponent = new P.Button("demo");
-            redrawComponent();
+            var customForm = new labelForm(demoComponent);
+            redrawComponent(customForm);
 
         }
     };
@@ -143,10 +147,12 @@ function demoForm() {
 
     function redrawComponent(customForm) {
         form.pnlPlayground.clear();
+        form.pnlCustom.clear();
         var hMargin = 10;
-        var componentHeight = 20;
-        var top = form.pnlPlayground.height/2 -componentHeight/2;
-        form.pnlPlayground.add(demoComponent, new P.Anchors(hMargin, null, hMargin, top, componentHeight, null));
+        var vMargin = 10;
+//        var componentHeight = 100;
+//        var top = form.pnlPlayground.height/2 -componentHeight/2;
+        form.pnlPlayground.add(demoComponent, new P.Anchors(hMargin, null, hMargin, vMargin, null, vMargin));
         form.txtToltip.text = demoComponent.toolTipText;
         model.params.Background = demoComponent.background;
         model.params.Foreground = demoComponent.foreground;

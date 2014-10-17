@@ -14,4 +14,5 @@ function textFieldForm() {
     self.getView = function(){
       return form.view;  
     };
+    
 }
