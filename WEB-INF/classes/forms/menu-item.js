@@ -1,5 +1,5 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.menu.MenuItem");
+    var javaClass = Java.type("com.eas.client.forms.menu.MenuItem");
     javaClass.setPublisher(function(aDelegate) {
         return new P.MenuItem(null, null, null, aDelegate);
     });
@@ -61,20 +61,6 @@
              * @memberOf MenuItem
              */
             P.MenuItem.prototype.onMouseDragged = {};
-        }
-        Object.defineProperty(this, "parent", {
-            get: function() {
-                var value = delegate.parent;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.MenuItem){
-            /**
-             * The parent container.
-             * @property parent
-             * @memberOf MenuItem
-             */
-            P.MenuItem.prototype.parent = {};
         }
         Object.defineProperty(this, "onMouseReleased", {
             get: function() {
@@ -165,6 +151,9 @@
             get: function() {
                 var value = delegate.error;
                 return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.error = P.boxAsJava(aValue);
             }
         });
         if(!P.MenuItem){
@@ -261,6 +250,20 @@
              */
             P.MenuItem.prototype.onComponentResized = {};
         }
+        Object.defineProperty(this, "parent", {
+            get: function() {
+                var value = delegate.parentWidget;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.MenuItem){
+            /**
+             * Parent container of this widget.
+             * @property parentWidget
+             * @memberOf MenuItem
+             */
+            P.MenuItem.prototype.parent = {};
+        }
         Object.defineProperty(this, "text", {
             get: function() {
                 var value = delegate.text;
@@ -312,20 +315,6 @@
              */
             P.MenuItem.prototype.toolTipText = '';
         }
-        Object.defineProperty(this, "element", {
-            get: function() {
-                var value = delegate.element;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.MenuItem){
-            /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
-             * @memberOf MenuItem
-             */
-            P.MenuItem.prototype.element = {};
-        }
         Object.defineProperty(this, "height", {
             get: function() {
                 var value = delegate.height;
@@ -359,6 +348,20 @@
              * @memberOf MenuItem
              */
             P.MenuItem.prototype.onComponentShown = {};
+        }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.MenuItem){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf MenuItem
+             */
+            P.MenuItem.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {

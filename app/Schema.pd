@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel datasource="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142839008764248" entityLocationX="968" entityLocationY="117" entityWidth="150" tableName="PETTYPES"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142839001481243" entityLocationX="226" entityLocationY="55" entityWidth="150" tableName="VISIT"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142839003489057" entityLocationX="482" entityLocationY="100" entityWidth="150" tableName="OWNERS"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142839002053727" entityLocationX="10" entityLocationY="20" entityWidth="150" tableName="DUMMYTABLE"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142839003993713" entityLocationX="722" entityLocationY="83" entityWidth="150" tableName="PETS"/>
+</datamodel>

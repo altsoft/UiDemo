@@ -12,10 +12,11 @@ function test() {
     };
     
     model.requery(/*function(){}*/);
-    
-    // TODO : place your code here
+  
     form.button.onActionPerformed = function(event) {
-        var anotherForm = new textFieldForm();
-        form.panel.add(anotherForm.getView());
+        model.push();
+    };
+    form.button1.onActionPerformed = function(event) {
+        model.insert();
     };
 }

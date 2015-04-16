@@ -2,11 +2,14 @@
  * 
  * @author jskonst
  */
-function FontSelectionDialog() {
+function FontSelectionDialog(aDemoComponent) {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-
+    var demoComponent;
+    if (aDemoComponent) {
+        demoComponent = aDemoComponent;
+    }
     function getFont() {
 
 //        demoComponent.font = new P.Font("Times New Roman", P.FontStyle.BOLD, 14);
@@ -22,38 +25,46 @@ function FontSelectionDialog() {
         }
         var size = Number(form.tfSize.text);
 
-        return new P.Font(model.params.FontName, fontStyle, size);
+//        return new P.Font(model.params.FontName, fontStyle, size);
     }
 
     function presetOnLoad() {
-        if (model.params.isBold) {
-            form.tglBold.selected = true;
-        }
-        if (model.params.isItalic) {
-            form.tglItalic.selected = true;
-        }
-        
+//        if (demoComponent.isBold) {
+//            form.tglBold.selected = true;
+//        }
+//        if (model.params.isItalic) {
+//            form.tglItalic.selected = true;
+//        }
     }
 
-    self.show = function() {
+    self.show = function () {
         presetOnLoad();
         form.show();
+        model.fonts.requery(function () {
+            P.Logger.info(model.fonts);
+        }, function (e) {
+            P.Logger.severe(e);
+        });
     };
 
-    self.showModal = function(aCallback) {
+    self.showModal = function (aCallback) {
         presetOnLoad();
         form.showModal(aCallback);
-        model.requery();
+        model.fonts.requery(function () {
+            P.Logger.info(model.fonts);
+        }, function (e) {
+            P.Logger.severe(e);
+        });
 //          demoComponent.font = new P.Font("Times New Roman", P.FontStyle.BOLD, 14);
     };
 
 
 
-    form.btnCancel.onActionPerformed = function(event) {
+    form.btnCancel.onActionPerformed = function (event) {
         form.close();
     };
 
-    form.btnOk.onActionPerformed = function(event) {
+    form.btnOk.onActionPerformed = function (event) {
         form.close(getFont());
     };
 }

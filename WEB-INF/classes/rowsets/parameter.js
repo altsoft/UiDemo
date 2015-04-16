@@ -104,23 +104,6 @@
              */
             P.Parameter.prototype.precision = 0;
         }
-        Object.defineProperty(this, "description", {
-            get: function() {
-                var value = delegate.description;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.description = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.Parameter){
-            /**
-             * The description of the field.
-             * @property description
-             * @memberOf Parameter
-             */
-            P.Parameter.prototype.description = '';
-        }
         Object.defineProperty(this, "scale", {
             get: function() {
                 var value = delegate.scale;
@@ -137,6 +120,23 @@
              * @memberOf Parameter
              */
             P.Parameter.prototype.scale = 0;
+        }
+        Object.defineProperty(this, "description", {
+            get: function() {
+                var value = delegate.description;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.description = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.Parameter){
+            /**
+             * The description of the field.
+             * @property description
+             * @memberOf Parameter
+             */
+            P.Parameter.prototype.description = '';
         }
         Object.defineProperty(this, "signed", {
             get: function() {
@@ -225,6 +225,23 @@
              */
             P.Parameter.prototype.originalName = '';
         }
+        Object.defineProperty(this, "value", {
+            get: function() {
+                var value = delegate.jsValue;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.jsValue = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.Parameter){
+            /**
+             * The value of the parameter.
+             * @property jsValue
+             * @memberOf Parameter
+             */
+            P.Parameter.prototype.value = {};
+        }
         Object.defineProperty(this, "size", {
             get: function() {
                 var value = delegate.size;
@@ -309,23 +326,6 @@
              * @memberOf Parameter
              */
             P.Parameter.prototype.pk = true;
-        }
-        Object.defineProperty(this, "value", {
-            get: function() {
-                var value = delegate.value;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.value = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.Parameter){
-            /**
-             * The value of the parameter.
-             * @property value
-             * @memberOf Parameter
-             */
-            P.Parameter.prototype.value = {};
         }
     };
         /**

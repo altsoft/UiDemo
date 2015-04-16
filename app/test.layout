@@ -1,10 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="518px" prefWidth="816px">
-  <widget name="button" parent="Form" prefHeight="29px" prefWidth="60px" text="button" type="ButtonDesignInfo">
-    <constraints height="29px" right="72px" top="24px" type="MarginConstraintsDesignInfo" width="60px"/>
-  </widget>
-  <widget name="panel" parent="Form" prefHeight="432px" prefWidth="480px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <constraints height="432px" left="24px" top="36px" type="MarginConstraintsDesignInfo" width="480px"/>
-  </widget>
-  <layout type="MarginLayoutDesignInfo"/>
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="330px" prefWidth="816px"/>
+  <ModelGrid cursor="0" data="tempData" name="modelGrid" parent="view" prefHeight="140px" prefWidth="780px">
+    <AnchorsPaneConstraints height="140px" left="20px" right="16px" top="20px"/>
+    <ServiceGridColumn name="colService"/>
+    <ModelGridColumn field="FontName" name="colFontName" title="Font Name" width="745px">
+      <ModelFormattedField/>
+    </ModelGridColumn>
+  </ModelGrid>
+  <Button cursor="0" name="button" parent="view" prefHeight="20px" prefWidth="70px" text="button">
+    <AnchorsPaneConstraints height="20px" right="46px" top="190px" width="70px"/>
+  </Button>
+  <Button cursor="0" name="button1" parent="view" prefHeight="20px" prefWidth="70px" text="button1">
+    <AnchorsPaneConstraints height="20px" right="126px" top="190px" width="70px"/>
+  </Button>
 </layout>

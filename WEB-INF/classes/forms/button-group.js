@@ -1,11 +1,11 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.containers.ButtonGroup");
+    var javaClass = Java.type("com.eas.client.forms.containers.ButtonGroup");
     javaClass.setPublisher(function(aDelegate) {
         return new P.ButtonGroup(aDelegate);
     });
     
     /**
-     * Creates a multiple-exclusion scope for a set of buttons.
+     * Creates a multiple-exclusion scope for a set of radio or toggle buttons or for a menu item with radio button.
      * Creating a set of buttons with the same <code>ButtonGroup</code> object means that turning "on" one of those buttons turns off all other buttons in the group.
      * @constructor ButtonGroup ButtonGroup
      */
@@ -56,20 +56,6 @@
              * @memberOf ButtonGroup
              */
             P.ButtonGroup.prototype.onMouseDragged = {};
-        }
-        Object.defineProperty(this, "parent", {
-            get: function() {
-                var value = delegate.parent;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.ButtonGroup){
-            /**
-             * Gets the parent of this component.
-             * @property parent
-             * @memberOf ButtonGroup
-             */
-            P.ButtonGroup.prototype.parent = {};
         }
         Object.defineProperty(this, "onMouseReleased", {
             get: function() {
@@ -143,6 +129,9 @@
             get: function() {
                 var value = delegate.error;
                 return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.error = P.boxAsJava(aValue);
             }
         });
         if(!P.ButtonGroup){
@@ -273,6 +262,20 @@
              */
             P.ButtonGroup.prototype.onComponentResized = {};
         }
+        Object.defineProperty(this, "parent", {
+            get: function() {
+                var value = delegate.parentWidget;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.ButtonGroup){
+            /**
+             * Parent container of this widget.
+             * @property parentWidget
+             * @memberOf ButtonGroup
+             */
+            P.ButtonGroup.prototype.parent = {};
+        }
         Object.defineProperty(this, "onMouseEntered", {
             get: function() {
                 var value = delegate.onMouseEntered;
@@ -307,20 +310,6 @@
              */
             P.ButtonGroup.prototype.toolTipText = '';
         }
-        Object.defineProperty(this, "element", {
-            get: function() {
-                var value = delegate.element;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.ButtonGroup){
-            /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
-             * @memberOf ButtonGroup
-             */
-            P.ButtonGroup.prototype.element = {};
-        }
         Object.defineProperty(this, "height", {
             get: function() {
                 var value = delegate.height;
@@ -354,6 +343,20 @@
              * @memberOf ButtonGroup
              */
             P.ButtonGroup.prototype.onComponentShown = {};
+        }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.ButtonGroup){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf ButtonGroup
+             */
+            P.ButtonGroup.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {
@@ -440,20 +443,6 @@
              */
             P.ButtonGroup.prototype.nextFocusableComponent = {};
         }
-        Object.defineProperty(this, "count", {
-            get: function() {
-                var value = delegate.count;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.ButtonGroup){
-            /**
-             * Gets the number of components in this panel.
-             * @property count
-             * @memberOf ButtonGroup
-             */
-            P.ButtonGroup.prototype.count = 0;
-        }
         Object.defineProperty(this, "onActionPerformed", {
             get: function() {
                 var value = delegate.onActionPerformed;
@@ -487,6 +476,20 @@
              * @memberOf ButtonGroup
              */
             P.ButtonGroup.prototype.onKeyReleased = {};
+        }
+        Object.defineProperty(this, "count", {
+            get: function() {
+                var value = delegate.count;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.ButtonGroup){
+            /**
+             * Gets the number of components in this panel.
+             * @property count
+             * @memberOf ButtonGroup
+             */
+            P.ButtonGroup.prototype.count = 0;
         }
         Object.defineProperty(this, "focusable", {
             get: function() {
@@ -539,23 +542,6 @@
              */
             P.ButtonGroup.prototype.onMouseWheelMoved = {};
         }
-        Object.defineProperty(this, "onItemSelected", {
-            get: function() {
-                var value = delegate.onItemSelected;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.onItemSelected = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.ButtonGroup){
-            /**
-             * Event that is fired when one of the components is selected in this group.
-             * @property onItemSelected
-             * @memberOf ButtonGroup
-             */
-            P.ButtonGroup.prototype.onItemSelected = {};
-        }
         Object.defineProperty(this, "onComponentRemoved", {
             get: function() {
                 var value = delegate.onComponentRemoved;
@@ -572,6 +558,23 @@
              * @memberOf ButtonGroup
              */
             P.ButtonGroup.prototype.onComponentRemoved = {};
+        }
+        Object.defineProperty(this, "onItemSelected", {
+            get: function() {
+                var value = delegate.onItemSelected;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.onItemSelected = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.ButtonGroup){
+            /**
+             * Event that is fired when one of the components is selected in this group.
+             * @property onItemSelected
+             * @memberOf ButtonGroup
+             */
+            P.ButtonGroup.prototype.onItemSelected = {};
         }
         Object.defineProperty(this, "component", {
             get: function() {
@@ -767,19 +770,6 @@
         };
 
         /**
-         * Gets the container's n-th component.
-         * @param index the component's index in the container
-         * @return the child component
-         * @method child
-         * @memberOf ButtonGroup
-         */
-        P.ButtonGroup.prototype.child = function(index) {
-            var delegate = this.unwrap();
-            var value = delegate.child(P.boxAsJava(index));
-            return P.boxAsJs(value);
-        };
-
-        /**
          * Removes all the components from this container.
          * @method clear
          * @memberOf ButtonGroup
@@ -798,6 +788,19 @@
         P.ButtonGroup.prototype.focus = function() {
             var delegate = this.unwrap();
             var value = delegate.focus();
+            return P.boxAsJs(value);
+        };
+
+        /**
+         * Gets the container's n-th component.
+         * @param index the component's index in the container
+         * @return the child component
+         * @method child
+         * @memberOf ButtonGroup
+         */
+        P.ButtonGroup.prototype.child = function(index) {
+            var delegate = this.unwrap();
+            var value = delegate.child(P.boxAsJava(index));
             return P.boxAsJs(value);
         };
 

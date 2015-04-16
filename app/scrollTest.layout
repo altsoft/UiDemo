@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="400px">
+  <widget backgroundColor="#e50920" name="panel" parent="Form" prefHeight="264px" prefWidth="372px" type="PanelDesignInfo">
+    <layout type="BoxLayoutDesignInfo"/>
+    <constraints height="264px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="372px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

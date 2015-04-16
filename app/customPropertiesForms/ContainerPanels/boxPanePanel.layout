@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><layout icon="" title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="142px" prefWidth="332px"/>
+  <FormattedField cursor="0" format="" name="ffHGap" parent="view" prefHeight="27px" prefWidth="115px" text="0">
+    <AnchorsPaneConstraints height="27px" left="120px" top="48px" width="115px"/>
+  </FormattedField>
+  <Label cursor="0" horizontalAlignment="10" name="label12" parent="view" prefHeight="17px" prefWidth="60px" text="HGap">
+    <AnchorsPaneConstraints height="17px" left="12px" top="48px" width="60px"/>
+  </Label>
+  <FormattedField cursor="0" format="" name="ffVGap" parent="view" prefHeight="27px" prefWidth="115px" text="0">
+    <AnchorsPaneConstraints height="27px" left="120px" top="12px" width="115px"/>
+  </FormattedField>
+  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="72px" text="VGap">
+    <AnchorsPaneConstraints height="17px" left="12px" top="12px" width="72px"/>
+  </Label>
+  <RadioButton cursor="0" name="rbHorizontal" parent="view" prefHeight="24px" prefWidth="110px" text="Horizontal">
+    <AnchorsPaneConstraints height="24px" left="120px" top="84px" width="110px"/>
+  </RadioButton>
+  <RadioButton cursor="0" name="rbVertical" parent="view" prefHeight="24px" prefWidth="118px" text="Vertical">
+    <AnchorsPaneConstraints height="24px" left="120px" top="108px" width="118px"/>
+  </RadioButton>
+  <Button cursor="0" name="button" parent="view" prefHeight="60px" prefWidth="60px" text="Temp">
+    <AnchorsPaneConstraints height="60px" right="32px" top="12px" width="60px"/>
+  </Button>
+</layout>

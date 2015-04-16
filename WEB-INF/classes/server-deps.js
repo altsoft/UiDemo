@@ -2,39 +2,34 @@
  * Contains the basic dependencies.
  */
 try {
-    load('classpath:core/anonymous-platypus-principal.js');
-    load('classpath:core/app-platypus-principal.js');
-    load('classpath:core/db-platypus-principal.js');
+    load('classpath:core/platypus-principal.js');
     load('classpath:core/published-sourced-event.js');
     load('classpath:core/report.js');
-    load('classpath:core/system-platypus-principal.js');
-    printf('core API loaded.');
+    print('core API loaded.');
 } catch (e) {
-    printf('core API skipped.');
+    print('core API skipped.');
 }
 
 try {
     load('classpath:datamodel/application-db-entity.js');
     load('classpath:datamodel/application-db-model.js');
-    load('classpath:datamodel/application-db-parameters-entity.js');
     load('classpath:datamodel/application-platypus-entity.js');
     load('classpath:datamodel/application-platypus-model.js');
-    load('classpath:datamodel/application-platypus-parameters-entity.js');
     load('classpath:datamodel/cursor-position-changed-event.js');
     load('classpath:datamodel/cursor-position-will-change-event.js');
     load('classpath:datamodel/entity-instance-change-event.js');
     load('classpath:datamodel/entity-instance-delete-event.js');
     load('classpath:datamodel/entity-instance-insert-event.js');
-    printf('datamodel API loaded.');
+    print('datamodel API loaded.');
 } catch (e) {
-    printf('datamodel API skipped.');
+    print('datamodel API skipped.');
 }
 
 try {
     load('classpath:reports/report-template.js');
-    printf('reports API loaded.');
+    print('reports API loaded.');
 } catch (e) {
-    printf('reports API skipped.');
+    print('reports API skipped.');
 }
 
 try {
@@ -46,14 +41,29 @@ try {
     load('classpath:rowsets/insert.js');
     load('classpath:rowsets/parameter.js');
     load('classpath:rowsets/update.js');
-    printf('rowsets API loaded.');
+    print('rowsets API loaded.');
 } catch (e) {
-    printf('rowsets API skipped.');
+    print('rowsets API skipped.');
 }
 
 try {
     load('classpath:http-context.js');
-    printf('http-context API loaded.');
+    print('http-context API loaded.');
 } catch (e) {
-    printf('http-context API skipped.');
+    print('http-context API skipped.');
+}
+
+try {
+    load('classpath:server/session.js');
+    print('server API loaded.');
+} catch (e) {
+    print('server API skipped.');
+}
+
+try {
+    load('classpath:servlet-support/web-socket-client-session.js');
+    load('classpath:servlet-support/web-socket-server-session.js');
+    print('servlet-support API loaded.');
+} catch (e) {
+    print('servlet-support API skipped.');
 }

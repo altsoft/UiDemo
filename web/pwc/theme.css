@@ -56,15 +56,15 @@
 }
 
 .gwt-SliderBar-knob-enabled{
-    background-image: url(slider.gif);
+    background-image: url(slider.png);
 }
 
 .gwt-SliderBar-knob-disabled{
-    background-image: url(slider-disabled.gif);
+    background-image: url(slider-disabled.png);
 }
 
 .gwt-SliderBar-knob-sliding{
-    background-image: url(slider-sliding.gif);
+    background-image: url(slider-sliding.png);
 }
 
 .gwt-SliderBar-tick {
@@ -125,12 +125,12 @@
 }
 
 .gwt-Button, .gwt-Button:active, .gwt-Button:hover, .dropdown-button, .dropdown-button:active{
-    color: white;
+    color:#526e4f;
+    text-shadow:0 1px rgba(255,255,255,0.5);
     margin: 0;
     padding: 3px 5px;
     font-size: 14px;
     text-align: center;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     background-clip: padding-box;
     border: 1px solid;
     border-radius:3px;
@@ -141,21 +141,28 @@
     -webkit-box-shadow: inset 0 1px #fff,inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05);
     box-shadow: inset 0 1px #fff,inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05);
 
-    background: #81c33d;
-    border-color: #7ba845 #77a343 #6f983f;
-    background-image: -webkit-linear-gradient(top, #a0d44d,#72ba35);
-    background-image: -moz-linear-gradient(top, #a0d44d,#72ba35);
-    background-image: -o-linear-gradient(top, #a0d44d,#72ba35);
-    background-image: linear-gradient(to bottom, #a0d44d,#72ba35);
+    border-color:#98cf9f #98cf9f #8ec397;
+    
+    background-color:#bff1bc;
+    background-image:-webkit-linear-gradient(top, #cef4d0, #b2eeaa);
+    background-image:-moz-linear-gradient(top, #cef4d0, #b2eeaa);
+    background-image:-o-linear-gradient(top, #cef4d0, #b2eeaa);
+    background-image:linear-gradient(to bottom, #cef4d0, #b2eeaa);
 }
 
 .gwt-Button:active{
-    background:#75bd35;
-    border-color:#678f3a #75a143 #81b049;
-    background-image:-webkit-linear-gradient(top, #75bd35,#a0d44d);
-    background-image:-moz-linear-gradient(top, #75bd35,#a0d44d);
-    background-image:-o-linear-gradient(top, #75bd35,#a0d44d);
-    background-image:linear-gradient(to bottom, #75bd35,#a0d44d);
+    background-color:#bff1bc;
+    background-image:-webkit-linear-gradient(top, #b2eeaa, #cef4d0);
+    background-image:-moz-linear-gradient(top, #b2eeaa, #cef4d0);
+    background-image:-o-linear-gradient(top, #b2eeaa, #cef4d0);
+    background-image:linear-gradient(to bottom, #b2eeaa, #cef4d0);
+}
+.gwt-Button:focus{
+    border-radius:3px;
+}
+.gwt-Button[disabled]{
+    background-image:none;
+    background-color:lightgray;
 }
 
 .gwt-DatePicker {
@@ -180,18 +187,26 @@
     background-position: center;
 }
 
+.decorator-select:hover{
+    opacity: 1;
+}
+
 .decorator-select{
     width: 20px; 
-    right: 0px;
+    opacity: 0.5;
     background-image: url(decorator-select.png);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
 }
 
+.decorator-clear:hover{
+    opacity: 1;
+}
+
 .decorator-clear{
     width: 20px; 
-    right: 20px;
+    opacity: 0.5;
     background-image: url(decorator-clear.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -242,14 +257,18 @@
     background: transparent;
 }
 
-.gwt-ListBox{
-    border: 0 !important;  /*Removes border*/
-    -webkit-appearance: none;  /*Removes default chrome and safari style*/
-    -moz-appearance: none; /* Removes Default Firefox style*/
+.combo-field-custom-dropdown:hover{
+    opacity: 1;
+}
+
+.combo-field-custom-dropdown{
+    opacity: 0.5;
     background: url('dropdown-arrow.png') no-repeat;  /*Adds background-image*/
     background-position: right;  /*Position of the background-image*/
-    text-indent: 0.01px; /* Removes default arrow from firefox*/
-    text-overflow: "";  /*Removes default arrow from firefox*/
+}
+
+.gwt-ListBox{
+    border: 0 !important;  /*Removes border*/
 }
 
 .gwt-ListBox::-ms-expand {
@@ -262,13 +281,23 @@
     padding-top: 2px;
 }
 
-.date-time-select{
+.date-select:hover, .time-select:hover{
+    opacity: 1;
+}
+
+.date-select, .time-select{
     width: 20px; 
+    opacity: 0.5;
     background-image: url(date-time-select.png);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
 }
+
+.time-select{
+    background-image: url(clock.png);
+}
+
 
 .spin-left{
     width: 20px; 
@@ -443,7 +472,7 @@
 }
 
 .grid-selected-row{
-    background-color: #e5e5e5;
+    background-color: #e5e5e5 !important;
 }
 
 .grid-hovered-row{
@@ -455,6 +484,7 @@
 }
 
 .grid-column-header{
+    position: relative;
     line-height: 20px;
     overflow: hidden;
     font-weight:bold;
@@ -475,6 +505,7 @@
 .grid-column-header-content{
     padding-left: 5px;
     padding-right: 5px;
+    text-align: center;
 }
 
 .grid-sortable-column-header{
@@ -491,7 +522,6 @@
 }
 
 .grid-header-mover:hover{
-    padding: 10px;
     border-width: 1px;
     border-color: lightgray;
     border-radius: 2px;
@@ -552,8 +582,7 @@
     color:#526e4f;
     text-shadow:0 1px rgba(255,255,255,0.5);
     background:#bff1bc;
-    border:1px solid #d7cd89;
-    border-bottom-color:#cec986;
+    border:1px solid;
     border-color:#98cf9f #98cf9f #8ec397;
     border-radius:3px;
     background-image:-webkit-linear-gradient(top, #cef4d0,#b2eeaa);
@@ -694,3 +723,138 @@
 
 .south-east-decor-active{
 }
+
+.editor-bold, .editor-italic, .editor-underline, .editor-subscript, .editor-superscript, .editor-align-left, .editor-align-center, .editor-align-right, .editor-background-color, .editor-foreground-color, .editor-strike-through, .editor-indent-right, .editor-indent-left, .editor-horisontal-rule, .editor-ordered-list, .editor-unordered-list, .editor-insert-image, .editor-create-link, .editor-delete-link, .editor-remove-format, .time-picker-up, .time-picker-down, .time-picker-button, .date-picker-button  {
+    width: 100%; 
+    height: 100%;
+    background-image: url(editor-bold.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.editor-container{
+	width: 100%; 
+    height: 100%;
+}
+
+.editor-bold{
+    background-image: url(editor-bold.gif);
+}
+
+.editor-italic{
+    background-image: url(editor-italic.gif);
+}
+
+.editor-underline{
+    background-image: url(editor-underline.gif);
+}
+
+.editor-subscript{
+    background-image: url(editor-subscript.gif);
+}
+
+.editor-superscript{
+    background-image: url(editor-superscript.gif);
+}
+
+.editor-align-left{
+    background-image: url(editor-justify-left.gif);
+}
+
+.editor-align-center{
+    background-image: url(editor-justify-center.gif);
+}
+
+.editor-align-right{
+    background-image: url(editor-justify-right.gif);
+}
+
+.editor-background-color{
+    background-image: url(editor-back-color.gif);
+}
+
+.editor-foreground-color{
+    background-image: url(editor-fore-color.gif);
+}
+
+.editor-strike-through{
+    background-image: url(editor-strike-through.gif);
+} 
+.editor-indent-right{
+    background-image: url(editor-indent.gif);
+}
+.editor-indent-left{
+    background-image: url(editor-outdent.gif);
+}
+.editor-horisontal-rule{
+    background-image: url(editor-hr.gif);
+}
+.editor-ordered-list{
+    background-image: url(editor-ol.gif);
+}
+.editor-unordered-list{
+    background-image: url(editor-ul.gif);
+}
+.editor-insert-image{
+    background-image: url(editor-insert-image.gif);
+}
+.editor-create-link{
+    background-image: url(editor-create-link.gif);
+}
+.editor-delete-link{
+    background-image: url(editor-remove-link.gif);
+}
+.editor-remove-format{
+    background-image: url(editor-remove-format.gif);
+}
+.time-picker-up{
+    background-image: url(time-up.png);
+}
+.time-picker-down{
+    background-image: url(time-down.png);
+}
+
+.time-picker{
+    background: white;
+    transition: height 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    box-sizing:border-box;
+}
+
+.time-picker-button{
+    background-image: url(clock.png);
+    border-top: 1px solid #A2BBDD;
+}
+
+.date-picker-button{
+    background-image: url(date-time-select.png);
+    border-top: 1px solid #A2BBDD;
+}
+
+.time-picker-separator{
+    font-size: large;
+    font-weight: bold;
+}
+.time-picker-text{
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: large;
+    border-style: none;
+    padding:2px;
+    box-sizing:border-box;
+}
+.time-picker-text:hover{
+    border-style: inset;
+    padding: 1px;
+    box-sizing:border-box;
+}
+
+.date-time-picker{
+    background: white;
+    border: 1px solid #A2BBDD;
+    border-radius: 2px;
+    box-sizing:border-box;
+}
+

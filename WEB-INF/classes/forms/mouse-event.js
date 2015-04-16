@@ -1,9 +1,9 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.events.MouseEvent");
+    var javaClass = Java.type("com.eas.client.forms.events.MouseEvent");
     javaClass.setPublisher(function(aDelegate) {
         return new P.MouseEvent(aDelegate);
     });
-    
+     
     /**
      * Generated constructor.
      * @constructor MouseEvent MouseEvent
@@ -51,6 +51,20 @@
              */
             P.MouseEvent.prototype.altDown = true;
         }
+        Object.defineProperty(this, "clickCount", {
+            get: function() {
+                var value = delegate.clickCount;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.MouseEvent){
+            /**
+             * The number of mouse clicks associated with this event.
+             * @property clickCount
+             * @memberOf MouseEvent
+             */
+            P.MouseEvent.prototype.clickCount = 0;
+        }
         Object.defineProperty(this, "controlDown", {
             get: function() {
                 var value = delegate.controlDown;
@@ -79,19 +93,19 @@
              */
             P.MouseEvent.prototype.shiftDown = true;
         }
-        Object.defineProperty(this, "clickCount", {
+        Object.defineProperty(this, "x", {
             get: function() {
-                var value = delegate.clickCount;
+                var value = delegate.x;
                 return P.boxAsJs(value);
             }
         });
         if(!P.MouseEvent){
             /**
-             * The number of mouse clicks associated with this event.
-             * @property clickCount
+             * X cursor coordinate in component's space.
+             * @property x
              * @memberOf MouseEvent
              */
-            P.MouseEvent.prototype.clickCount = 0;
+            P.MouseEvent.prototype.x = 0;
         }
         Object.defineProperty(this, "metaDown", {
             get: function() {
@@ -107,33 +121,19 @@
              */
             P.MouseEvent.prototype.metaDown = true;
         }
-        Object.defineProperty(this, "X", {
+        Object.defineProperty(this, "y", {
             get: function() {
-                var value = delegate.X;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.MouseEvent){
-            /**
-             * X cursor coordinate in component's space.
-             * @property X
-             * @memberOf MouseEvent
-             */
-            P.MouseEvent.prototype.X = 0;
-        }
-        Object.defineProperty(this, "Y", {
-            get: function() {
-                var value = delegate.Y;
+                var value = delegate.y;
                 return P.boxAsJs(value);
             }
         });
         if(!P.MouseEvent){
             /**
              * Y cursor coordinate in component's space.
-             * @property Y
+             * @property y
              * @memberOf MouseEvent
              */
-            P.MouseEvent.prototype.Y = 0;
+            P.MouseEvent.prototype.y = 0;
         }
         Object.defineProperty(this, "source", {
             get: function() {
@@ -143,7 +143,7 @@
         });
         if(!P.MouseEvent){
             /**
-             * The source component object of the event.
+             * The source object of the event.
              * @property source
              * @memberOf MouseEvent
              */

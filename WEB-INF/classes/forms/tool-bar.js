@@ -1,5 +1,5 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.containers.ToolBar");
+    var javaClass = Java.type("com.eas.client.forms.containers.ToolBar");
     javaClass.setPublisher(function(aDelegate) {
         return new P.ToolBar(null, aDelegate);
     });
@@ -57,20 +57,6 @@
              * @memberOf ToolBar
              */
             P.ToolBar.prototype.onMouseDragged = {};
-        }
-        Object.defineProperty(this, "parent", {
-            get: function() {
-                var value = delegate.parent;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.ToolBar){
-            /**
-             * Gets the parent of this component.
-             * @property parent
-             * @memberOf ToolBar
-             */
-            P.ToolBar.prototype.parent = {};
         }
         Object.defineProperty(this, "onMouseReleased", {
             get: function() {
@@ -144,6 +130,9 @@
             get: function() {
                 var value = delegate.error;
                 return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.error = P.boxAsJava(aValue);
             }
         });
         if(!P.ToolBar){
@@ -274,6 +263,20 @@
              */
             P.ToolBar.prototype.onComponentResized = {};
         }
+        Object.defineProperty(this, "parent", {
+            get: function() {
+                var value = delegate.parentWidget;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.ToolBar){
+            /**
+             * Parent container of this widget.
+             * @property parentWidget
+             * @memberOf ToolBar
+             */
+            P.ToolBar.prototype.parent = {};
+        }
         Object.defineProperty(this, "onMouseEntered", {
             get: function() {
                 var value = delegate.onMouseEntered;
@@ -308,20 +311,6 @@
              */
             P.ToolBar.prototype.toolTipText = '';
         }
-        Object.defineProperty(this, "element", {
-            get: function() {
-                var value = delegate.element;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.ToolBar){
-            /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
-             * @memberOf ToolBar
-             */
-            P.ToolBar.prototype.element = {};
-        }
         Object.defineProperty(this, "height", {
             get: function() {
                 var value = delegate.height;
@@ -355,6 +344,20 @@
              * @memberOf ToolBar
              */
             P.ToolBar.prototype.onComponentShown = {};
+        }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.ToolBar){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf ToolBar
+             */
+            P.ToolBar.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {
@@ -441,20 +444,6 @@
              */
             P.ToolBar.prototype.nextFocusableComponent = {};
         }
-        Object.defineProperty(this, "count", {
-            get: function() {
-                var value = delegate.count;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.ToolBar){
-            /**
-             * Gets the number of components in this panel.
-             * @property count
-             * @memberOf ToolBar
-             */
-            P.ToolBar.prototype.count = 0;
-        }
         Object.defineProperty(this, "onActionPerformed", {
             get: function() {
                 var value = delegate.onActionPerformed;
@@ -488,6 +477,20 @@
              * @memberOf ToolBar
              */
             P.ToolBar.prototype.onKeyReleased = {};
+        }
+        Object.defineProperty(this, "count", {
+            get: function() {
+                var value = delegate.count;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.ToolBar){
+            /**
+             * Gets the number of components in this panel.
+             * @property count
+             * @memberOf ToolBar
+             */
+            P.ToolBar.prototype.count = 0;
         }
         Object.defineProperty(this, "focusable", {
             get: function() {
@@ -739,19 +742,6 @@
         };
 
         /**
-         * Gets the container's n-th component.
-         * @param index the component's index in the container
-         * @return the child component
-         * @method child
-         * @memberOf ToolBar
-         */
-        P.ToolBar.prototype.child = function(index) {
-            var delegate = this.unwrap();
-            var value = delegate.child(P.boxAsJava(index));
-            return P.boxAsJs(value);
-        };
-
-        /**
          * Removes the specified component from this container.
          * @param component the component to remove
          * @method remove
@@ -782,6 +772,19 @@
         P.ToolBar.prototype.focus = function() {
             var delegate = this.unwrap();
             var value = delegate.focus();
+            return P.boxAsJs(value);
+        };
+
+        /**
+         * Gets the container's n-th component.
+         * @param index the component's index in the container
+         * @return the child component
+         * @method child
+         * @memberOf ToolBar
+         */
+        P.ToolBar.prototype.child = function(index) {
+            var delegate = this.unwrap();
+            var value = delegate.child(P.boxAsJava(index));
             return P.boxAsJs(value);
         };
 

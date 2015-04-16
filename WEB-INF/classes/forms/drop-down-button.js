@@ -1,5 +1,5 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.components.DropDownButton");
+    var javaClass = Java.type("com.eas.client.forms.components.DropDownButton");
     javaClass.setPublisher(function(aDelegate) {
         return new P.DropDownButton(null, null, null, null, aDelegate);
     });
@@ -63,20 +63,6 @@
              * @memberOf DropDownButton
              */
             P.DropDownButton.prototype.onMouseDragged = {};
-        }
-        Object.defineProperty(this, "parent", {
-            get: function() {
-                var value = delegate.parent;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.DropDownButton){
-            /**
-             * Gets the parent of this component.
-             * @property parent
-             * @memberOf DropDownButton
-             */
-            P.DropDownButton.prototype.parent = {};
         }
         Object.defineProperty(this, "onMouseReleased", {
             get: function() {
@@ -167,6 +153,9 @@
             get: function() {
                 var value = delegate.error;
                 return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.error = P.boxAsJava(aValue);
             }
         });
         if(!P.DropDownButton){
@@ -263,6 +252,20 @@
              */
             P.DropDownButton.prototype.onComponentResized = {};
         }
+        Object.defineProperty(this, "parent", {
+            get: function() {
+                var value = delegate.parentWidget;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.DropDownButton){
+            /**
+             * Parent container of this widget.
+             * @property parentWidget
+             * @memberOf DropDownButton
+             */
+            P.DropDownButton.prototype.parent = {};
+        }
         Object.defineProperty(this, "text", {
             get: function() {
                 var value = delegate.text;
@@ -279,23 +282,6 @@
              * @memberOf DropDownButton
              */
             P.DropDownButton.prototype.text = '';
-        }
-        Object.defineProperty(this, "dropDownMenu", {
-            get: function() {
-                var value = delegate.dropDownMenu;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.dropDownMenu = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.DropDownButton){
-            /**
-             * <code>PopupMenu</code> for the component.
-             * @property dropDownMenu
-             * @memberOf DropDownButton
-             */
-            P.DropDownButton.prototype.dropDownMenu = {};
         }
         Object.defineProperty(this, "onMouseEntered", {
             get: function() {
@@ -314,6 +300,23 @@
              */
             P.DropDownButton.prototype.onMouseEntered = {};
         }
+        Object.defineProperty(this, "dropDownMenu", {
+            get: function() {
+                var value = delegate.dropDownMenu;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.dropDownMenu = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.DropDownButton){
+            /**
+             * <code>PopupMenu</code> for the component.
+             * @property dropDownMenu
+             * @memberOf DropDownButton
+             */
+            P.DropDownButton.prototype.dropDownMenu = {};
+        }
         Object.defineProperty(this, "toolTipText", {
             get: function() {
                 var value = delegate.toolTipText;
@@ -330,20 +333,6 @@
              * @memberOf DropDownButton
              */
             P.DropDownButton.prototype.toolTipText = '';
-        }
-        Object.defineProperty(this, "element", {
-            get: function() {
-                var value = delegate.element;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.DropDownButton){
-            /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
-             * @memberOf DropDownButton
-             */
-            P.DropDownButton.prototype.element = {};
         }
         Object.defineProperty(this, "height", {
             get: function() {
@@ -378,6 +367,20 @@
              * @memberOf DropDownButton
              */
             P.DropDownButton.prototype.onComponentShown = {};
+        }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.DropDownButton){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf DropDownButton
+             */
+            P.DropDownButton.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {
@@ -447,23 +450,6 @@
              */
             P.DropDownButton.prototype.onComponentHidden = {};
         }
-        Object.defineProperty(this, "iconTextGap", {
-            get: function() {
-                var value = delegate.iconTextGap;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.iconTextGap = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.DropDownButton){
-            /**
-             * The amount of space between the text and the icon displayed in this button.
-             * @property iconTextGap
-             * @memberOf DropDownButton
-             */
-            P.DropDownButton.prototype.iconTextGap = 0;
-        }
         Object.defineProperty(this, "nextFocusableComponent", {
             get: function() {
                 var value = delegate.nextFocusableComponent;
@@ -480,6 +466,23 @@
              * @memberOf DropDownButton
              */
             P.DropDownButton.prototype.nextFocusableComponent = {};
+        }
+        Object.defineProperty(this, "iconTextGap", {
+            get: function() {
+                var value = delegate.iconTextGap;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.iconTextGap = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.DropDownButton){
+            /**
+             * The amount of space between the text and the icon displayed in this button.
+             * @property iconTextGap
+             * @memberOf DropDownButton
+             */
+            P.DropDownButton.prototype.iconTextGap = 0;
         }
         Object.defineProperty(this, "onActionPerformed", {
             get: function() {

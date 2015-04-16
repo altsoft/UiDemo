@@ -1,5 +1,5 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.containers.AnchorsPane");
+    var javaClass = Java.type("com.eas.client.forms.containers.AnchorsPane");
     javaClass.setPublisher(function(aDelegate) {
         return new P.AnchorsPane(aDelegate);
     });
@@ -55,20 +55,6 @@
              * @memberOf AnchorsPane
              */
             P.AnchorsPane.prototype.onMouseDragged = {};
-        }
-        Object.defineProperty(this, "parent", {
-            get: function() {
-                var value = delegate.parent;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.AnchorsPane){
-            /**
-             * Gets the parent of this component.
-             * @property parent
-             * @memberOf AnchorsPane
-             */
-            P.AnchorsPane.prototype.parent = {};
         }
         Object.defineProperty(this, "onMouseReleased", {
             get: function() {
@@ -142,6 +128,9 @@
             get: function() {
                 var value = delegate.error;
                 return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.error = P.boxAsJava(aValue);
             }
         });
         if(!P.AnchorsPane){
@@ -272,6 +261,20 @@
              */
             P.AnchorsPane.prototype.onComponentResized = {};
         }
+        Object.defineProperty(this, "parent", {
+            get: function() {
+                var value = delegate.parentWidget;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.AnchorsPane){
+            /**
+             * Parent container of this widget.
+             * @property parentWidget
+             * @memberOf AnchorsPane
+             */
+            P.AnchorsPane.prototype.parent = {};
+        }
         Object.defineProperty(this, "onMouseEntered", {
             get: function() {
                 var value = delegate.onMouseEntered;
@@ -306,20 +309,6 @@
              */
             P.AnchorsPane.prototype.toolTipText = '';
         }
-        Object.defineProperty(this, "element", {
-            get: function() {
-                var value = delegate.element;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.AnchorsPane){
-            /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
-             * @memberOf AnchorsPane
-             */
-            P.AnchorsPane.prototype.element = {};
-        }
         Object.defineProperty(this, "height", {
             get: function() {
                 var value = delegate.height;
@@ -353,6 +342,20 @@
              * @memberOf AnchorsPane
              */
             P.AnchorsPane.prototype.onComponentShown = {};
+        }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.AnchorsPane){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf AnchorsPane
+             */
+            P.AnchorsPane.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {
@@ -439,20 +442,6 @@
              */
             P.AnchorsPane.prototype.nextFocusableComponent = {};
         }
-        Object.defineProperty(this, "count", {
-            get: function() {
-                var value = delegate.count;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.AnchorsPane){
-            /**
-             * Gets the number of components in this panel.
-             * @property count
-             * @memberOf AnchorsPane
-             */
-            P.AnchorsPane.prototype.count = 0;
-        }
         Object.defineProperty(this, "onActionPerformed", {
             get: function() {
                 var value = delegate.onActionPerformed;
@@ -486,6 +475,20 @@
              * @memberOf AnchorsPane
              */
             P.AnchorsPane.prototype.onKeyReleased = {};
+        }
+        Object.defineProperty(this, "count", {
+            get: function() {
+                var value = delegate.count;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.AnchorsPane){
+            /**
+             * Gets the number of components in this panel.
+             * @property count
+             * @memberOf AnchorsPane
+             */
+            P.AnchorsPane.prototype.count = 0;
         }
         Object.defineProperty(this, "focusable", {
             get: function() {
@@ -738,6 +741,29 @@
         };
 
         /**
+         * Removes the specified component from this container.
+         * @param component the component to remove
+         * @method remove
+         * @memberOf AnchorsPane
+         */
+        P.AnchorsPane.prototype.remove = function(component) {
+            var delegate = this.unwrap();
+            var value = delegate.remove(P.boxAsJava(component));
+            return P.boxAsJs(value);
+        };
+
+        /**
+         * Removes all the components from this container.
+         * @method clear
+         * @memberOf AnchorsPane
+         */
+        P.AnchorsPane.prototype.clear = function() {
+            var delegate = this.unwrap();
+            var value = delegate.clear();
+            return P.boxAsJs(value);
+        };
+
+        /**
          * Brings the specified component to back on this panel.
          * @param component the component.
          * @param count steps to move the component (optional).
@@ -760,42 +786,6 @@
         P.AnchorsPane.prototype.toFront = function(component, count) {
             var delegate = this.unwrap();
             var value = delegate.toFront(P.boxAsJava(component), P.boxAsJava(count));
-            return P.boxAsJs(value);
-        };
-
-        /**
-         * Gets the container's n-th component.
-         * @param index the component's index in the container
-         * @return the child component
-         * @method child
-         * @memberOf AnchorsPane
-         */
-        P.AnchorsPane.prototype.child = function(index) {
-            var delegate = this.unwrap();
-            var value = delegate.child(P.boxAsJava(index));
-            return P.boxAsJs(value);
-        };
-
-        /**
-         * Removes the specified component from this container.
-         * @param component the component to remove
-         * @method remove
-         * @memberOf AnchorsPane
-         */
-        P.AnchorsPane.prototype.remove = function(component) {
-            var delegate = this.unwrap();
-            var value = delegate.remove(P.boxAsJava(component));
-            return P.boxAsJs(value);
-        };
-
-        /**
-         * Removes all the components from this container.
-         * @method clear
-         * @memberOf AnchorsPane
-         */
-        P.AnchorsPane.prototype.clear = function() {
-            var delegate = this.unwrap();
-            var value = delegate.clear();
             return P.boxAsJs(value);
         };
 

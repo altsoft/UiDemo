@@ -23,9 +23,9 @@
     <easFont name="Ubuntu" size="15" style="1"/>
   </widget>
   <widget name="modelCombo" parent="Form" prefHeight="27px" prefWidth="156px" type="DbComboDesignInfo">
-    <displayField entityId="140557885895444" fieldName="FontName"/>
-    <valueField entityId="140557885895444" fieldName="FontName"/>
-    <datamodelElement entityId="-1" fieldName="FontName"/>
+    <valueField entityId="141761944525457" fieldName="FontName"/>
+    <displayField entityId="141761944525457" fieldName="FontName"/>
+    <datamodelElement entityId="141761944525457" field="false" fieldName="familyName"/>
     <constraints height="27px" left="72px" top="24px" type="MarginConstraintsDesignInfo" width="156px"/>
   </widget>
   <widget format="####" name="tfSize" parent="Form" prefHeight="27px" prefWidth="115px" type="FormattedFieldDesignInfo" valueType="0">

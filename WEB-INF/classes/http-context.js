@@ -4,20 +4,19 @@
      * @constructor
      */
     P.HttpContext = function() {
-        var ServerCore = Java.type("com.eas.server.PlatypusServerCore");
         var BinaryUtils = Java.type("com.eas.util.BinaryUtils");
         var JavaString = Java.type("java.lang.String");
         var HttpCookie = Java.type("javax.servlet.http.Cookie");
         var CharsetClass = Java.type("java.nio.charset.Charset");
         var ByteArray = Java.type("byte[]");
-        var instance = ServerCore.getInstance();
+        var ScriptUtilsClass = Java.type('com.eas.script.ScriptUtils');
 
         Object.defineProperty(this, "request", {
-            value: instance.getCurrentRequest().get() ? new Request(instance.getCurrentRequest().get()) : null
+            value: ScriptUtilsClass.getRequest() ? new Request(ScriptUtilsClass.getRequest()) : null
         });
 
         Object.defineProperty(this, "response", {
-            value: instance.getCurrentResponse().get() ? new Response(instance.getCurrentResponse().get()) : null
+            value: ScriptUtilsClass.getResponse() ? new Response(ScriptUtilsClass.getResponse()) : null
         });
 
         function Request(aHttpRequest) {
@@ -253,7 +252,6 @@
         }
 
         function Cookie(aNativeCookie) {
-
             /**
              * The comment describing the purpose of this cookie, or <code>null</code> if the cookie has no comment.
              */
@@ -293,9 +291,11 @@
             /**
              * The name of the cookie.
              */
-            this.name = function() {
-                return aNativeCookie.getName();
-            };
+            Object.defineProperty(this, "name", {
+                get : function() {
+                    return aNativeCookie.getName();
+                }
+            });
 
             /**
              * The path on the server to which the browser returns this cookie. The cookie is visible to all subpaths on the server.

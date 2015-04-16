@@ -14,7 +14,7 @@ function demoForm() {
     var demoComponent = null;
     var iconFold;
     var iconUnfold;
-
+    var demoContainer = {};
 
 
     function fold(aItemPanel, aContent) {
@@ -35,185 +35,133 @@ function demoForm() {
 
     self.show = function () {
         form.show();
-        (function () {
-//            form.maximize();
-        }).invokeLater();
-        iconFold = P.Icon.load("icons/arrow-090.png");
-        iconUnfold = P.Icon.load("icons/arrow-270.png");
+        P.invokeLater(function () {
+            form.maximize();
+        });
+        if (P.agent !== P.HTML5) {
+            iconFold = P.Icon.load('icons/arrow-090.png');
+            form.grpBtnStandart.icon = iconFold;
+            iconUnfold = P.Icon.load('icons/arrow-270.png');
+        } else {
+            P.Icon.load('icons/arrow-090.png', function (loadedIcon) {
+                iconFold = loadedIcon;
+                form.grpBtnStandart.icon = iconFold;
+            }, function (e) {
+                P.Logger.info(e);
+            });
+            P.Icon.load('icons/arrow-270.png', function (loadedIcon) {
+                iconUnfold = loadedIcon;
+                form.grpBtnModel.icon = iconUnfold;
+                form.grpBtnContainers.icon = iconUnfold;
+            }, function (e) {
+                P.Logger.info(e);
+            });
+        }
+
         form.pnlStandardWidgets.folded = false;
         form.pnlModelWidgets.folded = false;
         form.pnlContainers.folded = false;
         fold(form.pnlModelWidgets, form.pnlModelContent);
         fold(form.pnlContainers, form.pnlContainersContent);
-        form.grpBtnStandart.icon = iconFold;
-        form.grpBtnModel.icon = iconUnfold;
+
+
         form.grpBtnContainers.icon = iconUnfold;
-//        form.tglLabel.selected = true;
-//        demoComponent = new P.Label("demo");
-//        redrawComponent();
+
+        form.panel.clear();
 
     };
 
+    function componentCreation(componentName, element) {
+        if (!demoContainer[componentName]) {
+            demoContainer[componentName] = element;
+        }
+        demoComponent = demoContainer[componentName];
+        var customForm = new labelForm(demoComponent);
+        redrawComponent(customForm);
+    }
+
     form.tglLabel.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.Label("demo");
-            var customForm = new labelForm(demoComponent);
-            redrawComponent(customForm);
-//            custumForm.show();
-//            form.panel1.add(custumForm.getView());
-            
-            
+            componentCreation("label", new P.Label("demo"));
         }
     };
     form.tglButton.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.Button("demo");
-            var customForm = new labelForm(demoComponent);
-            redrawComponent(customForm);
-
+            componentCreation("button", new P.Button("demo"));
         }
     };
     form.tglToggleButton.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.ToggleButton("demo");
-            redrawComponent();
+            componentCreation("toggleButton", new P.ToggleButton("demo"));
         }
     };
     form.tglCheckBox.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.CheckBox("demo");
-            redrawComponent();
+            componentCreation("checkBox", new P.CheckBox("demo"));
         }
     };
     form.tglRadioButton.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.RadioButton("demo");
-            redrawComponent();
+            componentCreation("radioButton", new P.RadioButton("demo"));
         }
     };
     form.tglTextField.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.TextField("demo");
-            redrawComponent();
+            componentCreation("textField", new P.TextField("demo"));
         }
     };
     form.tglSlider.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.Slider(0, 100, 10);
-            redrawComponent();
+            componentCreation("slider", new P.Slider(0, 100, 10));
         }
     };
     form.tglProgressBar.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.ProgressBar(0, 100);
-            redrawComponent();
+            componentCreation("progressBar", new P.ProgressBar(0, 100));
         }
     };
     form.tglFormattedField.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.FormattedField("demo");
-            redrawComponent();
+            componentCreation("formattedField", new P.FormattedField("demo"));
         }
     };
     form.tglPasswordField.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.PasswordField("demo");
-            redrawComponent();
+            componentCreation("passwordField", new P.PasswordField("demo"));
         }
     };
     form.tglTextArea.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.TextArea("demo");
-            redrawComponent();
+            componentCreation("textArea", new P.TextArea("demo"));
         }
     };
     form.tglHtmlArea.onActionPerformed = function (event) {
         if (event.source.selected) {
-            demoComponent = new P.HtmlArea("demo");
-            redrawComponent();
+            componentCreation("htmlArea", new P.HtmlArea("demo"));
         }
     };
-
-    form.tbVisibility.onActionPerformed = function (event) {
-        if (event.source.selected) {
-            form.tbVisibility.text = "Invisible";
-            demoComponent.visible = false;
-        } else {
-            form.tbVisibility.text = "Visible";
-            demoComponent.visible = true;
-        }
-    };
-
 
     function redrawComponent(customForm) {
-        form.pnlPlayground.clear();
-        form.pnlCustom.clear();
+        form.panel.clear();
+        form.pnlPlayground.clear(); //Clean demo components place
+        form.pnlCustom.clear(); // cleaning custom place
+        var commonPnl = new commonPanel(demoComponent);
+        commonPnl.showOnPanel(form.panel);
+
+        demoComponent.opaque = true;
         var hMargin = 10;
         var vMargin = 10;
 //        var componentHeight = 100;
 //        var top = form.pnlPlayground.height/2 -componentHeight/2;
         form.pnlPlayground.add(demoComponent, new P.Anchors(hMargin, null, hMargin, vMargin, null, vMargin));
-        form.txtToltip.text = demoComponent.toolTipText;
-        model.params.Background = demoComponent.background;
-        model.params.Foreground = demoComponent.foreground;
-//        demoComponent.font = new P.Font("Times New Roman", P.FontStyle.BOLD, 14);
-//        model.params.FontText = demoComponent.font.family;
+//        demoComponent.toolTipText = form.txtToltip.text;
+//        model.params.Foreground = demoComponent.foreground;
+        demoComponent.font = new P.Font("Times New Roman", P.FontStyle.BOLD, 14);
+//        model.params.FontText = 
         if (customForm) {
-            form.pnlCustom.add(customForm.getView());
+            customForm.showOnPanel(form.pnlCustom);
         }
     }
-
-    form.tglEnabled.onActionPerformed = function (event) {
-        if (event.source.selected) {
-            form.tglEnabled.text = "Disabled";
-            demoComponent.enabled = false;
-        } else {
-            form.tglEnabled.text = "Enabled";
-            demoComponent.enabled = true;
-        }
-    };
-
-    form.tglFocusable.onActionPerformed = function (event) {
-        if (event.source.selected) {
-            form.tglFocusable.text = "UnFocusable";
-            demoComponent.focusable = false;
-        } else {
-            form.tglFocusable.text = "Focusable";
-            demoComponent.focusable = true;
-        }
-    };
-
-    form.tglOpaque.onActionPerformed = function (event) {
-        if (event.source.selected) {
-            form.tglOpaque.text = "Opaque";
-            demoComponent.opaque = false;
-        } else {
-            form.tglOpaque.text = "Solid";
-            demoComponent.opaque = true;
-        }
-    };
-
-    form.popupMenu.onActionPerformed = function (event) {
-        console.log("hello")
-    };
-
-
-
-//
-
-//    form.onWindowOpened = function() {
-//
-//        borders();
-//        self.txtText.text = "test";//self.demoComponent.text;
-//        var myIcon = Icon.load("icons/arrow-090.png");
-//        self.demoComponent = new Label("text, icon, iconTextGap", myIcon, 50);
-//          Logger.info("hello");
-////        redrawComponent();
-////        componentsList();
-////        visibility();
-//
-//    };    
-
 
     form.grpBtnStandart.onActionPerformed = function (event) {
         foldUnfold(form.pnlStandardWidgets, form.pnlStandardContent, event);
@@ -225,38 +173,128 @@ function demoForm() {
         foldUnfold(form.pnlContainers, form.pnlContainersContent, event);
     };
 
-//    form.modelForeground.onSelect = function(event) {
-//        
-//        P.selectColor(function(result) {
-//            demoComponent.foreground = new P.Color(result);
-//            model.params.Foreground = result;
-//
-//        });
-//    };
 
-//    form.modelBackground.onSelect = function(event) {
-//        console.log(model.params.Background);
-//        P.selectColor(function(result) {
-//            demoComponent.background = new P.Color(result);
-//            model.params.Background = result;
-//        });
-//        
-//    };
 
-//    form.modelFont.onSelect = function(event) {
-//        P.require("FontSelectionDialog", function(){
-//            var nWindow = new FontSelectionDialog();
-//            nWindow.showModal(function(aFont){
-//                demoComponent.font = aFont;
-//            });
-//        }, 
-//        function(){
-//            alert("Проблема с доступом к модулю");
-//        }
-//        );
-//    };
 
-    form.txtToltip.onKeyTyped = function (event) {
-        demoComponent.toolTipText = form.txtToltip.text;
+
+    form.tglBoxPane.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            form.panel.clear();
+            var pane = new P.BoxPane(P.Orientation.VERTICAL);
+            form.pnlPlayground.add(pane, new P.Anchors(2, null, 2, 2, null, 2));
+
+            var containersPnl = new containersPanel(pane);
+            containersPnl.showOnPanel(form.panel);
+//            if (!demoContainer.htmlArea) {
+//                demoContainer.htmlArea = new P.HtmlArea("demo");
+//            }
+//             demoComponent = demoContainer.htmlArea;
+//            var customForm = new textFieldForm(demoComponent);
+//            redrawComponent(customForm);
+        }
     };
+
+
+    function panelCreation(componentName, element) {
+        form.pnlPlayground.clear();
+        form.pnlCustom.clear();
+        form.panel.clear();
+        if (!demoContainer[componentName]) {
+            demoContainer[componentName] = element;
+        }
+        demoComponent = demoContainer[componentName];
+        demoComponent.showOnPanel(form.panel);
+
+    }
+
+    form.tglAnchorsPane.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            panelCreation("AnchorsPanePanel", new anchorsPanePanel(form.pnlPlayground));
+        }
+    };
+
+
+    form.tglBoxPane.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            panelCreation("BoxPanePanel", new boxPanePanel(form.pnlPlayground));
+        }
+    };
+
+    form.tglBorderPane.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            panelCreation("BorderPanePanel", new borderPanePanel(form.pnlPlayground));
+        }
+    };
+
+    form.tglAbsolutePane.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            panelCreation("AbsolutePanePanel", new absolutePanePanel(form.pnlPlayground));
+        }
+    };
+
+    form.tglGridPane.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            panelCreation("GridPanePanel", new gridPanePanel(form.pnlPlayground));
+        }
+    };
+
+    form.tglFlowPane.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            panelCreation("FlowPanePanel", new flowPanePanel(form.pnlPlayground));
+        }
+    };
+
+
+    form.tglCardPane.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            panelCreation("CardPanePanel", new cardPanePanel(form.pnlPlayground));
+        }
+    };
+
+    form.tglModelCheck.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            componentCreation("modelCheck", new P.ModelCheckBox("demo"));
+        }
+    };
+    
+
+    form.tglModelCombo.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            componentCreation("modelCombo", new P.ModelCombo());
+        }
+    };
+    
+    form.tglModelDate.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            componentCreation("modelDate", new P.ModelDate());
+        }
+    };
+    
+    form.tglModelGrid.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            componentCreation("modelGrid", new P.ModelGrid());
+        }
+    };
+    
+    form.tglModelSpin.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            componentCreation("modelSpin", new P.ModelSpin());
+        }
+    };
+
+    form.tglModelTextArea.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            componentCreation("modelTextArea", new P.ModelTextArea());
+        }
+    };
+
+    form.tglModelFormattedField.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            componentCreation("modelFormattedField", new P.ModelFormattedField());
+        }
+    };
+
+
+
+
 }

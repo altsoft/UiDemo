@@ -1,5 +1,5 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.menu.CheckMenuItem");
+    var javaClass = Java.type("com.eas.client.forms.menu.CheckMenuItem");
     javaClass.setPublisher(function(aDelegate) {
         return new P.CheckMenuItem(null, null, null, aDelegate);
     });
@@ -61,20 +61,6 @@
              * @memberOf CheckMenuItem
              */
             P.CheckMenuItem.prototype.onMouseDragged = {};
-        }
-        Object.defineProperty(this, "parent", {
-            get: function() {
-                var value = delegate.parent;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.CheckMenuItem){
-            /**
-             * The parent container.
-             * @property parent
-             * @memberOf CheckMenuItem
-             */
-            P.CheckMenuItem.prototype.parent = {};
         }
         Object.defineProperty(this, "onMouseReleased", {
             get: function() {
@@ -148,6 +134,9 @@
             get: function() {
                 var value = delegate.error;
                 return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.error = P.boxAsJava(aValue);
             }
         });
         if(!P.CheckMenuItem){
@@ -192,6 +181,23 @@
              * @memberOf CheckMenuItem
              */
             P.CheckMenuItem.prototype.onComponentMoved = {};
+        }
+        Object.defineProperty(this, "value", {
+            get: function() {
+                var value = delegate.jsValue;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.jsValue = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.CheckMenuItem){
+            /**
+             * Widget's value.
+             * @property jsValue
+             * @memberOf CheckMenuItem
+             */
+            P.CheckMenuItem.prototype.value = {};
         }
         Object.defineProperty(this, "componentPopupMenu", {
             get: function() {
@@ -244,6 +250,20 @@
              */
             P.CheckMenuItem.prototype.onComponentResized = {};
         }
+        Object.defineProperty(this, "parent", {
+            get: function() {
+                var value = delegate.parentWidget;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.CheckMenuItem){
+            /**
+             * Parent container of this widget.
+             * @property parentWidget
+             * @memberOf CheckMenuItem
+             */
+            P.CheckMenuItem.prototype.parent = {};
+        }
         Object.defineProperty(this, "text", {
             get: function() {
                 var value = delegate.text;
@@ -275,20 +295,6 @@
              */
             P.CheckMenuItem.prototype.onMouseEntered = {};
         }
-        Object.defineProperty(this, "selected", {
-            get: function() {
-                var value = delegate.selected;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.CheckMenuItem){
-            /**
-             * <code>true</code> if the menu item is selected.
-             * @property selected
-             * @memberOf CheckMenuItem
-             */
-            P.CheckMenuItem.prototype.selected = true;
-        }
         Object.defineProperty(this, "toolTipText", {
             get: function() {
                 var value = delegate.toolTipText;
@@ -306,19 +312,19 @@
              */
             P.CheckMenuItem.prototype.toolTipText = '';
         }
-        Object.defineProperty(this, "element", {
+        Object.defineProperty(this, "selected", {
             get: function() {
-                var value = delegate.element;
+                var value = delegate.selected;
                 return P.boxAsJs(value);
             }
         });
         if(!P.CheckMenuItem){
             /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
+             * <code>true</code> if the menu item is selected.
+             * @property selected
              * @memberOf CheckMenuItem
              */
-            P.CheckMenuItem.prototype.element = {};
+            P.CheckMenuItem.prototype.selected = true;
         }
         Object.defineProperty(this, "height", {
             get: function() {
@@ -353,6 +359,20 @@
              * @memberOf CheckMenuItem
              */
             P.CheckMenuItem.prototype.onComponentShown = {};
+        }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.CheckMenuItem){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf CheckMenuItem
+             */
+            P.CheckMenuItem.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {

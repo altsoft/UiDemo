@@ -1,5 +1,5 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.menu.MenuSeparator");
+    var javaClass = Java.type("com.eas.client.forms.menu.MenuSeparator");
     javaClass.setPublisher(function(aDelegate) {
         return new P.MenuSeparator(aDelegate);
     });
@@ -57,20 +57,6 @@
              * @memberOf MenuSeparator
              */
             P.MenuSeparator.prototype.onMouseDragged = {};
-        }
-        Object.defineProperty(this, "parent", {
-            get: function() {
-                var value = delegate.parent;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.MenuSeparator){
-            /**
-             * The parent container.
-             * @property parent
-             * @memberOf MenuSeparator
-             */
-            P.MenuSeparator.prototype.parent = {};
         }
         Object.defineProperty(this, "onMouseReleased", {
             get: function() {
@@ -144,6 +130,9 @@
             get: function() {
                 var value = delegate.error;
                 return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.error = P.boxAsJava(aValue);
             }
         });
         if(!P.MenuSeparator){
@@ -240,6 +229,20 @@
              */
             P.MenuSeparator.prototype.onComponentResized = {};
         }
+        Object.defineProperty(this, "parent", {
+            get: function() {
+                var value = delegate.parentWidget;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.MenuSeparator){
+            /**
+             * Parent container of this widget.
+             * @property parentWidget
+             * @memberOf MenuSeparator
+             */
+            P.MenuSeparator.prototype.parent = {};
+        }
         Object.defineProperty(this, "onMouseEntered", {
             get: function() {
                 var value = delegate.onMouseEntered;
@@ -274,20 +277,6 @@
              */
             P.MenuSeparator.prototype.toolTipText = '';
         }
-        Object.defineProperty(this, "element", {
-            get: function() {
-                var value = delegate.element;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.MenuSeparator){
-            /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
-             * @memberOf MenuSeparator
-             */
-            P.MenuSeparator.prototype.element = {};
-        }
         Object.defineProperty(this, "height", {
             get: function() {
                 var value = delegate.height;
@@ -321,6 +310,20 @@
              * @memberOf MenuSeparator
              */
             P.MenuSeparator.prototype.onComponentShown = {};
+        }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.MenuSeparator){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf MenuSeparator
+             */
+            P.MenuSeparator.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {

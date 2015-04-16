@@ -1,233 +1,157 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="289px" prefWidth="831px">
-  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
-  <nonvisual name="btnGroupStandard" type="ButtonGroupDesignInfo"/>
-  <nonvisual name="btnGroupModel" type="ButtonGroupDesignInfo"/>
-  <nonvisual name="btnGroupContainers" type="ButtonGroupDesignInfo"/>
-  <nonvisual name="popupMenu" prefHeight="0px" prefWidth="0px" type="PopupDesignInfo"/>
-  <widget name="menuItem" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem2" type="MenuItemDesignInfo"/>
-  <widget name="menuItem1" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem1" type="MenuItemDesignInfo"/>
-  <widget horizontalScrollBarPolicy="31" name="scrollPane1" parent="Form" prefHeight="268px" prefWidth="216px" type="ScrollDesignInfo">
-    <constraints bottom="9px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="216px"/>
-  </widget>
-  <widget name="pnlTopFoldingPanel" parent="scrollPane1" prefHeight="1270px" prefWidth="201px" type="PanelDesignInfo">
-    <layout axis="1" type="BoxLayoutDesignInfo"/>
-  </widget>
-  <widget name="pnlStandardWidgets" parent="pnlTopFoldingPanel" prefHeight="479px" prefWidth="201px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <border type="LineBorderDesignInfo"/>
-  </widget>
-  <widget name="pnlStandardContent" parent="pnlStandardWidgets" prefHeight="432px" prefWidth="180px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <constraints height="432px" left="12px" top="48px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglLabel" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="Label" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglButton" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="Button" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglCheckBox" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="CheckBox" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="108px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglRadioButton" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="RadioButton" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="144px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglTextField" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="TextField" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="180px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglSlider" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="Slider" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="216px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglProgressBar" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="ProgressBar" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="252px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglFormattedField" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="FormattedField" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="288px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglPasswordField" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="PasswordField" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="322px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglTextArea" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="TextArea" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="358px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglHtmlArea" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="HtmlArea" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="394px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupStandard" name="tglToggleButton" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="Toggle Button" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="72px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget name="grpBtnStandart" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text=" Standard widgets" type="ButtonDesignInfo">
-    <constraints height="29px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
-  <widget name="pnlModelWidgets" parent="pnlTopFoldingPanel" prefHeight="324px" prefWidth="201px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <border type="LineBorderDesignInfo"/>
-  </widget>
-  <widget name="grpBtnModel" parent="pnlModelWidgets" prefHeight="29px" prefWidth="180px" text=" Model widgets" type="ButtonDesignInfo">
-    <constraints height="29px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
-  <widget name="pnlModelContent" parent="pnlModelWidgets" prefHeight="324px" prefWidth="180px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <constraints height="324px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelCheck" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelCheck" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelCombo" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelCombo" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelDate" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelDate" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="72px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelGrid" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelGrid" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="108px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelImage" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelImage" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="144px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelFormattedField" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelFormattedField" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="180px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelTextArea" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelTextArea" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="216px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelMap" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelMap" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="252px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupModel" name="tglModelSpin" parent="pnlModelContent" prefHeight="29px" prefWidth="144px" text="ModelSpin" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="36px" right="0px" top="288px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget name="pnlContainers" parent="pnlTopFoldingPanel" prefHeight="467px" prefWidth="201px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <border type="LineBorderDesignInfo"/>
-  </widget>
-  <widget name="grpBtnContainers" parent="pnlContainers" prefHeight="29px" prefWidth="180px" text="Containers" type="ButtonDesignInfo">
-    <constraints height="29px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
-  <widget name="pnlContainersContent" parent="pnlContainers" prefHeight="432px" prefWidth="180px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <constraints height="432px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglAnchorsPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="AnchorsPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglBorderPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="BorderPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglAsolutePane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="AsolutePane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="72px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglGridPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="GridPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="108px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglFlowPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="FlowPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="144px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglCardPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="CardPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="180px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglBoxPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="BoxPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="216px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglTabbedPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="TabbedPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="252px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglSplitPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="SplitPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="288px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglScrollPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="ScrollPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="324px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglToolBar" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="ToolBar" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="360px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget buttonGroup="btnGroupContainers" name="tglDesktopPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="DesktopPane" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="24px" right="0px" top="396px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget name="tabbedPane" parent="Form" prefHeight="263px" prefWidth="276px" type="TabsDesignInfo">
-    <constraints bottom="14px" left="240px" right="315px" top="12px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget horizontalScrollBarPolicy="31" name="scrollPane" parent="tabbedPane" prefHeight="226px" prefWidth="268px" type="ScrollDesignInfo">
-    <constraints tabTitle="Common" type="TabsConstraintsDesignInfo"/>
-  </widget>
-  <widget name="panel" parent="scrollPane" prefHeight="657px" prefWidth="393px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-  </widget>
-  <widget name="tglOpaque" parent="panel" prefHeight="29px" prefWidth="107px" text="Opaque" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="108px" top="312px" type="MarginConstraintsDesignInfo" width="107px"/>
-  </widget>
-  <widget name="label21111111" parent="panel" prefHeight="17px" prefWidth="96px" text="Opaque" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="318px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget name="tglFocusable" parent="panel" prefHeight="29px" prefWidth="107px" text="Focusable" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="108px" top="276px" type="MarginConstraintsDesignInfo" width="107px"/>
-  </widget>
-  <widget name="label2111111" parent="panel" prefHeight="17px" prefWidth="96px" text="Focusable" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="282px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget name="label211111" parent="panel" prefHeight="17px" prefWidth="96px" text="Enabled" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="246px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget name="label21111" parent="panel" prefHeight="17px" prefWidth="96px" text="Cursor" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="216px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget name="textField21" parent="panel" prefHeight="27px" prefWidth="108px" text="textField2" type="TextFieldDesignInfo">
-    <constraints height="27px" left="108px" top="180px" type="MarginConstraintsDesignInfo" width="108px"/>
-  </widget>
-  <widget name="label2111" parent="panel" prefHeight="17px" prefWidth="96px" text="Border" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="185px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget name="label211" parent="panel" prefHeight="17px" prefWidth="96px" text="Toltip" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="149px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget name="label21" parent="panel" prefHeight="17px" prefWidth="96px" text="Foreground" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="72px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget buttonGroup="buttonGroup" name="radioButton" parent="panel" prefHeight="24px" prefWidth="110px" text="radioButton" type="RadioDesignInfo">
-    <constraints height="24px" left="108px" top="348px" type="MarginConstraintsDesignInfo" width="110px"/>
-  </widget>
-  <widget buttonGroup="buttonGroup" name="radioButton2" parent="panel" prefHeight="24px" prefWidth="118px" text="radioButton2" type="RadioDesignInfo">
-    <constraints height="24px" left="108px" top="396px" type="MarginConstraintsDesignInfo" width="118px"/>
-  </widget>
-  <widget buttonGroup="buttonGroup" name="radioButton1" parent="panel" prefHeight="24px" prefWidth="118px" text="radioButton1" type="RadioDesignInfo">
-    <constraints height="24px" left="108px" top="372px" type="MarginConstraintsDesignInfo" width="118px"/>
-  </widget>
-  <widget name="tbVisibility" parent="panel" prefHeight="29px" prefWidth="107px" text="Visible" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="108px" top="12px" type="MarginConstraintsDesignInfo" width="107px"/>
-  </widget>
-  <widget name="toggleButton1" parent="panel" prefHeight="29px" prefWidth="115px" text="toggleButton1" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="12px" top="432px" type="MarginConstraintsDesignInfo" width="115px"/>
-  </widget>
-  <widget name="label1" parent="panel" prefHeight="17px" prefWidth="60px" text="Visible" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="18px" type="MarginConstraintsDesignInfo" width="60px"/>
-  </widget>
-  <widget name="label2" parent="panel" prefHeight="17px" prefWidth="96px" text="Background" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="53px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget name="label3" parent="panel" prefHeight="17px" prefWidth="42px" text="Font" type="LabelDesignInfo">
-    <constraints height="17px" left="12px" top="120px" type="MarginConstraintsDesignInfo" width="42px"/>
-  </widget>
-  <widget name="txtToltip" parent="panel" prefHeight="27px" prefWidth="108px" text="textField2" type="TextFieldDesignInfo">
-    <constraints height="27px" left="108px" top="144px" type="MarginConstraintsDesignInfo" width="108px"/>
-  </widget>
-  <widget name="tglEnabled" parent="panel" prefHeight="29px" prefWidth="107px" text="Enabled" type="ToggleButtonDesignInfo">
-    <constraints height="29px" left="108px" top="240px" type="MarginConstraintsDesignInfo" width="107px"/>
-  </widget>
-  <widget name="pnlCustom" parent="tabbedPane" prefHeight="226px" prefWidth="268px" type="PanelDesignInfo" visible="false">
-    <layout type="BorderLayoutDesignInfo"/>
-    <constraints tabTitle="Custom" type="TabsConstraintsDesignInfo"/>
-  </widget>
-  <widget name="panel1" parent="Form" prefHeight="240px" prefWidth="288px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <constraints height="240px" left="528px" top="36px" type="MarginConstraintsDesignInfo" width="288px"/>
-  </widget>
-  <widget name="pnlPlayground" parent="panel1" prefHeight="238px" prefWidth="288px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
-    <constraints bottom="2px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
-    <border type="LineBorderDesignInfo"/>
-  </widget>
-  <widget name="checkBox" parent="pnlPlayground" prefHeight="43px" prefWidth="307px" text="checkBox" type="CheckDesignInfo">
-    <constraints height="43px" left="0px" top="24px" type="MarginConstraintsDesignInfo" width="307px"/>
-  </widget>
-  <layout type="MarginLayoutDesignInfo"/>
+<?xml version="1.0" encoding="UTF-8"?><layout icon="" title="" view="view">
+  <ButtonGroup name="buttonGroup"/>
+  <ButtonGroup name="btnGroupStandard"/>
+  <ButtonGroup name="btnGroupModel"/>
+  <ButtonGroup name="btnGroupContainers"/>
+  <PopupMenu cursor="0" name="popupMenu"/>
+  <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem2"/>
+  <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem1" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem1"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="411px" prefWidth="1090px"/>
+  <ScrollPane cursor="0" horizontalScrollBarPolicy="31" name="scrollPane1" parent="view" prefHeight="388px" prefWidth="216px">
+    <AnchorsPaneConstraints bottom="11px" left="12px" top="12px" width="216px"/>
+  </ScrollPane>
+  <BoxPane cursor="0" name="pnlTopFoldingPanel" orientation="1" parent="scrollPane1" prefHeight="1271px" prefWidth="201px"/>
+  <AnchorsPane cursor="0" name="pnlStandardWidgets" parent="pnlTopFoldingPanel" prefHeight="515px" prefWidth="201px"/>
+  <AnchorsPane cursor="0" name="pnlStandardContent" parent="pnlStandardWidgets" prefHeight="468px" prefWidth="180px">
+    <AnchorsPaneConstraints height="468px" left="12px" top="48px" width="180px"/>
+  </AnchorsPane>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglLabel" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="Label">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="0px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglButton" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="Button">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="36px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglCheckBox" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="CheckBox">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="108px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglRadioButton" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="RadioButton">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="144px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglTextField" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="TextField">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="180px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglSlider" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="Slider">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="216px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglProgressBar" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="ProgressBar">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="252px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglFormattedField" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="FormattedField">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="288px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglPasswordField" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="PasswordField">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="322px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglTextArea" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="TextArea">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="358px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglHtmlArea" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="HtmlArea">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="394px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglToggleButton" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="Toggle Button">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="72px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupStandard" cursor="0" name="tglButtonGroup" parent="pnlStandardContent" prefHeight="29px" prefWidth="156px" text="ButtonGroup">
+    <AnchorsPaneConstraints height="29px" left="24px" top="428px" width="156px"/>
+  </ToggleButton>
+  <Button cursor="0" name="grpBtnStandart" parent="pnlStandardWidgets" prefHeight="29px" prefWidth="180px" text=" Standard widgets">
+    <AnchorsPaneConstraints height="29px" left="12px" top="12px" width="180px"/>
+  </Button>
+  <AnchorsPane cursor="0" name="pnlModelWidgets" parent="pnlTopFoldingPanel" prefHeight="288px" prefWidth="201px"/>
+  <Button cursor="0" name="grpBtnModel" parent="pnlModelWidgets" prefHeight="29px" prefWidth="180px" text=" Model widgets">
+    <AnchorsPaneConstraints height="29px" left="12px" top="0px" width="180px"/>
+  </Button>
+  <AnchorsPane cursor="0" name="pnlModelContent" parent="pnlModelWidgets" prefHeight="254px" prefWidth="201px">
+    <AnchorsPaneConstraints height="254px" left="12px" top="36px" width="201px"/>
+  </AnchorsPane>
+  <ToggleButton buttonGroup="btnGroupModel" cursor="0" name="tglModelCheck" parent="pnlModelContent" prefHeight="29px" prefWidth="156px" text="ModelCheck">
+    <AnchorsPaneConstraints height="29px" left="24px" top="0px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupModel" cursor="0" name="tglModelCombo" parent="pnlModelContent" prefHeight="29px" prefWidth="156px" text="ModelCombo">
+    <AnchorsPaneConstraints height="29px" left="24px" top="36px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupModel" cursor="0" name="tglModelDate" parent="pnlModelContent" prefHeight="29px" prefWidth="156px" text="ModelDate">
+    <AnchorsPaneConstraints height="29px" left="24px" top="72px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupModel" cursor="0" name="tglModelGrid" parent="pnlModelContent" prefHeight="29px" prefWidth="156px" text="ModelGrid">
+    <AnchorsPaneConstraints height="29px" left="24px" top="108px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupModel" cursor="0" name="tglModelFormattedField" parent="pnlModelContent" prefHeight="29px" prefWidth="156px" text="ModelFormattedField">
+    <AnchorsPaneConstraints height="29px" left="24px" top="144px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupModel" cursor="0" name="tglModelTextArea" parent="pnlModelContent" prefHeight="29px" prefWidth="156px" text="ModelTextArea">
+    <AnchorsPaneConstraints height="29px" left="24px" top="180px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupModel" cursor="0" name="tglModelSpin" parent="pnlModelContent" prefHeight="29px" prefWidth="156px" text="ModelSpin">
+    <AnchorsPaneConstraints height="29px" left="24px" top="216px" width="156px"/>
+  </ToggleButton>
+  <AnchorsPane cursor="0" name="pnlContainers" parent="pnlTopFoldingPanel" prefHeight="468px" prefWidth="201px"/>
+  <Button cursor="0" name="grpBtnContainers" parent="pnlContainers" prefHeight="29px" prefWidth="180px" text="Containers">
+    <AnchorsPaneConstraints height="29px" left="12px" top="0px" width="180px"/>
+  </Button>
+  <AnchorsPane cursor="0" name="pnlContainersContent" parent="pnlContainers" prefHeight="432px" prefWidth="180px">
+    <AnchorsPaneConstraints height="432px" left="12px" top="36px" width="180px"/>
+  </AnchorsPane>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglAnchorsPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="AnchorsPane">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="0px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglBorderPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="BorderPane">
+    <AnchorsPaneConstraints height="29px" left="24px" right="0px" top="36px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglAbsolutePane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="AbsolutePane">
+    <AnchorsPaneConstraints height="29px" left="24px" top="72px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglGridPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="GridPane">
+    <AnchorsPaneConstraints height="29px" left="24px" top="108px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglFlowPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="FlowPane">
+    <AnchorsPaneConstraints height="29px" left="24px" top="144px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglCardPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="CardPane">
+    <AnchorsPaneConstraints height="29px" left="24px" top="180px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglBoxPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="BoxPane">
+    <AnchorsPaneConstraints height="29px" left="24px" top="216px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglTabbedPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="TabbedPane">
+    <AnchorsPaneConstraints height="29px" left="24px" top="252px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglSplitPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="SplitPane">
+    <AnchorsPaneConstraints height="29px" left="24px" top="288px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglScrollPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="ScrollPane">
+    <AnchorsPaneConstraints bottom="79px" height="29px" left="24px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglToolBar" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="ToolBar">
+    <AnchorsPaneConstraints bottom="43px" height="29px" left="24px" width="156px"/>
+  </ToggleButton>
+  <ToggleButton buttonGroup="btnGroupContainers" cursor="0" name="tglDesktopPane" parent="pnlContainersContent" prefHeight="29px" prefWidth="156px" text="DesktopPane">
+    <AnchorsPaneConstraints bottom="7px" height="29px" left="24px" width="156px"/>
+  </ToggleButton>
+  <TabbedPane cursor="0" name="tabbedPane" parent="view" prefHeight="385px" prefWidth="408px" selectedComponent="scrollPane">
+    <AnchorsPaneConstraints bottom="14px" left="240px" top="12px" width="408px"/>
+  </TabbedPane>
+  <ScrollPane cursor="0" horizontalScrollBarPolicy="31" name="scrollPane" parent="tabbedPane" prefHeight="348px" prefWidth="400px">
+    <TabbedPaneConstraints tabIcon="" tabTitle="Common"/>
+  </ScrollPane>
+  <BoxPane cursor="0" name="panel" orientation="1" parent="scrollPane" prefHeight="346px" prefWidth="398px"/>
+  <BorderPane cursor="0" name="tabCustom" parent="tabbedPane" prefHeight="348px" prefWidth="400px" visible="false">
+    <TabbedPaneConstraints tabIcon="" tabTitle="Custom"/>
+  </BorderPane>
+  <ScrollPane cursor="0" name="scrollPane2" parent="tabCustom" prefHeight="348px" prefWidth="400px">
+    <BorderPaneConstraints place="0"/>
+  </ScrollPane>
+  <BoxPane cursor="0" name="pnlCustom" orientation="1" parent="scrollPane2" prefHeight="346px" prefWidth="398px"/>
+  <AnchorsPane cursor="0" name="panel1" parent="view" prefHeight="292px" prefWidth="413px">
+    <AnchorsPaneConstraints height="292px" left="660px" right="17px" top="48px"/>
+  </AnchorsPane>
+  <AnchorsPane cursor="0" name="pnlPlayground" parent="panel1" prefHeight="288px" prefWidth="413px">
+    <AnchorsPaneConstraints height="288px" left="0px" top="0px" width="413px"/>
+  </AnchorsPane>
+  <AnchorsPane background="#ffffff" cursor="0" name="panel2" parent="view" prefHeight="60px" prefWidth="430px">
+    <AnchorsPaneConstraints bottom="11px" height="60px" left="650px" width="430px"/>
+  </AnchorsPane>
+  <Label cursor="0" name="lblTips" parent="panel2" prefHeight="40px" prefWidth="410px" text="label">
+    <AnchorsPaneConstraints height="40px" left="10px" top="10px" width="410px"/>
+  </Label>
 </layout>

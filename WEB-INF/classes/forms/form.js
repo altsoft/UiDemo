@@ -1,17 +1,21 @@
 (function() {
     var javaClass = Java.type("com.eas.client.forms.Form");
     javaClass.setPublisher(function(aDelegate) {
-        return new P.Form(aDelegate);
+        return new P.Form(null, null, aDelegate);
     });
     
     /**
-     * Generated constructor.
+     * Creates a form.
+     * @param aView Container instance to be used as view of created form. Optional. If it is omitted P.AnchorsPane will be created and used as view.
+     * @param aFormKey Form instance key for open windows accounting. Optional.
      * @constructor Form Form
      */
-    P.Form = function () {
-        var maxArgs = 0;
+    P.Form = function (aView, aFormKey) {
+        var maxArgs = 2;
         var delegate = arguments.length > maxArgs ?
               arguments[maxArgs] 
+            : arguments.length === 2 ? new javaClass(P.boxAsJava(aView), P.boxAsJava(aFormKey))
+            : arguments.length === 1 ? new javaClass(P.boxAsJava(aView))
             : new javaClass();
 
         Object.defineProperty(this, "unwrap", {
@@ -453,14 +457,13 @@
         };
 
         /**
-         * Shows the form as a dialog (modal window).
-         * @param callback a callback handler function
-         * @method showModal
+         * Shows the form as an ordinary window.
+         * @method show
          * @memberOf Form
          */
-        P.Form.prototype.showModal = function(callback) {
+        P.Form.prototype.show = function() {
             var delegate = this.unwrap();
-            var value = delegate.showModal(P.boxAsJava(callback));
+            var value = delegate.show();
             return P.boxAsJs(value);
         };
 
@@ -476,13 +479,14 @@
         };
 
         /**
-         * Shows the form as an ordinary window.
-         * @method show
+         * Shows the form as a dialog (modal window).
+         * @param callback a callback handler function
+         * @method showModal
          * @memberOf Form
          */
-        P.Form.prototype.show = function() {
+        P.Form.prototype.showModal = function(callback) {
             var delegate = this.unwrap();
-            var value = delegate.show();
+            var value = delegate.showModal(P.boxAsJava(callback));
             return P.boxAsJs(value);
         };
 

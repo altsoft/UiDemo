@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <entity Name="owners" Title="" entityHeight="200" entityIconified="false" entityId="142850587919766" entityLocationX="185" entityLocationY="66" entityWidth="150" queryId="owners" tableName="" tableSchemaName=""/>
+  <entity Name="pets" Title="" entityHeight="200" entityIconified="false" entityId="142857418842415" entityLocationX="445" entityLocationY="49" entityWidth="150" queryId="pets" tableName="" tableSchemaName=""/>
+  <referenceRelation collectionPropertyName="pets" leftEntityFieldName="owner" leftEntityId="142857418842415" rightEntityFieldName="owners_id" rightEntityId="142850587919766" scalarPropertyName="ownerRef"/>
+</datamodel>

@@ -1,5 +1,5 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.api.events.KeyEvent");
+    var javaClass = Java.type("com.eas.client.forms.events.KeyEvent");
     javaClass.setPublisher(function(aDelegate) {
         return new P.KeyEvent(aDelegate);
     });
@@ -64,6 +64,20 @@
              */
             P.KeyEvent.prototype.shiftDown = true;
         }
+        Object.defineProperty(this, "char", {
+            get: function() {
+                var value = delegate.char;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.KeyEvent){
+            /**
+             * Char associated with this event.
+             * @property char
+             * @memberOf KeyEvent
+             */
+            P.KeyEvent.prototype.char = '';
+        }
         Object.defineProperty(this, "metaDown", {
             get: function() {
                 var value = delegate.metaDown;
@@ -86,7 +100,7 @@
         });
         if(!P.KeyEvent){
             /**
-             * The source component object of the event.
+             * The source object of the event.
              * @property source
              * @memberOf KeyEvent
              */
