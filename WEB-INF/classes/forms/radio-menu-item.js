@@ -295,23 +295,6 @@
              */
             P.RadioMenuItem.prototype.onMouseEntered = {};
         }
-        Object.defineProperty(this, "toolTipText", {
-            get: function() {
-                var value = delegate.toolTipText;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.toolTipText = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.RadioMenuItem){
-            /**
-             * The tooltip string that has been set with.
-             * @property toolTipText
-             * @memberOf RadioMenuItem
-             */
-            P.RadioMenuItem.prototype.toolTipText = '';
-        }
         Object.defineProperty(this, "selected", {
             get: function() {
                 var value = delegate.selected;
@@ -328,6 +311,23 @@
              * @memberOf RadioMenuItem
              */
             P.RadioMenuItem.prototype.selected = true;
+        }
+        Object.defineProperty(this, "toolTipText", {
+            get: function() {
+                var value = delegate.toolTipText;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.toolTipText = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.RadioMenuItem){
+            /**
+             * The tooltip string that has been set with.
+             * @property toolTipText
+             * @memberOf RadioMenuItem
+             */
+            P.RadioMenuItem.prototype.toolTipText = '';
         }
         Object.defineProperty(this, "height", {
             get: function() {
@@ -346,6 +346,20 @@
              */
             P.RadioMenuItem.prototype.height = 0;
         }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.RadioMenuItem){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf RadioMenuItem
+             */
+            P.RadioMenuItem.prototype.element = {};
+        }
         Object.defineProperty(this, "onComponentShown", {
             get: function() {
                 var value = delegate.onComponentShown;
@@ -362,20 +376,6 @@
              * @memberOf RadioMenuItem
              */
             P.RadioMenuItem.prototype.onComponentShown = {};
-        }
-        Object.defineProperty(this, "element", {
-            get: function() {
-                var value = delegate.element;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.RadioMenuItem){
-            /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
-             * @memberOf RadioMenuItem
-             */
-            P.RadioMenuItem.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {
@@ -479,23 +479,6 @@
              */
             P.RadioMenuItem.prototype.nextFocusableComponent = {};
         }
-        Object.defineProperty(this, "onActionPerformed", {
-            get: function() {
-                var value = delegate.onActionPerformed;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.onActionPerformed = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.RadioMenuItem){
-            /**
-             * Main action performed event handler function.
-             * @property onActionPerformed
-             * @memberOf RadioMenuItem
-             */
-            P.RadioMenuItem.prototype.onActionPerformed = {};
-        }
         Object.defineProperty(this, "onKeyReleased", {
             get: function() {
                 var value = delegate.onKeyReleased;
@@ -512,6 +495,23 @@
              * @memberOf RadioMenuItem
              */
             P.RadioMenuItem.prototype.onKeyReleased = {};
+        }
+        Object.defineProperty(this, "onActionPerformed", {
+            get: function() {
+                var value = delegate.onActionPerformed;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.onActionPerformed = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.RadioMenuItem){
+            /**
+             * Main action performed event handler function.
+             * @property onActionPerformed
+             * @memberOf RadioMenuItem
+             */
+            P.RadioMenuItem.prototype.onActionPerformed = {};
         }
         Object.defineProperty(this, "focusable", {
             get: function() {

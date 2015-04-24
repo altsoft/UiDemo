@@ -260,15 +260,15 @@
         };
 
         /**
-         * Finds an object by its key. Key must be a single property.
-         * @param key the unique identifier of the row.
-         * @return An object or <code>null</code> if nothing is found.
-         * @method findById
+         * Creates an instance of comparator object using specified constraints objects.
+         * @param pairs the sort criteria pairs, in a form of property object (e.g. entity.schema.propName or just a propName in a string form) and the order of sort (ascending - true; descending - false).
+         * @return a comparator object to be passed as a parameter to entity's <code>sort</code> method.
+         * @method createSorting
          * @memberOf ApplicationPlatypusEntity
          */
-        P.ApplicationPlatypusEntity.prototype.findById = function(key) {
+        P.ApplicationPlatypusEntity.prototype.createSorting = function(pairs) {
             var delegate = this.unwrap();
-            var value = delegate.findById(P.boxAsJava(key));
+            var value = delegate.createSorting(P.boxAsJava(pairs));
             return P.boxAsJs(value);
         };
 
@@ -299,6 +299,17 @@
         };
 
         /**
+         * Deprecated. Please, use findByKey() instead.
+         * @method findById
+         * @memberOf ApplicationPlatypusEntity
+         */
+        P.ApplicationPlatypusEntity.prototype.findById = function(key) {
+            var delegate = this.unwrap();
+            var value = delegate.findById(P.boxAsJava(key));
+            return P.boxAsJs(value);
+        };
+
+        /**
          * Finds an object by its key. Key must be a single property.
          * @param key the unique identifier of the row.
          * @return An object or <code>null</code> if nothing is found.
@@ -308,19 +319,6 @@
         P.ApplicationPlatypusEntity.prototype.findByKey = function(key) {
             var delegate = this.unwrap();
             var value = delegate.findByKey(P.boxAsJava(key));
-            return P.boxAsJs(value);
-        };
-
-        /**
-         * Creates an instance of comparator object using specified constraints objects.
-         * @param pairs the sort criteria pairs, in a form of property object (e.g. entity.schema.propName or just a propName in a string form) and the order of sort (ascending - true; descending - false).
-         * @return a comparator object to be passed as a parameter to entity's <code>sort</code> method.
-         * @method createSorting
-         * @memberOf ApplicationPlatypusEntity
-         */
-        P.ApplicationPlatypusEntity.prototype.createSorting = function(pairs) {
-            var delegate = this.unwrap();
-            var value = delegate.createSorting(P.boxAsJava(pairs));
             return P.boxAsJs(value);
         };
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="443px" prefWidth="580px"/>
+  <ModelGrid cursor="0" data="qPetTypes" name="modelGrid" parent="view" prefHeight="320px" prefWidth="560px">
+    <AnchorsPaneConstraints height="320px" left="10px" right="10px" top="10px"/>
+    <ServiceGridColumn name="colService"/>
+    <ModelGridColumn field="pettypes_id" name="colPettypes_id" title="colPettypes_id" width="263px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="name" name="colName" title="colName" width="262px">
+      <ModelFormattedField/>
+    </ModelGridColumn>
+  </ModelGrid>
+</layout>

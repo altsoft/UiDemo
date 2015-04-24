@@ -336,23 +336,6 @@
              */
             P.ToggleButton.prototype.onMouseEntered = {};
         }
-        Object.defineProperty(this, "toolTipText", {
-            get: function() {
-                var value = delegate.toolTipText;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.toolTipText = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.ToggleButton){
-            /**
-             * The tooltip string that has been set with.
-             * @property toolTipText
-             * @memberOf ToggleButton
-             */
-            P.ToggleButton.prototype.toolTipText = '';
-        }
         Object.defineProperty(this, "selected", {
             get: function() {
                 var value = delegate.selected;
@@ -369,6 +352,23 @@
              * @memberOf ToggleButton
              */
             P.ToggleButton.prototype.selected = true;
+        }
+        Object.defineProperty(this, "toolTipText", {
+            get: function() {
+                var value = delegate.toolTipText;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.toolTipText = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.ToggleButton){
+            /**
+             * The tooltip string that has been set with.
+             * @property toolTipText
+             * @memberOf ToggleButton
+             */
+            P.ToggleButton.prototype.toolTipText = '';
         }
         Object.defineProperty(this, "height", {
             get: function() {
@@ -387,6 +387,20 @@
              */
             P.ToggleButton.prototype.height = 0;
         }
+        Object.defineProperty(this, "element", {
+            get: function() {
+                var value = delegate.element;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.ToggleButton){
+            /**
+             * Native API. Returns low level html element. Applicable only in HTML5 client.
+             * @property element
+             * @memberOf ToggleButton
+             */
+            P.ToggleButton.prototype.element = {};
+        }
         Object.defineProperty(this, "onComponentShown", {
             get: function() {
                 var value = delegate.onComponentShown;
@@ -403,20 +417,6 @@
              * @memberOf ToggleButton
              */
             P.ToggleButton.prototype.onComponentShown = {};
-        }
-        Object.defineProperty(this, "element", {
-            get: function() {
-                var value = delegate.element;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.ToggleButton){
-            /**
-             * Native API. Returns low level html element. Applicable only in HTML5 client.
-             * @property element
-             * @memberOf ToggleButton
-             */
-            P.ToggleButton.prototype.element = {};
         }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {
@@ -537,23 +537,6 @@
              */
             P.ToggleButton.prototype.iconTextGap = 0;
         }
-        Object.defineProperty(this, "onActionPerformed", {
-            get: function() {
-                var value = delegate.onActionPerformed;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.onActionPerformed = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.ToggleButton){
-            /**
-             * Main action performed event handler function.
-             * @property onActionPerformed
-             * @memberOf ToggleButton
-             */
-            P.ToggleButton.prototype.onActionPerformed = {};
-        }
         Object.defineProperty(this, "onKeyReleased", {
             get: function() {
                 var value = delegate.onKeyReleased;
@@ -570,6 +553,23 @@
              * @memberOf ToggleButton
              */
             P.ToggleButton.prototype.onKeyReleased = {};
+        }
+        Object.defineProperty(this, "onActionPerformed", {
+            get: function() {
+                var value = delegate.onActionPerformed;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.onActionPerformed = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.ToggleButton){
+            /**
+             * Main action performed event handler function.
+             * @property onActionPerformed
+             * @memberOf ToggleButton
+             */
+            P.ToggleButton.prototype.onActionPerformed = {};
         }
         Object.defineProperty(this, "focusable", {
             get: function() {

@@ -5,8 +5,8 @@
 // this === global
 (function () {
     function ready() {
-        P.require(['tempModelCombo'], function(){
-            var m = new tempModelCombo();
+        P.require(['OwnersView'], function(){
+            var m = new OwnersView();
             m.show();
         }, function(e){
             P.Logger.severe(e);
