@@ -34,4 +34,7 @@
   <Button cursor="0" name="button3" parent="view" prefHeight="20px" prefWidth="70px" text="unsort">
     <AnchorsPaneConstraints bottom="50px" height="20px" left="10px" width="70px"/>
   </Button>
+  <ModelCombo cursor="0" data="qPetTypes" displayField="name" displayList="qPetTypes" field="cursor.pettypes_id" name="modelCombo" parent="view" prefHeight="27px" prefWidth="130px">
+    <AnchorsPaneConstraints height="27px" left="90px" top="50px" width="130px"/>
+  </ModelCombo>
 </layout>

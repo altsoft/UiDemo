@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="364px" prefWidth="677px"/>
+  <Button cursor="0" name="button" parent="view" prefHeight="20px" prefWidth="70px" text="button">
+    <AnchorsPaneConstraints bottom="13px" height="20px" right="97px" width="70px"/>
+  </Button>
+  <ModelGrid cursor="0" name="modelGrid" parent="view" prefHeight="210px" prefWidth="660px">
+    <AnchorsPaneConstraints height="210px" left="10px" right="7px" top="10px"/>
+  </ModelGrid>
+</layout>

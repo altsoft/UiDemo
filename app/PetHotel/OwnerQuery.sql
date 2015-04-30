@@ -1,5 +1,4 @@
 /**
- * @author vv
  * @public
  * @name OwnerQuery
  */ 
