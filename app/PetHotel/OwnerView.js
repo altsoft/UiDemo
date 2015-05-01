@@ -17,6 +17,7 @@ function OwnerView() {
         if (aID) {
             model.ownerQuery.params.ownerID = aID;
             model.petsQuery.params.owner_id = aID;
+            model.visitsQuery.params.ownerID = aID;
             model.requery();
         } else {
             model.ownerQuery.push({});

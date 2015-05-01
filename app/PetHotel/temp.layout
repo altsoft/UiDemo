@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="364px" prefWidth="677px"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="544px" prefWidth="677px"/>
   <Button cursor="0" name="button" parent="view" prefHeight="20px" prefWidth="70px" text="button">
     <AnchorsPaneConstraints bottom="13px" height="20px" right="97px" width="70px"/>
   </Button>
-  <ModelGrid cursor="0" name="modelGrid" parent="view" prefHeight="210px" prefWidth="660px">
-    <AnchorsPaneConstraints height="210px" left="10px" right="7px" top="10px"/>
+  <ModelGrid cursor="0" data="allPets" name="modelGrid1" parent="view" prefHeight="130px" prefWidth="660px">
+    <AnchorsPaneConstraints height="130px" left="10px" top="130px" width="660px"/>
+    <ServiceGridColumn name="colService" resizable="true"/>
+    <ModelGridColumn field="pets_id" name="colPets_id" title="colPets_id" width="125px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="owner" name="colOwner_id" title="colOwner_id" width="125px">
+      <ModelCombo displayField="lastname" displayList="allOwners"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="petTypes" name="colType_id" title="colType_id" width="125px">
+      <ModelCombo displayField="name" displayList="petTypesQuery"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="name" name="colName" title="colName" width="125px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="birthdate" name="colBirthdate" title="colBirthdate" width="125px">
+      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+    </ModelGridColumn>
+  </ModelGrid>
+  <ModelGrid cursor="0" data="allOwners" name="modelGrid" parent="view" prefHeight="120px" prefWidth="660px">
+    <AnchorsPaneConstraints height="120px" left="10px" top="0px" width="660px"/>
+    <ServiceGridColumn name="colService" resizable="true"/>
+    <ModelGridColumn field="owners_id" name="colOwners_id" title="colOwners_id" width="89px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="firstname" name="colFirstname" title="colFirstname" width="89px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="lastname" name="colLastname" title="colLastname" width="89px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="address" name="colAddress" title="colAddress" width="90px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="city" name="colCity" title="colCity" width="89px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="telephone" name="colTelephone" title="colTelephone" width="90px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="email" name="colEmail" title="colEmail" width="89px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+  </ModelGrid>
+  <ModelGrid cursor="0" data="allVIsits" name="modelGrid2" parent="view" prefHeight="200px" prefWidth="660px">
+    <AnchorsPaneConstraints height="200px" left="10px" top="270px" width="660px"/>
+    <ServiceGridColumn name="colService"/>
+    <ModelGridColumn field="visit_id" name="colVisit_id" title="colVisit_id" width="104px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="pet_id" name="colPet_id" title="colPet_id" width="104px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="fromdate" name="colFromdate" title="colFromdate" width="104px">
+      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="todate" name="colTodate" title="colTodate" width="104px">
+      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="description" name="colDescription" title="colDescription" width="105px">
+      <ModelFormattedField/>
+    </ModelGridColumn>
+    <ModelGridColumn field="ispaid" name="colIspaid" title="colIspaid" width="104px">
+      <ModelCheckBox/>
+    </ModelGridColumn>
   </ModelGrid>
 </layout>

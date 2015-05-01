@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <entity Name="allPets" Title="" entityHeight="200" entityIconified="false" entityId="143034176626282" entityLocationX="159" entityLocationY="38" entityWidth="150" queryId="allPets" tableName="" tableSchemaName=""/>
-  <entity Name="allOwners" Title="" entityHeight="200" entityIconified="false" entityId="143041530092216" entityLocationX="331" entityLocationY="142" entityWidth="150" queryId="allOwners" tableName="" tableSchemaName=""/>
-  <entity Name="petTypesQuery" Title="" entityHeight="200" entityIconified="false" entityId="143034181390828" entityLocationX="491" entityLocationY="42" entityWidth="150" queryId="PetTypesQuery" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="type_id" leftEntityId="143034176626282" rightEntityFieldName="pettypes_id" rightEntityId="143034181390828"/>
-  <referenceRelation leftEntityFieldName="owner_id" leftEntityId="143034176626282" rightEntityFieldName="owners_id" rightEntityId="143041530092216"/>
+  <entity Name="allPets" Title="" entityHeight="200" entityIconified="false" entityId="143034176626282" entityLocationX="107" entityLocationY="41" entityWidth="150" queryId="allPets" tableName="" tableSchemaName=""/>
+  <entity Name="allOwners" Title="" entityHeight="200" entityIconified="false" entityId="143041530092216" entityLocationX="533" entityLocationY="75" entityWidth="150" queryId="allOwners" tableName="" tableSchemaName=""/>
+  <entity Name="allVIsits" Title="" entityHeight="200" entityIconified="false" entityId="143042910557312" entityLocationX="160" entityLocationY="311" entityWidth="150" queryId="allVIsits" tableName="" tableSchemaName=""/>
+  <entity Name="petTypesQuery" Title="" entityHeight="200" entityIconified="false" entityId="143034181390828" entityLocationX="533" entityLocationY="296" entityWidth="150" queryId="PetTypesQuery" tableName="" tableSchemaName=""/>
+  <referenceRelation collectionPropertyName="cOwners" leftEntityFieldName="owner_id" leftEntityId="143034176626282" rightEntityFieldName="owners_id" rightEntityId="143041530092216" scalarPropertyName="owner"/>
+  <referenceRelation collectionPropertyName="allTypes" leftEntityFieldName="type_id" leftEntityId="143034176626282" polyline="263;116 345;116 345;337 527;337" rightEntityFieldName="pettypes_id" rightEntityId="143034181390828" scalarPropertyName="petTypes"/>
+  <referenceRelation collectionPropertyName="cVisits" leftEntityFieldName="pet_id" leftEntityId="143042910557312" rightEntityFieldName="pets_id" rightEntityId="143034176626282" scalarPropertyName="vPetId"/>
 </datamodel>
