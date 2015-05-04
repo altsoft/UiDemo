@@ -13,20 +13,19 @@
   <TextField cursor="0" name="txtSearch" parent="toolBar1" prefHeight="36px" prefWidth="160px"/>
   <ModelGrid cursor="0" data="owners" deletable="false" editable="false" insertable="false" name="modelGrid" parent="view" prefHeight="220px" prefWidth="762px">
     <AnchorsPaneConstraints bottom="9px" left="10px" right="15px" top="50px"/>
-    <CheckGridColumn name="column" resizable="true"/>
-    <ModelGridColumn field="fullName" name="colFullName" title="Full Name" width="145px">
+    <ModelGridColumn field="fullName" name="colFullName" title="Full Name" width="150px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="address" name="colAddress" title="Address" width="146px">
+    <ModelGridColumn field="address" name="colAddress" title="Address" width="150px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="city" name="colCity" title="City" width="145px">
+    <ModelGridColumn field="city" name="colCity" title="City" width="150px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="phone" name="colTelephone" title="Telephone" width="146px">
+    <ModelGridColumn field="phone" name="colTelephone" title="Telephone" width="150px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="email" name="colEmail" title="e-mail" width="145px">
+    <ModelGridColumn field="email" name="colEmail" title="e-mail" width="149px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
   </ModelGrid>

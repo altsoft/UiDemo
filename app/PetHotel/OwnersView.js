@@ -58,7 +58,7 @@ function OwnersView() {
     };
 
     form.btnReport.onActionPerformed = function (event) {
-//        var oReport = new OwnersReport();
-//        oReport.execute();
+        var oReport = new OwnersReport();
+        oReport.execute();
     };
 }

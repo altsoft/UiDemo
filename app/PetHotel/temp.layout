@@ -1,9 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="364px" prefWidth="677px"/>
+  <ModelFormattedField format="" name="view" prefHeight="0px" prefWidth="0px"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="433px" prefWidth="781px"/>
   <Button cursor="0" name="button" parent="view" prefHeight="20px" prefWidth="70px" text="button">
-    <AnchorsPaneConstraints bottom="13px" height="20px" right="97px" width="70px"/>
+    <AnchorsPaneConstraints bottom="14px" height="20px" right="11px" width="70px"/>
   </Button>
-  <ModelGrid cursor="0" name="modelGrid" parent="view" prefHeight="210px" prefWidth="660px">
-    <AnchorsPaneConstraints height="210px" left="10px" right="7px" top="10px"/>
+  <ModelGrid cursor="0" data="allPets" name="modelGrid" parent="view" prefHeight="100px" prefWidth="760px">
+    <AnchorsPaneConstraints height="100px" left="10px" right="11px" top="10px"/>
+    <ServiceGridColumn name="colService" resizable="true"/>
+    <ModelGridColumn field="pets_id" name="colPets_id" title="colPets_id" width="123px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="cOwners" name="colOwner_id" title="colOwner_id" width="122px">
+      <ModelCombo displayField="lastname" displayList="allOwners"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="petTypes" name="colType_id" title="colType_id" width="123px">
+      <ModelCombo displayField="name" displayList="petTypesQuery"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="name" name="colName" title="colName" width="122px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="birthdate" name="colBirthdate" title="colBirthdate" width="123px">
+      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="field1" name="colField1" title="colField1" width="122px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+  </ModelGrid>
+  <ModelGrid cursor="0" data="allOwners" name="modelGrid1" parent="view" prefHeight="100px" prefWidth="760px">
+    <AnchorsPaneConstraints height="100px" left="10px" right="11px" top="120px"/>
+    <ServiceGridColumn name="colService" resizable="true"/>
+    <ModelGridColumn field="owners_id" name="colOwners_id" title="colOwners_id" width="105px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="firstname" name="colFirstname" title="colFirstname" width="105px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="lastname" name="colLastname" title="colLastname" width="105px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="address" name="colAddress" title="colAddress" width="105px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="city" name="colCity" title="colCity" width="105px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="telephone" name="colTelephone" title="colTelephone" width="105px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="email" name="colEmail" title="colEmail" width="105px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+  </ModelGrid>
+  <ModelGrid cursor="0" data="allOwners" field="cursor.ownersCollection" name="modelGrid2" parent="view" prefHeight="130px" prefWidth="760px">
+    <AnchorsPaneConstraints height="130px" left="10px" top="230px" width="760px"/>
+    <ModelGridColumn field="cursor.ownersCollection" name="column" title="column" width="374px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="name" name="column1" title="column" width="373px">
+      <ModelFormattedField/>
+    </ModelGridColumn>
+    <ModelGridColumn field="type_id" name="column2" title="column">
+      <ModelFormattedField/>
+    </ModelGridColumn>
   </ModelGrid>
 </layout>

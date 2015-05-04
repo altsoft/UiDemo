@@ -17,109 +17,16 @@ function OwnerView() {
         if (aID) {
             model.ownerQuery.params.ownerID = aID;
             model.petsQuery.params.owner_id = aID;
+            model.visitsQuery.params.ownerID = aID;
             model.requery();
         } else {
             model.ownerQuery.push({});
+            var aID = model.ownerQuery.schema.owners_id;
+            model.petsQuery.params.owner_id = aID;
+            model.visitsQuery.params.ownerID = aID;
         }
         form.showModal();
     };
-
-
-//var DEFAULT_PET_TYPE = 2;// Dog
-//
-///**
-// * Save button's click event handler.
-// * @param evt Event object
-// */
-//function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-//    if (model.modified) {
-//        var message = validate();
-//        if (!message) {
-//            model.save(function() {
-//                close(owner.OWNERS_ID);
-//            });
-//        } else {
-//            alert(message);
-//        }
-//    } else {
-//        close();
-//    }
-//}//GEN-LAST:event_btnSaveActionPerformed
-//
-///**
-// * Cancel button's click event handler.
-// * @param evt Event object
-// */
-//function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
-//    close();
-//}//GEN-LAST:event_btnCancelActionPerformed
-//
-///**
-// * Data model's OnRequired event handler.
-// * @param evt Event object
-// */
-//function owner_OnRequeried(evt) {//GEN-FIRST:event_owner_OnRequeried
-//    if (!ownerID) {
-//        owner.insert();
-//    }
-//}//GEN-LAST:event_owner_OnRequeried
-//
-///**
-// * Add pet button's click event handler.
-// * @param evt Event object
-// */
-//function btnAddPetActionPerformed(evt) {//GEN-FIRST:event_btnAddPetActionPerformed
-//    pets.insert(
-//            pets.md.OWNER, owner.OWNERS_ID,
-//            pets.md.TYPE, DEFAULT_PET_TYPE
-//            );
-//}//GEN-LAST:event_btnAddPetActionPerformed
-//
-///**
-// * Delete pet button's click event handler. Deletes selected pet.
-// * @param evt Event object
-// */
-//function btnDeletePetActionPerformed(evt) {//GEN-FIRST:event_btnDeletePetActionPerformed
-//    if (confirm('Delete pet?')) {
-//        pets.deleteRow();
-//    }
-//}//GEN-LAST:event_btnDeletePetActionPerformed
-//
-///**
-// * Add visit button's click event handler.
-// * @param evt Event object
-// */
-//function btnAddVisitActionPerformed(evt) {//GEN-FIRST:event_btnAddVisitActionPerformed
-//    if (pets.PETS_ID)
-//        visits.insert();//(visits.md.PET, pets.PETS_ID);
-//    else
-//        alert("Select a pet please.");
-//}//GEN-LAST:event_btnAddVisitActionPerformed
-//
-///**
-// * Delete visit button's click event handler.
-// * @param evt Event object
-// */
-//function btnDeleteVisitActionPerformed(evt) {//GEN-FIRST:event_btnDeleteVisitActionPerformed
-//    if (confirm('Delete visit?')) {
-//        visits.deleteRow();
-//    }
-//}//GEN-LAST:event_btnDeleteVisitActionPerformed
-//
-///**
-// * Pet's entity cursor movement event handler.
-// * @param evt Event object
-// */
-//function petsWillScroll(evt) {//GEN-FIRST:event_petsWillScroll
-//    Logger.info('Pets scroll event.');
-//    var message = validateVisits();
-//    if (message) {
-//        alert(message);
-//        return false;
-//    }
-//    return true;
-//}//GEN-LAST:event_petsWillScroll
-//
 
     /**
      * Validates the view.

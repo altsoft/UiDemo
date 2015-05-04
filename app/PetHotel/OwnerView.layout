@@ -40,20 +40,17 @@
     <AnchorsPaneConstraints height="310px" left="0px" right="-1px" top="270px"/>
   </SplitPane>
   <AnchorsPane cursor="0" name="panel" parent="splitPane" prefHeight="310px" prefWidth="400px"/>
-  <ModelGrid cursor="0" data="ownerQuery" field="cursor.petsQuery" insertable="false" name="grdPets" parent="panel" prefHeight="270px" prefWidth="397px">
+  <ModelGrid cursor="0" data="petsQuery" insertable="false" name="grdPets" parent="panel" prefHeight="270px" prefWidth="397px">
     <AnchorsPaneConstraints bottom="-1px" left="0px" right="3px" top="41px"/>
-    <ServiceGridColumn name="rows-header-service" resizable="true"/>
-    <ModelGridColumn field="name" name="petName" title="Name" width="91px">
+    <CheckGridColumn name="column"/>
+    <ModelGridColumn field="name" name="petName" title="Name" width="121px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="type_id" name="petType" sortField="" title="Type" width="90px">
+    <ModelGridColumn field="sPetTypes" name="petType" sortField="" title="Type" width="121px">
       <ModelCombo displayField="name" displayList="petTypesQuery"/>
     </ModelGridColumn>
-    <ModelGridColumn field="birthdate" name="birthdate" title="Birthdate" width="91px">
+    <ModelGridColumn field="birthdate" name="birthdate" title="Birthdate" width="120px">
       <ModelDate dateFormat="dd.MM.yyyy"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="Field" name="column" title="column" width="90px">
-      <ModelCombo displayField="name" displayList="petTypesQuery"/>
     </ModelGridColumn>
   </ModelGrid>
   <ToolBar cursor="0" name="toolBar" opaque="false" parent="panel" prefHeight="42px" prefWidth="397px">
@@ -62,19 +59,18 @@
   <Button cursor="0" focusable="false" horizontalTextPosition="0" icon="PetHotel/img/list-add.png" name="btnAddPet" parent="toolBar" prefHeight="42px" prefWidth="32px" toolTipText="New pet" verticalTextPosition="3"/>
   <Button cursor="0" focusable="false" horizontalTextPosition="0" icon="PetHotel/img/list-remove.png" name="btnDeletePet" parent="toolBar" prefHeight="42px" prefWidth="32px" toolTipText="Delete" verticalTextPosition="3"/>
   <AnchorsPane cursor="0" name="panel1" parent="splitPane" prefHeight="310px" prefWidth="384px"/>
-  <ModelGrid cursor="0" data="ownerQuery" name="grdVisits" parent="panel1" prefHeight="270px" prefWidth="380px">
+  <ModelGrid cursor="0" data="petsQuery" field="cursor.visitsCollection" name="grdVisits" parent="panel1" prefHeight="270px" prefWidth="380px">
     <AnchorsPaneConstraints bottom="-1px" left="0px" right="4px" top="41px"/>
-    <ServiceGridColumn name="rows-header-service" resizable="true"/>
-    <ModelGridColumn field="FROMDATE" name="fromDate" title="From" width="86px">
-      <ModelDate dateFormat="dd.MM.yyyy"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="TODATE" name="toDate" title="To" width="86px">
-      <ModelDate dateFormat="dd.MM.yyyy"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="DESCRIPTION" name="description" title="Description" width="87px">
+    <ModelGridColumn field="fromdate" name="fromDate" title="From Date" width="92px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="ispaid" name="isPaid" title="Is Paid" width="86px">
+    <ModelGridColumn field="todate" name="toDate" title="To Date" width="92px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="description" name="description" title="Description" width="92px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="ispaid" name="isPaid" title="Paid" width="91px">
       <ModelCheckBox/>
     </ModelGridColumn>
   </ModelGrid>
