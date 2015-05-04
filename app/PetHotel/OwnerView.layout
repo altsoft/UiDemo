@@ -59,7 +59,7 @@
   <Button cursor="0" focusable="false" horizontalTextPosition="0" icon="PetHotel/img/list-add.png" name="btnAddPet" parent="toolBar" prefHeight="42px" prefWidth="32px" toolTipText="New pet" verticalTextPosition="3"/>
   <Button cursor="0" focusable="false" horizontalTextPosition="0" icon="PetHotel/img/list-remove.png" name="btnDeletePet" parent="toolBar" prefHeight="42px" prefWidth="32px" toolTipText="Delete" verticalTextPosition="3"/>
   <AnchorsPane cursor="0" name="panel1" parent="splitPane" prefHeight="310px" prefWidth="384px"/>
-  <ModelGrid cursor="0" data="petsQuery" field="cursor.visitsCollection" name="grdVisits" parent="panel1" prefHeight="270px" prefWidth="380px">
+  <ModelGrid cursor="0" data="visitsQuery" name="grdVisits" parent="panel1" prefHeight="270px" prefWidth="380px">
     <AnchorsPaneConstraints bottom="-1px" left="0px" right="4px" top="41px"/>
     <ModelGridColumn field="fromdate" name="fromDate" title="From Date" width="92px">
       <ModelFormattedField format=""/>
