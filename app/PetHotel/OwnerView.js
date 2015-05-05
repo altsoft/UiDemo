@@ -93,13 +93,13 @@ function OwnerView() {
     function validateVisits() {
         var message = "";
         form.grdVisits.data.forEach(function (visit) {
-            if (!visit.FROMDATE) {
+            if (!visit.fromdate) {
                 message += "Visit from date is required.\n";
             }
-            if (!visit.TODATE) {
+            if (!visit.todate) {
                 message += "Visit to date is required.\n";
             }
-            if (visit.FROMDATE >= visit.TODATE) {
+            if (visit.fromdate >= visit.todate) {
                 message += "Visit 'from' date must be before 'to' date.\n";
             }
         });
