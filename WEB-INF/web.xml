@@ -17,7 +17,7 @@
     <load-on-startup>1</load-on-startup>
     <async-supported>true</async-supported>
     <multipart-config>
-      <location>/home/jskonst/workspace/aPlatypusUiDemo/pub</location>
+      <location>/home/user/workspace/platypusuidemo/pub</location>
       <max-file-size>2097152</max-file-size>
       <max-request-size>2165824</max-request-size>
       <file-size-threshold>1048576</file-size-threshold>
@@ -28,20 +28,8 @@
     <url-pattern>/application/*</url-pattern>
   </servlet-mapping>
   <resource-ref>
-    <description>jdbc:h2:tcp://localhost/~/demoDB [test on PUBLIC]</description>
-    <res-ref-name>demoDb</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <resource-ref>
-    <description>jdbc:h2:tcp://localhost/~/pet_hotel [test on PUBLIC]</description>
-    <res-ref-name>pet_hotel</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <resource-ref>
-    <description>jdbc:h2:tcp://localhost/~/pet_hotel1 [test on PUBLIC]</description>
-    <res-ref-name>jdbc:h2:tcp://localhost/~/pet_hotel1 [test on PUBLIC]</res-ref-name>
+    <description>jdbc:h2:tcp://localhost/~/testExport [test on PUBLIC]</description>
+    <res-ref-name>dbDemo</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
@@ -52,14 +40,20 @@
     <res-auth>Container</res-auth>
   </resource-ref>
   <resource-ref>
-    <description>jdbc:mysql://ru101.atservers.net:3306/gameProject?zeroDateTimeBehavior=convertToNull [developer on Default schema]</description>
-    <res-ref-name>gameProject</res-ref-name>
+    <description>jdbc:h2:tcp://localhost/~/workspace/pethotel/db/pet_hotel [test on PUBLIC]</description>
+    <res-ref-name>pet_hotel</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
   <resource-ref>
     <description>jdbc:oracle:thin:@asvr:1521:adb [eas on EAS]</description>
     <res-ref-name>eas</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  <resource-ref>
+    <description>jdbc:oracle:thin:@asvr:1521:adb [hr on HR]</description>
+    <res-ref-name>easHR</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>

@@ -58,7 +58,7 @@ function OwnersView() {
     };
 
     form.btnReport.onActionPerformed = function (event) {
-       var srvModule = new P.ServerModule("serverModule");
-       srvModule.execute();
+//       var srvModule = new P.ServerModule("serverModule");
+//       srvModule.execute();
     };
 }

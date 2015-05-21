@@ -46,7 +46,6 @@ function scrollTest() {
 //    lbl1.width = 50;
 //    lbl1.height = 50;
 //
-    pnl1.add(lbl1);
     
     
 //    pnl.add(pnl1);

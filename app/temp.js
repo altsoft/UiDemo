@@ -17,4 +17,9 @@ function temp() {
         // TODO : place your code here
     });
     
+    form.button.onActionPerformed = function(event) {
+        P.Logger.info(model);
+        P.Logger.info("here");
+        
+    };
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="300px" prefWidth="400px"/>
-  <ModelDate cursor="0" datePicker="false" name="modelDate" parent="view" prefHeight="27px" prefWidth="340px">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="100px" prefWidth="400px"/>
+  <ModelDate cursor="0" name="modelDate" parent="view" prefHeight="27px" prefWidth="340px">
     <AnchorsPaneConstraints height="27px" left="30px" top="20px" width="340px"/>
   </ModelDate>
   <Button cursor="0" name="button" parent="view" prefHeight="20px" prefWidth="70px" text="button">

@@ -144,6 +144,7 @@ function OwnerView() {
         form.close();
     };
     form.btnSave.onActionPerformed = function (event) {
+        
         if (model.modified) {
             var message = validate();
             if (!message) {

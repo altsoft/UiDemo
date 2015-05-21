@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="443px" prefWidth="580px"/>
-  <ModelGrid cursor="0" data="qPetTypes" name="modelGrid" parent="view" prefHeight="320px" prefWidth="560px">
-    <AnchorsPaneConstraints height="320px" left="10px" right="10px" top="10px"/>
-    <ServiceGridColumn name="colService"/>
-    <ModelGridColumn field="pettypes_id" name="colPettypes_id" title="colPettypes_id" width="263px">
-      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="name" name="colName" title="colName" width="262px">
-      <ModelFormattedField/>
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="300px" prefWidth="400px"/>
+  <ModelGrid cursor="0" data="scriptData" name="modelGrid" parent="view" prefHeight="230px" prefWidth="380px">
+    <AnchorsPaneConstraints bottom="60px" left="10px" right="10px" top="10px"/>
+    <ServiceGridColumn name="colService" resizable="true"/>
+    <ModelGridColumn background="#d01616" field="property1Name" name="colProperty1Name" title="Some property1 description" width="345px">
+      <ModelFormattedField format=""/>
     </ModelGridColumn>
   </ModelGrid>
+  <Button cursor="0" name="button" parent="view" prefHeight="20px" prefWidth="70px" text="button">
+    <AnchorsPaneConstraints bottom="20px" height="20px" right="20px" width="70px"/>
+  </Button>
 </layout>

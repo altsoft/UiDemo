@@ -27,7 +27,7 @@
   <Label cursor="0" name="lblFirstName" parent="view" prefHeight="24px" prefWidth="86px" text="First Name">
     <AnchorsPaneConstraints height="24px" left="20px" top="37px" width="86px"/>
   </Label>
-  <ModelFormattedField cursor="0" data="ownerQuery" field="cursor.firstname" format="" name="edFirstName" parent="view" prefHeight="27px" prefWidth="648px">
+  <ModelFormattedField cursor="0" data="ownerQuery" field="firstname" format="" name="edFirstName" parent="view" prefHeight="27px" prefWidth="648px">
     <AnchorsPaneConstraints height="27px" left="130px" right="11px" top="36px"/>
   </ModelFormattedField>
   <Button cursor="0" name="btnSave" parent="view" prefHeight="27px" prefWidth="84px" text="OK">
