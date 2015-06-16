@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="331px" prefWidth="626px"/>
+  <BorderPane background="#ffffff" cursor="0" name="panel" parent="view" prefHeight="30px" prefWidth="230px">
+    <AnchorsPaneConstraints height="30px" left="10px" top="10px" width="230px"/>
+  </BorderPane>
+  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="281px" prefWidth="626px">
+    <AnchorsPaneConstraints bottom="0px" left="0px" right="0px" top="50px"/>
+    <ServiceGridColumn name="colService" resizable="true"/>
+    <ModelGridColumn field="visit_id" name="colVisit_id" title="colVisit_id" width="84px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="pet" name="colPet_id" title="colPet_id" width="85px">
+      <ModelCombo displayField="name" displayList="qAllPets"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="fromdate" name="colFromdate" title="colFromdate" width="84px">
+      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="todate" name="colTodate" title="colTodate" width="85px">
+      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="description" name="colDescription" title="colDescription" width="84px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="ispaid" name="colIspaid" title="colIspaid" width="85px">
+      <ModelCheckBox/>
+    </ModelGridColumn>
+    <ModelGridColumn field="cost" name="colCost" title="colCost" width="84px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+  </ModelGrid>
+</layout>

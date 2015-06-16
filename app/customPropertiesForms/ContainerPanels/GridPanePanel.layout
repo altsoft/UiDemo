@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="274px" prefWidth="364px"/>
+  <FormattedField cursor="0" format="" name="ffColl" parent="view" prefHeight="27px" prefWidth="115px" text="1">
+    <AnchorsPaneConstraints height="27px" left="120px" top="240px" width="115px"/>
+  </FormattedField>
+  <Label cursor="0" horizontalAlignment="10" name="label12" parent="view" prefHeight="17px" prefWidth="60px" text="Coll">
+    <AnchorsPaneConstraints height="17px" left="12px" top="245px" width="60px"/>
+  </Label>
+  <FormattedField cursor="0" format="" name="ffRow" parent="view" prefHeight="27px" prefWidth="115px" text="1">
+    <AnchorsPaneConstraints height="27px" left="120px" top="204px" width="115px"/>
+  </FormattedField>
+  <Label cursor="0" horizontalAlignment="10" name="label2" parent="view" prefHeight="17px" prefWidth="72px" text="Row">
+    <AnchorsPaneConstraints height="17px" left="12px" top="209px" width="72px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label13" parent="view" prefHeight="17px" prefWidth="42px" text="VGap">
+    <AnchorsPaneConstraints height="17px" left="12px" top="126px" width="42px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="72px" text="HGap">
+    <AnchorsPaneConstraints height="17px" left="12px" top="89px" width="72px"/>
+  </Label>
+  <FormattedField cursor="0" format="" name="ffRows" parent="view" prefHeight="27px" prefWidth="115px" text="3">
+    <AnchorsPaneConstraints height="27px" left="120px" top="12px" width="115px"/>
+  </FormattedField>
+  <FormattedField cursor="0" format="" name="ffVGap" parent="view" prefHeight="27px" prefWidth="115px" text="0">
+    <AnchorsPaneConstraints height="27px" left="120px" top="121px" width="115px"/>
+  </FormattedField>
+  <FormattedField cursor="0" format="" name="ffHGap" parent="view" prefHeight="27px" prefWidth="115px" text="0">
+    <AnchorsPaneConstraints height="27px" left="120px" top="84px" width="115px"/>
+  </FormattedField>
+  <FormattedField cursor="0" format="" name="ffColls" parent="view" prefHeight="27px" prefWidth="115px" text="3">
+    <AnchorsPaneConstraints height="27px" left="120px" top="48px" width="115px"/>
+  </FormattedField>
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="17px" prefWidth="72px" text="Rows">
+    <AnchorsPaneConstraints height="17px" left="12px" top="17px" width="72px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label1" parent="view" prefHeight="17px" prefWidth="60px" text="Colls">
+    <AnchorsPaneConstraints height="17px" left="12px" top="53px" width="60px"/>
+  </Label>
+  <Button cursor="0" name="btnSetGrid" parent="view" prefHeight="36px" prefWidth="144px" text="Set Grid">
+    <AnchorsPaneConstraints height="36px" left="120px" top="156px" width="144px"/>
+  </Button>
+</layout>
