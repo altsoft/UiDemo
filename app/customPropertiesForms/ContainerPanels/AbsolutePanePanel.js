@@ -12,6 +12,7 @@ function AbsolutePanePanel(aPlaygroundPanel) {
     var internalContainer;
     var cModifiers;
     var addPanel;
+    var demoElementsList;
     self.show = function () {
         form.show();
     };
@@ -47,31 +48,43 @@ function AbsolutePanePanel(aPlaygroundPanel) {
             height: aElement.height
         });
         aElement.toolTipText = "num " + counter + " id:" + internalContainer.count;
-        
+
         aElement.onMousePressed = function (event) {
-        var leftOffset = event.x;
-        var topOffset = event.y;
-        internalContainer.onMouseMoved = function (event) {
-            aElement.left = event.x - leftOffset;
-            aElement.top = event.y - topOffset;
+            var leftOffset = event.x;
+            var topOffset = event.y;
+
+            internalContainer.onMouseMoved = function (event) {
+                aElement.left = event.x - leftOffset;
+                aElement.top = event.y - topOffset;
+                P.Logger.info("move x:" + event.x + " y:" + event.y);
+                infoCallBack(aElement);
+            };
+
+            internalContainer.onMouseReleased = function (event) {
+                aElement.left = event.x - leftOffset;
+                aElement.top = event.y - topOffset;
+                internalContainer.onMouseMoved = null;
+                aElement.onMouseReleased = null;
+            };
+
+            aElement.onMouseReleased = function () {
+                internalContainer.onMouseMoved = null;
+                aElement.onMouseReleased = null;
+            };
         };
-        aElement.onMouseReleased = function () {
-            internalContainer.onMouseMoved = null;
-            aElement.onMouseReleased = null;
-        };
-    };
-        
-        
+
+
     };
     preparations();
     cModifiers = new ContainersModificator(internalContainer, externalContainer);
     addPanel = new AddComponentContainer(cModifiers, infoCallBack, modifyCallback, deleteCallback, placeElement);
+    demoElementsList = new ElementsList();
     
     self.showOnPanel = function (aPanel) {
+        demoElementsList.showOnPanel(aPanel);
         aPanel.add(form.view);
         addPanel.showOnPanel(aPanel);
         cModifiers.showOnPanel(aPanel);
-
     };
 
 

@@ -12,11 +12,13 @@ function AddComponentContainer(aModifyContainer, aInfoCallback, aModifyCallback,
     var modifyCallback = aModifyCallback;
     var placeElement = aPlaceElement;
     var deleteCallback = aDeleteCallback;
-    var colorsArray = [P.Color.BLUE, P.Color.GRAY, P.Color.GREEN, P.Color.LIGHT_GRAY,
+    var colorsArray = [P.Color.BLUE, P.Color.GRAY, P.Color.GREEN,
         P.Color.MAGENTA, P.Color.ORANGE, P.Color.PINK, P.Color.RED, P.Color.WHITE, P.Color.YELLOW];
+    
     self.show = function () {
         form.show();
     };
+    
     function preparations() {
 
     }
@@ -51,14 +53,6 @@ function AddComponentContainer(aModifyContainer, aInfoCallback, aModifyCallback,
 //                return;
 //            }
         };
-        newPnl.onMouseDown = function(event){
-            P.Logger.info(event);
-        };
-        
-        newPnl.onmousedown = function(event){
-            P.Logger.info(event);
-        };
-        
         placeElement(newPnl, counter);
         label.text = "Click me!";
         counter += 1;

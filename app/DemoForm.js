@@ -19,7 +19,7 @@ function DemoForm() {
     form.modelMenu.column.field = "name";
     form.modelMenu.parentField = 'parentField';
     form.modelMenu.childrenField = 'childrenField';
-
+    form.pnlPlayground.background = new P.Color(P.Color.GREEN);
     form.modelMenu.onMouseClicked = function (event) {
         form.panel.clear();
         form.pnlPlayground.clear(); //Clean demo components place

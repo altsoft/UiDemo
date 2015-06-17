@@ -27,13 +27,13 @@ function ContainersModificator(aDemoContainer, aPlaygroundContainer) {
         //Добавить панель Scroll'a
         //Добавить панель с элементами
         //var externalContainer = new P.AnchorsPane();
-        playgroundContainer.clear();
-        playgroundContainer.add(demoContainer, new P.Anchors(2, null, 2, 2, null, 2));
+//        playgroundContainer.clear();
+//        playgroundContainer.add(demoContainer, new P.Anchors(2, null, 2, 2, null, 2));
 //        externalContainer.clear();
         playgroundContainer.clear();
         var scroll = new P.ScrollPane();
-        scroll.width = 100;
-        scroll.height = 100;
+//        scroll.width = 100;
+//        scroll.height = 100;
         scroll.background = new P.Color(P.Color.LIGHT_GRAY);
         scroll.add(demoContainer);
         playgroundContainer.add(scroll, new P.Anchors(2, null, 2, 2, null, 2));
@@ -81,6 +81,6 @@ function ContainersModificator(aDemoContainer, aPlaygroundContainer) {
             self.addScroll();
         } else {
             self.deleteScroll();
-        }// TODO Добавьте здесь свой код
+        }
     };
 }
