@@ -68,11 +68,11 @@ function MainView() {
     
     
     self.show = function () {
-        form.show();
-        P.invokeLater(function () {
+            form.show();
+       P.invokeLater(function () {
             form.maximize();
         });
-        form.panel.clear();
+         form.panel.clear();
     };
 
 

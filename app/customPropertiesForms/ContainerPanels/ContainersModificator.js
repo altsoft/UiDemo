@@ -25,7 +25,7 @@ function ContainersModificator(aDemoContainer, aPlaygroundContainer) {
     self.addScroll = function() {
         //Необходимо очистить рабочую облсть
         //Добавить панель Scroll'a
-        //Добавить панель с элементами
+        //Добавить панель с элементамиt
         //var externalContainer = new P.AnchorsPane();
 //        playgroundContainer.clear();
 //        playgroundContainer.add(demoContainer, new P.Anchors(2, null, 2, 2, null, 2));
