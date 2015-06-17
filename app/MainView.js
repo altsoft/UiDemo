@@ -4,11 +4,10 @@
  */
 
 var global = this;
-function DemoForm() {
+function MainView() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-    var clickNum = 0;
     var exPanelStandard;
     var exPanelModel;
     var exPanelContainer;
@@ -20,6 +19,12 @@ function DemoForm() {
     form.modelMenu.parentField = 'parentField';
     form.modelMenu.childrenField = 'childrenField';
     form.pnlPlayground.background = new P.Color(P.Color.GREEN);
+    
+    form.modelMenu.onItemSelected = function(event) {
+        form.modelMenu.onMouseClicked();
+    };
+
+    
     form.modelMenu.onMouseClicked = function (event) {
         form.panel.clear();
         form.pnlPlayground.clear(); //Clean demo components place
@@ -60,7 +65,8 @@ function DemoForm() {
 //        }
 
     };
-
+    
+    
     self.show = function () {
         form.show();
         P.invokeLater(function () {
