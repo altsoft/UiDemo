@@ -4,11 +4,10 @@
  */
 
 var global = this;
-function DemoForm() {
+function MainView() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-    var clickNum = 0;
     var exPanelStandard;
     var exPanelModel;
     var exPanelContainer;
@@ -19,6 +18,12 @@ function DemoForm() {
     form.modelMenu.column.field = "name";
     form.modelMenu.parentField = 'parentField';
     form.modelMenu.childrenField = 'childrenField';
+    form.pnlPlayground.background = new P.Color(P.Color.GREEN);
+
+    form.modelMenu.onItemSelected = function (event) {
+        form.modelMenu.onMouseClicked();
+    };
+
 
     form.modelMenu.onMouseClicked = function (event) {
         form.panel.clear();
@@ -43,7 +48,7 @@ function DemoForm() {
                 common.showOnPanel(form.panel);
             });
         }
-        
+
         var demoPane = form.modelMenu.selected[0].getDisplayForm();
 
 //        if (customForm) {
@@ -61,11 +66,16 @@ function DemoForm() {
 
     };
 
+
     self.show = function () {
-        form.show();
-        P.invokeLater(function () {
-            form.maximize();
-        });
+        try {
+            form.view.showOn(document.getElementById('Main'));
+        } catch (ex) {
+            form.show();
+            P.invokeLater(function () {
+                form.maximize();
+            });
+        }
         form.panel.clear();
     };
 

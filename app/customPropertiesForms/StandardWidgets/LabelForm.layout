@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout icon="" title="" view="view">
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
   <ButtonGroup name="btnGrpHorisontalPosition"/>
   <ButtonGroup name="buttonGroup"/>
   <ButtonGroup name="buttonGroup1"/>
@@ -7,7 +7,7 @@
   <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="144px" prefWidth="372px">
     <AnchorsPaneConstraints bottom="0px" height="144px" left="0px" right="0px" top="0px" width="372px"/>
   </AnchorsPane>
-  <Label cursor="0" horizontalAlignment="10" horizontalTextPosition="4" name="label" parent="panel" prefHeight="17px" prefWidth="108px" text="Text">
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="panel" prefHeight="17px" prefWidth="108px" text="Text">
     <AnchorsPaneConstraints height="17px" left="12px" top="17px" width="108px"/>
   </Label>
   <Label cursor="0" horizontalAlignment="10" name="label1" parent="panel" prefHeight="17px" prefWidth="34px" text="Icon">
@@ -25,7 +25,7 @@
   <Label cursor="0" horizontalAlignment="10" name="label4" parent="panel" prefHeight="17px" prefWidth="17px" text="px">
     <AnchorsPaneConstraints height="17px" left="312px" top="89px" width="17px"/>
   </Label>
-  <Button cursor="0" name="btnIcon" parent="panel" prefHeight="29px" prefWidth="120px" text="Icon">
+  <Button cursor="0" name="btnIcon" parent="panel" prefHeight="29px" prefWidth="120px" text="Select file...">
     <AnchorsPaneConstraints height="29px" left="180px" top="48px" width="120px"/>
   </Button>
 </layout>
