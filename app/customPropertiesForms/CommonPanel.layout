@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout icon="" title="" view="view">
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
   <AnchorsPane cursor="0" name="view" prefHeight="458px" prefWidth="367px"/>
   <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="456px" prefWidth="360px">
     <AnchorsPaneConstraints height="456px" left="0px" top="0px" width="360px"/>
@@ -10,13 +10,13 @@
     <AnchorsPaneConstraints height="29px" left="108px" top="336px" width="107px"/>
   </ToggleButton>
   <Label cursor="0" horizontalAlignment="10" name="label21111111" parent="panel" prefHeight="17px" prefWidth="96px" text="Opaque">
-    <AnchorsPaneConstraints height="17px" left="12px" top="344px" width="96px"/>
+    <AnchorsPaneConstraints height="17px" left="12px" top="342px" width="96px"/>
   </Label>
   <ToggleButton cursor="0" name="tglFocusable" parent="panel" prefHeight="29px" prefWidth="107px" text="Focusable">
     <AnchorsPaneConstraints height="29px" left="108px" top="302px" width="107px"/>
   </ToggleButton>
   <Label cursor="0" horizontalAlignment="10" name="label2111111" parent="panel" prefHeight="17px" prefWidth="96px" text="Focusable">
-    <AnchorsPaneConstraints height="17px" left="12px" top="310px" width="96px"/>
+    <AnchorsPaneConstraints height="17px" left="12px" top="308px" width="96px"/>
   </Label>
   <Label cursor="0" horizontalAlignment="10" name="label211111" parent="panel" prefHeight="17px" prefWidth="96px" text="Enabled">
     <AnchorsPaneConstraints height="17px" left="12px" top="270px" width="96px"/>
@@ -30,11 +30,11 @@
   <Label cursor="0" horizontalAlignment="10" name="label2111" parent="panel" prefHeight="17px" prefWidth="96px" text="Border">
     <AnchorsPaneConstraints height="17px" left="12px" top="192px" width="96px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="label211" parent="panel" prefHeight="17px" prefWidth="96px" text="Toltip">
+  <Label cursor="0" horizontalAlignment="10" name="label211" parent="panel" prefHeight="17px" prefWidth="96px" text="Tooltip">
     <AnchorsPaneConstraints height="17px" left="12px" top="162px" width="96px"/>
   </Label>
   <Label cursor="0" horizontalAlignment="10" name="label21" parent="panel" prefHeight="17px" prefWidth="96px" text="Foreground">
-    <AnchorsPaneConstraints height="17px" left="12px" top="84px" width="96px"/>
+    <AnchorsPaneConstraints height="17px" left="12px" top="89px" width="96px"/>
   </Label>
   <ToggleButton cursor="0" name="tbVisibility" parent="panel" prefHeight="29px" prefWidth="107px" text="Visible">
     <AnchorsPaneConstraints height="29px" left="108px" top="12px" width="107px"/>
@@ -46,7 +46,7 @@
     <AnchorsPaneConstraints height="17px" left="12px" top="53px" width="96px"/>
   </Label>
   <Label cursor="0" horizontalAlignment="10" name="label3" parent="panel" prefHeight="17px" prefWidth="42px" text="Font">
-    <AnchorsPaneConstraints height="17px" left="12px" top="120px" width="42px"/>
+    <AnchorsPaneConstraints height="17px" left="12px" top="125px" width="42px"/>
   </Label>
   <TextField cursor="0" name="txtToltip" parent="panel" prefHeight="27px" prefWidth="168px" text="TooltipText">
     <AnchorsPaneConstraints height="27px" left="108px" top="157px" width="168px"/>
@@ -63,7 +63,7 @@
   <ModelFormattedField cursor="0" format="" name="modelForeground" parent="panel" prefHeight="27px" prefWidth="168px">
     <AnchorsPaneConstraints height="27px" left="108px" top="84px" width="168px"/>
   </ModelFormattedField>
-  <Button cursor="3" name="btnCursor" parent="panel" prefHeight="29px" prefWidth="108px" text="Cursor">
+  <Button cursor="3" name="btnCursor" parent="panel" prefHeight="29px" prefWidth="108px" text="Select file...">
     <AnchorsPaneConstraints height="29px" left="108px" top="228px" width="108px"/>
   </Button>
 </layout>

@@ -36,34 +36,34 @@ function GridMenuModule() {
     plainWidget = createPlainWidget("Button", P.Button, standardWidgets, "ButtonForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Toggle Button", P.ToggleButton, standardWidgets, "ToggleButtonForm");
+    plainWidget = createPlainWidget("Toggle button", P.ToggleButton, standardWidgets, "ToggleButtonForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("CheckBox", P.CheckBox, standardWidgets, "CheckBoxForm");
+    plainWidget = createPlainWidget("Check box", P.CheckBox, standardWidgets, "CheckBoxForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("RadioButton", P.RadioButton, standardWidgets, "ButtonForm");
+    plainWidget = createPlainWidget("Radio button", P.RadioButton, standardWidgets, "ButtonForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("TextField", P.TextField, standardWidgets, "TextFieldForm");
+    plainWidget = createPlainWidget("Text field", P.TextField, standardWidgets, "TextFieldForm");
     demos.push(plainWidget);
 
     plainWidget = createPlainWidget("Slider", P.Slider, standardWidgets, "SliderForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("ProgressBar", P.ProgressBar, standardWidgets, "ProgressBarForm");
+    plainWidget = createPlainWidget("Progress bar", P.ProgressBar, standardWidgets, "ProgressBarForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("FormattedField", P.FormattedField, standardWidgets, "FormattedFieldForm");
+    plainWidget = createPlainWidget("Formatted field", P.FormattedField, standardWidgets, "FormattedFieldForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("PasswordField", P.PasswordField, standardWidgets, "FormattedFieldForm");
+    plainWidget = createPlainWidget("Password field", P.PasswordField, standardWidgets, "FormattedFieldForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("TextArea", P.TextArea, standardWidgets, "TextFieldForm");
+    plainWidget = createPlainWidget("Text area", P.TextArea, standardWidgets, "TextFieldForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("HtmlArea", P.HtmlArea, standardWidgets, "TextFieldForm");
+    plainWidget = createPlainWidget("Html area", P.HtmlArea, standardWidgets, "TextFieldForm");
     demos.push(plainWidget);
 
 //    var buttonGroup = new MenuObject();
@@ -89,32 +89,32 @@ function GridMenuModule() {
 
     var form = new ModelWidgetsForm();
     form.placeModelCheckBox();
-    var modelWidget = createModelWidget("ModelCheck", modelWidgets, "", form);
+    var modelWidget = createModelWidget("Model check", modelWidgets, "", form);
     demos.push(modelWidget);
 
     form = new ModelWidgetsForm();
     form.placeModelCombo();
-    var modelWidget = createModelWidget("ModelCombo", modelWidgets, "", form);
+    var modelWidget = createModelWidget("Model combo", modelWidgets, "", form);
     demos.push(modelWidget);
 
     form = new ModelWidgetsForm();
     form.placeModelDate();
-    var modelWidget = createModelWidget("ModelDate", modelWidgets, "", form);
+    var modelWidget = createModelWidget("Model date", modelWidgets, "", form);
     demos.push(modelWidget);
 
     form = new ModelWidgetsForm();
     form.placeModelSpin();
-    var modelWidget = createModelWidget("ModelSpin", modelWidgets, "", form);
+    var modelWidget = createModelWidget("Model spin", modelWidgets, "", form);
     demos.push(modelWidget);
     
     form = new ModelTextFields();
     form.placeModelTextFieldFormatted();
-    var modelWidget = createModelWidget("ModelFormattedField", modelWidgets, "", form);
+    var modelWidget = createModelWidget("Model formatted field", modelWidgets, "", form);
     demos.push(modelWidget);
 
     form = new ModelTextFields();
     form.placeModelTextArea();
-    var modelWidget = createModelWidget("ModelTextArea", modelWidgets, "", form);
+    var modelWidget = createModelWidget("Model text area", modelWidgets, "", form);
     demos.push(modelWidget);
 
 
@@ -145,31 +145,31 @@ function GridMenuModule() {
     demos.push(containers);
     
     var containersForm = new ContainersWidget();
-    var container = createContainer("AbsolutePane",containers,"AbsolutePanePanel",containersForm);
+    var container = createContainer("Absolute pane",containers,"AbsolutePanePanel",containersForm);
     demos.push(container);
     
-    container = createContainer("AnchorsPane",containers,"AnchorsPanePanel",containersForm);
+    container = createContainer("Anchors pane",containers,"AnchorsPanePanel",containersForm);
     demos.push(container);
     
-    container = createContainer("BorderPane",containers,"BorderPanePanel",containersForm);
+    container = createContainer("Border pane",containers,"BorderPanePanel",containersForm);
     demos.push(container);
     
-    container = createContainer("GridPane",containers,"GridPanePanel",containersForm);
+    container = createContainer("Grid pane",containers,"GridPanePanel",containersForm);
     demos.push(container);
     
-    container = createContainer("FlowPane",containers,"FlowPanePanel",containersForm);
+    container = createContainer("Flow pane",containers,"FlowPanePanel",containersForm);
     demos.push(container);
     
-    container = createContainer("CardPane",containers,"CardPanePanel",containersForm);
+    container = createContainer("Card pane",containers,"CardPanePanel",containersForm);
     demos.push(container);
     
-    container = createContainer("BoxPane",containers,"BoxPanePanel",containersForm);
+    container = createContainer("Box pane",containers,"BoxPanePanel",containersForm);
     demos.push(container);
     
 //    container = createContainer("TabbedPane",containers,"TabbedPanePanel",containersForm);
 //    demos.push(container);
     
-    container = createContainer("SplitPane",containers,"SplitPanePanel",containersForm);
+    container = createContainer("Split pane",containers,"SplitPanePanel",containersForm);
     demos.push(container);
     
 //    var scrollPane = new MenuObject();

@@ -38,7 +38,7 @@
   </AnchorsPane>
   <ModelGrid cursor="0" editable="false" name="modelMenu" parent="pnlMenu" prefHeight="390px" prefWidth="220px">
     <AnchorsPaneConstraints bottom="0px" left="0px" right="0px" top="0px"/>
-    <ModelGridColumn name="column" title="Menu" width="220px">
+    <ModelGridColumn name="column" title="Demos" width="220px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
   </ModelGrid>
