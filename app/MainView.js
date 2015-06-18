@@ -19,12 +19,12 @@ function MainView() {
     form.modelMenu.parentField = 'parentField';
     form.modelMenu.childrenField = 'childrenField';
     form.pnlPlayground.background = new P.Color(P.Color.GREEN);
-    
-    form.modelMenu.onItemSelected = function(event) {
+
+    form.modelMenu.onItemSelected = function (event) {
         form.modelMenu.onMouseClicked();
     };
 
-    
+
     form.modelMenu.onMouseClicked = function (event) {
         form.panel.clear();
         form.pnlPlayground.clear(); //Clean demo components place
@@ -48,7 +48,7 @@ function MainView() {
                 common.showOnPanel(form.panel);
             });
         }
-        
+
         var demoPane = form.modelMenu.selected[0].getDisplayForm();
 
 //        if (customForm) {
@@ -65,14 +65,18 @@ function MainView() {
 //        }
 
     };
-    
-    
+
+
     self.show = function () {
+        try {
+            form.view.showOn(document.getElementById('Main'));
+        } catch (ex) {
             form.show();
-       P.invokeLater(function () {
-            form.maximize();
-        });
-         form.panel.clear();
+            P.invokeLater(function () {
+                form.maximize();
+            });
+        }
+        form.panel.clear();
     };
 
 
