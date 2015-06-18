@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.containers.ToolBar");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.containers.ToolBar";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.ToolBar(null, aDelegate);
     });
     
@@ -444,6 +446,20 @@
              */
             P.ToolBar.prototype.nextFocusableComponent = {};
         }
+        Object.defineProperty(this, "count", {
+            get: function() {
+                var value = delegate.count;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.ToolBar){
+            /**
+             * Gets the number of components in this panel.
+             * @property count
+             * @memberOf ToolBar
+             */
+            P.ToolBar.prototype.count = 0;
+        }
         Object.defineProperty(this, "onKeyReleased", {
             get: function() {
                 var value = delegate.onKeyReleased;
@@ -460,20 +476,6 @@
              * @memberOf ToolBar
              */
             P.ToolBar.prototype.onKeyReleased = {};
-        }
-        Object.defineProperty(this, "count", {
-            get: function() {
-                var value = delegate.count;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.ToolBar){
-            /**
-             * Gets the number of components in this panel.
-             * @property count
-             * @memberOf ToolBar
-             */
-            P.ToolBar.prototype.count = 0;
         }
         Object.defineProperty(this, "onActionPerformed", {
             get: function() {

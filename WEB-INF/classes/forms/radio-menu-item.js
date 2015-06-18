@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.menu.RadioMenuItem");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.menu.RadioMenuItem";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.RadioMenuItem(null, null, null, aDelegate);
     });
     
@@ -295,23 +297,6 @@
              */
             P.RadioMenuItem.prototype.onMouseEntered = {};
         }
-        Object.defineProperty(this, "selected", {
-            get: function() {
-                var value = delegate.selected;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.selected = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.RadioMenuItem){
-            /**
-             * <code>true</code> if the menu item is selected.
-             * @property selected
-             * @memberOf RadioMenuItem
-             */
-            P.RadioMenuItem.prototype.selected = true;
-        }
         Object.defineProperty(this, "toolTipText", {
             get: function() {
                 var value = delegate.toolTipText;
@@ -328,6 +313,23 @@
              * @memberOf RadioMenuItem
              */
             P.RadioMenuItem.prototype.toolTipText = '';
+        }
+        Object.defineProperty(this, "selected", {
+            get: function() {
+                var value = delegate.selected;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.selected = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.RadioMenuItem){
+            /**
+             * <code>true</code> if the menu item is selected.
+             * @property selected
+             * @memberOf RadioMenuItem
+             */
+            P.RadioMenuItem.prototype.selected = true;
         }
         Object.defineProperty(this, "height", {
             get: function() {

@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.components.ToggleButton");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.components.ToggleButton";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.ToggleButton(null, null, null, null, null, aDelegate);
     });
     
@@ -336,23 +338,6 @@
              */
             P.ToggleButton.prototype.onMouseEntered = {};
         }
-        Object.defineProperty(this, "selected", {
-            get: function() {
-                var value = delegate.selected;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.selected = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.ToggleButton){
-            /**
-             * The state of the button.
-             * @property selected
-             * @memberOf ToggleButton
-             */
-            P.ToggleButton.prototype.selected = true;
-        }
         Object.defineProperty(this, "toolTipText", {
             get: function() {
                 var value = delegate.toolTipText;
@@ -369,6 +354,23 @@
              * @memberOf ToggleButton
              */
             P.ToggleButton.prototype.toolTipText = '';
+        }
+        Object.defineProperty(this, "selected", {
+            get: function() {
+                var value = delegate.selected;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.selected = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.ToggleButton){
+            /**
+             * The state of the button.
+             * @property selected
+             * @memberOf ToggleButton
+             */
+            P.ToggleButton.prototype.selected = true;
         }
         Object.defineProperty(this, "height", {
             get: function() {
@@ -503,23 +505,6 @@
              */
             P.ToggleButton.prototype.onComponentHidden = {};
         }
-        Object.defineProperty(this, "nextFocusableComponent", {
-            get: function() {
-                var value = delegate.nextFocusableComponent;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.nextFocusableComponent = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.ToggleButton){
-            /**
-             * Overrides the default focus traversal policy for this component's focus traversal cycle by unconditionally setting the specified component as the next component in the cycle, and this component as the specified component's previous component.
-             * @property nextFocusableComponent
-             * @memberOf ToggleButton
-             */
-            P.ToggleButton.prototype.nextFocusableComponent = {};
-        }
         Object.defineProperty(this, "iconTextGap", {
             get: function() {
                 var value = delegate.iconTextGap;
@@ -536,6 +521,23 @@
              * @memberOf ToggleButton
              */
             P.ToggleButton.prototype.iconTextGap = 0;
+        }
+        Object.defineProperty(this, "nextFocusableComponent", {
+            get: function() {
+                var value = delegate.nextFocusableComponent;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.nextFocusableComponent = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.ToggleButton){
+            /**
+             * Overrides the default focus traversal policy for this component's focus traversal cycle by unconditionally setting the specified component as the next component in the cycle, and this component as the specified component's previous component.
+             * @property nextFocusableComponent
+             * @memberOf ToggleButton
+             */
+            P.ToggleButton.prototype.nextFocusableComponent = {};
         }
         Object.defineProperty(this, "onKeyReleased", {
             get: function() {

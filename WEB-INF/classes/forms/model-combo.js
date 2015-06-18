@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.components.model.ModelCombo");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.components.model.ModelCombo";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.ModelCombo(aDelegate);
     });
     
@@ -914,17 +916,6 @@
         }
     };
         /**
-         * Redraw the component.
-         * @method redraw
-         * @memberOf ModelCombo
-         */
-        P.ModelCombo.prototype.redraw = function() {
-            var delegate = this.unwrap();
-            var value = delegate.redraw();
-            return P.boxAsJs(value);
-        };
-
-        /**
          * Tries to acquire focus for this component.
          * @method focus
          * @memberOf ModelCombo
@@ -932,6 +923,17 @@
         P.ModelCombo.prototype.focus = function() {
             var delegate = this.unwrap();
             var value = delegate.focus();
+            return P.boxAsJs(value);
+        };
+
+        /**
+         * Redraw the component.
+         * @method redraw
+         * @memberOf ModelCombo
+         */
+        P.ModelCombo.prototype.redraw = function() {
+            var delegate = this.unwrap();
+            var value = delegate.redraw();
             return P.boxAsJs(value);
         };
 

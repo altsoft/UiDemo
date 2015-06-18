@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.containers.CardPane");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.containers.CardPane";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.CardPane(null, null, aDelegate);
     });
     
@@ -446,6 +448,20 @@
              */
             P.CardPane.prototype.nextFocusableComponent = {};
         }
+        Object.defineProperty(this, "count", {
+            get: function() {
+                var value = delegate.count;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.CardPane){
+            /**
+             * Gets the number of components in this panel.
+             * @property count
+             * @memberOf CardPane
+             */
+            P.CardPane.prototype.count = 0;
+        }
         Object.defineProperty(this, "onKeyReleased", {
             get: function() {
                 var value = delegate.onKeyReleased;
@@ -462,20 +478,6 @@
              * @memberOf CardPane
              */
             P.CardPane.prototype.onKeyReleased = {};
-        }
-        Object.defineProperty(this, "count", {
-            get: function() {
-                var value = delegate.count;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.CardPane){
-            /**
-             * Gets the number of components in this panel.
-             * @property count
-             * @memberOf CardPane
-             */
-            P.CardPane.prototype.count = 0;
         }
         Object.defineProperty(this, "onActionPerformed", {
             get: function() {

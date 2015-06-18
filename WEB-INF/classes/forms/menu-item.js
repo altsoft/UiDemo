@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.menu.MenuItem");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.menu.MenuItem";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.MenuItem(null, null, null, aDelegate);
     });
     

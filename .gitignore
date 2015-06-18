@@ -6,3 +6,4 @@ META-INF
 appCache
 reports
 *lock.*
+*.trace.db

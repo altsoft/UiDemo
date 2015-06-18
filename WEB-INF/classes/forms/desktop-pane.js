@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.components.DesktopPane");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.components.DesktopPane";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.DesktopPane(aDelegate);
     });
     
@@ -674,6 +676,17 @@
         }
     };
         /**
+         * Tries to acquire focus for this component.
+         * @method focus
+         * @memberOf DesktopPane
+         */
+        P.DesktopPane.prototype.focus = function() {
+            var delegate = this.unwrap();
+            var value = delegate.focus();
+            return P.boxAsJs(value);
+        };
+
+        /**
          * Closes all frames on the pane.
          * @method closeAll
          * @memberOf DesktopPane
@@ -685,13 +698,13 @@
         };
 
         /**
-         * Tries to acquire focus for this component.
-         * @method focus
+         * Minimizes all frames on the pane.
+         * @method minimizeAll
          * @memberOf DesktopPane
          */
-        P.DesktopPane.prototype.focus = function() {
+        P.DesktopPane.prototype.minimizeAll = function() {
             var delegate = this.unwrap();
-            var value = delegate.focus();
+            var value = delegate.minimizeAll();
             return P.boxAsJs(value);
         };
 
@@ -714,17 +727,6 @@
         P.DesktopPane.prototype.maximizeAll = function() {
             var delegate = this.unwrap();
             var value = delegate.maximizeAll();
-            return P.boxAsJs(value);
-        };
-
-        /**
-         * Minimizes all frames on the pane.
-         * @method minimizeAll
-         * @memberOf DesktopPane
-         */
-        P.DesktopPane.prototype.minimizeAll = function() {
-            var delegate = this.unwrap();
-            var value = delegate.minimizeAll();
             return P.boxAsJs(value);
         };
 

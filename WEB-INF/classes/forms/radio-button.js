@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.components.RadioButton");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.components.RadioButton";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.RadioButton(null, null, null, aDelegate);
     });
     
@@ -332,23 +334,6 @@
              */
             P.RadioButton.prototype.onMouseEntered = {};
         }
-        Object.defineProperty(this, "selected", {
-            get: function() {
-                var value = delegate.selected;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.selected = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.RadioButton){
-            /**
-             * The state of the button.
-             * @property selected
-             * @memberOf RadioButton
-             */
-            P.RadioButton.prototype.selected = true;
-        }
         Object.defineProperty(this, "toolTipText", {
             get: function() {
                 var value = delegate.toolTipText;
@@ -365,6 +350,23 @@
              * @memberOf RadioButton
              */
             P.RadioButton.prototype.toolTipText = '';
+        }
+        Object.defineProperty(this, "selected", {
+            get: function() {
+                var value = delegate.selected;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.selected = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.RadioButton){
+            /**
+             * The state of the button.
+             * @property selected
+             * @memberOf RadioButton
+             */
+            P.RadioButton.prototype.selected = true;
         }
         Object.defineProperty(this, "height", {
             get: function() {

@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.Form");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.Form";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.Form(null, null, aDelegate);
     });
     
@@ -457,14 +459,13 @@
         };
 
         /**
-         * Shows the form as a dialog (modal window).
-         * @param callback a callback handler function
-         * @method showModal
+         * Shows the form as an ordinary window.
+         * @method show
          * @memberOf Form
          */
-        P.Form.prototype.showModal = function(callback) {
+        P.Form.prototype.show = function() {
             var delegate = this.unwrap();
-            var value = delegate.showModal(P.boxAsJava(callback));
+            var value = delegate.show();
             return P.boxAsJs(value);
         };
 
@@ -480,13 +481,25 @@
         };
 
         /**
-         * Shows the form as an ordinary window.
-         * @method show
+         * Shows the form as a dialog (modal window).
+         * @param callback a callback handler function
+         * @method showModal
          * @memberOf Form
          */
-        P.Form.prototype.show = function() {
+        P.Form.prototype.showModal = function(callback) {
             var delegate = this.unwrap();
-            var value = delegate.show();
+            var value = delegate.showModal(P.boxAsJava(callback));
+            return P.boxAsJs(value);
+        };
+
+        /**
+         * Maximizes this form.
+         * @method maximize
+         * @memberOf Form
+         */
+        P.Form.prototype.maximize = function() {
+            var delegate = this.unwrap();
+            var value = delegate.maximize();
             return P.boxAsJs(value);
         };
 
@@ -509,17 +522,6 @@
         P.Form.prototype.restore = function() {
             var delegate = this.unwrap();
             var value = delegate.restore();
-            return P.boxAsJs(value);
-        };
-
-        /**
-         * Maximizes this form.
-         * @method maximize
-         * @memberOf Form
-         */
-        P.Form.prototype.maximize = function() {
-            var delegate = this.unwrap();
-            var value = delegate.maximize();
             return P.boxAsJs(value);
         };
 

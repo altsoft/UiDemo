@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.components.model.grid.header.ModelGridColumn");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.components.model.grid.header.ModelGridColumn";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.ModelGridColumn(aDelegate);
     });
     
@@ -320,23 +322,12 @@
         };
 
         /**
-         * @method sortDesc
+         * @method unsort
          * @memberOf ModelGridColumn
-         * Descending column sort, works only in HTML5 */
-        P.ModelGridColumn.prototype.sortDesc = function() {
+         * Clears sort column, works only in HTML5 */
+        P.ModelGridColumn.prototype.unsort = function() {
             var delegate = this.unwrap();
-            var value = delegate.sortDesc();
-            return P.boxAsJs(value);
-        };
-
-        /**
-         *
-         * @method insertColumnNode
-         * @memberOf ModelGridColumn
-         */
-        P.ModelGridColumn.prototype.insertColumnNode = function(position, node) {
-            var delegate = this.unwrap();
-            var value = delegate.insertColumnNode(P.boxAsJava(position), P.boxAsJava(node));
+            var value = delegate.unsort();
             return P.boxAsJs(value);
         };
 
@@ -352,16 +343,6 @@
         };
 
         /**
-         * @method unsort
-         * @memberOf ModelGridColumn
-         * Clears sort column, works only in HTML5 */
-        P.ModelGridColumn.prototype.unsort = function() {
-            var delegate = this.unwrap();
-            var value = delegate.unsort();
-            return P.boxAsJs(value);
-        };
-
-        /**
          *
          * @method removeColumnNode
          * @memberOf ModelGridColumn
@@ -369,6 +350,27 @@
         P.ModelGridColumn.prototype.removeColumnNode = function(node) {
             var delegate = this.unwrap();
             var value = delegate.removeColumnNode(P.boxAsJava(node));
+            return P.boxAsJs(value);
+        };
+
+        /**
+         *
+         * @method insertColumnNode
+         * @memberOf ModelGridColumn
+         */
+        P.ModelGridColumn.prototype.insertColumnNode = function(position, node) {
+            var delegate = this.unwrap();
+            var value = delegate.insertColumnNode(P.boxAsJava(position), P.boxAsJava(node));
+            return P.boxAsJs(value);
+        };
+
+        /**
+         * @method sortDesc
+         * @memberOf ModelGridColumn
+         * Descending column sort, works only in HTML5 */
+        P.ModelGridColumn.prototype.sortDesc = function() {
+            var delegate = this.unwrap();
+            var value = delegate.sortDesc();
             return P.boxAsJs(value);
         };
 

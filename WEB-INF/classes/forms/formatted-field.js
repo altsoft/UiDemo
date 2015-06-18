@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.components.FormattedField");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.components.FormattedField";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.FormattedField(null, aDelegate);
     });
     
@@ -427,23 +429,6 @@
              */
             P.FormattedField.prototype.onComponentShown = {};
         }
-        Object.defineProperty(this, "onFormat", {
-            get: function() {
-                var value = delegate.onFormat;
-                return P.boxAsJs(value);
-            },
-            set: function(aValue) {
-                delegate.onFormat = P.boxAsJava(aValue);
-            }
-        });
-        if(!P.FormattedField){
-            /**
-             * Generated property jsDoc.
-             * @property onFormat
-             * @memberOf FormattedField
-             */
-            P.FormattedField.prototype.onFormat = {};
-        }
         Object.defineProperty(this, "onMouseMoved", {
             get: function() {
                 var value = delegate.onMouseMoved;
@@ -460,6 +445,23 @@
              * @memberOf FormattedField
              */
             P.FormattedField.prototype.onMouseMoved = {};
+        }
+        Object.defineProperty(this, "onFormat", {
+            get: function() {
+                var value = delegate.onFormat;
+                return P.boxAsJs(value);
+            },
+            set: function(aValue) {
+                delegate.onFormat = P.boxAsJava(aValue);
+            }
+        });
+        if(!P.FormattedField){
+            /**
+             * Generated property jsDoc.
+             * @property onFormat
+             * @memberOf FormattedField
+             */
+            P.FormattedField.prototype.onFormat = {};
         }
         Object.defineProperty(this, "opaque", {
             get: function() {

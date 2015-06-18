@@ -1,6 +1,8 @@
 (function() {
-    var javaClass = Java.type("com.eas.client.forms.containers.GridPane");
-    javaClass.setPublisher(function(aDelegate) {
+    var className = "com.eas.client.forms.containers.GridPane";
+    var javaClass = Java.type(className);
+    var space = this['-platypus-scripts-space'];
+    space.putPublisher(className, function(aDelegate) {
         return new P.GridPane(null, null, null, null, aDelegate);
     });
     
@@ -464,6 +466,20 @@
              */
             P.GridPane.prototype.nextFocusableComponent = {};
         }
+        Object.defineProperty(this, "count", {
+            get: function() {
+                var value = delegate.count;
+                return P.boxAsJs(value);
+            }
+        });
+        if(!P.GridPane){
+            /**
+             * Generated property jsDoc.
+             * @property count
+             * @memberOf GridPane
+             */
+            P.GridPane.prototype.count = 0;
+        }
         Object.defineProperty(this, "onKeyReleased", {
             get: function() {
                 var value = delegate.onKeyReleased;
@@ -480,20 +496,6 @@
              * @memberOf GridPane
              */
             P.GridPane.prototype.onKeyReleased = {};
-        }
-        Object.defineProperty(this, "count", {
-            get: function() {
-                var value = delegate.count;
-                return P.boxAsJs(value);
-            }
-        });
-        if(!P.GridPane){
-            /**
-             * Generated property jsDoc.
-             * @property count
-             * @memberOf GridPane
-             */
-            P.GridPane.prototype.count = 0;
         }
         Object.defineProperty(this, "onActionPerformed", {
             get: function() {
