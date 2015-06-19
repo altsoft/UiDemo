@@ -7,3 +7,4 @@ pub
 appCache
 reports
 *lock.*
+*.trace.db

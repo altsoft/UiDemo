@@ -187,27 +187,19 @@
     background-position: center;
 }
 
-.decorator-select:hover{
-    opacity: 1;
-}
-
 .decorator-select{
     width: 20px; 
-    opacity: 0.5;
+    right: 0px;
     background-image: url(decorator-select.png);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
 }
 
-.decorator-clear:hover{
-    opacity: 1;
-}
-
 .decorator-clear{
     width: 20px; 
-    opacity: 0.5;
-    background-image: url(decorator-clear.svg);
+    right: 20px;
+    background-image: url(decorator-clear.png);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -219,11 +211,6 @@
 
 .decorator{
     border: solid 1px lightgray;
-    border-radius: 2px;
-}
-
-.decorator-focused{
-    border: solid 1px gray;
     border-radius: 2px;
 }
 
@@ -262,13 +249,8 @@
     background: transparent;
 }
 
-.combo-field-custom-dropdown:hover{
-    opacity: 1;
-}
-
 .combo-field-custom-dropdown{
-    opacity: 0.5;
-    background: url('dropdown-arrow.png') no-repeat;  /*Adds background-image*/
+	background: url('dropdown-arrow.png') no-repeat;  /*Adds background-image*/
     background-position: right;  /*Position of the background-image*/
 }
 
@@ -286,23 +268,13 @@
     padding-top: 2px;
 }
 
-.date-select:hover, .time-select:hover{
-    opacity: 1;
-}
-
-.date-select, .time-select{
+.date-time-select{
     width: 20px; 
-    opacity: 0.5;
     background-image: url(date-time-select.png);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
 }
-
-.time-select{
-    background-image: url(clock.png);
-}
-
 
 .spin-left{
     width: 20px; 
@@ -729,7 +701,7 @@
 .south-east-decor-active{
 }
 
-.editor-bold, .editor-italic, .editor-underline, .editor-subscript, .editor-superscript, .editor-align-left, .editor-align-center, .editor-align-right, .editor-background-color, .editor-foreground-color, .editor-strike-through, .editor-indent-right, .editor-indent-left, .editor-horisontal-rule, .editor-ordered-list, .editor-unordered-list, .editor-insert-image, .editor-create-link, .editor-delete-link, .editor-remove-format, .time-picker-up, .time-picker-down, .time-picker-button, .date-picker-button  {
+.editor-bold, .editor-italic, .editor-underline, .editor-subscript, .editor-superscript, .editor-align-left, .editor-align-center, .editor-align-right, .editor-background-color, .editor-foreground-color, .editor-strike-through, .editor-indent-right, .editor-indent-left, .editor-horisontal-rule, .editor-ordered-list, .editor-unordered-list, .editor-insert-image, .editor-create-link, .editor-delete-link, .editor-remove-format  {
     width: 100%; 
     height: 100%;
     background-image: url(editor-bold.gif);
@@ -812,54 +784,5 @@
 }
 .editor-remove-format{
     background-image: url(editor-remove-format.gif);
-}
-.time-picker-up{
-    background-image: url(time-up.png);
-}
-.time-picker-down{
-    background-image: url(time-down.png);
-}
-
-.time-picker{
-    background: white;
-    transition: height 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    box-sizing:border-box;
-}
-
-.time-picker-button{
-    background-image: url(clock.png);
-    border-top: 1px solid #A2BBDD;
-}
-
-.date-picker-button{
-    background-image: url(date-time-select.png);
-    border-top: 1px solid #A2BBDD;
-}
-
-.time-picker-separator{
-    font-size: large;
-    font-weight: bold;
-}
-.time-picker-text{
-    border-width: 1px;
-    border-radius: 5px;
-    font-size: large;
-    border-style: none;
-    padding:2px;
-    box-sizing:border-box;
-}
-.time-picker-text:hover{
-    border-style: inset;
-    padding: 1px;
-    box-sizing:border-box;
-}
-
-.date-time-picker{
-    background: white;
-    border: 1px solid #A2BBDD;
-    border-radius: 2px;
-    box-sizing:border-box;
 }
 
