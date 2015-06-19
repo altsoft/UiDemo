@@ -11,20 +11,17 @@ function CommonPanel(aDemoComponent) {
         form.show();
     };
 
-    self.setDemoComponent = function(aComponent){
+    self.setDemoComponent = function (aComponent) {
         demoComponent = aComponent;
     };
 
     function preparations() {
-//        var demoComponent = new Label();
         form.modelForeground.text = demoComponent.foreground;
         form.modelBackground.text = demoComponent.background;
-        form.tbVisibility.selected = !demoComponent.visible;
-        
+        form.chVisible.selected = demoComponent.visible;
         form.txtToltip.text = demoComponent.toolTipText;
-        form.tglEnabled.selected = demoComponent.selected;
-        form.tglFocusable.selected = demoComponent.focusable;
-//        form.tglOpaque.selected = !demoComponent.opaque;
+        form.chEnabled.selected = demoComponent.selected;
+        form.chFocusable.selected = demoComponent.focusable;
     }
 
     self.showOnPanel = function (aPanel) {
@@ -35,47 +32,6 @@ function CommonPanel(aDemoComponent) {
     model.requery(function () {
         // TODO : place your code here
     });
-
-    form.tbVisibility.onActionPerformed = function (event) {
-        if (event.source.selected) {
-            form.tbVisibility.text = "Invisible";
-            demoComponent.visible = false;
-        } else {
-            form.tbVisibility.text = "Visible";
-            demoComponent.visible = true;
-        }
-    };
-
-
-    form.tglEnabled.onActionPerformed = function (event) {
-        if (event.source.selected) {
-            form.tglEnabled.text = "Disabled";
-            demoComponent.enabled = false;
-        } else {
-            form.tglEnabled.text = "Enabled";
-            demoComponent.enabled = true;
-        }
-    };
-
-    form.tglFocusable.onActionPerformed = function (event) {
-        if (event.source.selected) {
-            form.tglFocusable.text = "UnFocusable";
-            demoComponent.focusable = false;
-        } else {
-            form.tglFocusable.text = "Focusable";
-            demoComponent.focusable = true;
-        }
-    };
-
-    form.tglOpaque.onActionPerformed = function (event) {
-        if (event.source.selected) {
-            form.tglOpaque.text = "Transparent";
-            demoComponent.opaque = false;
-        } else {
-            form.tglOpaque.text = "Opaque";
-            demoComponent.opaque = true;
-        }
-    };
 
     form.modelForeground.onSelect = function (event) {
 
@@ -130,5 +86,34 @@ function CommonPanel(aDemoComponent) {
     form.btnCursor.onActionPerformed = function (event) {
         var uploading = new uploadingModule(uploadEnded, ".png,.ico,.gif,.jpg");
         uploading.execute();
+    };
+
+    form.chVisible.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            demoComponent.visible = true;
+        } else {
+            demoComponent.visible = false;
+        }
+    };
+    form.chEnabled.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            demoComponent.enabled = false;
+        } else {
+            demoComponent.enabled = true;
+        }
+    };
+    form.chFocusable.onActionPerformed = function (event) {
+        if (event.source.selected) {
+            demoComponent.focusable = true;
+        } else {
+            demoComponent.focusable = false;
+        }
+    };
+    form.chOpaque.onActionPerformed = function (event) {
+         if (event.source.selected) {
+            demoComponent.opaque = true;
+        } else {
+            demoComponent.opaque = false;
+        }
     };
 }

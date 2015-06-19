@@ -48,7 +48,7 @@ function LabelForm(aDemoComponent) {
     };
 
     form.txtIconTextGap.onValueChange = function (event) {
-        demoComponent.iconTextGap = Number(form.txtIconTextGap);
+        demoComponent.iconTextGap = form.txtIconTextGap.value;
     };
 
     var uploadEnded = function(file){

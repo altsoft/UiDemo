@@ -3,7 +3,7 @@
  * @author user
  * @constructor
  */
-function GridMenuModule() {
+function GridMenu() {
     var self = this, model = P.loadModel(this.constructor.name);
 
     // TODO : place constructor code here

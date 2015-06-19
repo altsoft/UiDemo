@@ -13,8 +13,8 @@ function MainView() {
     var exPanelContainer;
     var cmplPanel;
 
-    var arr = new GridMenuModule();
-    form.modelMenu.data = arr.getMenu();
+    var demos = new GridMenu();
+    form.modelMenu.data = demos.getMenu();
     form.modelMenu.column.field = "name";
     form.modelMenu.parentField = 'parentField';
     form.modelMenu.childrenField = 'childrenField';
@@ -23,7 +23,6 @@ function MainView() {
     form.modelMenu.onItemSelected = function (event) {
         form.modelMenu.onMouseClicked();
     };
-
 
     form.modelMenu.onMouseClicked = function (event) {
         form.panel.clear();
@@ -50,7 +49,6 @@ function MainView() {
         }
 
         var demoPane = form.modelMenu.selected[0].getDisplayForm();
-
 //        if (customForm) {
 //            customForm.showOnPanel(form.pnlCustom);
 //        }
@@ -65,7 +63,6 @@ function MainView() {
 //        }
 
     };
-
 
     self.show = function () {
         try {
