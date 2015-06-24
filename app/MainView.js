@@ -13,27 +13,24 @@ function MainView() {
     var exPanelContainer;
     var cmplPanel;
 
-    var demos = new GridMenu();
-    form.modelMenu.data = demos.getMenu();
-    form.modelMenu.column.field = "name";
-    form.modelMenu.parentField = 'parentField';
-    form.modelMenu.childrenField = 'childrenField';
+    var demosList = new DemosList();
+    form.grdDemos.data = demosList.getMenu();
+    form.grdDemos.column.field = "name";
+    form.grdDemos.parentField = 'parentField';
+    form.grdDemos.childrenField = 'childrenField';
+
     form.pnlPlayground.background = new P.Color(P.Color.GREEN);
 
-    form.modelMenu.onItemSelected = function (event) {
-        form.modelMenu.onMouseClicked();
-    };
-
-    form.modelMenu.onMouseClicked = function (event) {
-        form.panel.clear();
+    form.grdDemos.onItemSelected = function (event) {
+        form.pnlCommon.clear();
         form.pnlPlayground.clear(); //Clean demo components place
         form.pnlCustom.clear();
 
-        var widget = form.modelMenu.selected[0].getWidget();
-        var customForm = form.modelMenu.selected[0].getCustomForm();
-        var commonForm = form.modelMenu.selected[0].getCommonForm();
-        var hint = form.modelMenu.selected[0].getHint();
-        form.lblTips.text = hint;
+        var widget = form.grdDemos.selected[0].getWidget();
+        var customForm = form.grdDemos.selected[0].getCustomForm();
+        var commonForm = form.grdDemos.selected[0].getCommonForm();
+        var hint = form.grdDemos.selected[0].getHint();
+//        form.lblTips.text = hint;
         if (customForm) {
             P.require(customForm, function () {
                 var custom = new global[customForm](widget);
@@ -44,24 +41,14 @@ function MainView() {
             P.require(commonForm, function () {
                 widget.opaque = true;
                 var common = new global[commonForm](widget);
-                common.showOnPanel(form.panel);
+                common.showOnPanel(form.pnlCommon);
             });
         }
 
-        var demoPane = form.modelMenu.selected[0].getDisplayForm();
-//        if (customForm) {
-//            customForm.showOnPanel(form.pnlCustom);
-//        }
-
+        var demoPane = form.grdDemos.selected[0].getDisplayForm();
         var hMargin = 10;
         var vMargin = 10;
-
         form.pnlPlayground.add(demoPane, new P.Anchors(hMargin, null, hMargin, vMargin, null, vMargin));
-//        if (demoPane) {
-////            form.pnlPlayground
-//            demoPane.showOnPanel(form.pnlPlayground);
-//        }
-
     };
 
     self.show = function () {
@@ -73,7 +60,7 @@ function MainView() {
                 form.maximize();
             });
         }
-        form.panel.clear();
+        form.pnlCommon.clear();
     };
 
 

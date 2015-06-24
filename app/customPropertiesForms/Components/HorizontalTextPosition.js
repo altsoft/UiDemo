@@ -37,10 +37,7 @@ function HorizontalTextPosition(aDemoComponent) {
         form.show();
     };
 
-    // TODO : place your code here
-
     model.requery(function () {
-        // TODO : place your code here
     });
 
     self.showOnPanel = function (aPanel) {

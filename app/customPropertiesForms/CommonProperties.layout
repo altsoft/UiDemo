@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="163px" prefWidth="707px"/>
+  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="170px" prefWidth="710px">
+    <AnchorsPaneConstraints bottom="-7px" left="0px" right="-3px" top="0px"/>
+  </AnchorsPane>
+  <Label cursor="0" horizontalAlignment="10" name="lblPopupMenu" parent="panel" prefHeight="27px" prefWidth="96px" text="PopupMenu">
+    <AnchorsPaneConstraints height="27px" left="170px" top="130px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblCursor" parent="panel" prefHeight="27px" prefWidth="96px" text="Cursor">
+    <AnchorsPaneConstraints height="27px" left="170px" top="90px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblBorder" parent="panel" prefHeight="27px" prefWidth="96px" text="Border">
+    <AnchorsPaneConstraints height="27px" left="170px" top="50px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblTooltip" parent="panel" prefHeight="27px" prefWidth="96px" text="Tooltip">
+    <AnchorsPaneConstraints height="27px" left="170px" top="12px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblForeground" parent="panel" prefHeight="27px" prefWidth="96px" text="Foreground">
+    <AnchorsPaneConstraints height="27px" left="430px" top="50px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblBackground" parent="panel" prefHeight="27px" prefWidth="96px" text="Background">
+    <AnchorsPaneConstraints height="27px" left="430px" top="12px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblFont" parent="panel" prefHeight="27px" prefWidth="42px" text="Font">
+    <AnchorsPaneConstraints height="27px" left="430px" top="90px" width="42px"/>
+  </Label>
+  <TextField cursor="0" name="txtToltip" parent="panel" prefHeight="27px" prefWidth="170px" text="TooltipText">
+    <AnchorsPaneConstraints height="27px" left="240px" top="12px" width="170px"/>
+  </TextField>
+  <ModelFormattedField cursor="0" format="" name="modelFont" parent="panel" prefHeight="27px" prefWidth="170px">
+    <AnchorsPaneConstraints height="27px" left="522px" top="90px" width="170px"/>
+  </ModelFormattedField>
+  <ModelFormattedField cursor="0" format="" name="modelBackground" parent="panel" prefHeight="27px" prefWidth="170px">
+    <AnchorsPaneConstraints height="27px" left="522px" top="12px" width="170px"/>
+  </ModelFormattedField>
+  <ModelFormattedField cursor="0" format="" name="modelForeground" parent="panel" prefHeight="27px" prefWidth="170px">
+    <AnchorsPaneConstraints height="27px" left="522px" top="50px" width="170px"/>
+  </ModelFormattedField>
+  <Button cursor="3" name="btnCursor" parent="panel" prefHeight="27px" prefWidth="170px" text="Select file...">
+    <AnchorsPaneConstraints height="27px" left="240px" top="90px" width="170px"/>
+  </Button>
+  <CheckBox cursor="0" name="chVisible" parent="panel" prefHeight="15px" prefWidth="30px">
+    <AnchorsPaneConstraints height="15px" left="90px" top="18px" width="30px"/>
+  </CheckBox>
+  <CheckBox cursor="0" name="chEnabled" parent="panel" prefHeight="15px" prefWidth="30px">
+    <AnchorsPaneConstraints height="15px" left="90px" top="56px" width="30px"/>
+  </CheckBox>
+  <CheckBox cursor="0" name="chFocusable" parent="panel" prefHeight="15px" prefWidth="30px">
+    <AnchorsPaneConstraints height="15px" left="90px" top="96px" width="30px"/>
+  </CheckBox>
+  <CheckBox cursor="0" name="chOpaque" parent="panel" prefHeight="15px" prefWidth="30px">
+    <AnchorsPaneConstraints height="15px" left="90px" top="136px" width="30px"/>
+  </CheckBox>
+  <Label cursor="0" horizontalAlignment="10" name="lblVisible" parent="panel" prefHeight="27px" prefWidth="96px" text="Visible">
+    <AnchorsPaneConstraints height="27px" left="10px" top="12px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblEnabled" parent="panel" prefHeight="27px" prefWidth="96px" text="Enabled">
+    <AnchorsPaneConstraints height="27px" left="10px" top="50px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblFocusable" parent="panel" prefHeight="27px" prefWidth="96px" text="Focusable">
+    <AnchorsPaneConstraints height="27px" left="10px" top="90px" width="96px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="lblOpaque" parent="panel" prefHeight="27px" prefWidth="96px" text="Opaque">
+    <AnchorsPaneConstraints height="27px" left="10px" top="130px" width="96px"/>
+  </Label>
+  <FormattedField cursor="0" format="" name="ffBorder" parent="panel" prefHeight="27px" prefWidth="170px">
+    <AnchorsPaneConstraints height="27px" left="240px" top="50px" width="170px"/>
+  </FormattedField>
+</layout>

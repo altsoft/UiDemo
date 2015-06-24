@@ -3,7 +3,7 @@
  * @author user
  * @constructor
  */
-function GridMenu() {
+function DemosList() {
     var self = this, model = P.loadModel(this.constructor.name);
 
     // TODO : place constructor code here
@@ -18,7 +18,7 @@ function GridMenu() {
         widget.parentField = aParent;
         widget.setWidget(new aType(widget.name));
         widget.setCustomForm(aCustomForm);
-        widget.setCommonForm("CommonPanel");
+        widget.setCommonForm("CommonProperties");
         widget.setHint(aHint);
         aParent.childrenField.push(widget);
         return widget;
@@ -77,7 +77,7 @@ function GridMenu() {
         widget.name = aName;
         widget.parentField = aParent;
 //        widget.setCustomForm(aCustomForm);
-        widget.setCommonForm("CommonPanel");
+        widget.setCommonForm("CommonProperties");
         widget.setDisplayForm(aForm);
         aParent.childrenField.push(widget);
         return widget;
@@ -145,10 +145,7 @@ function GridMenu() {
     demos.push(containers);
     
     var containersForm = new ContainersWidget();
-    var container = createContainer("Absolute pane",containers,"AbsolutePanePanel",containersForm);
-    demos.push(container);
-    
-    container = createContainer("Anchors pane",containers,"AnchorsPanePanel",containersForm);
+    var container = createContainer("Anchors pane",containers,"AnchorsPanePanel",containersForm);
     demos.push(container);
     
     container = createContainer("Border pane",containers,"BorderPanePanel",containersForm);
