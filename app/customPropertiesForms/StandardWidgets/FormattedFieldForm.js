@@ -8,9 +8,6 @@ function FormattedFieldForm(aDemoComponent) {
             , form = P.loadForm(this.constructor.name, model);
     var demoComponent = aDemoComponent;
     var textForm;
-//    var horizontalAlign;
-//    var verticalText;
-//    var verticalAlign;
 
     self.setDemoComponent = function (aDemoComponent) {
         demoComponent = aDemoComponent;

@@ -23,7 +23,9 @@ function MenuObject() {
     var customForm;
     var commonForm;
     var hint = "";
-    var sourceCodeExample;
+    var information="";
+    var sourceCodeExample="";
+
     self.setCommonForm = function (aCommonForms) {
         commonForm = aCommonForms;
     };
@@ -65,6 +67,14 @@ function MenuObject() {
 
     self.getHint = function () {
         return hint;
+    };
+    
+     self.setInformation = function (aInfo) {
+        information = aInfo;
+    };
+
+    self.getInformation = function () {
+        return information;
     };
     
     self.setSourceCodeExample = function (aSourceCode) {

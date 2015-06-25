@@ -6,34 +6,40 @@
   <PopupMenu cursor="0" name="popupMenu"/>
   <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem2"/>
   <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem1" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem1"/>
-  <AnchorsPane cursor="0" name="view" prefHeight="584px" prefWidth="669px"/>
-  <TabbedPane cursor="0" name="tabbedPane" parent="view" prefHeight="180px" prefWidth="420px" selectedComponent="scrollPane">
-    <AnchorsPaneConstraints bottom="94px" left="240px" right="9px" top="310px"/>
-  </TabbedPane>
-  <ScrollPane cursor="0" name="scrollPane" parent="tabbedPane" prefHeight="143px" prefWidth="412px">
-    <TabbedPaneConstraints tabTitle="Common"/>
-  </ScrollPane>
-  <BoxPane cursor="0" name="pnlCommon" parent="scrollPane" prefHeight="141px" prefWidth="410px"/>
-  <BorderPane cursor="0" name="tabCustom" parent="tabbedPane" prefHeight="143px" prefWidth="412px" visible="false">
-    <TabbedPaneConstraints tabTitle="Custom"/>
-  </BorderPane>
-  <ScrollPane cursor="0" name="scrollPane2" parent="tabCustom" prefHeight="143px" prefWidth="412px">
-    <BorderPaneConstraints place="0"/>
-  </ScrollPane>
-  <BoxPane cursor="0" name="pnlCustom" orientation="1" parent="scrollPane2" prefHeight="141px" prefWidth="410px"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="584px" prefWidth="1082px"/>
   <ModelGrid cursor="0" editable="false" name="grdDemos" parent="view" prefHeight="563px" prefWidth="220px">
     <AnchorsPaneConstraints bottom="11px" left="10px" top="10px" width="220px"/>
     <ModelGridColumn name="column" title="Demos" width="220px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
   </ModelGrid>
-  <AnchorsPane cursor="0" name="pnlPlayground" parent="view" prefHeight="290px" prefWidth="420px">
-    <AnchorsPaneConstraints height="290px" left="240px" right="9px" top="10px"/>
+  <CardPane background="#ffffff" cursor="0" name="pnlDemoViews" parent="view" prefHeight="560px" prefWidth="832px">
+    <AnchorsPaneConstraints bottom="14px" left="240px" right="10px" top="10px"/>
+  </CardPane>
+  <AnchorsPane background="#ffffff" cursor="0" name="pnlDemonstration" parent="pnlDemoViews" prefHeight="560px" prefWidth="832px">
+    <CardPaneConstraints cardName="pnlDemonstration"/>
   </AnchorsPane>
-  <Label cursor="0" name="lblHint" parent="view" prefHeight="40px" prefWidth="410px">
-    <AnchorsPaneConstraints height="40px" left="240px" top="10px" width="410px"/>
+  <ScrollPane background="#fa8918" cursor="0" name="scrollPane" parent="pnlDemonstration" prefHeight="560px" prefWidth="832px">
+    <AnchorsPaneConstraints bottom="0px" left="0px" right="0px" top="0px"/>
+  </ScrollPane>
+  <BoxPane background="#ffffff" cursor="0" name="panel1" orientation="1" parent="scrollPane" prefHeight="558px" prefWidth="830px"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="pnlShortInfo" parent="panel1" prefHeight="20px" prefWidth="830px"/>
+  <Label cursor="0" name="lblShortInfo" parent="pnlShortInfo" prefHeight="0px" prefWidth="830px" text="label">
+    <AnchorsPaneConstraints bottom="505px" left="0px" right="0px" top="0px"/>
   </Label>
-  <AnchorsPane background="#dd1e1e" cursor="0" name="pnlSourceCode" parent="view" prefHeight="70px" prefWidth="420px">
-    <AnchorsPaneConstraints bottom="14px" height="70px" left="240px" right="9px"/>
+  <AnchorsPane background="#12e41d" cursor="0" name="pnlPlayground" parent="panel1" prefHeight="350px" prefWidth="830px"/>
+  <TabbedPane cursor="0" name="tabbedPane2" parent="panel1" prefHeight="250px" prefWidth="830px" selectedComponent="pnlCommon"/>
+  <BoxPane cursor="0" name="pnlCommon" parent="tabbedPane2" prefHeight="213px" prefWidth="822px">
+    <TabbedPaneConstraints tabTitle="Common" tabToolTip=""/>
+  </BoxPane>
+  <BoxPane background="#ffffff" cursor="0" name="pnlCustom" parent="tabbedPane2" prefHeight="213px" prefWidth="822px" visible="false">
+    <TabbedPaneConstraints tabTitle="Custom" tabToolTip=""/>
+  </BoxPane>
+  <AnchorsPane background="#e90202" cursor="0" name="pnlSourceCode" parent="panel1" prefHeight="120px" prefWidth="830px"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="pnlTextInfo" parent="pnlDemoViews" prefHeight="560px" prefWidth="832px" visible="false">
+    <CardPaneConstraints cardName="pnlTextInfo"/>
   </AnchorsPane>
+  <Label cursor="0" name="lblInfo" parent="pnlTextInfo" prefHeight="540px" prefWidth="812px" text="label" verticalAlignment="1">
+    <AnchorsPaneConstraints bottom="10px" left="10px" right="10px" top="10px"/>
+  </Label>
 </layout>

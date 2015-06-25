@@ -20,17 +20,27 @@ function MainView() {
     form.grdDemos.childrenField = 'childrenField';
 
     form.pnlPlayground.background = new P.Color(P.Color.GREEN);
+    form.grdDemos.select(demosList.getMenu()[0]);
 
     form.grdDemos.onItemSelected = function (event) {
         form.pnlCommon.clear();
         form.pnlPlayground.clear(); //Clean demo components place
         form.pnlCustom.clear();
 
-        var widget = form.grdDemos.selected[0].getWidget();
-        var customForm = form.grdDemos.selected[0].getCustomForm();
-        var commonForm = form.grdDemos.selected[0].getCommonForm();
+        var widget = form.grdDemos.selected[0].getWidget(); //widget to play with
+        var customForm = form.grdDemos.selected[0].getCustomForm(); //form of custom proprties
+        var commonForm = form.grdDemos.selected[0].getCommonForm(); //form of commom properties
         var hint = form.grdDemos.selected[0].getHint();
-//        form.lblTips.text = hint;
+
+
+        if (form.grdDemos.selected[0].parentField) {
+            form.pnlDemoViews.show('pnlDemonstration');
+        } else {
+            form.pnlDemoViews.show('pnlTextInfo');
+            form.lblInfo.text = form.grdDemos.selected[0].getInformation();
+        }
+
+        form.lblShortInfo.text = hint;
         if (customForm) {
             P.require(customForm, function () {
                 var custom = new global[customForm](widget);
@@ -45,10 +55,11 @@ function MainView() {
             });
         }
 
-        var demoPane = form.grdDemos.selected[0].getDisplayForm();
         var hMargin = 10;
         var vMargin = 10;
-        form.pnlPlayground.add(demoPane, new P.Anchors(hMargin, null, hMargin, vMargin, null, vMargin));
+        if (widget) {
+            form.pnlPlayground.add(widget, new P.Anchors(hMargin, null, hMargin, vMargin, null, vMargin));
+        }
     };
 
     self.show = function () {
@@ -60,7 +71,7 @@ function MainView() {
                 form.maximize();
             });
         }
-        form.pnlCommon.clear();
+//        form.pnlCommon.clear();
     };
 
 

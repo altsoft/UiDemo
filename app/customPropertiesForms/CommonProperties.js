@@ -101,10 +101,6 @@ function CommonProperties(aDemoComponent) {
         demoComponent.toolTipText = form.txtToltip.text;
     };
 
-    var uploadEnded = function (file) {
-        form.btnCursor.icon = file;
-    };
-
     form.btnCursor.onActionPerformed = function (event) {
         var fileFilter = ".png,.ico,.gif,.jpg";
         P.selectFile(function (aFile) {

@@ -27,6 +27,7 @@ function DemosList() {
     var demos = [];
     var standardWidgets = new MenuObject();
     standardWidgets.name = "Standard Widgets";
+    standardWidgets.setInformation("This is standard widgets");
     demos.push(standardWidgets);
 
     var hint = "Label is useful to display text elements";
@@ -42,7 +43,7 @@ function DemosList() {
     plainWidget = createPlainWidget("Check box", P.CheckBox, standardWidgets, "CheckBoxForm");
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Radio button", P.RadioButton, standardWidgets, "ButtonForm");
+    plainWidget = createPlainWidget("Radio button", P.RadioButton, standardWidgets, "CheckBoxForm");
     demos.push(plainWidget);
 
     plainWidget = createPlainWidget("Text field", P.TextField, standardWidgets, "TextFieldForm");
@@ -76,7 +77,6 @@ function DemosList() {
         var widget = new MenuObject();
         widget.name = aName;
         widget.parentField = aParent;
-//        widget.setCustomForm(aCustomForm);
         widget.setCommonForm("CommonProperties");
         widget.setDisplayForm(aForm);
         aParent.childrenField.push(widget);
@@ -86,7 +86,8 @@ function DemosList() {
     var modelWidgets = new MenuObject();
     modelWidgets.name = "Model Widgets";
     demos.push(modelWidgets);
-
+    modelWidgets.setInformation("This is model widgets");
+    
     var form = new ModelWidgetsForm();
     form.placeModelCheckBox();
     var modelWidget = createModelWidget("Model check", modelWidgets, "", form);
@@ -143,7 +144,8 @@ function DemosList() {
     var containers = new MenuObject();
     containers.name = "Containers";
     demos.push(containers);
-    
+    containers.setInformation("This is containers");
+     
     var containersForm = new ContainersWidget();
     var container = createContainer("Anchors pane",containers,"AnchorsPanePanel",containersForm);
     demos.push(container);

@@ -8,36 +8,119 @@ function LabelForm(aDemoComponent) {
             , form = P.loadForm(this.constructor.name, model);
     var demoComponent = aDemoComponent;
     var horizontalText;
-    var horizontalAlign;
     var verticalText;
     var verticalAlign;
+
+    var bgrpHAlign = new P.ButtonGroup();
+    bgrpHAlign.add(form.tglHLeftAlign);
+    bgrpHAlign.add(form.tglHCenterAlign);
+    bgrpHAlign.add(form.tglHRightAlign);
+
+    var brgpHText = new P.ButtonGroup();
+    brgpHText.add(form.tglHLeft);
+    brgpHText.add(form.tglHCenter);
+    brgpHText.add(form.tglHRight);
+
+    var brgpVAlign = new P.ButtonGroup();
+    brgpVAlign.add(form.tglVTopAlign);
+    brgpVAlign.add(form.tglVCenterAlign);
+    brgpVAlign.add(form.tglVBottomAlign);
+
+    var brgpVText = new P.ButtonGroup();
+    brgpVText.add(form.tglVTop);
+    brgpVText.add(form.tglVCenter);
+    brgpVText.add(form.tglVBottom);
 
     self.setDemoComponent = function (aDemoComponent) {
         demoComponent = aDemoComponent;
     };
 
-    function preparations() {
-        horizontalText = new HorizontalTextPosition(demoComponent);
-        horizontalAlign = new HorizontalAlignment(demoComponent);
-        verticalText = new VerticalTextPosition(demoComponent);
-        verticalAlign = new VerticalAlignment(demoComponent);
-
+    function initComponents() {
         form.txtText.text = demoComponent.text;
         form.txtIconTextGap.text = demoComponent.iconTextGap;
         form.btnIcon.icon = demoComponent.icon;
+
+        switch (demoComponent.horizontalAlignment) {
+            case P.HorizontalPosition.LEFT:
+            {
+                form.tglHLeftAlign.selected = true;
+                break;
+            }
+            case P.HorizontalPosition.RIGHT:
+            {
+                form.tglHRightAlign.selected = true;
+                break;
+            }
+            case P.HorizontalPosition.CENTER:
+            {
+                form.tglHCenterAlign.selected = true;
+                break;
+            }
+        }
+
+        switch (demoComponent.horizontalTextPosition) {
+            case P.HorizontalPosition.LEFT:
+            {
+                form.tglHLeft.selected = true;
+
+                break;
+            }
+            case P.HorizontalPosition.RIGHT:
+            {
+                form.tglHRight.selected = true;
+                break;
+            }
+            case P.HorizontalPosition.CENTER:
+            {
+                form.tglHCenter.selected = true;
+                break;
+            }
+        }
+
+        switch (demoComponent.verticalAlignment) {
+            case P.VerticalPosition.TOP:
+            {
+                form.tglVTopAlign.selected = true;
+                break;
+            }
+            case P.VerticalPosition.CENTER:
+            {
+                form.tglVCenterAlign.selected = true;
+                break;
+            }
+            case P.VerticalPosition.BOTTOM:
+            {
+                form.tglVBottomAlign.selected = true;
+                break;
+            }
+        }
+        switch (demoComponent.verticalTextPosition) {
+            case P.VerticalPosition.TOP:
+            {
+                form.tglVTop.selected = true;
+                break;
+            }
+            case P.VerticalPosition.CENTER:
+            {
+                form.tglVCenter.selected = true;
+                break;
+            }
+            case P.VerticalPosition.BOTTOM:
+            {
+                form.tglVBottom.selected = true;
+                break;
+            }
+        }
+
     }
 
     self.show = function () {
         form.show();
     };
-
+    
     self.showOnPanel = function (aPanel) {
-        preparations();
+        initComponents();
         aPanel.add(form.view);
-        horizontalText.showOnPanel(aPanel);
-        horizontalAlign.showOnPanel(aPanel);
-        verticalText.showOnPanel(aPanel);
-        verticalAlign.showOnPanel(aPanel);
     };
 
     form.txtText.onActionPerformed = function () {
@@ -46,10 +129,6 @@ function LabelForm(aDemoComponent) {
 
     form.txtIconTextGap.onValueChange = function (event) {
         demoComponent.iconTextGap = form.txtIconTextGap.value;
-    };
-
-    var uploadEnded = function (file) {
-
     };
 
     form.btnIcon.onActionPerformed = function (event) {
@@ -86,5 +165,53 @@ function LabelForm(aDemoComponent) {
 
     };
 
+
+    form.tglHLeftAlign.onActionPerformed = function (event) {
+        demoComponent.horizontalAlignment = P.HorizontalPosition.LEFT;
+    };
+
+    form.tglHRightAlign.onActionPerformed = function (event) {
+        demoComponent.horizontalAlignment = P.HorizontalPosition.RIGHT;
+    };
+
+    form.tglHCenterAlign.onActionPerformed = function (event) {
+        demoComponent.horizontalAlignment = P.HorizontalPosition.CENTER;
+    };
+
+    form.tglHLeft.onActionPerformed = function (event) {
+        demoComponent.horizontalTextPosition = P.HorizontalPosition.LEFT;
+    };
+
+    form.tglHCenter.onActionPerformed = function (event) {
+        demoComponent.horizontalTextPosition = P.HorizontalPosition.CENTER;
+
+    };
+    form.tglHRight.onActionPerformed = function (event) {
+        demoComponent.horizontalTextPosition = P.HorizontalPosition.RIGHT;
+    };
+
+    form.tglVTopAlign.onActionPerformed = function (event) {
+        demoComponent.verticalAlignment = P.VerticalPosition.TOP;
+    };
+
+    form.tglVCenterAlign.onActionPerformed = function (event) {
+        demoComponent.verticalAlignment = P.VerticalPosition.CENTER;
+    };
+
+    form.tglVBottomAlign.onActionPerformed = function (event) {
+        demoComponent.verticalAlignment = P.VerticalPosition.BOTTOM;
+    };
+    
+    form.tglVTop.onActionPerformed = function (event) {
+        demoComponent.verticalTextPosition = P.VerticalPosition.TOP;
+    };
+    
+    form.tglVCenter.onActionPerformed = function (event) {
+        demoComponent.verticalTextPosition = P.VerticalPosition.CENTER;
+    };
+
+    form.tglVBottom.onActionPerformed = function (event) {
+        demoComponent.verticalTextPosition = P.VerticalPosition.BOTTOM;
+    };
 
 }

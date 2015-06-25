@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <ButtonGroup name="buttonGroup"/>
+  <ButtonGroup name="btnGroupStandard"/>
+  <ButtonGroup name="btnGroupModel"/>
+  <ButtonGroup name="btnGroupContainers"/>
+  <PopupMenu cursor="0" name="popupMenu"/>
+  <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem2"/>
+  <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem1" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem1"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="584px" prefWidth="669px"/>
+  <TabbedPane cursor="0" name="tabbedPane" parent="view" prefHeight="180px" prefWidth="420px" selectedComponent="scrollPane">
+    <AnchorsPaneConstraints bottom="94px" left="240px" right="9px" top="310px"/>
+  </TabbedPane>
+  <ScrollPane cursor="0" name="scrollPane" parent="tabbedPane" prefHeight="143px" prefWidth="412px">
+    <TabbedPaneConstraints tabTitle="Common" tabToolTip=""/>
+  </ScrollPane>
+  <BoxPane cursor="0" name="pnlCommon" parent="scrollPane" prefHeight="141px" prefWidth="410px"/>
+  <BorderPane cursor="0" name="tabCustom" parent="tabbedPane" prefHeight="143px" prefWidth="412px" visible="false">
+    <TabbedPaneConstraints tabTitle="Custom" tabToolTip=""/>
+  </BorderPane>
+  <ScrollPane cursor="0" name="scrollPane2" parent="tabCustom" prefHeight="143px" prefWidth="412px">
+    <BorderPaneConstraints place="0"/>
+  </ScrollPane>
+  <BoxPane cursor="0" name="pnlCustom" orientation="1" parent="scrollPane2" prefHeight="141px" prefWidth="410px"/>
+  <AnchorsPane cursor="0" name="pnlPlayground" parent="view" prefHeight="290px" prefWidth="420px">
+    <AnchorsPaneConstraints height="290px" left="240px" right="9px" top="10px"/>
+  </AnchorsPane>
+  <Label cursor="0" name="lblHint" parent="view" prefHeight="40px" prefWidth="410px">
+    <AnchorsPaneConstraints height="40px" left="240px" top="10px" width="410px"/>
+  </Label>
+  <AnchorsPane background="#dd1e1e" cursor="0" name="pnlSourceCode" parent="view" prefHeight="70px" prefWidth="420px">
+    <AnchorsPaneConstraints bottom="14px" height="70px" left="240px" right="9px"/>
+  </AnchorsPane>
+</layout>
