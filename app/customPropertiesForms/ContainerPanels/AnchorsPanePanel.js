@@ -8,46 +8,37 @@ function AnchorsPanePanel(aPlaygroundPanel) {
             , form = P.loadForm(this.constructor.name, model);
     var counter = 1;
 
-    var externalContainer = aPlaygroundPanel;
-
-    var internalContainer;
-    var cModifiers;
+    var internalContainer = aPlaygroundPanel;
+    internalContainer.background = new P.Color(P.Color.RED);
     var addPanel;
-
-    function preparations() {
-        internalContainer = new P.AnchorsPane();
-        internalContainer.background = new P.Color(P.Color.RED);
-    }
-    preparations();
-
+    var subject;
 
     self.show = function () {
         form.show();
     };
 
-
-
     model.requery(function () {
-        // TODO : place your code here
     });
 
-    var infoCallBack = function (aElement) {
+    function getPosition(aElement) {
+        subject = aElement;
         form.ffLeft.value = aElement.left;
         form.ffTop.value = aElement.top;
         form.ffBottom.value = aElement.bottom;
         form.ffRight.value = aElement.right;
-    };
+    }
 
-    var modifyCallback = function (aElement) {
-        aElement.left = form.ffLeft.value;
-        aElement.top = form.ffTop.value;
-    };
-
-    var deleteCallback = function (aElement) {
+    function deleteElement(aElement) {
         internalContainer.remove(aElement);
-    };
+    }
 
-    var placeElement = function (aElement, counter) {
+    function placeElement(aElement, counter) {
+        subject = aElement;
+        form.ffLeft.text = 0;
+        form.ffRight.text = 0;
+        form.ffTop.text = 0;
+        form.ffBottom.text = 0;
+
         internalContainer.add(aElement
                 , new P.Anchors(form.ffLeft.value,
                         aElement.width,
@@ -57,16 +48,61 @@ function AnchorsPanePanel(aPlaygroundPanel) {
                         form.ffBottom.value));
         aElement.toolTipText = "num " + counter + " id:" + internalContainer.count;
 
-    };
-    cModifiers = new ContainersModificator(internalContainer, externalContainer);
-    addPanel = new AddComponentContainer(cModifiers, infoCallBack, modifyCallback, deleteCallback, placeElement);
+        aElement.onMousePressed = function (event) {
+            var leftOffset = event.x;
+            var topOffset = event.y;
 
+            internalContainer.onMouseMoved = function (event) {
+                aElement.left = event.x - leftOffset;
+                aElement.top = event.y - topOffset;
+                getPosition(aElement);
+            };
+
+            internalContainer.onMouseReleased = function (event) {
+                aElement.left = event.x - leftOffset;
+                aElement.top = event.y - topOffset;
+                getPosition(aElement);
+                internalContainer.onMouseMoved = null;
+                aElement.onMouseReleased = null;
+            };
+
+            aElement.onMouseReleased = function () {
+                internalContainer.onMouseMoved = null;
+                aElement.onMouseReleased = null;
+            };
+        };
+
+
+    }
+
+    addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
         addPanel.showOnPanel(aPanel);
-        cModifiers.showOnPanel(aPanel);
     };
 
+    form.ffTop.onValueChange = function (event) {
+        if (subject) {
+            subject.top = form.ffTop.value;
+        }
+    };
 
+    form.ffBottom.onValueChange = function (event) {
+        if (subject) {
+            subject.bottom = form.ffBottom.value;
+        }
+    };
+
+    form.ffRight.onValueChange = function (event) {
+        if (subject) {
+            subject.right = form.ffRight.value;
+        }
+    };
+
+    form.ffLeft.onValueChange = function (event) {
+        if (subject) {
+            subject.left = form.ffLeft.value;
+        }
+    };
 }

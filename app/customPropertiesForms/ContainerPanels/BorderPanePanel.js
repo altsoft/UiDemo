@@ -15,35 +15,26 @@ function BorderPanePanel(aPlaygroundPanel) {
     btnGrpPos.add(form.rbBottom);
     form.rbCenter.selected = true;
 
-    var externalContainer = aPlaygroundPanel;
-    var internalContainer;
-    var cModifiers;
+    var internalContainer = aPlaygroundPanel;
+    internalContainer.background = new P.Color(P.Color.RED);
     var addPanel;
+    var subject;
+
     self.show = function () {
         form.show();
     };
 
-    function preparations() {
-        internalContainer = new P.BorderPane();
-        internalContainer.background = new P.Color(P.Color.RED);
+    function getPosition(aElement) {
+        subject = aElement;
     }
 
-    var infoCallBack = function (aElement) {
-//        form.ffLeft.value = aElement.left;
-//        form.ffTop.value = aElement.top;
-    };
-
-    var modifyCallback = function (aElement) {
-//        aElement.left = form.ffLeft.value;
-//        aElement.top = form.ffTop.value;
-    };
-
-    var deleteCallback = function (aElement) {
+    function deleteElement(aElement) {
         internalContainer.remove(aElement);
-    };
+    }
 
     var placeElement = function (aElement, counter) {
         try {
+            aElement.toolTipText = "num " + counter + " id:" + internalContainer.count;
             if (form.rbTop.selected) {
                 internalContainer.add(aElement, P.VerticalPosition.TOP);
                 aElement.child(0).text = "TOP " + " id:" + internalContainer.count;
@@ -73,62 +64,24 @@ function BorderPanePanel(aPlaygroundPanel) {
             alert(e);
         }
 
-
     };
-    preparations();
-    cModifiers = new ContainersModificator(internalContainer, externalContainer);
-    addPanel = new AddComponentContainer(cModifiers, infoCallBack, modifyCallback, deleteCallback, placeElement);
-    
+
+    addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
+
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
         addPanel.showOnPanel(aPanel);
-        cModifiers.showOnPanel(aPanel);
 
     };
 
     model.requery(function () {
     });
 
-
-//    form.btnAddComponent.onActionPerformed = function (event) {
-//        var newPnl = new P.BoxPane();
-////        newPnl.width = form.ffWidth.value;
-////        newPnl.height = form.ffHeight.value;
-//        internalContainer.hgap = Number(form.ffHGap.text);
-//        internalContainer.vgap = Number(form.ffVGap.text);
-//
-//        var redColor = Math.round(Math.random() * 255);
-//        var greenColor = Math.round(Math.random() * 255);
-//        var blueColor = Math.round(Math.random() * 255);
-//        newPnl.background = new P.Color(redColor, greenColor, blueColor);
-//        var label = new P.Label();
-//        newPnl.add(label);
-//        newPnl.onMouseClicked = function (event) {
-//            if (cModifiers.isInformation()) {
-//
-//                return;
-//            }
-//            if (cModifiers.isModify()) {
-//                newPnl.height = form.ffHeight.value;
-//                newPnl.width = form.ffWidth.value;
-//
-//                return;
-//            }
-//            if (cModifiers.isDelete()) {
-//                internalContainer.remove(newPnl);
-//                return;
-//            }
-//        };
-//
-//
-//
-//    };
-
-    form.ffHGap.onActionPerformed = function(event) {
+    form.ffHGap.onActionPerformed = function (event) {
         internalContainer.hgap = form.ffHGap.value;
     };
 
-    form.ffVGap.onActionPerformed = function(event) {
+    form.ffVGap.onActionPerformed = function (event) {
         internalContainer.vgap = form.ffVGap.value;
     };
 

@@ -51,17 +51,17 @@
   <CheckBox cursor="0" name="chOpaque" parent="panel" prefHeight="15px" prefWidth="30px">
     <AnchorsPaneConstraints height="15px" left="90px" top="136px" width="30px"/>
   </CheckBox>
-  <Label cursor="0" horizontalAlignment="10" name="lblVisible" parent="panel" prefHeight="27px" prefWidth="96px" text="Visible">
-    <AnchorsPaneConstraints height="27px" left="10px" top="12px" width="96px"/>
+  <Label cursor="0" horizontalAlignment="10" name="lblVisible" parent="panel" prefHeight="27px" prefWidth="50px" text="Visible">
+    <AnchorsPaneConstraints height="27px" left="10px" top="12px" width="50px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="lblEnabled" parent="panel" prefHeight="27px" prefWidth="96px" text="Enabled">
-    <AnchorsPaneConstraints height="27px" left="10px" top="50px" width="96px"/>
+  <Label cursor="0" horizontalAlignment="10" name="lblEnabled" parent="panel" prefHeight="27px" prefWidth="60px" text="Enabled">
+    <AnchorsPaneConstraints height="27px" left="10px" top="50px" width="60px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="lblFocusable" parent="panel" prefHeight="27px" prefWidth="96px" text="Focusable">
-    <AnchorsPaneConstraints height="27px" left="10px" top="90px" width="96px"/>
+  <Label cursor="0" horizontalAlignment="10" name="lblFocusable" parent="panel" prefHeight="27px" prefWidth="80px" text="Focusable">
+    <AnchorsPaneConstraints height="27px" left="10px" top="90px" width="80px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="lblOpaque" parent="panel" prefHeight="27px" prefWidth="96px" text="Opaque">
-    <AnchorsPaneConstraints height="27px" left="10px" top="130px" width="96px"/>
+  <Label cursor="0" horizontalAlignment="10" name="lblOpaque" parent="panel" prefHeight="27px" prefWidth="60px" text="Opaque">
+    <AnchorsPaneConstraints height="27px" left="10px" top="130px" width="60px"/>
   </Label>
   <FormattedField cursor="0" format="" name="ffBorder" parent="panel" prefHeight="27px" prefWidth="170px">
     <AnchorsPaneConstraints height="27px" left="240px" top="50px" width="170px"/>

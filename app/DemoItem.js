@@ -3,7 +3,7 @@
  * @author user
  * @constructor
  */
-function MenuObject() {
+function DemoItem() {
     var self = this, model = P.loadModel(this.constructor.name);
 
     // TODO : place constructor code here
@@ -16,7 +16,6 @@ function MenuObject() {
     self.childrenField = [];
     self.name;
 
-    var action;
     var widget;
     var displayWidget;
     var displayForm;
@@ -51,15 +50,15 @@ function MenuObject() {
         displayWidget = aWidget;
     };
 
-    self.setDisplayForm = function (aDisplayForm) {
-        displayForm = aDisplayForm;
-        displayWidget = displayForm.getFormView();
-        widget = aDisplayForm.getWidget();
-    };
-
-    self.getDisplayForm = function () {
-        return displayWidget;
-    };
+//    self.setDisplayForm = function (aDisplayForm) {
+//        displayForm = aDisplayForm;
+//        displayWidget = displayForm.getFormView();
+//        widget = aDisplayForm.getWidget();
+//    };
+//
+//    self.getDisplayForm = function () {
+//        return displayWidget;
+//    };
 
     self.setHint = function (aHint) {
         hint = aHint;

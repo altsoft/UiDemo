@@ -1,8 +1,11 @@
+/* global P */
+
 /**
  * 
  * @author user
+ * {global P}
  */
-function ContainersWidget() {
+function tempFF() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
@@ -18,16 +21,12 @@ function ContainersWidget() {
     });
     
     
-    self.getWidget = function () {
-        return form.view;
-    };
-
-    self.showOnPanel = function (aPanel) {
-        aPanel.add(aPanel);
+    form.btnSetFormat.onActionPerformed = function(event) {
+        form.formattedField.format = form.txtFormat.text;
+        form.formattedField.valueType = form.formattedField1.value;
     };
     
-    self.getFormView = function (){
-        return form.view;
+    form.btnGetValue.onActionPerformed = function(event) {
+        form.txtResult.text = form.formattedField.value;
     };
-    
 }

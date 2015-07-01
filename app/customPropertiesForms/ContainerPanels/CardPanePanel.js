@@ -38,7 +38,6 @@ function CardPanePanel(aPlaygroundPanel) {
         internalContainer.background = new P.Color(P.Color.RED);
     }
     preparations();
-    cModifiers = new ContainersModificator(internalContainer, externalContainer);
     addPanel = new AddComponentContainer(cModifiers, infoCallBack, modifyCallback, deleteCallback, placeElement);
 
     self.showOnPanel = function (aPanel) {

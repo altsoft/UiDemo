@@ -13,7 +13,7 @@ function DemosList() {
     };
 
     var createPlainWidget = function (aName, aType, aParent, aCustomForm, aHint) {
-        var widget = new MenuObject();
+        var widget = new DemoItem();
         widget.name = aName;
         widget.parentField = aParent;
         widget.setWidget(new aType(widget.name));
@@ -25,7 +25,7 @@ function DemosList() {
     };
 
     var demos = [];
-    var standardWidgets = new MenuObject();
+    var standardWidgets = new DemoItem();
     standardWidgets.name = "Standard Widgets";
     standardWidgets.setInformation("This is standard widgets");
     demos.push(standardWidgets);
@@ -74,20 +74,20 @@ function DemosList() {
 //    standardWidgets.childrenField.push(buttonGroup);
 //
     var createModelWidget = function (aName, aParent, aCustomForm, aForm) {
-        var widget = new MenuObject();
+        var widget = new DemoItem();
         widget.name = aName;
         widget.parentField = aParent;
         widget.setCommonForm("CommonProperties");
-        widget.setDisplayForm(aForm);
+//        widget.setDisplayForm(aForm);
         aParent.childrenField.push(widget);
         return widget;
     };
 
-    var modelWidgets = new MenuObject();
+    var modelWidgets = new DemoItem();
     modelWidgets.name = "Model Widgets";
     demos.push(modelWidgets);
     modelWidgets.setInformation("This is model widgets");
-    
+
     var form = new ModelWidgetsForm();
     form.placeModelCheckBox();
     var modelWidget = createModelWidget("Model check", modelWidgets, "", form);
@@ -107,7 +107,7 @@ function DemosList() {
     form.placeModelSpin();
     var modelWidget = createModelWidget("Model spin", modelWidgets, "", form);
     demos.push(modelWidget);
-    
+
     form = new ModelTextFields();
     form.placeModelTextFieldFormatted();
     var modelWidget = createModelWidget("Model formatted field", modelWidgets, "", form);
@@ -131,46 +131,50 @@ function DemosList() {
 //    arr.push(modelTextArea);
 //    modelWidgets.childrenField.push(modelTextArea);
 //
-    var createContainer = function (aName, aParent, aCommonForm,aForm) {
-        var widget = new MenuObject();
+    var createContainer = function (aName, aType, aParent, aCommon, aHint) {
+        var widget = new DemoItem();
         widget.name = aName;
         widget.parentField = aParent;
-        widget.setCommonForm(aCommonForm);
-         widget.setDisplayForm(aForm);
+        widget.setWidget(new aType());
+        widget.setCommonForm(aCommon);
+        widget.setHint(aHint);
         aParent.childrenField.push(widget);
         return widget;
     };
-    
-    var containers = new MenuObject();
+
+    var containers = new DemoItem();
     containers.name = "Containers";
     demos.push(containers);
     containers.setInformation("This is containers");
+
+    var container = createContainer("Anchors pane", P.AnchorsPane, containers, "AnchorsPanePanel", hint);
+//    var container = createContainer("Anchors pane",containers,"AnchorsPanePanel");
+    demos.push(container);
+
+    container = createContainer("Border pane", P.BorderPane, containers, "BorderPanePanel", hint);
+    demos.push(container);
+    
+    container = createContainer("VBox pane",P.BoxPane,containers,"VBoxPanePanel", hint);
+    demos.push(container);
+    
+    /*    
+     container = createContainer("Grid pane",containers,"GridPanePanel",containersForm);
+     demos.push(container);
      
-    var containersForm = new ContainersWidget();
-    var container = createContainer("Anchors pane",containers,"AnchorsPanePanel",containersForm);
-    demos.push(container);
-    
-    container = createContainer("Border pane",containers,"BorderPanePanel",containersForm);
-    demos.push(container);
-    
-    container = createContainer("Grid pane",containers,"GridPanePanel",containersForm);
-    demos.push(container);
-    
-    container = createContainer("Flow pane",containers,"FlowPanePanel",containersForm);
-    demos.push(container);
-    
-    container = createContainer("Card pane",containers,"CardPanePanel",containersForm);
-    demos.push(container);
-    
-    container = createContainer("Box pane",containers,"BoxPanePanel",containersForm);
-    demos.push(container);
-    
-//    container = createContainer("TabbedPane",containers,"TabbedPanePanel",containersForm);
-//    demos.push(container);
-    
-    container = createContainer("Split pane",containers,"SplitPanePanel",containersForm);
-    demos.push(container);
-    
+     container = createContainer("Flow pane",containers,"FlowPanePanel",containersForm);
+     demos.push(container);
+     
+     container = createContainer("Card pane",containers,"CardPanePanel",containersForm);
+     demos.push(container);
+     
+     
+     
+     //    container = createContainer("TabbedPane",containers,"TabbedPanePanel",containersForm);
+     //    demos.push(container);
+     
+     container = createContainer("Split pane",containers,"SplitPanePanel",containersForm);
+     demos.push(container);
+     */
 //    var scrollPane = new MenuObject();
 //    var toolBar = new MenuObject();
 //    var desktopPane = new MenuObject();

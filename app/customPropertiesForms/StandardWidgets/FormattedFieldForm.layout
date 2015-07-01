@@ -3,7 +3,7 @@
   <ButtonGroup name="buttonGroup"/>
   <ButtonGroup name="buttonGroup1"/>
   <ButtonGroup name="buttonGroup2"/>
-  <AnchorsPane cursor="0" name="view" prefHeight="51px" prefWidth="345px"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="152px" prefWidth="345px"/>
   <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="144px" prefWidth="372px">
     <AnchorsPaneConstraints bottom="0px" height="144px" left="0px" right="0px" top="0px" width="372px"/>
   </AnchorsPane>
@@ -13,4 +13,13 @@
   <TextField cursor="0" name="txtFormat" parent="panel" prefHeight="27px" prefWidth="150px" text="textField">
     <AnchorsPaneConstraints height="27px" left="180px" top="12px" width="150px"/>
   </TextField>
+  <FormattedField cursor="0" format="" name="formattedField" parent="panel" prefHeight="27px" prefWidth="150px" text="formattedField" valueType="1">
+    <AnchorsPaneConstraints height="27px" left="180px" top="50px" width="150px"/>
+  </FormattedField>
+  <ModelCombo cursor="0" name="mcmbValueType" parent="panel" prefHeight="27px" prefWidth="150px">
+    <AnchorsPaneConstraints bottom="17px" height="27px" left="180px" width="150px"/>
+  </ModelCombo>
+  <Button cursor="0" name="button" parent="panel" prefHeight="20px" prefWidth="70px" text="button">
+    <AnchorsPaneConstraints height="20px" left="10px" top="50px" width="70px"/>
+  </Button>
 </layout>

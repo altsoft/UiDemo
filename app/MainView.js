@@ -18,9 +18,8 @@ function MainView() {
     form.grdDemos.column.field = "name";
     form.grdDemos.parentField = 'parentField';
     form.grdDemos.childrenField = 'childrenField';
-
     form.pnlPlayground.background = new P.Color(P.Color.GREEN);
-    form.grdDemos.select(demosList.getMenu()[0]);
+    form.pnlDemoViews.show('pnlTextInfo');
 
     form.grdDemos.onItemSelected = function (event) {
         form.pnlCommon.clear();
@@ -41,15 +40,18 @@ function MainView() {
         }
 
         form.lblShortInfo.text = hint;
+
         if (customForm) {
             P.require(customForm, function () {
                 var custom = new global[customForm](widget);
                 custom.showOnPanel(form.pnlCustom);
             });
+        } else {
+
         }
         if (commonForm) {
             P.require(commonForm, function () {
-                widget.opaque = true;
+//                widget.opaque = true;
                 var common = new global[commonForm](widget);
                 common.showOnPanel(form.pnlCommon);
             });
@@ -65,6 +67,9 @@ function MainView() {
     self.show = function () {
         try {
             form.view.showOn(document.getElementById('Main'));
+            P.invokeLater(function () {
+                form.grdDemos.select(demosList.getMenu()[0]);
+            });
         } catch (ex) {
             form.show();
             P.invokeLater(function () {

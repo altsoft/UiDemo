@@ -10,7 +10,8 @@ function LabelForm(aDemoComponent) {
     var horizontalText;
     var verticalText;
     var verticalAlign;
-
+    
+    
     var bgrpHAlign = new P.ButtonGroup();
     bgrpHAlign.add(form.tglHLeftAlign);
     bgrpHAlign.add(form.tglHCenterAlign);
@@ -31,15 +32,30 @@ function LabelForm(aDemoComponent) {
     brgpVText.add(form.tglVCenter);
     brgpVText.add(form.tglVBottom);
 
+    
+
     self.setDemoComponent = function (aDemoComponent) {
         demoComponent = aDemoComponent;
     };
 
+    function changeAvaliability(enable) {
+        form.tglHLeft.enabled = enable; 
+        form.tglHCenter.enabled = enable;
+        form.tglHRight.enabled = enable;
+        form.tglVTop.enabled = enable;
+        form.tglVCenter.enabled = enable;
+        form.tglVBottom.enabled = enable;
+    }
+
     function initComponents() {
         form.txtText.text = demoComponent.text;
-        form.txtIconTextGap.text = demoComponent.iconTextGap;
+        form.mdlGap= demoComponent.iconTextGap;
         form.btnIcon.icon = demoComponent.icon;
-
+        if (demoComponent.icon) {
+            changeAvaliability(true);
+        } else {
+            changeAvaliability(false);
+        }
         switch (demoComponent.horizontalAlignment) {
             case P.HorizontalPosition.LEFT:
             {
@@ -117,7 +133,7 @@ function LabelForm(aDemoComponent) {
     self.show = function () {
         form.show();
     };
-    
+
     self.showOnPanel = function (aPanel) {
         initComponents();
         aPanel.add(form.view);
@@ -127,9 +143,14 @@ function LabelForm(aDemoComponent) {
         demoComponent.text = form.txtText.text;
     };
 
-    form.txtIconTextGap.onValueChange = function (event) {
-        demoComponent.iconTextGap = form.txtIconTextGap.value;
+    form.mdlGap.onValueChange = function(event) {
+//        demoComponent.iconTextGap = form.mdlGap.;
+        P.Logger.info(form.mdlGap.cursor);
+        P.Logger.info(form.mdlGap.data);
+        P.Logger.info(form.mdlGap.text);
+        P.Logger.info(form.mdlGap.value);
     };
+
 
     form.btnIcon.onActionPerformed = function (event) {
         var fileFilter = ".png,.ico,.gif,.jpg";
@@ -145,12 +166,12 @@ function LabelForm(aDemoComponent) {
                                 P.Icon.load(aUrl[0], function (uploadedFile) {
                                     form.btnIcon.icon = uploadedFile;
                                     demoComponent.icon = uploadedFile;
+                                    changeAvaliability(true);
                                 }, function (e) {
                                     P.Logger.info(e);
                                 });
                             },
                             function (aEvent) {
-                                P.Logger.severe(aEvent);
                             },
                             function (aError) {
                                 loading = null;
@@ -201,11 +222,11 @@ function LabelForm(aDemoComponent) {
     form.tglVBottomAlign.onActionPerformed = function (event) {
         demoComponent.verticalAlignment = P.VerticalPosition.BOTTOM;
     };
-    
+
     form.tglVTop.onActionPerformed = function (event) {
         demoComponent.verticalTextPosition = P.VerticalPosition.TOP;
     };
-    
+
     form.tglVCenter.onActionPerformed = function (event) {
         demoComponent.verticalTextPosition = P.VerticalPosition.CENTER;
     };

@@ -16,6 +16,12 @@
   <CardPane background="#ffffff" cursor="0" name="pnlDemoViews" parent="view" prefHeight="560px" prefWidth="832px">
     <AnchorsPaneConstraints bottom="14px" left="240px" right="10px" top="10px"/>
   </CardPane>
+  <AnchorsPane background="#ffffff" cursor="0" name="pnlTextInfo" parent="pnlDemoViews" prefHeight="560px" prefWidth="832px" visible="false">
+    <CardPaneConstraints cardName="pnlTextInfo"/>
+  </AnchorsPane>
+  <Label cursor="0" name="lblInfo" parent="pnlTextInfo" prefHeight="540px" prefWidth="812px" verticalAlignment="1">
+    <AnchorsPaneConstraints bottom="10px" left="10px" right="10px" top="10px"/>
+  </Label>
   <AnchorsPane background="#ffffff" cursor="0" name="pnlDemonstration" parent="pnlDemoViews" prefHeight="560px" prefWidth="832px">
     <CardPaneConstraints cardName="pnlDemonstration"/>
   </AnchorsPane>
@@ -36,10 +42,4 @@
     <TabbedPaneConstraints tabTitle="Custom" tabToolTip=""/>
   </BoxPane>
   <AnchorsPane background="#e90202" cursor="0" name="pnlSourceCode" parent="panel1" prefHeight="120px" prefWidth="830px"/>
-  <AnchorsPane background="#ffffff" cursor="0" name="pnlTextInfo" parent="pnlDemoViews" prefHeight="560px" prefWidth="832px" visible="false">
-    <CardPaneConstraints cardName="pnlTextInfo"/>
-  </AnchorsPane>
-  <Label cursor="0" name="lblInfo" parent="pnlTextInfo" prefHeight="540px" prefWidth="812px" text="label" verticalAlignment="1">
-    <AnchorsPaneConstraints bottom="10px" left="10px" right="10px" top="10px"/>
-  </Label>
 </layout>
