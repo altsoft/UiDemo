@@ -5,11 +5,19 @@
 // this === global
 (function () {
     function ready() {
-        P.require(['MainView'], function(){
-            var m = new MainView();
+        P.cacheBust = false;
+        var startModule = 'tempFF';
+        P.require([startModule], function(){
+            var m = new tempFF();
             m.show();
         }, function(e){
             P.Logger.severe(e);
+            var messageParagraph = document.createElement("p");
+            document.body.appendChild(messageParagraph);
+            messageParagraph.innerHTML = "An error occured while require('" + startModule + "'). Error: " + e;
+            messageParagraph.style.margin = '10px';
+            messageParagraph.style.fontFamily = 'Arial';
+            messageParagraph.style.fontSize = '14pt';
         });
     }
     if(!this.P) {

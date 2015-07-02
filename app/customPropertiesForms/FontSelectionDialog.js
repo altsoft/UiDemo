@@ -7,12 +7,9 @@ function FontSelectionDialog(aDemoComponent) {
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
     var demoComponent;
-    if (aDemoComponent) {
-        demoComponent = aDemoComponent;
-    }
-    function getFont() {
+    var onSelected;
 
-//        demoComponent.font = new P.Font("Times New Roman", P.FontStyle.BOLD, 14);
+    function getFont() {
         var fontStyle = P.FontStyle.NORMAL;
         if (form.tglBold.selected) {
             fontStyle = P.FontStyle.BOLD;
@@ -23,48 +20,51 @@ function FontSelectionDialog(aDemoComponent) {
         if (form.tglBold.selected & form.tglItalic.selected) {
             fontStyle = P.FontStyle.BOLD_ITALIC;
         }
-        var size = Number(form.tfSize.text);
-
-//        return new P.Font(model.params.FontName, fontStyle, size);
+        var size = form.ffSize.value;
+        return new P.Font(model.fonts.cursor.FontName, fontStyle, size);
     }
 
     function presetOnLoad() {
-//        if (demoComponent.isBold) {
-//            form.tglBold.selected = true;
-//        }
-//        if (model.params.isItalic) {
-//            form.tglItalic.selected = true;
-//        }
+        if (demoComponent.isBold) {
+            form.tglBold.selected = true;
+        }
+        if (demoComponent.isItalic) {
+            form.tglItalic.selected = true;
+        }
+        if (demoComponent.fontObject) {
+            model.fonts.cursor = demoComponent.fontObject;
+        }
+        if (demoComponent.fontSize) {
+            form.ffSize.value = demoComponent.fontSize;
+        }
     }
 
     self.show = function () {
-        presetOnLoad();
         form.show();
-        model.fonts.requery(function () {
-            P.Logger.info(model.fonts);
-        }, function (e) {
-            P.Logger.severe(e);
-        });
     };
 
-    self.showModal = function (aCallback) {
+    model.requery(function () {
+
+    });
+
+    self.showModal = function (aDemoComponent, aOnSelected) {
+        demoComponent = aDemoComponent;
+        onSelected = aOnSelected;
         presetOnLoad();
-        form.showModal(aCallback);
-        model.fonts.requery(function () {
-            P.Logger.info(model.fonts);
-        }, function (e) {
-            P.Logger.severe(e);
-        });
-//          demoComponent.font = new P.Font("Times New Roman", P.FontStyle.BOLD, 14);
+        form.showModal();
+        
     };
-
-
 
     form.btnCancel.onActionPerformed = function (event) {
         form.close();
     };
 
     form.btnOk.onActionPerformed = function (event) {
-        form.close(getFont());
+        var font = getFont();
+        demoComponent.font = font;
+        demoComponent.fontObject = model.fonts.cursor;
+        demoComponent.fontSize = form.ffSize.value;
+        onSelected(font);
+        form.close();
     };
 }

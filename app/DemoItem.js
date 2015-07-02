@@ -3,7 +3,7 @@
  * @author user
  * @constructor
  */
-function MenuObject() {
+function DemoItem() {
     var self = this, model = P.loadModel(this.constructor.name);
 
     // TODO : place constructor code here
@@ -16,13 +16,14 @@ function MenuObject() {
     self.childrenField = [];
     self.name;
 
-    var action;
     var widget;
     var displayWidget;
     var displayForm;
     var customForm;
     var commonForm;
     var hint = "";
+    var information="";
+    var sourceCodeExample="";
 
     self.setCommonForm = function (aCommonForms) {
         commonForm = aCommonForms;
@@ -49,15 +50,15 @@ function MenuObject() {
         displayWidget = aWidget;
     };
 
-    self.setDisplayForm = function (aDisplayForm) {
-        displayForm = aDisplayForm;
-        displayWidget = displayForm.getFormView();
-        widget = aDisplayForm.getWidget();
-    };
-
-    self.getDisplayForm = function () {
-        return displayWidget;
-    };
+//    self.setDisplayForm = function (aDisplayForm) {
+//        displayForm = aDisplayForm;
+//        displayWidget = displayForm.getFormView();
+//        widget = aDisplayForm.getWidget();
+//    };
+//
+//    self.getDisplayForm = function () {
+//        return displayWidget;
+//    };
 
     self.setHint = function (aHint) {
         hint = aHint;
@@ -66,5 +67,22 @@ function MenuObject() {
     self.getHint = function () {
         return hint;
     };
+    
+     self.setInformation = function (aInfo) {
+        information = aInfo;
+    };
+
+    self.getInformation = function () {
+        return information;
+    };
+    
+    self.setSourceCodeExample = function (aSourceCode) {
+        sourceCodeExample = aSourceCode;
+    };
+
+    self.getSourceCodeExample = function () {
+        return sourceCodeExample;
+    };
+    
 
 }

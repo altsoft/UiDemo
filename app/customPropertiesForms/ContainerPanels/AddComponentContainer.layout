@@ -1,21 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?><layout icon="" title="" view="view">
-  <AnchorsPane cursor="0" name="view" prefHeight="158px" prefWidth="340px"/>
-  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="31px" prefWidth="204px" text="Component parameters">
-    <AnchorsPaneConstraints height="31px" left="24px" top="0px" width="204px"/>
-  </Label>
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="124px" prefWidth="360px"/>
   <FormattedField cursor="0" format="" name="ffHeight" parent="view" prefHeight="27px" prefWidth="115px" text="35">
-    <AnchorsPaneConstraints height="27px" left="120px" top="37px" width="115px"/>
+    <AnchorsPaneConstraints height="27px" left="70px" top="49px" width="115px"/>
   </FormattedField>
-  <Button cursor="0" name="btnAddComponent" parent="view" prefHeight="36px" prefWidth="144px" text="Add component">
-    <AnchorsPaneConstraints bottom="14px" height="36px" left="12px" width="144px"/>
+  <Button cursor="0" name="btnAddComponent" parent="view" prefHeight="27px" prefWidth="150px" text="Add component">
+    <AnchorsPaneConstraints height="27px" left="200px" top="85px" width="150px"/>
   </Button>
   <FormattedField cursor="0" format="" name="ffWidth" parent="view" prefHeight="27px" prefWidth="115px" text="80">
-    <AnchorsPaneConstraints height="27px" left="120px" top="73px" width="115px"/>
+    <AnchorsPaneConstraints height="27px" left="70px" top="85px" width="115px"/>
   </FormattedField>
-  <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="17px" prefWidth="72px" text="Height">
-    <AnchorsPaneConstraints height="17px" left="12px" top="42px" width="72px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="17px" prefWidth="60px" text="Height">
+    <AnchorsPaneConstraints height="17px" left="10px" top="54px" width="60px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="label1" parent="view" prefHeight="17px" prefWidth="60px" text="Width">
-    <AnchorsPaneConstraints height="17px" left="12px" top="78px" width="60px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label1" parent="view" prefHeight="17px" prefWidth="50px" text="Width">
+    <AnchorsPaneConstraints height="17px" left="10px" top="90px" width="50px"/>
   </Label>
+  <ModelCombo cursor="0" name="mcmbElList" parent="view" prefHeight="29px" prefWidth="340px">
+    <AnchorsPaneConstraints height="29px" left="10px" top="13px" width="340px"/>
+  </ModelCombo>
+  <Button cursor="0" name="btnDelete" parent="view" prefHeight="27px" prefWidth="150px" text="Delete component">
+    <AnchorsPaneConstraints height="27px" left="200px" top="49px" width="150px"/>
+  </Button>
 </layout>

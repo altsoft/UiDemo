@@ -15,9 +15,6 @@ function Fonts() {
          {name: "property3Name", entity: "optionalEntityName", description: "Some property3 description", type: Number, required: true},
          */
     ];
-    this.params = [
-        {name: "familyName", type: String}
-    ];
     /**
      * Method invoked by platypus runtime in data fetching purposes.
      * @param aParams Object, with properties as defined in this module's model's parameters.
