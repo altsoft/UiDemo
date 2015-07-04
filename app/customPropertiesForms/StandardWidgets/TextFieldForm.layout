@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?><layout icon="" title="" view="view">
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
   <ButtonGroup name="btnGrpHorisontalPosition"/>
   <ButtonGroup name="buttonGroup"/>
   <ButtonGroup name="buttonGroup1"/>
   <ButtonGroup name="buttonGroup2"/>
-  <AnchorsPane cursor="0" name="view" prefHeight="80px" prefWidth="345px"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="80px" prefWidth="229px"/>
   <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="144px" prefWidth="372px">
     <AnchorsPaneConstraints bottom="0px" height="144px" left="0px" right="0px" top="0px" width="372px"/>
   </AnchorsPane>
-  <Label cursor="0" horizontalAlignment="10" horizontalTextPosition="4" name="label" parent="panel" prefHeight="17px" prefWidth="108px" text="Text">
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="panel" prefHeight="17px" prefWidth="108px" text="Text">
     <AnchorsPaneConstraints height="17px" left="12px" top="17px" width="108px"/>
   </Label>
   <Label cursor="0" horizontalAlignment="10" name="label1" parent="panel" prefHeight="17px" prefWidth="96px" text="Empty Text">
     <AnchorsPaneConstraints height="17px" left="12px" top="53px" width="96px"/>
   </Label>
   <TextField cursor="0" name="txtText" parent="panel" prefHeight="27px" prefWidth="120px" text="textField">
-    <AnchorsPaneConstraints height="27px" left="180px" top="12px" width="120px"/>
+    <AnchorsPaneConstraints height="27px" left="100px" top="12px" width="120px"/>
   </TextField>
   <TextField cursor="0" name="txtEmptyText" parent="panel" prefHeight="27px" prefWidth="120px" text="textField1">
-    <AnchorsPaneConstraints height="27px" left="180px" top="48px" width="120px"/>
+    <AnchorsPaneConstraints height="27px" left="100px" top="48px" width="120px"/>
   </TextField>
 </layout>

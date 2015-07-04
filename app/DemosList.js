@@ -30,41 +30,52 @@ function DemosList() {
     standardWidgets.setInformation("This is standard widgets");
     demos.push(standardWidgets);
 
-    var hint = "Label is useful to display text elements";
+    var hint = "Label is a widget with a short piece of text, images or text with an image.";
     var plainWidget = createPlainWidget("Label", P.Label, standardWidgets, "LabelForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Button", P.Button, standardWidgets, "ButtonForm");
+    hint = "Button is a simple button, which responds to the click action.";
+    plainWidget = createPlainWidget("Button", P.Button, standardWidgets, "ButtonForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Toggle button", P.ToggleButton, standardWidgets, "ToggleButtonForm");
+hint = "ToggleButton is a button with two states: selected and not selected.";
+    plainWidget = createPlainWidget("Toggle button", P.ToggleButton, standardWidgets, "ToggleButtonForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Check box", P.CheckBox, standardWidgets, "CheckBoxForm");
+hint = "CheckBox is a component with two states: selected/not selected.";
+    plainWidget = createPlainWidget("Check box", P.CheckBox, standardWidgets, "CheckBoxForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Radio button", P.RadioButton, standardWidgets, "CheckBoxForm");
+hint = "RadioButton is a component with two states: selected/not selected. Widgets of this type can be joined into groups.";
+    plainWidget = createPlainWidget("Radio button", P.RadioButton, standardWidgets, "CheckBoxForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Text field", P.TextField, standardWidgets, "TextFieldForm");
+hint = "TextField is a simple component, which allows you to edit single line of text.";
+    plainWidget = createPlainWidget("Text field", P.TextField, standardWidgets, "TextFieldForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Slider", P.Slider, standardWidgets, "SliderForm");
+hint = "Slider is a component, which allows you to visually select a value by moving the slider lever within the specified interval.";
+    plainWidget = createPlainWidget("Slider", P.Slider, standardWidgets, "SliderForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Progress bar", P.ProgressBar, standardWidgets, "ProgressBarForm");
+hint = "";
+    plainWidget = createPlainWidget("Progress bar", P.ProgressBar, standardWidgets, "ProgressBarForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Formatted field", P.FormattedField, standardWidgets, "FormattedFieldForm");
+hint = "";
+    plainWidget = createPlainWidget("Formatted field", P.FormattedField, standardWidgets, "FormattedFieldForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Password field", P.PasswordField, standardWidgets, "FormattedFieldForm");
+hint = "";
+    plainWidget = createPlainWidget("Password field", P.PasswordField, standardWidgets, "FormattedFieldForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Text area", P.TextArea, standardWidgets, "TextFieldForm");
+hint = "";
+    plainWidget = createPlainWidget("Text area", P.TextArea, standardWidgets, "TextFieldForm", hint);
     demos.push(plainWidget);
 
-    plainWidget = createPlainWidget("Html area", P.HtmlArea, standardWidgets, "TextFieldForm");
+hint = "";
+    plainWidget = createPlainWidget("Html area", P.HtmlArea, standardWidgets, "TextFieldForm", hint);
     demos.push(plainWidget);
 
 //    var buttonGroup = new MenuObject();

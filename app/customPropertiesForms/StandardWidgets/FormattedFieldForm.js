@@ -8,72 +8,65 @@ function FormattedFieldForm(aDemoComponent) {
             , form = P.loadForm(this.constructor.name, model);
     var demoComponent = aDemoComponent;
     var textForm;
-    var valueTypes = [];
 
-    function fillValueTypes() {
-        var aType = new Object();
-        aType.name = "Number";
-        aType.value = 0;
-"#,##0.###"
+    aDemoComponent.height = 30;
+    aDemoComponent.width = 300;
 
-        valueTypes.push(aType);
-
-        aType = new Object();
-        aType.name = "Date";
-        aType.value = 1;
-"EEEE, MMMM d, yyyy"
-        valueTypes.push(aType);
-
-        aType = new Object();
-        aType.name = "Time";
-        aType.value = 2;
-        "h:mm:ss a z"
-        
-        valueTypes.push(aType);
-
-        aType = new Object();
-        aType.name = "Percent";
-        aType.value = 3;
-        "#,##0%"
-        valueTypes.push(aType);
-
-        aType = new Object();
-        aType.name = "Currency";
-        aType.value = 4;
-        "¤¤#,##0.00;(¤¤#,##0.00)"
-        
-        valueTypes.push(aType);
-
-        aType = new Object();
-        aType.name = "Mask";
-        aType.value = 5;
-        "###-####"
-        valueTypes.push(aType);
-
-        aType = new Object();
-        aType.name = "Regexp";
-        aType.value = 6;
-        valueTypes.push(aType);
-
-        aType = new Object();
-        aType.name = "Custom...";
-        aType.value = 7;
-        valueTypes.push(aType);
-
-    }
+    var valueTypes = [
+        {
+            name: 'Number',
+            valueType: Number,
+            format: '#,##0.###',
+            value: 1234.567
+        }, {
+            name: 'Date',
+            valueType: Date,
+            format: 'h:mm:ss a z EEEE MMMM dd yyyy',
+            value: new Date(),
+        }, {
+            name: 'Time',
+            valueType: Date,
+            format: 'h:mm:ss a z',
+            value: '1:22:17 PM',
+        }, {
+            name: 'Custom (Percent)',
+            valueType: 'Percent',
+            format: '',
+            value: '1234.567'
+        }, {
+            name: 'Currency',
+            valueType: 4,
+            format: '¤#,##0.00,(¤#,##0.00)',
+            value: '1234.567'
+        }, {
+            name: 'Mask',
+            valueType: 5,
+            format: '###-####',
+            value: '123-4567',
+        }, {
+            name: 'RegExp',
+            valueType: RegExp,
+            format: '\\d{5}',
+            value: '1234.567'
+        }, {
+            name: 'Custom...',
+            valueType: 7,
+            format: '',
+            value: ''
+        }
+    ];
 
     self.setDemoComponent = function (aDemoComponent) {
         demoComponent = aDemoComponent;
     };
 
-    function preparations() {
+    function initWidget() {
         textForm = new TextFieldForm(demoComponent);
         form.txtFormat.text = demoComponent.format;
-        fillValueTypes();
         form.mcmbValueType.data = valueTypes;
-        form.mcmbValueType.displayField = "name";
+        form.mcmbValueType.displayField = 'name';
         form.mcmbValueType.displayList = valueTypes;
-        form.mcmbValueType.field = "value";
+        form.mcmbValueType.field = 'valueType';
     }
 
     self.show = function () {
@@ -81,13 +74,12 @@ function FormattedFieldForm(aDemoComponent) {
     };
 
     self.showOnPanel = function (aPanel) {
-
-        preparations();
+        initWidget();
         textForm.showOnPanel(aPanel);
         aPanel.add(form.view);
     };
 
-    form.txtFormat.onActionPerformed = function () {
+    form.txtFormat.onValueChange = function () {
         demoComponent.format = form.txtFormat.text;
     };
 
@@ -99,16 +91,38 @@ function FormattedFieldForm(aDemoComponent) {
 //
 //    };
 
+    function onParsePercent(event) {
+        var value = +event.source.text;
+        if (isNaN(value)) {
+            event.source.background = P.Color.PINK;
+            return null;
+        } else {
+            event.source.background = P.Color.WHITE;
+            return value/100;
+        }
+
+    }
+
+    function onFormatPercent(event) {
+        return event.source.value !== null ? (event.source.value*100) + "%" : "";
+    }
+
     form.mcmbValueType.onValueChange = function (event) {
-        demoComponent.valueType = form.mcmbValueType.value.value;
+        if (form.mcmbValueType.value.valueType === 'Percent') {
+            demoComponent.onParse = onParsePercent;
+            demoComponent.onFormat = onFormatPercent;
+        } else {
+            demoComponent.onParse = null;
+            demoComponent.onFormat = null;
+        }
+
+        demoComponent.format = form.mcmbValueType.value.format;
+        demoComponent.valueType = form.mcmbValueType.value.valueType;
+        form.txtFormat.text = form.mcmbValueType.value.format;
+        demoComponent.value = form.mcmbValueType.value.value;
+
+
+
     };
 
-    demoComponent.onActionPerformed = function (event) {
-        P.Logger.info(demoComponent.value);
-    };
-
-
-    form.button.onActionPerformed = function(event) {
-        P.Logger.info(demoComponent.value);
-    };
 }

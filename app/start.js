@@ -6,9 +6,9 @@
 (function () {
     function ready() {
         P.cacheBust = false;
-        var startModule = 'tempFF';
+        var startModule = 'MainView';
         P.require([startModule], function(){
-            var m = new tempFF();
+            var m = new MainView();
             m.show();
         }, function(e){
             P.Logger.severe(e);

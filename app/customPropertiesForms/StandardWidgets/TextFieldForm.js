@@ -8,7 +8,7 @@ function TextFieldForm(aDemoComponent) {
             , form = P.loadForm(this.constructor.name, model);
     var demoComponent = aDemoComponent;
 
-    function preparations() {
+    function initWidget() {
         form.txtText.text = demoComponent.text;
         demoComponent.emptyText = form.txtEmptyText.text;
     }
@@ -23,7 +23,7 @@ function TextFieldForm(aDemoComponent) {
     };
 
     self.showOnPanel = function (aPanel) {
-        preparations();
+        initWidget();
         aPanel.add(form.view);
     };
 
@@ -31,12 +31,13 @@ function TextFieldForm(aDemoComponent) {
         demoComponent.text = form.txtText.text;
     };
 
-    var demoOnActionPerformed = function () {
+    function demoOnActionPerformed () {
         form.txtText.text = demoComponent.text;
     };
     
     if (demoComponent) {
         demoComponent.onActionPerformed = demoOnActionPerformed;
+        demoComponent.onValueChange = demoOnActionPerformed;
     }
     
     form.txtEmptyText.onActionPerformed = function (event) {
