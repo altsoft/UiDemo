@@ -6,7 +6,6 @@
 function DemoItem() {
     var self = this, model = P.loadModel(this.constructor.name);
 
-    // TODO : place constructor code here
 
     self.execute = function () {
         // TODO : place application code here
@@ -49,16 +48,6 @@ function DemoItem() {
         widget = aWidget;
         displayWidget = aWidget;
     };
-
-//    self.setDisplayForm = function (aDisplayForm) {
-//        displayForm = aDisplayForm;
-//        displayWidget = displayForm.getFormView();
-//        widget = aDisplayForm.getWidget();
-//    };
-//
-//    self.getDisplayForm = function () {
-//        return displayWidget;
-//    };
 
     self.setHint = function (aHint) {
         hint = aHint;

@@ -29,44 +29,35 @@ function FormattedFieldForm(aDemoComponent) {
             format: 'h:mm:ss a z',
             value: '1:22:17 PM',
         }, {
-            name: 'Custom (Percent)',
-            valueType: 'Percent',
-            format: '',
-            value: '1234.567'
-        }, {
-            name: 'Currency',
-            valueType: 4,
-            format: '¤#,##0.00,(¤#,##0.00)',
-            value: '1234.567'
-        }, {
-            name: 'Mask',
-            valueType: 5,
-            format: '###-####',
-            value: '123-4567',
-        }, {
             name: 'RegExp',
             valueType: RegExp,
             format: '\\d{5}',
             value: '1234.567'
         }, {
-            name: 'Custom...',
-            valueType: 7,
+            name: 'Custom (Percent)',
+            valueType: 'Percent',
             format: '',
-            value: ''
+            value: 1234.567
+        }, {
+            name: 'Custom (Currency)',
+            valueType: 'Currency',
+            format: '',
+            value: 1234.567
+        }, {
+            name: 'Custom (Array)',
+            valueType: 'Array',
+            format: '',
+            value: '123-4567',
         }
     ];
 
-    self.setDemoComponent = function (aDemoComponent) {
-        demoComponent = aDemoComponent;
-    };
-
     function initWidget() {
-        textForm = new TextFieldForm(demoComponent);
         form.txtFormat.text = demoComponent.format;
         form.mcmbValueType.data = valueTypes;
         form.mcmbValueType.displayField = 'name';
         form.mcmbValueType.displayList = valueTypes;
         form.mcmbValueType.field = 'valueType';
+        form.txtEmptyText.text = demoComponent.emptyText;
     }
 
     self.show = function () {
@@ -75,7 +66,6 @@ function FormattedFieldForm(aDemoComponent) {
 
     self.showOnPanel = function (aPanel) {
         initWidget();
-        textForm.showOnPanel(aPanel);
         aPanel.add(form.view);
     };
 
@@ -83,13 +73,14 @@ function FormattedFieldForm(aDemoComponent) {
         demoComponent.format = form.txtFormat.text;
     };
 
-//    form.formattedField.onParse = function () {
-//        form.formattedField.valueType
-//    };
-//
-//    form.formattedField.onRender = function () {
-//
-//    };
+    demoComponent.onValueChange = function(event){
+        form.ffValue.value = demoComponent.value;
+    };
+    
+    form.txtEmptyText.onActionPerformed = function(event) {
+        demoComponent.emptyText =  form.txtEmptyText.text;
+    };
+
 
     function onParsePercent(event) {
         var value = +event.source.text;
@@ -98,19 +89,51 @@ function FormattedFieldForm(aDemoComponent) {
             return null;
         } else {
             event.source.background = P.Color.WHITE;
-            return value/100;
+            return value / 100;
         }
-
     }
 
     function onFormatPercent(event) {
-        return event.source.value !== null ? (event.source.value*100) + "%" : "";
+        return event.source.value !== null ? (event.source.value * 100) + "%" : "";
+    }
+
+    function onParseCurrency(event) {
+        var value = +event.source.text;
+        if (isNaN(value)) {
+            event.source.background = P.Color.PINK;
+            return null;
+        } else {
+            event.source.background = P.Color.WHITE;
+            return value;
+        }
+    }
+
+    function onFormatCurrency(event) {
+        return event.source.value !== null ? event.source.value + " $" : "";
+    }
+    
+    function onParseArray(event) {
+        var value = +event.source.text;
+        if (isNaN(value)) {
+            event.source.background = P.Color.PINK;
+            return null;
+        } else {
+            event.source.background = P.Color.WHITE;
+            return value;
+        }
+    }
+
+    function onFormatArray(event) {
+        return event.source.value !== null ? event.source.value + " $" : "";
     }
 
     form.mcmbValueType.onValueChange = function (event) {
         if (form.mcmbValueType.value.valueType === 'Percent') {
             demoComponent.onParse = onParsePercent;
             demoComponent.onFormat = onFormatPercent;
+        } else if (form.mcmbValueType.value.valueType === 'Currency') {
+            demoComponent.onParse = onParseCurrency;
+            demoComponent.onFormat = onFormatCurrency;
         } else {
             demoComponent.onParse = null;
             demoComponent.onFormat = null;
@@ -120,9 +143,6 @@ function FormattedFieldForm(aDemoComponent) {
         demoComponent.valueType = form.mcmbValueType.value.valueType;
         form.txtFormat.text = form.mcmbValueType.value.format;
         demoComponent.value = form.mcmbValueType.value.value;
-
-
-
     };
 
 }

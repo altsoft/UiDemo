@@ -45,6 +45,10 @@ function MainView() {
             P.require(customForm, function () {
                 var custom = new global[customForm](widget);
                 custom.showOnPanel(form.pnlCustom);
+                form.pnlSource.element.innerHTML = '<pre class="brush: js">' + custom.constructor.toString() + '</pre>';
+                SyntaxHighlighter.highlight();
+                var sCode = document.getElementsByClassName("syntaxhighlighter");
+                form.pnlSource.height = sCode[0].offsetHeight;
             });
         } else {
 
@@ -62,6 +66,8 @@ function MainView() {
         if (widget) {
             form.pnlPlayground.add(widget, new P.Anchors(hMargin, null, hMargin, vMargin, null, vMargin));
         }
+
+        
     };
 
     self.show = function () {

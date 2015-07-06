@@ -11,7 +11,6 @@ function LabelForm(aDemoComponent) {
     var verticalText;
     var verticalAlign;
     
-    
     var bgrpHAlign = new P.ButtonGroup();
     bgrpHAlign.add(form.tglHLeftAlign);
     bgrpHAlign.add(form.tglHCenterAlign);

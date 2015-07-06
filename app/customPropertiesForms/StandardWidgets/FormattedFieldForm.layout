@@ -3,20 +3,32 @@
   <ButtonGroup name="buttonGroup"/>
   <ButtonGroup name="buttonGroup1"/>
   <ButtonGroup name="buttonGroup2"/>
-  <AnchorsPane cursor="0" name="view" prefHeight="238px" prefWidth="312px"/>
-  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="240px" prefWidth="310px">
-    <AnchorsPaneConstraints bottom="-2px" left="0px" right="2px" top="0px"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="238px" prefWidth="261px"/>
+  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="240px" prefWidth="260px">
+    <AnchorsPaneConstraints bottom="-2px" left="0px" right="1px" top="0px"/>
   </AnchorsPane>
   <Label cursor="0" horizontalAlignment="10" name="label" parent="panel" prefHeight="17px" prefWidth="108px" text="Format">
-    <AnchorsPaneConstraints height="17px" left="12px" top="17px" width="108px"/>
+    <AnchorsPaneConstraints height="17px" left="10px" top="17px" width="108px"/>
   </Label>
   <TextField cursor="0" name="txtFormat" parent="panel" prefHeight="27px" prefWidth="150px" text="textField">
-    <AnchorsPaneConstraints height="27px" left="90px" top="12px" width="150px"/>
+    <AnchorsPaneConstraints height="27px" left="100px" top="12px" width="150px"/>
   </TextField>
   <ModelCombo cursor="0" name="mcmbValueType" parent="panel" prefHeight="27px" prefWidth="150px">
-    <AnchorsPaneConstraints height="27px" left="90px" top="48px" width="150px"/>
+    <AnchorsPaneConstraints height="27px" left="100px" top="48px" width="150px"/>
   </ModelCombo>
   <Label cursor="0" horizontalAlignment="10" name="label1" parent="panel" prefHeight="17px" prefWidth="108px" text="Value type">
     <AnchorsPaneConstraints height="17px" left="10px" top="53px" width="108px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label2" parent="panel" prefHeight="17px" prefWidth="60px" text="Value">
+    <AnchorsPaneConstraints height="17px" left="10px" top="89px" width="60px"/>
+  </Label>
+  <FormattedField name="ffValue" parent="panel" prefHeight="27px" prefWidth="150px" valueType="5">
+    <AnchorsPaneConstraints height="27px" left="100px" top="84px" width="150px"/>
+  </FormattedField>
+  <TextField cursor="0" name="txtEmptyText" parent="panel" prefHeight="27px" prefWidth="150px" text="textField">
+    <AnchorsPaneConstraints height="27px" left="100px" top="120px" width="150px"/>
+  </TextField>
+  <Label cursor="0" horizontalAlignment="10" name="label3" parent="panel" prefHeight="17px" prefWidth="108px" text="Empty Text">
+    <AnchorsPaneConstraints height="17px" left="10px" top="125px" width="108px"/>
   </Label>
 </layout>
