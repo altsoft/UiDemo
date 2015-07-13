@@ -5,7 +5,7 @@
 // this === global
 (function () {
     function ready() {
-        P.cacheBust = false;
+        P.cacheBust = true;
         var startModule = 'MainView';
         P.require([startModule], function(){
             var m = new MainView();

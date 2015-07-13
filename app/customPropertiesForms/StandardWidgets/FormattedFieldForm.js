@@ -2,15 +2,22 @@
  * 
  * @author jskonst
  */
-function FormattedFieldForm(aDemoComponent) {
+function FormattedFieldForm() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-    var demoComponent = aDemoComponent;
-    var textForm;
 
-    aDemoComponent.height = 30;
-    aDemoComponent.width = 300;
+    var demoComponent = new P.FormattedField("Formatted field");
+    demoComponent.height = 27;
+    demoComponent.width = 500;
+
+    self.getDemoComponent = function () {
+        return demoComponent;
+    };
+
+    self.getViewComponent = function () {
+        return demoComponent;
+    };
 
     var valueTypes = [
         {
@@ -47,7 +54,7 @@ function FormattedFieldForm(aDemoComponent) {
             name: 'Custom (Array)',
             valueType: 'Array',
             format: '',
-            value: '123-4567',
+            value: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
         }
     ];
 
@@ -73,12 +80,12 @@ function FormattedFieldForm(aDemoComponent) {
         demoComponent.format = form.txtFormat.text;
     };
 
-    demoComponent.onValueChange = function(event){
+    demoComponent.onValueChange = function (event) {
         form.ffValue.value = demoComponent.value;
     };
-    
-    form.txtEmptyText.onActionPerformed = function(event) {
-        demoComponent.emptyText =  form.txtEmptyText.text;
+
+    form.txtEmptyText.onActionPerformed = function (event) {
+        demoComponent.emptyText = form.txtEmptyText.text;
     };
 
 
@@ -111,20 +118,22 @@ function FormattedFieldForm(aDemoComponent) {
     function onFormatCurrency(event) {
         return event.source.value !== null ? event.source.value + " $" : "";
     }
-    
+
     function onParseArray(event) {
-        var value = +event.source.text;
-        if (isNaN(value)) {
-            event.source.background = P.Color.PINK;
-            return null;
-        } else {
+        var value = event.source.text;
+        value = value.replace(" ", "");
+        value = value.split(",");
+        if (value) {
             event.source.background = P.Color.WHITE;
             return value;
+        } else {
+            event.source.background = P.Color.PINK;
+            return null;
         }
     }
 
     function onFormatArray(event) {
-        return event.source.value !== null ? event.source.value + " $" : "";
+        return event.source.value !== null ? event.source.value.toString() : "";
     }
 
     form.mcmbValueType.onValueChange = function (event) {
@@ -134,6 +143,9 @@ function FormattedFieldForm(aDemoComponent) {
         } else if (form.mcmbValueType.value.valueType === 'Currency') {
             demoComponent.onParse = onParseCurrency;
             demoComponent.onFormat = onFormatCurrency;
+        } else if (form.mcmbValueType.value.valueType === 'Array') {
+            demoComponent.onParse = onParseArray;
+            demoComponent.onFormat = onFormatArray;
         } else {
             demoComponent.onParse = null;
             demoComponent.onFormat = null;

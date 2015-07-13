@@ -12,7 +12,7 @@
   <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="72px" text="VGap">
     <AnchorsPaneConstraints height="17px" left="12px" top="18px" width="72px"/>
   </Label>
-  <CheckBox cursor="0" name="checkBox" parent="view" prefHeight="20px" prefWidth="28px">
+  <CheckBox cursor="0" name="chbIsScroll" parent="view" prefHeight="20px" prefWidth="28px" selected="true">
     <AnchorsPaneConstraints height="20px" left="160px" top="88px" width="28px"/>
   </CheckBox>
   <Label cursor="0" horizontalAlignment="10" name="label122" parent="view" prefHeight="22px" prefWidth="150px" text="Place Pane  on Scroll">

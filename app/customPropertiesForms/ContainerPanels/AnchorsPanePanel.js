@@ -2,16 +2,28 @@
  * 
  * @author user
  */
-function AnchorsPanePanel(aPlaygroundPanel) {
+function AnchorsPanePanel() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
     var counter = 1;
 
-    var internalContainer = aPlaygroundPanel;
-    internalContainer.background = new P.Color(P.Color.RED);
-    var addPanel;
+    var internalContainer = new P.AnchorsPane();
+    internalContainer.width = 800;
+    internalContainer.height = 400;
+    if (P.agent == P.HTML5) {
+        internalContainer.element.style.border = "solid";
+    }
+    var addPanel;   
     var subject;
+
+    self.getDemoComponent = function () {
+        return internalContainer;
+    };
+    
+    self.getViewComponent = function () {
+        return internalContainer;
+    };
 
     self.show = function () {
         form.show();
@@ -38,7 +50,7 @@ function AnchorsPanePanel(aPlaygroundPanel) {
         form.ffRight.text = 0;
         form.ffTop.text = 0;
         form.ffBottom.text = 0;
-
+        
         internalContainer.add(aElement
                 , new P.Anchors(form.ffLeft.value,
                         aElement.width,

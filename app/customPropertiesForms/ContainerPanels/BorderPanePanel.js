@@ -2,7 +2,7 @@
  * 
  * @author user
  */
-function BorderPanePanel(aPlaygroundPanel) {
+function BorderPanePanel() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
@@ -15,10 +15,22 @@ function BorderPanePanel(aPlaygroundPanel) {
     btnGrpPos.add(form.rbBottom);
     form.rbCenter.selected = true;
 
-    var internalContainer = aPlaygroundPanel;
-    internalContainer.background = new P.Color(P.Color.RED);
+    var internalContainer = new P.BorderPane();
+    internalContainer.width = 800;
+    internalContainer.height = 400;
+    if (P.agent == P.HTML5) {
+        internalContainer.element.style.border = "solid";
+    }
     var addPanel;
     var subject;
+
+    self.getDemoComponent = function () {
+        return internalContainer;
+    };
+
+    self.getViewComponent = function () {
+        return internalContainer;
+    };
 
     self.show = function () {
         form.show();

@@ -17,8 +17,9 @@ function AddComponentContainer(aGetPosition, aDelete, aPlaceElement) {
     form.mcmbElList.displayList = elementsList;
     form.mcmbElList.field = "itemname"; //propertyPath
 
-    var colorsArray = [P.Color.BLUE, P.Color.GRAY, P.Color.GREEN,
-        P.Color.MAGENTA, P.Color.ORANGE, P.Color.PINK, P.Color.RED, P.Color.WHITE, P.Color.YELLOW];
+    var colorsArray = [new P.Color('#49a7f0'), new P.Color('#67eacc'), new P.Color('#6fea58'),
+        new P.Color('#ea6dda'),new P.Color('#fa9037'), P.Color.PINK, 
+        new P.Color('#f04949'),new P.Color('#b6b6b6'), new P.Color('#f5e04f')];
 
     self.show = function () {
         form.show();
@@ -34,12 +35,13 @@ function AddComponentContainer(aGetPosition, aDelete, aPlaceElement) {
     
     
     form.btnAddComponent.onActionPerformed = function (event) {
-        var pnlSubject = new P.BoxPane();
+        var pnlSubject = new P.BorderPane();
         pnlSubject.width = form.ffWidth.value;
         pnlSubject.height = form.ffHeight.value;
         var colorIndex = Math.floor(Math.random() * colorsArray.length);
         pnlSubject.background = new P.Color(colorsArray[colorIndex]);
         var label = new P.Label();
+        label.width = 50;
         pnlSubject.add(label);
         pnlSubject.onMousePressed = function (event) {
             form.ffWidth.value = pnlSubject.width;

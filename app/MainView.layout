@@ -25,7 +25,7 @@
   <AnchorsPane background="#ffffff" cursor="0" name="pnlDemonstration" parent="pnlDemoViews" prefHeight="560px" prefWidth="832px" visible="false">
     <CardPaneConstraints cardName="pnlDemonstration"/>
   </AnchorsPane>
-  <ScrollPane background="#fa8918" cursor="0" name="scrollPane" parent="pnlDemonstration" prefHeight="560px" prefWidth="832px">
+  <ScrollPane cursor="0" name="scrollPane" parent="pnlDemonstration" prefHeight="560px" prefWidth="832px">
     <AnchorsPaneConstraints bottom="0px" left="0px" right="0px" top="0px"/>
   </ScrollPane>
   <BoxPane background="#ffffff" cursor="0" name="panel1" orientation="1" parent="scrollPane" prefHeight="558px" prefWidth="830px"/>
@@ -33,14 +33,15 @@
   <Label cursor="0" name="lblShortInfo" parent="pnlShortInfo" prefHeight="0px" prefWidth="830px" text="label">
     <AnchorsPaneConstraints bottom="505px" left="0px" right="0px" top="0px"/>
   </Label>
-  <AnchorsPane background="#12e41d" cursor="0" name="pnlPlayground" parent="panel1" prefHeight="120px" prefWidth="830px"/>
+  <AnchorsPane cursor="0" name="pnlPlayground" parent="panel1" prefHeight="120px" prefWidth="830px"/>
   <TabbedPane cursor="0" name="tabbedPane2" parent="panel1" prefHeight="200px" prefWidth="830px" selectedComponent="pnlCommon"/>
-  <BoxPane cursor="0" name="pnlCommon" orientation="1" parent="tabbedPane2" prefHeight="163px" prefWidth="822px">
+  <BoxPane cursor="0" name="pnlCommon" parent="tabbedPane2" prefHeight="163px" prefWidth="822px">
     <TabbedPaneConstraints tabTitle="Common" tabToolTip=""/>
   </BoxPane>
   <BoxPane background="#ffffff" cursor="0" name="pnlCustom" parent="tabbedPane2" prefHeight="163px" prefWidth="822px" visible="false">
     <TabbedPaneConstraints tabTitle="Custom" tabToolTip=""/>
   </BoxPane>
+  <Label cursor="0" name="label" parent="panel1" prefHeight="20px" prefWidth="830px" text="Source Code"/>
   <BoxPane cursor="0" name="pnlSourceCode" orientation="1" parent="panel1" prefHeight="120px" prefWidth="830px"/>
   <AnchorsPane cursor="0" name="pnlSource" parent="pnlSourceCode" prefHeight="100px" prefWidth="830px"/>
 </layout>

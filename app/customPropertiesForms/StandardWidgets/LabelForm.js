@@ -6,11 +6,18 @@ function LabelForm(aDemoComponent) {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-    var demoComponent = aDemoComponent;
+    if (aDemoComponent) {
+        var demoComponent = aDemoComponent;
+    } else {
+        var demoComponent = new P.Label("Label");
+        demoComponent.height = 27;
+        demoComponent.width = 100;
+    }
+
     var horizontalText;
     var verticalText;
     var verticalAlign;
-    
+
     var bgrpHAlign = new P.ButtonGroup();
     bgrpHAlign.add(form.tglHLeftAlign);
     bgrpHAlign.add(form.tglHCenterAlign);
@@ -31,14 +38,16 @@ function LabelForm(aDemoComponent) {
     brgpVText.add(form.tglVCenter);
     brgpVText.add(form.tglVBottom);
 
+    self.getDemoComponent = function () {
+        return demoComponent;
+    };
     
-
-    self.setDemoComponent = function (aDemoComponent) {
-        demoComponent = aDemoComponent;
+    self.getViewComponent = function () {
+        return demoComponent;
     };
 
     function changeAvaliability(enable) {
-        form.tglHLeft.enabled = enable; 
+        form.tglHLeft.enabled = enable;
         form.tglHCenter.enabled = enable;
         form.tglHRight.enabled = enable;
         form.tglVTop.enabled = enable;
@@ -48,7 +57,7 @@ function LabelForm(aDemoComponent) {
 
     function initComponents() {
         form.txtText.text = demoComponent.text;
-        form.mdlGap= demoComponent.iconTextGap;
+        form.mdlGap = demoComponent.iconTextGap;
         form.btnIcon.icon = demoComponent.icon;
         if (demoComponent.icon) {
             changeAvaliability(true);
@@ -77,7 +86,6 @@ function LabelForm(aDemoComponent) {
             case P.HorizontalPosition.LEFT:
             {
                 form.tglHLeft.selected = true;
-
                 break;
             }
             case P.HorizontalPosition.RIGHT:
@@ -126,7 +134,6 @@ function LabelForm(aDemoComponent) {
                 break;
             }
         }
-
     }
 
     self.show = function () {
@@ -142,7 +149,7 @@ function LabelForm(aDemoComponent) {
         demoComponent.text = form.txtText.text;
     };
 
-    form.mdlGap.onValueChange = function(event) {
+    form.mdlGap.onValueChange = function (event) {
 //        demoComponent.iconTextGap = form.mdlGap.;
         P.Logger.info(form.mdlGap.cursor);
         P.Logger.info(form.mdlGap.data);

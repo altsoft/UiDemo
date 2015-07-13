@@ -7,10 +7,31 @@ function VBoxPanePanel(aPlaygroundPanel) {
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
     var counter = 1;
-    var internalContainer = aPlaygroundPanel;
-    internalContainer.orientation = P.Orientation.VERTICAL;
-    internalContainer.background = new P.Color(P.Color.RED);
-    
+    var internalContainer = new P.BorderPane();
+    var scrollContainer = new P.ScrollPane();
+    var demoContainer = new P.BoxPane(P.Orientation.VERTICAL);
+    internalContainer.width = 800;
+    internalContainer.height = 400;
+
+    if (form.chbIsScroll.selected) {
+        scrollContainer.add(demoContainer);
+        internalContainer.add(scrollContainer);
+    } else {
+        internalContainer.add(demoContainer);
+    }
+
+    if (P.agent == P.HTML5) {
+        internalContainer.element.style.border = "solid";
+    }
+
+    self.getDemoComponent = function () {
+        return internalContainer;
+    };
+
+    self.getViewComponent = function () {
+        return internalContainer;
+    };
+
     var addPanel;
     var subject;
 
@@ -27,8 +48,9 @@ function VBoxPanePanel(aPlaygroundPanel) {
     }
 
     var placeElement = function (aElement, counter) {
-        internalContainer.add(aElement);
-        aElement.toolTipText = "num " + counter + " id:" + internalContainer.count;
+        aElement.height = Math.floor(Math.random() * (100 - 20)) + 20;
+        demoContainer.add(aElement);
+        aElement.toolTipText = "num " + counter + " id:" + demoContainer.count;
     };
 
     addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
@@ -38,10 +60,6 @@ function VBoxPanePanel(aPlaygroundPanel) {
         addPanel.showOnPanel(aPanel);
     };
 
-    model.requery(function () {
-        // TODO : place your code here
-    });
-
     form.ffHGap.onActionPerformed = function (event) {
         internalContainer.hgap = form.ffHGap.value;
     };
@@ -50,5 +68,13 @@ function VBoxPanePanel(aPlaygroundPanel) {
         internalContainer.vgap = form.ffVGap.value;
     };
 
-
+    form.chbIsScroll.onActionPerformed = function (event) {
+        internalContainer.clear();
+        if (event.source.selected) {
+            scrollContainer.add(demoContainer);
+            internalContainer.add(scrollContainer);
+        } else {
+            internalContainer.add(demoContainer);
+        }
+    };
 }

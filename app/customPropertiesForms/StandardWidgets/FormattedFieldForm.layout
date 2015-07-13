@@ -3,9 +3,9 @@
   <ButtonGroup name="buttonGroup"/>
   <ButtonGroup name="buttonGroup1"/>
   <ButtonGroup name="buttonGroup2"/>
-  <AnchorsPane cursor="0" name="view" prefHeight="238px" prefWidth="261px"/>
-  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="240px" prefWidth="260px">
-    <AnchorsPaneConstraints bottom="-2px" left="0px" right="1px" top="0px"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="169px" prefWidth="261px"/>
+  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="170px" prefWidth="260px">
+    <AnchorsPaneConstraints bottom="-1px" left="0px" right="1px" top="0px"/>
   </AnchorsPane>
   <Label cursor="0" horizontalAlignment="10" name="label" parent="panel" prefHeight="17px" prefWidth="108px" text="Format">
     <AnchorsPaneConstraints height="17px" left="10px" top="17px" width="108px"/>

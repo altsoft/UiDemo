@@ -16,13 +16,14 @@ function DemoItem() {
     self.name;
 
     var widget;
-    var displayWidget;
-    var displayForm;
+    
     var customForm;
     var commonForm;
+    var widget;
+    
     var hint = "";
     var information="";
-    var sourceCodeExample="";
+
 
     self.setCommonForm = function (aCommonForms) {
         commonForm = aCommonForms;
@@ -39,15 +40,23 @@ function DemoItem() {
     self.getCustomForm = function () {
         return customForm;
     };
+    
+    self.setWidgetForm = function (aCustomForms) {
+        widget = aCustomForms;
+    };
 
-    self.getWidget = function () {
+    self.getWidgetForm = function () {
         return widget;
     };
-
-    self.setWidget = function (aWidget) {
-        widget = aWidget;
-        displayWidget = aWidget;
-    };
+    
+//    self.getWidget = function () {
+//        return widget;
+//    };
+//
+//    self.setWidget = function (aWidget) {
+//        widget = aWidget;
+//        displayWidget = aWidget;
+//    };
 
     self.setHint = function (aHint) {
         hint = aHint;
@@ -65,13 +74,4 @@ function DemoItem() {
         return information;
     };
     
-    self.setSourceCodeExample = function (aSourceCode) {
-        sourceCodeExample = aSourceCode;
-    };
-
-    self.getSourceCodeExample = function () {
-        return sourceCodeExample;
-    };
-    
-
 }

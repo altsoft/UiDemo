@@ -2,47 +2,45 @@
  * 
  * @author jskonst
  */
-function CheckBoxForm(aDemoComponent) {
+function CheckBoxForm() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-    var demoComponent = aDemoComponent;
-    
-    self.setDemoComponent = function(aDemoComponent){
-        demoComponent = aDemoComponent;
-        demoComponent.onActionPerformed = demoOnActionPerformed;
+    var demoComponent = new P.CheckBox("Check box");
+    demoComponent.height = 27;
+    demoComponent.width = 100;
+
+    self.getDemoComponent = function () {
+        return demoComponent;
     };
-    
-    function preparations(){
+
+    self.getViewComponent = function () {
+        return demoComponent;
+    };
+
+    function initWidgets() {
         form.chbSelected1.selected = demoComponent.selected;
         form.txtText.text = demoComponent.text;
-        
-    };
-    
+    }
+
     self.show = function () {
         form.show();
     };
 
     self.showOnPanel = function (aPanel) {
-        preparations();
+        initWidgets();
         aPanel.add(form.view);
     };
-
 
     form.chbSelected1.onActionPerformed = function (event) {
         demoComponent.selected = form.chbSelected1.selected;
     };
 
-    
-    if (demoComponent){
-        demoComponent.onActionPerformed = demoOnActionPerformed;
-    };
-    
-    var demoOnActionPerformed = function (event) {
+    demoComponent.OnActionPerformed = function (event) {
         form.chbSelected1.selected = demoComponent.selected;
     };
-    
-    form.txtText.onActionPerformed = function(event) {
+
+    form.txtText.onActionPerformed = function (event) {
         demoComponent.text = form.txtText.text;
     };
 }

@@ -12,11 +12,10 @@ function DemosList() {
         // TODO : place application code here
     };
 
-    var createPlainWidget = function (aName, aType, aParent, aCustomForm, aHint) {
+    var createPlainWidget = function (aName, aParent, aCustomForm, aHint) {
         var widget = new DemoItem();
         widget.name = aName;
         widget.parentField = aParent;
-        widget.setWidget(new aType(widget.name));
         widget.setCustomForm(aCustomForm);
         widget.setCommonForm("CommonProperties");
         widget.setHint(aHint);
@@ -31,51 +30,51 @@ function DemosList() {
     demos.push(standardWidgets);
 
     var hint = "Label is a widget with a short piece of text, images or text with an image.";
-    var plainWidget = createPlainWidget("Label", P.Label, standardWidgets, "LabelForm", hint);
+    var plainWidget = createPlainWidget("Label", standardWidgets, "LabelForm", hint);
     demos.push(plainWidget);
 
     hint = "Button is a simple button, which responds to the click action.";
-    plainWidget = createPlainWidget("Button", P.Button, standardWidgets, "ButtonForm", hint);
+    plainWidget = createPlainWidget("Button", standardWidgets, "ButtonForm", hint);
     demos.push(plainWidget);
 
-hint = "ToggleButton is a button with two states: selected and not selected.";
-    plainWidget = createPlainWidget("Toggle button", P.ToggleButton, standardWidgets, "ToggleButtonForm", hint);
+    hint = "ToggleButton is a button with two states: selected and not selected.";
+    plainWidget = createPlainWidget("Toggle button", standardWidgets, "ToggleButtonForm", hint);
     demos.push(plainWidget);
 
-hint = "CheckBox is a component with two states: selected/not selected.";
-    plainWidget = createPlainWidget("Check box", P.CheckBox, standardWidgets, "CheckBoxForm", hint);
+    hint = "CheckBox is a component with two states: selected/not selected.";
+    plainWidget = createPlainWidget("Check box", standardWidgets, "CheckBoxForm", hint);
     demos.push(plainWidget);
 
-hint = "RadioButton is a component with two states: selected/not selected. Widgets of this type can be joined into groups.";
-    plainWidget = createPlainWidget("Radio button", P.RadioButton, standardWidgets, "CheckBoxForm", hint);
+    hint = "RadioButton is a component with two states: selected/not selected. Widgets of this type can be joined into groups.";
+    plainWidget = createPlainWidget("Radio button", standardWidgets, "RadioButtonForm", hint);
     demos.push(plainWidget);
 
-hint = "TextField is a simple component, which allows you to edit single line of text.";
-    plainWidget = createPlainWidget("Text field", P.TextField, standardWidgets, "TextFieldForm", hint);
+    hint = "TextField is a simple component, which allows you to edit single line of text.";
+    plainWidget = createPlainWidget("Text field", standardWidgets, "TextFieldForm", hint);
     demos.push(plainWidget);
 
-hint = "Slider is a component, which allows you to visually select a value by moving the slider lever within the specified interval.";
-    plainWidget = createPlainWidget("Slider", P.Slider, standardWidgets, "SliderForm", hint);
+    hint = "Slider is a component, which allows you to visually select a value by moving the slider lever within the specified interval.";
+    plainWidget = createPlainWidget("Slider", standardWidgets, "SliderForm", hint);
     demos.push(plainWidget);
 
-hint = "";
-    plainWidget = createPlainWidget("Progress bar", P.ProgressBar, standardWidgets, "ProgressBarForm", hint);
+    hint = "ProgressBar is a component, which visually shows the progress of some task.";
+    plainWidget = createPlainWidget("Progress bar", standardWidgets, "ProgressBarForm", hint);
     demos.push(plainWidget);
 
-hint = "";
-    plainWidget = createPlainWidget("Formatted field", P.FormattedField, standardWidgets, "FormattedFieldForm", hint);
+    hint = "FormattedField is a component, which allows you to edit value of some specific type as the text.";
+    plainWidget = createPlainWidget("Formatted field", standardWidgets, "FormattedFieldForm", hint);
     demos.push(plainWidget);
 
-hint = "";
-    plainWidget = createPlainWidget("Password field", P.PasswordField, standardWidgets, "FormattedFieldForm", hint);
+    hint = "PasswordField is a simple input component, it displays placeholders instead of actual characters.";
+    plainWidget = createPlainWidget("Password field", standardWidgets, "PasswordFieldForm", hint);
     demos.push(plainWidget);
 
-hint = "";
-    plainWidget = createPlainWidget("Text area", P.TextArea, standardWidgets, "TextFieldForm", hint);
+    hint = "TextArea is the text component for editing and displaying multistring text.";
+    plainWidget = createPlainWidget("Text area", standardWidgets, "TextAreaForm", hint);
     demos.push(plainWidget);
 
-hint = "";
-    plainWidget = createPlainWidget("Html area", P.HtmlArea, standardWidgets, "TextFieldForm", hint);
+    hint = "HtmlArea is a component for editing and displaying HTML documents.";
+    plainWidget = createPlainWidget("Html area", standardWidgets, "HtmlAreaForm", hint);
     demos.push(plainWidget);
 
 //    var buttonGroup = new MenuObject();
@@ -84,49 +83,35 @@ hint = "";
 //    arr.push(buttonGroup);
 //    standardWidgets.childrenField.push(buttonGroup);
 //
-    var createModelWidget = function (aName, aParent, aCustomForm, aForm) {
-        var widget = new DemoItem();
-        widget.name = aName;
-        widget.parentField = aParent;
-        widget.setCommonForm("CommonProperties");
-//        widget.setDisplayForm(aForm);
-        aParent.childrenField.push(widget);
-        return widget;
-    };
+
 
     var modelWidgets = new DemoItem();
     modelWidgets.name = "Model Widgets";
     demos.push(modelWidgets);
     modelWidgets.setInformation("This is model widgets");
 
-    var form = new ModelWidgetsForm();
-    form.placeModelCheckBox();
-    var modelWidget = createModelWidget("Model check", modelWidgets, "", form);
+    hint = "ModelCheck is a scalar model widget representing a check box, the state of which is linked to an entity's field."
+    var modelWidget = createPlainWidget("Model check", modelWidgets, "ModelCheckCustom", hint);
     demos.push(modelWidget);
 
-    form = new ModelWidgetsForm();
-    form.placeModelCombo();
-    var modelWidget = createModelWidget("Model combo", modelWidgets, "", form);
+    hint = "ModelCombo is a scalar model widget representing a combo box that is bound to some data model field.";
+    var modelWidget = createPlainWidget("Model combo", modelWidgets, "ModelComboCustom", hint);
     demos.push(modelWidget);
 
-    form = new ModelWidgetsForm();
-    form.placeModelDate();
-    var modelWidget = createModelWidget("Model date", modelWidgets, "", form);
+    hint = "ModelDate is a scalar model widget representing a date and bound to some date or timestamp field in the model.";
+    var modelWidget = createPlainWidget("Model date", modelWidgets, "ModelDateCustom", hint);
     demos.push(modelWidget);
 
-    form = new ModelWidgetsForm();
-    form.placeModelSpin();
-    var modelWidget = createModelWidget("Model spin", modelWidgets, "", form);
+    hint = "ModelSpin is a scalar model widget, the state of which is linked to a field of a data model entity of number type.";
+    var modelWidget = createPlainWidget("Model spin", modelWidgets, "ModelSpinCustom", hint);
     demos.push(modelWidget);
 
-    form = new ModelTextFields();
-    form.placeModelTextFieldFormatted();
-    var modelWidget = createModelWidget("Model formatted field", modelWidgets, "", form);
+    hint = "ModelFormattedField is a scalar model widget, the state of which is linked to a field of the data model string or number type.";
+    var modelWidget = createPlainWidget("Model formatted field", modelWidgets, "ModelTextCustom", hint);
     demos.push(modelWidget);
 
-    form = new ModelTextFields();
-    form.placeModelTextArea();
-    var modelWidget = createModelWidget("Model text area", modelWidgets, "", form);
+    hint = "ModelTextArea is a scalar model widget, the state of which is linked to a field of the data model of string or number type.";
+    var modelWidget = createPlainWidget("Model text area", modelWidgets, "ModelTextAreaCustom", hint);
     demos.push(modelWidget);
 
 
@@ -142,12 +127,11 @@ hint = "";
 //    arr.push(modelTextArea);
 //    modelWidgets.childrenField.push(modelTextArea);
 //
-    var createContainer = function (aName, aType, aParent, aCommon, aHint) {
+    var createContainer = function (aName, aParent, aCommon, aHint) {
         var widget = new DemoItem();
         widget.name = aName;
         widget.parentField = aParent;
-        widget.setWidget(new aType());
-        widget.setCommonForm(aCommon);
+        widget.setCustomForm(aCommon);
         widget.setHint(aHint);
         aParent.childrenField.push(widget);
         return widget;
@@ -158,20 +142,25 @@ hint = "";
     demos.push(containers);
     containers.setInformation("This is containers");
 
-    var container = createContainer("Anchors pane", P.AnchorsPane, containers, "AnchorsPanePanel", hint);
-//    var container = createContainer("Anchors pane",containers,"AnchorsPanePanel");
+    hint = "AnchorsPane is a lightweight container with the anchors layout.";
+    var container = createContainer("Anchors pane", containers, "AnchorsPanePanel", hint);
     demos.push(container);
 
-    container = createContainer("Border pane", P.BorderPane, containers, "BorderPanePanel", hint);
+    hint = "BorderPane is a lightweight container with the border layout.";
+    container = createContainer("Border pane", containers, "BorderPanePanel", hint);
     demos.push(container);
-    
-    container = createContainer("VBox pane",P.BoxPane,containers,"VBoxPanePanel", hint);
+
+    hint = "BoxPane is a lightweight container with the box layout. ";
+    container = createContainer("VBox pane", containers, "VBoxPanePanel", hint);
     demos.push(container);
-    
-    /*    
-     container = createContainer("Grid pane",containers,"GridPanePanel",containersForm);
-     demos.push(container);
-     
+
+    hint = "BoxPane is a lightweight container with the box layout. ";
+    container = createContainer("HBox pane", containers, "HBoxPanePanel", hint);
+    demos.push(container);
+ 
+    container = createContainer("Grid pane", containers, "GridPanePanel", hint);
+    demos.push(container);
+   /*
      container = createContainer("Flow pane",containers,"FlowPanePanel",containersForm);
      demos.push(container);
      

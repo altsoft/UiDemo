@@ -6,17 +6,23 @@ function SliderForm(aDemoComponent) {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-    var demoComponent = aDemoComponent;
-    function preparations() {
-//        var demoComponent = new P.Slider();
+    
+    var demoComponent = new P.Slider("Slider");
+    demoComponent.height = 40;
+    demoComponent.width = 500;
+    
+    function initWidgets() {
         form.txtMaximum.value = demoComponent.maximum;
         form.txtMinimum.value = demoComponent.minimum;
         form.txtValue.value = demoComponent.value;
     }
+    
+    self.getDemoComponent = function () {
+        return demoComponent;
+    };
 
-    self.setDemoComponent = function (aDemoComponent) {
-        demoComponent = aDemoComponent;
-        demoComponent.onActionPerformed = demoOnActionPerformed;
+    self.getViewComponent = function () {
+        return demoComponent;
     };
 
     self.show = function () {
@@ -24,19 +30,14 @@ function SliderForm(aDemoComponent) {
     };
 
     self.showOnPanel = function (aPanel) {
-        preparations();
+        initWidgets();
         aPanel.add(form.view);
     };
 
-    var demoOnActionPerformed = function (event) {
+    demoComponent.onActionPerformed = function (event) {
         form.txtValue.value = demoComponent.value;
     };
 
-
-    if (demoComponent) {
-        demoComponent.onActionPerformed = demoOnActionPerformed;
-    }
-    
     form.txtMaximum.onValueChange = function(event) {
         demoComponent.maximum = form.txtMaximum.value;
     };

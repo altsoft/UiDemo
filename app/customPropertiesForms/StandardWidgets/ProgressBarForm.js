@@ -6,19 +6,14 @@ function ProgressBarForm(aDemoComponent) {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-    var demoComponent = aDemoComponent;
+    var demoComponent = new P.ProgressBar();
+    demoComponent.height = 30;
+    demoComponent.width = 500;
     demoComponent.maximum = 100;
     demoComponent.minimum = 0;
     demoComponent.value = 0;
-//    var btnGroup = new P.ButtonGroup();
-//    btnGroup.add(form.rbHorizontal);
-//    btnGroup.add(form.rbVertical);
 
-    self.setDemoComponent = function (aDemoComponent) {
-        demoComponent = aDemoComponent;
-    };
-
-    function preparations() {
+    function initWidget() {
         form.txtMaximum.value = demoComponent.maximum;
         form.txtMinimum.value = demoComponent.minimum;
         form.txtValue.value = demoComponent.value;
@@ -28,9 +23,17 @@ function ProgressBarForm(aDemoComponent) {
     self.show = function () {
         form.show();
     };
+    
+    self.getDemoComponent = function () {
+        return demoComponent;
+    };
+
+    self.getViewComponent = function () {
+        return demoComponent;
+    };
 
     self.showOnPanel = function (aPanel) {
-        preparations();
+        initWidget();
         aPanel.add(form.view);
     };
 
