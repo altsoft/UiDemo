@@ -36,7 +36,7 @@
   <ModelFormattedField cursor="0" format="" name="modelForeground" parent="panel" prefHeight="27px" prefWidth="170px">
     <AnchorsPaneConstraints height="27px" left="522px" top="50px" width="170px"/>
   </ModelFormattedField>
-  <Button cursor="3" name="btnCursor" parent="panel" prefHeight="27px" prefWidth="170px" text="Select file...">
+  <Button cursor="3" name="btnCursor" parent="panel" prefHeight="27px" prefWidth="170px" text="Cursor file...">
     <AnchorsPaneConstraints height="27px" left="240px" top="90px" width="170px"/>
   </Button>
   <CheckBox cursor="0" name="chVisible" parent="panel" prefHeight="15px" prefWidth="30px">
@@ -63,7 +63,7 @@
   <Label cursor="0" horizontalAlignment="10" name="lblOpaque" parent="panel" prefHeight="27px" prefWidth="60px" text="Opaque">
     <AnchorsPaneConstraints height="27px" left="10px" top="130px" width="60px"/>
   </Label>
-  <FormattedField cursor="0" format="" name="ffBorder" parent="panel" prefHeight="27px" prefWidth="170px">
+  <FormattedField cursor="0" emptyText="Set CSS border style" format="" name="ffBorder" parent="panel" prefHeight="27px" prefWidth="170px">
     <AnchorsPaneConstraints height="27px" left="240px" top="50px" width="170px"/>
   </FormattedField>
 </layout>

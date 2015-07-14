@@ -34,12 +34,15 @@
     <AnchorsPaneConstraints bottom="505px" left="0px" right="0px" top="0px"/>
   </Label>
   <AnchorsPane cursor="0" name="pnlPlayground" parent="panel1" prefHeight="120px" prefWidth="830px"/>
-  <TabbedPane cursor="0" name="tabbedPane2" parent="panel1" prefHeight="200px" prefWidth="830px" selectedComponent="pnlCommon"/>
-  <BoxPane cursor="0" name="pnlCommon" parent="tabbedPane2" prefHeight="163px" prefWidth="822px">
-    <TabbedPaneConstraints tabTitle="Common" tabToolTip=""/>
+  <TabbedPane cursor="0" name="tabbedPane2" parent="panel1" prefHeight="200px" prefWidth="830px" selectedComponent="pnlView"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="pnlCreation" parent="tabbedPane2" prefHeight="163px" prefWidth="822px" visible="true">
+    <TabbedPaneConstraints tabTitle="Creation"/>
+  </AnchorsPane>
+  <BoxPane background="#ffffff" cursor="0" name="pnlCustomize" parent="tabbedPane2" prefHeight="163px" prefWidth="822px" visible="false">
+    <TabbedPaneConstraints tabTitle="Customize" tabToolTip=""/>
   </BoxPane>
-  <BoxPane background="#ffffff" cursor="0" name="pnlCustom" parent="tabbedPane2" prefHeight="163px" prefWidth="822px" visible="false">
-    <TabbedPaneConstraints tabTitle="Custom" tabToolTip=""/>
+  <BoxPane cursor="0" name="pnlView" parent="tabbedPane2" prefHeight="163px" prefWidth="822px">
+    <TabbedPaneConstraints tabTitle="View" tabToolTip=""/>
   </BoxPane>
   <Label cursor="0" name="label" parent="panel1" prefHeight="20px" prefWidth="830px" text="Source Code"/>
   <BoxPane cursor="0" name="pnlSourceCode" orientation="1" parent="panel1" prefHeight="120px" prefWidth="830px"/>

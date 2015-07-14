@@ -27,7 +27,7 @@ function MainView() {
     function showDemo(aCustom, aWidget, aView) {
         var hMargin = 10;
         var vMargin = 10;
-        aCustom.showOnPanel(form.pnlCustom);
+        aCustom.showOnPanel(form.pnlCustomize);
         form.pnlSource.element.innerHTML = '<pre class="brush: js">' + aCustom.constructor.toString() + '</pre>';
         SyntaxHighlighter.highlight();
         var sCode = document.getElementsByClassName("syntaxhighlighter");
@@ -39,9 +39,9 @@ function MainView() {
 
 
     form.grdDemos.onItemSelected = function (event) {
-        form.pnlCommon.clear();
+        form.pnlView.clear();
         form.pnlPlayground.clear(); //Clean demo components place
-        form.pnlCustom.clear();
+        form.pnlCustomize.clear();
 
         var w = Math.round(form.pnlPlayground.width / 2 - 100);
         var h = 10;
@@ -70,7 +70,7 @@ function MainView() {
                 var demoForm = form.grdDemos.selected[0].demoForm;
                 showDemo(custom, widget, demoForm);
                 if (form.grdDemos.selected[0].createdCommonForm) {
-                    form.grdDemos.selected[0].createdCommonForm.showOnPanel(form.pnlCommon);
+                    form.grdDemos.selected[0].createdCommonForm.showOnPanel(form.pnlView);
                 }
             } else {
                 P.require(componentForm, function () {
@@ -82,16 +82,16 @@ function MainView() {
                     form.grdDemos.selected[0].widget = widget;
                     form.grdDemos.selected[0].demoForm = demoForm;
                     if (form.grdDemos.selected[0].createdCommonForm) {
-                        form.grdDemos.selected[0].createdCommonForm(form.pnlCommon);
+                        form.grdDemos.selected[0].createdCommonForm(form.pnlView);
                     } else {
                         if (commonForm) {
                             P.require(commonForm, function () {
                                 var common = new global[commonForm](widget);
-                                common.showOnPanel(form.pnlCommon);
+                                common.showOnPanel(form.pnlView);
                                 form.grdDemos.selected[0].createdCommonForm = common;
                             });
                         } else {
-                            custom.showOnPanel(form.pnlCommon);
+                            custom.showOnPanel(form.pnlView);
                             form.grdDemos.selected[0].createdCommonForm = custom;
                         }
                     }
