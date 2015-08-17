@@ -13,12 +13,24 @@ function ModelSpinCustom() {
 
     var demoComponent = new ModelSpinView();
 
+   
+    var mdlSpin = new P.ModelSpin();
+    mdlSpin.data = model.qAllVisits;
+    mdlSpin.field = "cursor.cost";
+    mdlSpin.emptyText = "Enter cost...";
+    mdlSpin.height = 29;
+    mdlSpin.width = 300;
+    form.txtData.text = "model.qAllVisits";
+    form.txtField.text = "'" + mdlSpin.field + "'";
+    form.txtValue.text = mdlSpin.value;
+    form.txtEmptyText.text = mdlSpin.emptyText;
+ 
     self.getDemoComponent = function () {
-        return demoComponent.getDemoComponent();
+        return mdlSpin;
     };
-    
+
     self.getViewComponent = function () {
-        return demoComponent.getViewComponent();
+        return mdlSpin;
     };
 
     self.showOnPanel = function (aPanel) {
@@ -28,5 +40,16 @@ function ModelSpinCustom() {
     model.requery(function () {
         // TODO : place your code here
     });
+
+    self.getFormHeight = function () {
+        return form.view.height;
+    };
+    form.txtEmptyText.onActionPerformed = function (event) {
+        mdlSpin.emptyText = form.txtEmptyText.text;
+    };
+
+    mdlSpin.onValueChange = function (event) {
+        form.txtValue.text = mdlSpin.value;
+    };
 
 }

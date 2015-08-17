@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <ButtonGroup name="btnGrpHorisontalPosition"/>
+  <ButtonGroup name="buttonGroup"/>
+  <ButtonGroup name="buttonGroup1"/>
+  <ButtonGroup name="buttonGroup2"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="128px" prefWidth="806px"/>
+  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="130px" prefWidth="810px">
+    <AnchorsPaneConstraints bottom="-2px" left="0px" right="-4px" top="0px"/>
+  </AnchorsPane>
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="panel" prefHeight="17px" prefWidth="50px" text="Text">
+    <AnchorsPaneConstraints height="17px" left="10px" top="36px" width="50px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label1" parent="panel" prefHeight="17px" prefWidth="34px" text="Icon">
+    <AnchorsPaneConstraints height="17px" left="10px" top="100px" width="34px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label11" parent="panel" prefHeight="17px" prefWidth="96px" text="IconTextGap">
+    <AnchorsPaneConstraints height="17px" left="10px" top="66px" width="96px"/>
+  </Label>
+  <TextField cursor="0" name="txtText" parent="panel" prefHeight="27px" prefWidth="120px" text="textField">
+    <AnchorsPaneConstraints height="27px" left="110px" top="31px" width="120px"/>
+  </TextField>
+  <Button cursor="0" name="btnIcon" parent="panel" prefHeight="29px" prefWidth="120px" text="Select icon...">
+    <AnchorsPaneConstraints height="29px" left="110px" top="90px" width="120px"/>
+  </Button>
+  <Label cursor="0" horizontalAlignment="10" name="label3" parent="panel" prefHeight="17px" prefWidth="145px" text="HorizontalAlignment">
+    <AnchorsPaneConstraints height="17px" left="320px" top="10px" width="145px"/>
+  </Label>
+  <ToggleButton cursor="0" name="tglHLeftAlign" parent="panel" prefHeight="29px" prefWidth="72px" text="Left">
+    <AnchorsPaneConstraints height="29px" left="270px" top="30px" width="72px"/>
+  </ToggleButton>
+  <ToggleButton cursor="0" name="tglHCenterAlign" parent="panel" prefHeight="29px" prefWidth="72px" text="Center">
+    <AnchorsPaneConstraints height="29px" left="350px" top="30px" width="72px"/>
+  </ToggleButton>
+  <ToggleButton cursor="0" name="tglHRightAlign" parent="panel" prefHeight="29px" prefWidth="72px" text="Right">
+    <AnchorsPaneConstraints height="29px" left="430px" top="30px" width="72px"/>
+  </ToggleButton>
+  <Label cursor="0" horizontalAlignment="10" name="label2" parent="panel" prefHeight="17px" prefWidth="160px" text="HorizontalTextPositon">
+    <AnchorsPaneConstraints height="17px" left="320px" top="66px" width="160px"/>
+  </Label>
+  <ToggleButton cursor="0" enabled="false" name="tglHLeft" parent="panel" prefHeight="29px" prefWidth="72px" text="Left">
+    <AnchorsPaneConstraints height="29px" left="270px" top="90px" width="72px"/>
+  </ToggleButton>
+  <ToggleButton cursor="0" enabled="false" name="tglHCenter" parent="panel" prefHeight="29px" prefWidth="72px" text="Center">
+    <AnchorsPaneConstraints height="29px" left="350px" top="90px" width="72px"/>
+  </ToggleButton>
+  <ToggleButton cursor="0" enabled="false" name="tglHRight" parent="panel" prefHeight="29px" prefWidth="72px" text="Right">
+    <AnchorsPaneConstraints height="29px" left="430px" top="90px" width="72px"/>
+  </ToggleButton>
+  <Label cursor="0" horizontalAlignment="10" name="label311" parent="panel" prefHeight="17px" prefWidth="125px" text="VerticalAlignment">
+    <AnchorsPaneConstraints height="17px" left="520px" top="10px" width="125px"/>
+  </Label>
+  <ToggleButton cursor="0" name="tglVTopAlign" parent="panel" prefHeight="29px" prefWidth="72px" text="Top">
+    <AnchorsPaneConstraints height="29px" left="540px" top="30px" width="72px"/>
+  </ToggleButton>
+  <ToggleButton cursor="0" name="tglVCenterAlign" parent="panel" prefHeight="29px" prefWidth="72px" text="Center">
+    <AnchorsPaneConstraints height="29px" left="540px" top="60px" width="72px"/>
+  </ToggleButton>
+  <ToggleButton cursor="0" name="tglVBottomAlign" parent="panel" prefHeight="29px" prefWidth="72px" text="Bottom">
+    <AnchorsPaneConstraints height="29px" left="540px" top="90px" width="72px"/>
+  </ToggleButton>
+  <Label cursor="0" horizontalAlignment="10" name="label31" parent="panel" prefHeight="17px" prefWidth="140px" text="VerticalTextPositon">
+    <AnchorsPaneConstraints height="17px" left="670px" top="10px" width="140px"/>
+  </Label>
+  <ToggleButton cursor="0" enabled="false" name="tglVTop" parent="panel" prefHeight="29px" prefWidth="72px" text="Top">
+    <AnchorsPaneConstraints height="29px" right="47px" top="30px" width="72px"/>
+  </ToggleButton>
+  <ToggleButton cursor="0" enabled="false" name="tglVCenter" parent="panel" prefHeight="29px" prefWidth="72px" text="Center">
+    <AnchorsPaneConstraints height="29px" right="47px" top="60px" width="72px"/>
+  </ToggleButton>
+  <ToggleButton cursor="0" enabled="false" name="tglVBottom" parent="panel" prefHeight="29px" prefWidth="72px" text="Bottom">
+    <AnchorsPaneConstraints height="29px" right="47px" top="90px" width="72px"/>
+  </ToggleButton>
+  <ModelSpin cursor="0" name="mdlGap" parent="panel" prefHeight="27px" prefWidth="120px">
+    <AnchorsPaneConstraints height="27px" left="110px" top="61px" width="120px"/>
+  </ModelSpin>
+</layout>

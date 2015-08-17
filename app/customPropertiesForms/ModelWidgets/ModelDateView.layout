@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
   <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="240px" prefWidth="626px"/>
-  <BorderPane background="#ffffff" cursor="0" name="panel" parent="view" prefHeight="30px" prefWidth="230px">
-    <AnchorsPaneConstraints height="30px" left="10px" top="10px" width="230px"/>
+  <BorderPane background="#ffffff" cursor="0" name="panel" parent="view" prefHeight="30px" prefWidth="610px">
+    <AnchorsPaneConstraints height="30px" left="10px" right="6px" top="10px"/>
   </BorderPane>
   <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="190px" prefWidth="626px">
     <AnchorsPaneConstraints bottom="0px" left="0px" right="0px" top="50px"/>

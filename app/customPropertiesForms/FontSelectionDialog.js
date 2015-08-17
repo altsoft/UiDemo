@@ -9,8 +9,8 @@ function FontSelectionDialog(aDemoComponent) {
     form.minimizable = false;
     form.maximizable = false;
     form.resizable = false;
-    var size = [{'size':0}];
-    form.mdlSize.data = size;
+    var fontSize = {'size':0};
+    form.mdlSize.data = fontSize;
     form.mdlSize.field = 'size';
     var demoComponent;
     var onSelected;
@@ -27,7 +27,7 @@ function FontSelectionDialog(aDemoComponent) {
         if (form.tglBold.selected & form.tglItalic.selected) {
             fontStyle = P.FontStyle.BOLD_ITALIC;
         }
-        var size = size.size;
+        var size = fontSize.size;
         return new P.Font(model.fonts.cursor.FontName, fontStyle, size);
     }
 
@@ -42,7 +42,7 @@ function FontSelectionDialog(aDemoComponent) {
             model.fonts.cursor = demoComponent.fontObject;
         }
         if (demoComponent.fontSize) {
-            size.size = demoComponent.fontSize;
+            fontSize.size = demoComponent.fontSize;
         }
     }
 
@@ -70,7 +70,7 @@ function FontSelectionDialog(aDemoComponent) {
         var font = getFont();
         demoComponent.font = font;
         demoComponent.fontObject = model.fonts.cursor;
-        demoComponent.fontSize = size.size;
+        demoComponent.fontSize = fontSize.size;
         onSelected(font);
         form.close();
     };

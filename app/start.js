@@ -5,19 +5,20 @@
 // this === global
 (function () {
     function ready() {
-        P.cacheBust = true;
-        var startModule = 'MainView';
-        P.require([startModule], function(){
+        P.cacheBust = false;
+        P.require('MainView', function(){
             var m = new MainView();
             m.show();
         }, function(e){
             P.Logger.severe(e);
-            var messageParagraph = document.createElement("p");
-            document.body.appendChild(messageParagraph);
-            messageParagraph.innerHTML = "An error occured while require('" + startModule + "'). Error: " + e;
-            messageParagraph.style.margin = '10px';
-            messageParagraph.style.fontFamily = 'Arial';
-            messageParagraph.style.fontSize = '14pt';
+            if(document){
+                var messageParagraph = document.createElement('p');
+                document.body.appendChild(messageParagraph);
+                messageParagraph.innerHTML = 'An error occured while require(\'MainView\'). Error: ' + e;
+                messageParagraph.style.margin = '10px';
+                messageParagraph.style.fontFamily = 'Arial';
+                messageParagraph.style.fontSize = '14pt';
+            }
         });
     }
     if(!this.P) {

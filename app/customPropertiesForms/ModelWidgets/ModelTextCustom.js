@@ -11,14 +11,41 @@ function ModelTextCustom() {
         form.show();
     };
 
-    var demoComponent = new ModelTextView();
-
     self.getDemoComponent = function () {
-        return demoComponent.getDemoComponent();
+        return mdlText;
     };
+    var fieldsList = [{field: 'cursor.firstname'},
+        {field: 'cursor.lastname'},
+        {field: 'cursor.address'},
+        {field: 'cursor.city'},
+        {field: 'cursor.telephone'},
+        {field: 'cursor.email'}];
     
+    var mdlText = new P.ModelFormattedField();
+    mdlText.data = model.qAllOwners;
+    mdlText.field = "cursor.firstname";
+    mdlText.height = 29;
+    mdlText.width = 200;
+    form.txtData.text = 'model.qAllOwners';
+    form.mcField.data = fieldsList;
+    form.mcField.displayList = fieldsList;
+    form.mcField.displayField = 'field';
+    form.mcField.field = 'field';
+
+    for (var item in fieldsList) {
+        if (fieldsList[item].field === mdlText.field) {
+            form.mcField.value = fieldsList[item];
+        }
+    }
+
+    form.mcField.onValueChange = function (event) {
+        if (form.mcField.value) {
+            mdlText.field = form.mcField.value.field;
+        }
+    };
+
     self.getViewComponent = function () {
-        return demoComponent.getViewComponent();
+        return mdlText;
     };
 
     self.showOnPanel = function (aPanel) {
@@ -29,4 +56,7 @@ function ModelTextCustom() {
         // TODO : place your code here
     });
 
+    self.getFormHeight = function () {
+        return form.view.height;
+    };
 }

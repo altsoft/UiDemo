@@ -11,22 +11,65 @@ function ModelDateCustom() {
         form.show();
     };
 
-    var demoComponent = new ModelDateView();
+    var mdlDate = new P.ModelDate();
+    mdlDate.data = model.qAllVisits;
+    mdlDate.field = 'cursor.fromdate';
+    mdlDate.valueType = Date;
+    mdlDate.format = 'h:mm:ss a z EEEE MMMM dd yyyy'
+    mdlDate.width = 300;
+    mdlDate.height = 29;
+    var fieldsList = [{field: 'cursor.fromdate'}, {field: 'cursor.todate'}];
+    form.chIsDate.selected = mdlDate.datePicker;
+    form.chIsTime.selected = mdlDate.timePicker;
+    form.txtData.text = "model.qAllVisits";
+    form.txtFormat.text = mdlDate.format;
+
+    form.mcField.data = fieldsList;
+    form.mcField.displayList = fieldsList;
+    form.mcField.displayField = 'field';
+    form.mcField.field = 'field';
+
+    for (var item in fieldsList) {
+        if (fieldsList[item].field === mdlDate.field) {
+            form.mcField.value = fieldsList[item];
+        }
+    }
+
+
+    form.mcField.onValueChange = function (event) {
+        if (form.mcField.value) {
+            mdlDate.field = form.mcField.value.field;
+        }
+    };
 
     self.getDemoComponent = function () {
-        return demoComponent.getDemoComponent();
+        return mdlDate;
     };
     
     self.getViewComponent = function () {
-        return demoComponent.getViewComponent();
+        return mdlDate;
     };
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
     };
 
+    self.getFormHeight = function () {
+        return form.view.height;
+    };
+
     model.requery(function () {
-        // TODO : place your code here
     });
 
+    form.chIsDate.onActionPerformed = function (event) {
+        mdlDate.datePicker = form.chIsDate.selected;
+    };
+
+    form.chIsTime.onActionPerformed = function (event) {
+        mdlDate.timePicker = form.chIsTime.selected;
+    };
+
+    form.txtFormat.onActionPerformed = function (event) {
+        mdlDate.format = form.txtFormat.text;
+    };
 }

@@ -11,14 +11,28 @@ function ModelCheckCustom() {
         form.show();
     };
 
-    var demoComponent = new ModelCheckView();
+//    var modelCheckView = new ModelCheckView();
+    //var mdlCheckBox = self.getDemoComponent();
+    
+    var mdlCheckBox = new P.ModelCheckBox();
+    mdlCheckBox.height = 29;
+    mdlCheckBox.width = 200;
+    mdlCheckBox.data = model.qAllVisits;
+    mdlCheckBox.field = "cursor.ispaid";
+    mdlCheckBox.text = "ispaid";
+    
+    form.txtData.text = "model.qAllVisits";
+    form.txtField.text = "'" + mdlCheckBox.field + "'";
+    form.txtText.text = mdlCheckBox.text;
 
     self.getDemoComponent = function () {
-        return demoComponent.getDemoComponent();
+        return mdlCheckBox;
     };
-    
+
     self.getViewComponent = function () {
-        return demoComponent.getViewComponent();
+        return mdlCheckBox;
+        //return modelCheckView.getViewComponent();
+        
     };
 
     self.showOnPanel = function (aPanel) {
@@ -29,4 +43,11 @@ function ModelCheckCustom() {
         // TODO : place your code here
     });
 
+    self.getFormHeight = function () {
+        return form.view.height;
+    };
+
+    form.txtText.onActionPerformed = function (event) {
+        mdlCheckBox.text = form.txtText.text;
+    };
 }

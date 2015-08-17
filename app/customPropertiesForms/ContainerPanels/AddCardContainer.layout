@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="136px" prefWidth="257px"/>
+  <Button cursor="0" name="btnAddComponent" parent="view" prefHeight="27px" prefWidth="230px" text="Add component">
+    <AnchorsPaneConstraints height="27px" left="10px" top="50px" width="230px"/>
+  </Button>
+  <ModelCombo cursor="0" name="mcmbElList" parent="view" prefHeight="29px" prefWidth="230px">
+    <AnchorsPaneConstraints height="29px" left="10px" top="13px" width="230px"/>
+  </ModelCombo>
+  <Button cursor="0" name="btnDelete" parent="view" prefHeight="27px" prefWidth="230px" text="Delete component">
+    <AnchorsPaneConstraints height="27px" left="10px" top="90px" width="230px"/>
+  </Button>
+</layout>

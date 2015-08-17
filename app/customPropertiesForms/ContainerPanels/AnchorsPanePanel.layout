@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
   <AnchorsPane cursor="0" name="view" prefHeight="177px" prefWidth="208px"/>
-  <Label cursor="0" horizontalAlignment="10" name="label14" parent="view" prefHeight="17px" prefWidth="72px" text="Bottom">
-    <AnchorsPaneConstraints height="17px" left="12px" top="125px" width="72px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label14" parent="view" prefHeight="17px" prefWidth="68px" text="Bottom">
+    <AnchorsPaneConstraints height="17px" left="12px" top="125px" width="68px"/>
   </Label>
   <Label cursor="0" horizontalAlignment="10" name="label13" parent="view" prefHeight="17px" prefWidth="42px" text="Top">
     <AnchorsPaneConstraints height="17px" left="12px" top="90px" width="42px"/>
@@ -9,8 +9,8 @@
   <Label cursor="0" horizontalAlignment="10" name="label12" parent="view" prefHeight="17px" prefWidth="60px" text="Right">
     <AnchorsPaneConstraints height="17px" left="12px" top="54px" width="60px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="72px" text="Left">
-    <AnchorsPaneConstraints height="17px" left="12px" top="18px" width="72px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="68px" text="Left">
+    <AnchorsPaneConstraints height="17px" left="12px" top="18px" width="68px"/>
   </Label>
   <FormattedField cursor="0" format="" name="ffBottom" parent="view" prefHeight="27px" prefWidth="115px" text="0">
     <AnchorsPaneConstraints height="27px" left="80px" top="120px" width="115px"/>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <ButtonGroup name="btnGrpHorisontalPosition"/>
+  <ButtonGroup name="buttonGroup"/>
+  <ButtonGroup name="buttonGroup1"/>
+  <ButtonGroup name="buttonGroup2"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="123px" prefWidth="585px"/>
+  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="130px" prefWidth="586px">
+    <AnchorsPaneConstraints bottom="-7px" left="0px" right="-1px" top="0px"/>
+  </AnchorsPane>
+  <Label cursor="0" horizontalAlignment="10" name="label111" parent="panel" prefHeight="17px" prefWidth="68px" text="Value">
+    <AnchorsPaneConstraints height="17px" left="12px" top="95px" width="68px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="panel" prefHeight="17px" prefWidth="68px" text="Maximim">
+    <AnchorsPaneConstraints height="17px" left="12px" top="15px" width="68px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label1" parent="panel" prefHeight="17px" prefWidth="68px" text="Minimum">
+    <AnchorsPaneConstraints height="17px" left="12px" top="55px" width="68px"/>
+  </Label>
+  <ModelSpin cursor="0" name="mdlValue" parent="panel" prefHeight="27px" prefWidth="130px">
+    <AnchorsPaneConstraints bottom="13px" height="27px" left="90px" width="130px"/>
+  </ModelSpin>
+  <ModelSpin cursor="0" name="mdlMaximum" parent="panel" prefHeight="27px" prefWidth="130px">
+    <AnchorsPaneConstraints height="27px" left="90px" top="10px" width="130px"/>
+  </ModelSpin>
+  <ModelSpin cursor="0" name="mdlMinimum" parent="panel" prefHeight="27px" prefWidth="130px">
+    <AnchorsPaneConstraints height="27px" left="90px" top="50px" width="130px"/>
+  </ModelSpin>
+</layout>

@@ -19,7 +19,7 @@ function ModelCheckView() {
     self.getDemoComponent = function () {
         return widget;
     };
-    
+
     self.getViewComponent = function () {
         return form.view;
     };
@@ -32,4 +32,7 @@ function ModelCheckView() {
         return widget;
     };
 
+    self.getFormHeight = function () {
+        return form.view.height;
+    };
 }

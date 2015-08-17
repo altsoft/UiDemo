@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="180px" prefWidth="1183px"/>
+  <ModelCombo cursor="0" emptyText="Menu list" name="mdlGroups" parent="view" prefHeight="27px" prefWidth="250px">
+    <AnchorsPaneConstraints height="27px" left="10px" top="12px" width="250px"/>
+  </ModelCombo>
+  <ModelCombo cursor="0" emptyText="Menu items list" name="mdlGroupItems" parent="view" prefHeight="27px" prefWidth="250px">
+    <AnchorsPaneConstraints height="27px" left="10px" top="90px" width="250px"/>
+  </ModelCombo>
+  <Button cursor="0" name="btnAddGroup" parent="view" prefHeight="29px" prefWidth="140px" text="Add group">
+    <AnchorsPaneConstraints height="29px" left="280px" top="10px" width="140px"/>
+  </Button>
+  <Button cursor="0" name="btnRemoveItem" parent="view" prefHeight="29px" prefWidth="140px" text="Remove item">
+    <AnchorsPaneConstraints height="29px" left="280px" top="90px" width="140px"/>
+  </Button>
+  <Button cursor="0" name="btnDelGroup" parent="view" prefHeight="29px" prefWidth="140px" text="Delete group">
+    <AnchorsPaneConstraints height="29px" left="280px" top="50px" width="140px"/>
+  </Button>
+  <TextField cursor="0" emptyText="Enter group display name..." name="txtGrpDisplayName" parent="view" prefHeight="27px" prefWidth="250px" text="Group name...">
+    <AnchorsPaneConstraints height="27px" left="10px" top="50px" width="250px"/>
+  </TextField>
+  <ModelGrid cursor="0" name="grdGroupItems" parent="view" prefHeight="110px" prefWidth="230px">
+    <AnchorsPaneConstraints height="110px" left="440px" top="10px" width="230px"/>
+    <ModelGridColumn name="items" title="column" width="230px">
+      <ModelFormattedField/>
+    </ModelGridColumn>
+  </ModelGrid>
+  <ModelGrid cursor="0" name="grdAllItems" parent="view" prefHeight="110px" prefWidth="260px">
+    <AnchorsPaneConstraints height="110px" left="690px" top="10px" width="260px"/>
+    <ModelGridColumn name="column" title="column" width="260px">
+      <ModelFormattedField/>
+    </ModelGridColumn>
+  </ModelGrid>
+</layout>

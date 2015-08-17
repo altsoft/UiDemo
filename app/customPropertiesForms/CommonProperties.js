@@ -8,6 +8,19 @@ function CommonProperties(aDemoComponent) {
             , form = P.loadForm(this.constructor.name, model);
     var demoComponent = aDemoComponent;
     var aFontSelectionDialog;
+    var onComponentResize;
+
+    var componentSize = {'width': 0,
+        'height': 0};
+    form.mdlWidth.data = componentSize;
+    form.mdlWidth.field = 'width';
+    form.mdlHeight.data = componentSize;
+    form.mdlHeight.field = 'height';
+
+    form.mdlPopup.data = demoMenuList;
+    form.mdlPopup.displayField = "name";
+    form.mdlPopup.displayList = demoMenuList;
+    form.mdlPopup.field = "menu";
 
     self.show = function () {
         form.show();
@@ -15,6 +28,7 @@ function CommonProperties(aDemoComponent) {
 
     self.setDemoComponent = function (aComponent) {
         demoComponent = aComponent;
+        initWidget();
     };
 
     function initWidget() {
@@ -25,19 +39,36 @@ function CommonProperties(aDemoComponent) {
         }
         form.chVisible.selected = demoComponent.visible;
         form.txtToltip.text = demoComponent.toolTipText;
-        form.chEnabled.selected = demoComponent.selected;
+        form.chEnabled.selected = demoComponent.enabled;
         form.chFocusable.selected = demoComponent.focusable;
         form.chOpaque.selected = demoComponent.opaque;
+        componentSize.width = demoComponent.width;
+        componentSize.height = demoComponent.height;
+        form.mdlHeight.value = componentSize.height;
+
+        if (demoComponent.componentPopupMenu) {
+            for (var menu in demoMenuList) {
+                if (demoMenuList[menu].menu === demoComponent.componentPopupMenu) {
+                    form.mdlPopup.value = demoMenuList[menu];
+                    break;
+                }
+            }
+        } else {
+            form.mdlPopup.value = null;
+        }
+
+        form.mdlHeight.onValueChange = function (event) {
+            demoComponent.height = componentSize.height;
+            if (onComponentResize) {
+                onComponentResize(componentSize.height);
+            }
+        };
     }
 
     self.showOnPanel = function (aPanel) {
         initWidget();
         aPanel.add(form.view);
     };
-
-    model.requery(function () {
-        // TODO : place your code here
-    });
 
     form.modelForeground.onSelect = function (event) {
         if (demoComponent.foreground) {
@@ -65,14 +96,20 @@ function CommonProperties(aDemoComponent) {
 
     };
 
-    form.modelBackground.onActionPerformed = function (event) {
-        demoComponent.background = new P.Color(form.modelBackground.text);
+    form.modelBackground.onValueChange = function (event) {
+        if (form.modelBackground.text) {
+            demoComponent.background = new P.Color(form.modelBackground.text);
+            form.chOpaque.selected = true;
+        }else{
+            demoComponent.background =null;
+        }
     };
 
-    form.modelForeground.onActionPerformed = function (event) {
-        demoComponent.foreground = new P.Color(form.modelForeground.text);
+    form.modelForeground.onValueChange = function (event) {
+        if (form.modelBackground.text) {
+            demoComponent.foreground = new P.Color(form.modelForeground.text);
+        }
     };
-
 
     form.modelFont.onSelect = function (event) {
         if (!aFontSelectionDialog) {
@@ -134,7 +171,7 @@ function CommonProperties(aDemoComponent) {
         }, fileFilter);
     };
 
-    form.chVisible.onActionPerformed = function (event) {
+    form.chVisible.onValueChange = function (event) {
         if (event.source.selected) {
             demoComponent.visible = true;
         } else {
@@ -142,15 +179,15 @@ function CommonProperties(aDemoComponent) {
         }
     };
 
-    form.chEnabled.onActionPerformed = function (event) {
+    form.chEnabled.onValueChange = function (event) {
         if (event.source.selected) {
-            demoComponent.enabled = false;
-        } else {
             demoComponent.enabled = true;
+        } else {
+            demoComponent.enabled = false;
         }
     };
 
-    form.chFocusable.onActionPerformed = function (event) {
+    form.chFocusable.onValueChange = function (event) {
         if (event.source.selected) {
             demoComponent.focusable = true;
         } else {
@@ -158,7 +195,7 @@ function CommonProperties(aDemoComponent) {
         }
     };
 
-    form.chOpaque.onActionPerformed = function (event) {
+    form.chOpaque.onValueChange = function (event) {
         if (event.source.selected) {
             demoComponent.opaque = true;
         } else {
@@ -171,4 +208,23 @@ function CommonProperties(aDemoComponent) {
             demoComponent.element.style.border = form.ffBorder.value;
         }
     };
+
+    form.mdlWidth.onValueChange = function (event) {
+        demoComponent.width = componentSize.width;
+    };
+
+    self.setOnComponentResize = function (aCallback) {
+        onComponentResize = aCallback;
+    };
+
+    self.getFormHeight = function () {
+        return form.view.height;
+    };
+
+    form.mdlPopup.onValueChange = function (event) {
+        if (form.mdlPopup.value) {
+            demoComponent.componentPopupMenu = form.mdlPopup.value.menu;
+        }
+    };
+
 }

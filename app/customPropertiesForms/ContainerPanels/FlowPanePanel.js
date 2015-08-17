@@ -7,98 +7,95 @@ function FlowPanePanel(aPlaygroundPanel) {
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
     var counter = 1;
+    var internalContainer = new P.BorderPane();
+    var scrollContainer = new P.ScrollPane();
+    scrollContainer.verticalScrollBarPolicy = P.ScrollBarPolicy.AUTO;
+    scrollContainer.horizontalScrollBarPolicy = P.ScrollBarPolicy.NEVER;
+    
+    var gaps = {'vGap': 5,
+        'hGap': 5};
+    form.mdlHGap.data = gaps;
+    form.mdlHGap.field = 'hGap';
+    form.mdlVGap.data = gaps;
+    form.mdlVGap.field = 'vGap';
+    
+    var demoContainer = new P.FlowPane(gaps.hGap, gaps.vGap);
+    internalContainer.width = 800;
+    internalContainer.height = 400;
 
-    var externalContainer = aPlaygroundPanel;
-    var internalContainer;
-    var cModifiers;
+    if (form.chbIsScroll.selected) {
+        scrollContainer.add(demoContainer);
+        internalContainer.add(scrollContainer);
+    } else {
+        internalContainer.add(demoContainer);
+    }
+
+    if (P.agent == P.HTML5) {
+        internalContainer.element.style.border = "thin solid gray";
+        internalContainer.element.style.borderRadius = "5px";
+    }
+
+    self.getDemoComponent = function () {
+        return internalContainer;
+    };
+
+    self.getViewComponent = function () {
+        return internalContainer;
+    };
+
     var addPanel;
+    var subject;
+
     self.show = function () {
         form.show();
     };
 
-    function preparations() {
-        internalContainer = new P.FlowPane();
-        internalContainer.background = new P.Color(P.Color.RED);
+    function getPosition(aElement) {
+        subject = aElement;
     }
 
-    model.requery(function () {
-        // TODO : place your code here
-    });
-
-    var infoCallBack = function (aElement) {
-
-    };
-
-    var modifyCallback = function (aElement) {
-
-    };
-
-    var deleteCallback = function (aElement) {
+    function deleteElement(aElement) {
         internalContainer.remove(aElement);
-    };
+    }
 
-    var placeElement = function (aElement, counter) {
-        internalContainer.add(aElement);
-        aElement.child(0).text = "num " + counter + " id:" + internalContainer.count;
-    };
-    preparations();
-    cModifiers = new ContainersModificator(internalContainer, externalContainer);
-    addPanel = new AddComponentContainer(cModifiers, infoCallBack, modifyCallback, deleteCallback, placeElement);
+    function placeElement(aElement, counter) {
+        aElement.height = Math.floor(Math.random() * (100 - 20)) + 20;
+        demoContainer.add(aElement);
+        aElement.toolTipText = "num " + counter + " id:" + demoContainer.count;
+    }
+
+    addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
+    var comp = new P.Button('Sample');
+    comp.height = 30;
+    comp.width = 120;
+    comp.itemname = comp.text;
+    demoContainer.add(comp);
+    addPanel.addComponentTolist(comp);
+
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
         addPanel.showOnPanel(aPanel);
-        cModifiers.showOnPanel(aPanel);
-
     };
 
+    form.chbIsScroll.onActionPerformed = function (event) {
+        internalContainer.clear();
+        if (event.source.selected) {
+            scrollContainer.add(demoContainer);
+            internalContainer.add(scrollContainer);
+        } else {
+            internalContainer.add(demoContainer);
+        }
+    };
 
-//    form.btnAddComponent.onActionPerformed = function (event) {
-//        var newPnl = new P.BoxPane();
-//        newPnl.width = form.ffWidth.value;
-//        newPnl.height = form.ffHeight.value;
-//
-//        var redColor = Math.round(Math.random() * 255);
-//        var greenColor = Math.round(Math.random() * 255);
-//        var blueColor = Math.round(Math.random() * 255);
-//        newPnl.background = new P.Color(redColor, greenColor, blueColor);
-//        var label = new P.Label();
-//        newPnl.add(label);
-//        newPnl.onMouseClicked = function (event) {
-//            if (cModifiers.isInformation()) {
-//
-//                return;
-//            }
-//            if (cModifiers.isModify()) {
-//                newPnl.height = form.ffHeight.value;
-//                newPnl.width = form.ffWidth.value;
-//                newPnl.left = form.ffLeft.value;
-//                newPnl.top = form.ffTop.value;
-//
-//                return;
-//            }
-//            if (cModifiers.isDelete()) {
-//                internalContainer.remove(newPnl);
-//                return;
-//            }
-//        };
-//        internalContainer.add(newPnl
-//        , new P.Anchors(form.ffLeft.value,
-//                form.ffWidth.value,
-//                form.ffRight.value,
-//                form.ffTop.value,
-//                form.ffHeight.value,
-//                form.ffBottom.value));
-//
-//        label.text = "num " + counter + " id:" + internalContainer.count;
-//        counter += 1;
-//    };
+    self.getFormHeight = function () {
+        return form.view.height;
+    };
     
-    form.ffHGap.onActionPerformed = function(event) {
-        internalContainer.hgap = form.ffHGap.value;
+    form.mdlHGap.onValueChange = function (event) {
+        demoContainer.hgap = gaps.hGap;
     };
 
-    form.ffVGap.onActionPerformed = function(event) {
-        internalContainer.vgap = form.ffVGap.value;
+    form.mdlVGap.onValueChange = function (event) {
+        demoContainer.vgap = gaps.vGap;
     };
-
 }

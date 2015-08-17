@@ -1,3 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?><layout icon="" title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="300px" prefWidth="400px"/>
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="126px" prefWidth="941px"/>
+  <Label cursor="0" name="label" parent="view" prefHeight="20px" prefWidth="50px" text="Data">
+    <AnchorsPaneConstraints height="20px" left="10px" top="15px" width="50px"/>
+  </Label>
+  <TextField cursor="0" enabled="false" name="txtData" parent="view" prefHeight="27px" prefWidth="170px" text="textField">
+    <AnchorsPaneConstraints height="27px" left="70px" top="12px" width="170px"/>
+  </TextField>
+  <Label cursor="0" name="label1" parent="view" prefHeight="20px" prefWidth="50px" text="Field">
+    <AnchorsPaneConstraints height="20px" left="10px" top="53px" width="50px"/>
+  </Label>
+  <Label cursor="0" name="label121" parent="view" prefHeight="20px" prefWidth="90px" text="Date picker">
+    <AnchorsPaneConstraints height="20px" left="270px" top="15px" width="90px"/>
+  </Label>
+  <CheckBox cursor="0" name="chIsDate" parent="view" prefHeight="15px" prefWidth="30px">
+    <AnchorsPaneConstraints height="15px" left="360px" top="18px" width="30px"/>
+  </CheckBox>
+  <Label cursor="0" name="label11" parent="view" prefHeight="20px" prefWidth="80px" text="Format">
+    <AnchorsPaneConstraints height="20px" left="10px" top="93px" width="80px"/>
+  </Label>
+  <TextField cursor="0" name="txtFormat" parent="view" prefHeight="27px" prefWidth="170px" text="textField">
+    <AnchorsPaneConstraints height="27px" left="70px" top="90px" width="170px"/>
+  </TextField>
+  <ModelCombo cursor="0" name="mcField" parent="view" prefHeight="27px" prefWidth="170px">
+    <AnchorsPaneConstraints height="27px" left="70px" top="50px" width="170px"/>
+  </ModelCombo>
+  <Label cursor="0" name="label1212" parent="view" prefHeight="20px" prefWidth="90px" text="Time picker">
+    <AnchorsPaneConstraints height="20px" left="270px" top="53px" width="90px"/>
+  </Label>
+  <CheckBox cursor="0" name="chIsTime" parent="view" prefHeight="15px" prefWidth="30px">
+    <AnchorsPaneConstraints height="15px" left="360px" top="56px" width="30px"/>
+  </CheckBox>
+  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="110px" prefWidth="533px">
+    <AnchorsPaneConstraints height="110px" left="390px" top="10px" width="533px"/>
+    <ServiceGridColumn name="colService" resizable="true"/>
+    <ModelGridColumn field="visit_id" name="colVisit_id" title="colVisit_id" width="75px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="pet" name="colPet_id" title="colPet_id" width="75px">
+      <ModelCombo displayField="name" displayList="qAllPets"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="fromdate" name="colFromdate" title="colFromdate" width="75px">
+      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="todate" name="colTodate" title="colTodate" width="75px">
+      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+    </ModelGridColumn>
+    <ModelGridColumn field="description" name="colDescription" title="colDescription" width="75px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="ispaid" name="colIspaid" title="colIspaid" width="75px">
+      <ModelCheckBox/>
+    </ModelGridColumn>
+    <ModelGridColumn field="cost" name="colCost" title="colCost" width="75px">
+      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
+    </ModelGridColumn>
+  </ModelGrid>
 </layout>

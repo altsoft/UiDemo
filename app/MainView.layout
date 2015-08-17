@@ -34,17 +34,20 @@
     <AnchorsPaneConstraints bottom="505px" left="0px" right="0px" top="0px"/>
   </Label>
   <AnchorsPane cursor="0" name="pnlPlayground" parent="panel1" prefHeight="120px" prefWidth="830px"/>
-  <TabbedPane cursor="0" name="tabbedPane2" parent="panel1" prefHeight="200px" prefWidth="830px" selectedComponent="pnlView"/>
-  <AnchorsPane background="#ffffff" cursor="0" name="pnlCreation" parent="tabbedPane2" prefHeight="163px" prefWidth="822px" visible="true">
-    <TabbedPaneConstraints tabTitle="Creation"/>
+  <TabbedPane cursor="0" name="tpSections" parent="panel1" prefHeight="100px" prefWidth="830px" selectedComponent="pnlCreation"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="pnlCreation" parent="tpSections" prefHeight="63px" prefWidth="822px">
+    <TabbedPaneConstraints tabTitle="Creation" tabToolTip=""/>
   </AnchorsPane>
-  <BoxPane background="#ffffff" cursor="0" name="pnlCustomize" parent="tabbedPane2" prefHeight="163px" prefWidth="822px" visible="false">
+  <BoxPane background="#ffffff" cursor="0" name="pnlCustomize" orientation="1" parent="tpSections" prefHeight="63px" prefWidth="822px" visible="false">
     <TabbedPaneConstraints tabTitle="Customize" tabToolTip=""/>
   </BoxPane>
-  <BoxPane cursor="0" name="pnlView" parent="tabbedPane2" prefHeight="163px" prefWidth="822px">
+  <BoxPane background="#ffffff" cursor="0" name="pnlCustomProperties" parent="pnlCustomize" prefHeight="120px" prefWidth="822px"/>
+  <Label cursor="0" foreground="#135fce" icon="icons/collapsed.png" name="lblCustomSource" parent="pnlCustomize" prefHeight="27px" prefWidth="822px" text="Customize's source code..."/>
+  <AnchorsPane background="#ffffff" cursor="0" name="pnlCustomSource" parent="pnlCustomize" prefHeight="100px" prefWidth="822px"/>
+  <BoxPane background="#ffffff" cursor="0" name="pnlView" orientation="1" parent="tpSections" prefHeight="63px" prefWidth="822px" visible="false">
     <TabbedPaneConstraints tabTitle="View" tabToolTip=""/>
   </BoxPane>
-  <Label cursor="0" name="label" parent="panel1" prefHeight="20px" prefWidth="830px" text="Source Code"/>
-  <BoxPane cursor="0" name="pnlSourceCode" orientation="1" parent="panel1" prefHeight="120px" prefWidth="830px"/>
-  <AnchorsPane cursor="0" name="pnlSource" parent="pnlSourceCode" prefHeight="100px" prefWidth="830px"/>
+  <BoxPane background="#ffffff" cursor="0" name="pnlViewProperties" orientation="1" parent="pnlView" prefHeight="100px" prefWidth="822px"/>
+  <Label background="#ffffff" cursor="12" foreground="#377ce1" icon="icons/collapsed.png" name="lblViewSource" parent="pnlView" prefHeight="20px" prefWidth="822px" text="View's source code..."/>
+  <BoxPane background="#ffffff" cursor="0" name="pnlViewSourceCode" orientation="1" parent="pnlView" prefHeight="120px" prefWidth="822px"/>
 </layout>

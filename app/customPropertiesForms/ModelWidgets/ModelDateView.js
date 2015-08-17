@@ -11,7 +11,9 @@ function ModelDateView() {
     form.panel.clear();
     widget = new P.ModelDate();
     widget.data = model.qAllVisits;
-    widget.field = "cursor.fromdate";
+    widget.field = 'cursor.fromdate';
+    widget.valueType = Date;
+    widget.format = 'h:mm:ss a z EEEE MMMM dd yyyy'
     form.panel.add(widget);
 
     self.show = function () {

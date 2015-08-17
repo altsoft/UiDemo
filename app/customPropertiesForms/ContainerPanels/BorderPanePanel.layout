@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane cursor="0" name="view" prefHeight="214px" prefWidth="215px"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="163px" prefWidth="171px"/>
   <RadioButton cursor="0" name="rbBottom" parent="view" prefHeight="24px" prefWidth="118px" text="Bottom">
-    <AnchorsPaneConstraints height="24px" left="80px" top="85px" width="118px"/>
+    <AnchorsPaneConstraints bottom="9px" height="24px" left="10px" width="118px"/>
   </RadioButton>
-  <FormattedField cursor="0" format="" name="ffHGap" parent="view" prefHeight="27px" prefWidth="115px" text="0">
-    <AnchorsPaneConstraints height="27px" left="70px" top="49px" width="115px"/>
-  </FormattedField>
-  <Label cursor="0" horizontalAlignment="10" name="label12" parent="view" prefHeight="17px" prefWidth="60px" text="HGap">
-    <AnchorsPaneConstraints height="17px" left="10px" top="54px" width="60px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label12" parent="view" prefHeight="17px" prefWidth="50px" text="HGap">
+    <AnchorsPaneConstraints height="17px" left="10px" top="54px" width="50px"/>
   </Label>
-  <FormattedField cursor="0" format="" name="ffVGap" parent="view" prefHeight="27px" prefWidth="115px" text="0">
-    <AnchorsPaneConstraints height="27px" left="70px" top="13px" width="115px"/>
-  </FormattedField>
-  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="56px" text="VGap">
-    <AnchorsPaneConstraints height="17px" left="10px" top="18px" width="56px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="50px" text="VGap">
+    <AnchorsPaneConstraints height="17px" left="10px" top="18px" width="50px"/>
   </Label>
   <RadioButton cursor="0" name="rbTop" parent="view" prefHeight="24px" prefWidth="60px" text="Top">
-    <AnchorsPaneConstraints height="24px" left="10px" top="85px" width="60px"/>
+    <AnchorsPaneConstraints height="24px" left="90px" top="90px" width="60px"/>
   </RadioButton>
   <RadioButton cursor="0" name="rbLeft" parent="view" prefHeight="24px" prefWidth="60px" text="Left">
-    <AnchorsPaneConstraints height="24px" left="10px" top="120px" width="60px"/>
+    <AnchorsPaneConstraints height="24px" left="10px" top="90px" width="60px"/>
   </RadioButton>
   <RadioButton cursor="0" name="rbCenter" parent="view" prefHeight="24px" prefWidth="90px" text="Center">
-    <AnchorsPaneConstraints height="24px" left="40px" top="150px" width="90px"/>
+    <AnchorsPaneConstraints height="24px" left="50px" top="110px" width="90px"/>
   </RadioButton>
   <RadioButton cursor="0" name="rbRight" parent="view" prefHeight="24px" prefWidth="70px" text="Right">
-    <AnchorsPaneConstraints height="24px" left="80px" top="120px" width="70px"/>
+    <AnchorsPaneConstraints bottom="9px" height="24px" left="90px" width="70px"/>
   </RadioButton>
+  <ModelSpin cursor="0" name="mdlVGap" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="60px" top="12px" width="100px"/>
+  </ModelSpin>
+  <ModelSpin cursor="0" name="mdlHGap" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="60px" top="50px" width="100px"/>
+  </ModelSpin>
 </layout>

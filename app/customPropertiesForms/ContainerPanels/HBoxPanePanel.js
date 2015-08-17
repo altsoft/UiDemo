@@ -13,6 +13,13 @@ function HBoxPanePanel(aPlaygroundPanel) {
     internalContainer.width = 800;
     internalContainer.height = 400;
 
+    var gaps = {'vGap': 0,
+        'hGap': 0};
+    form.mdlHGap.data = gaps;
+    form.mdlHGap.field = 'hGap';
+    form.mdlVGap.data = gaps;
+    form.mdlVGap.field = 'vGap';
+
     if (form.chbIsScroll.selected) {
         scrollContainer.add(demoContainer);
         internalContainer.add(scrollContainer);
@@ -21,13 +28,14 @@ function HBoxPanePanel(aPlaygroundPanel) {
     }
 
     if (P.agent == P.HTML5) {
-        internalContainer.element.style.border = "solid";
+       internalContainer.element.style.border = "thin solid gray";
+        internalContainer.element.style.borderRadius = "5px";
     }
 
     self.getDemoComponent = function () {
         return internalContainer;
     };
-    
+
     self.getViewComponent = function () {
         return internalContainer;
     };
@@ -44,7 +52,7 @@ function HBoxPanePanel(aPlaygroundPanel) {
     }
 
     function deleteElement(aElement) {
-        internalContainer.remove(aElement);
+        demoContainer.remove(aElement);
     }
 
     var placeElement = function (aElement, counter) {
@@ -54,18 +62,17 @@ function HBoxPanePanel(aPlaygroundPanel) {
     };
 
     addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
+    var comp = new P.Button('Sample');
+    comp.height = 30;
+    comp.width = 120;
+    demoContainer.add(comp);
+    comp.itemname = comp.text;
+    addPanel.addComponentTolist(comp);
+
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
         addPanel.showOnPanel(aPanel);
-    };
-
-    form.ffHGap.onActionPerformed = function (event) {
-        internalContainer.hgap = form.ffHGap.value;
-    };
-
-    form.ffVGap.onActionPerformed = function (event) {
-        internalContainer.vgap = form.ffVGap.value;
     };
 
     form.chbIsScroll.onActionPerformed = function (event) {
@@ -77,4 +84,17 @@ function HBoxPanePanel(aPlaygroundPanel) {
             internalContainer.add(demoContainer);
         }
     };
+
+    self.getFormHeight = function () {
+        return form.view.height;
+    };
+    
+    form.mdlHGap.onValueChange = function (event) {
+        demoContainer.hgap = gaps.hGap;
+    };
+
+    form.mdlVGap.onValueChange = function (event) {
+        demoContainer.vgap = gaps.vGap;
+    };
+    
 }

@@ -13,6 +13,14 @@ function VBoxPanePanel(aPlaygroundPanel) {
     internalContainer.width = 800;
     internalContainer.height = 400;
 
+    var gaps = {'vGap': 0,
+        'hGap': 0};
+    form.mdlHGap.data = gaps;
+    form.mdlHGap.field = 'hGap';
+    form.mdlVGap.data = gaps;
+    form.mdlVGap.field = 'vGap';
+
+
     if (form.chbIsScroll.selected) {
         scrollContainer.add(demoContainer);
         internalContainer.add(scrollContainer);
@@ -21,7 +29,8 @@ function VBoxPanePanel(aPlaygroundPanel) {
     }
 
     if (P.agent == P.HTML5) {
-        internalContainer.element.style.border = "solid";
+        internalContainer.element.style.border = "thin solid gray";
+        internalContainer.element.style.borderRadius = "5px";
     }
 
     self.getDemoComponent = function () {
@@ -44,28 +53,36 @@ function VBoxPanePanel(aPlaygroundPanel) {
     }
 
     function deleteElement(aElement) {
-        internalContainer.remove(aElement);
+        demoContainer.remove(aElement);
     }
 
-    var placeElement = function (aElement, counter) {
+    function placeElement(aElement, counter) {
         aElement.height = Math.floor(Math.random() * (100 - 20)) + 20;
         demoContainer.add(aElement);
         aElement.toolTipText = "num " + counter + " id:" + demoContainer.count;
-    };
+    }
+    ;
 
     addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
+    var comp = new P.Button('Sample');
+    comp.height = 30;
+    comp.width = 120;
+    demoContainer.add(comp);
+    comp.itemname = comp.text;
+    addPanel.addComponentTolist(comp);
+
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
         addPanel.showOnPanel(aPanel);
     };
 
-    form.ffHGap.onActionPerformed = function (event) {
-        internalContainer.hgap = form.ffHGap.value;
+    form.mdlHGap.onValueChange = function (event) {
+        demoContainer.hgap = gaps.hGap;
     };
 
-    form.ffVGap.onActionPerformed = function (event) {
-        internalContainer.vgap = form.ffVGap.value;
+    form.mdlVGap.onValueChange = function (event) {
+        demoContainer.vgap = gaps.vGap;
     };
 
     form.chbIsScroll.onActionPerformed = function (event) {
@@ -76,5 +93,9 @@ function VBoxPanePanel(aPlaygroundPanel) {
         } else {
             internalContainer.add(demoContainer);
         }
+    };
+
+    self.getFormHeight = function () {
+        return form.view.height;
     };
 }

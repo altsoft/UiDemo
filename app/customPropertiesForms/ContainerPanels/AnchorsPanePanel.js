@@ -12,15 +12,17 @@ function AnchorsPanePanel() {
     internalContainer.width = 800;
     internalContainer.height = 400;
     if (P.agent == P.HTML5) {
-        internalContainer.element.style.border = "solid";
+        internalContainer.element.style.border = "thin solid gray";
+        internalContainer.element.style.borderRadius = "5px";
     }
-    var addPanel;   
+    
+    var addPanel;
     var subject;
 
     self.getDemoComponent = function () {
         return internalContainer;
     };
-    
+
     self.getViewComponent = function () {
         return internalContainer;
     };
@@ -44,23 +46,8 @@ function AnchorsPanePanel() {
         internalContainer.remove(aElement);
     }
 
-    function placeElement(aElement, counter) {
-        subject = aElement;
-        form.ffLeft.text = 0;
-        form.ffRight.text = 0;
-        form.ffTop.text = 0;
-        form.ffBottom.text = 0;
-        
-        internalContainer.add(aElement
-                , new P.Anchors(form.ffLeft.value,
-                        aElement.width,
-                        form.ffRight.value,
-                        form.ffTop.value,
-                        aElement.height,
-                        form.ffBottom.value));
-        aElement.toolTipText = "num " + counter + " id:" + internalContainer.count;
-
-        aElement.onMousePressed = function (event) {
+    function setDragDrop(aElement){
+            aElement.onMousePressed = function (event) {
             var leftOffset = event.x;
             var topOffset = event.y;
 
@@ -83,12 +70,38 @@ function AnchorsPanePanel() {
                 aElement.onMouseReleased = null;
             };
         };
+    }
 
+    function placeElement(aElement, counter) {
+        subject = aElement;
+        form.ffLeft.text = 0;
+        form.ffRight.text = 0;
+        form.ffTop.text = 0;
+        form.ffBottom.text = 0;
+
+        internalContainer.add(aElement
+                , new P.Anchors(form.ffLeft.value,
+                        aElement.width,
+                        form.ffRight.value,
+                        form.ffTop.value,
+                        aElement.height,
+                        form.ffBottom.value));
+        aElement.toolTipText = "num " + counter + " id:" + internalContainer.count;
+        aElement.child(0).text = "Drag&Drop me!"
+        setDragDrop(aElement);
 
     }
 
     addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
-
+    var comp = new P.Button('Sample');
+    comp.height = 30;
+    comp.width = 120;
+    internalContainer.add(comp, new P.Anchors(10, comp.width, 0, 10, comp.height, 0));
+    comp.itemname = 'Sample';
+    setDragDrop(comp);
+    addPanel.addComponentTolist(comp);
+    
+    
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
         addPanel.showOnPanel(aPanel);
@@ -116,5 +129,9 @@ function AnchorsPanePanel() {
         if (subject) {
             subject.left = form.ffLeft.value;
         }
+    };
+
+    self.getFormHeight = function () {
+        return form.view.height;
     };
 }

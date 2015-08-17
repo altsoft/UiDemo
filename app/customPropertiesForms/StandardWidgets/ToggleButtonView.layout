@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <ButtonGroup name="btnGrpHorisontalPosition"/>
+  <ButtonGroup name="buttonGroup"/>
+  <ButtonGroup name="buttonGroup1"/>
+  <ButtonGroup name="buttonGroup2"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="99px" prefWidth="275px"/>
+  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="100px" prefWidth="280px">
+    <AnchorsPaneConstraints bottom="-1px" left="0px" right="-5px" top="0px"/>
+  </AnchorsPane>
+  <TextField cursor="0" name="txtButtonGroup1" parent="panel" prefHeight="27px" prefWidth="156px">
+    <AnchorsPaneConstraints height="27px" left="110px" top="31px" width="156px"/>
+  </TextField>
+  <CheckBox cursor="0" name="chbSelected1" parent="panel" prefHeight="18px" prefWidth="36px">
+    <AnchorsPaneConstraints height="18px" left="110px" top="66px" width="36px"/>
+  </CheckBox>
+  <Label cursor="0" horizontalAlignment="10" name="label3" parent="panel" prefHeight="17px" prefWidth="108px" text="Button Group">
+    <AnchorsPaneConstraints height="17px" left="10px" top="36px" width="108px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label12" parent="panel" prefHeight="17px" prefWidth="84px" text="Selected">
+    <AnchorsPaneConstraints height="17px" left="10px" top="67px" width="84px"/>
+  </Label>
+</layout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="212px" prefWidth="861px"/>
+  <ModelCombo cursor="0" emptyText="Menu list" name="mdlMenus" parent="view" prefHeight="27px" prefWidth="250px">
+    <AnchorsPaneConstraints height="27px" left="10px" top="12px" width="250px"/>
+  </ModelCombo>
+  <ModelCombo cursor="0" emptyText="Menu items list" name="mdlItem" parent="view" prefHeight="27px" prefWidth="250px">
+    <AnchorsPaneConstraints height="27px" left="10px" top="90px" width="250px"/>
+  </ModelCombo>
+  <Button cursor="0" name="btnAddMenu" parent="view" prefHeight="29px" prefWidth="140px" text="Add menu">
+    <AnchorsPaneConstraints height="29px" left="280px" top="10px" width="140px"/>
+  </Button>
+  <Button cursor="0" name="btnAddItem" parent="view" prefHeight="29px" prefWidth="140px" text="Add item">
+    <AnchorsPaneConstraints height="29px" left="280px" top="50px" width="140px"/>
+  </Button>
+  <Button cursor="0" name="btnAddCheck" parent="view" prefHeight="29px" prefWidth="140px" text="Add check item">
+    <AnchorsPaneConstraints height="29px" left="280px" top="130px" width="140px"/>
+  </Button>
+  <Button cursor="0" name="btnAddRadio" parent="view" prefHeight="29px" prefWidth="140px" text="Add radio item">
+    <AnchorsPaneConstraints height="29px" left="280px" top="90px" width="140px"/>
+  </Button>
+  <Button cursor="0" name="btnAddSeparator" parent="view" prefHeight="29px" prefWidth="140px" text="Add separator">
+    <AnchorsPaneConstraints height="29px" left="280px" top="170px" width="140px"/>
+  </Button>
+  <Button cursor="0" name="btnDelItem" parent="view" prefHeight="29px" prefWidth="110px" text="Delete item">
+    <AnchorsPaneConstraints height="29px" left="150px" top="130px" width="110px"/>
+  </Button>
+  <Button cursor="0" name="btnDelMenu" parent="view" prefHeight="29px" prefWidth="170px" text="Delete popup menu">
+    <AnchorsPaneConstraints height="29px" left="90px" top="50px" width="170px"/>
+  </Button>
+  <TextField cursor="0" emptyText="Item text..." name="txtText" parent="view" prefHeight="27px" prefWidth="250px" text="Item text...">
+    <AnchorsPaneConstraints height="27px" left="10px" top="170px" width="250px"/>
+  </TextField>
+</layout>

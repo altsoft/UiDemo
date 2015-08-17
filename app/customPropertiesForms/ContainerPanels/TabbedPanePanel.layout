@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="400px">
-  <layout type="MarginLayoutDesignInfo"/>
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="173px" prefWidth="259px"/>
+  <TextField cursor="0" emptyText="Tab name" name="txtTabName" parent="view" prefHeight="27px" prefWidth="150px" text="Tab name">
+    <AnchorsPaneConstraints height="27px" left="100px" top="12px" width="150px"/>
+  </TextField>
+  <Label cursor="0" horizontalAlignment="10" name="label121" parent="view" prefHeight="17px" prefWidth="80px" text="Tab name">
+    <AnchorsPaneConstraints height="17px" left="10px" top="17px" width="80px"/>
+  </Label>
 </layout>
