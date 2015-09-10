@@ -29,12 +29,12 @@ function FormattedFieldView() {
             name: 'Date',
             valueType: Date,
             format: 'h:mm:ss a z EEEE MMMM dd yyyy',
-            value: new Date(),
+            value: new Date()
         }, {
             name: 'Time',
             valueType: Date,
             format: 'h:mm:ss a z',
-            value: '1:22:17 PM',
+            value: new Date() //'1:22:17 PM',
         }, {
             name: 'RegExp',
             valueType: RegExp,
@@ -105,7 +105,9 @@ function FormattedFieldView() {
     }
 
     function onParseCurrency(event) {
-        var value = +event.source.text;
+        var value = event.source.text;
+        value =  value.replace("$", "");
+        value = +value;
         if (isNaN(value)) {
             event.source.background = P.Color.PINK;
             return null;
@@ -137,6 +139,7 @@ function FormattedFieldView() {
     }
 
     form.mcmbValueType.onValueChange = function (event) {
+        formattedField.background = P.Color.WHITE;
         if (form.mcmbValueType.value.valueType === 'Percent') {
             formattedField.onParse = onParsePercent;
             formattedField.onFormat = onFormatPercent;

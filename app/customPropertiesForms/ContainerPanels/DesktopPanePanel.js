@@ -44,13 +44,15 @@ function DesktopPanePanel() {
     function placeElement(aElement, counter) {
         subject = aElement;
         aElement.onDesktop(internalContainer);
-        aElement.toolTipText = "num " + counter; // + " id:" + internalContainer.count;
+        aElement.toolTipText = "Demo form " + counter; // + " id:" + internalContainer.count;
+        aElement.setTitle( aElement.toolTipText);
     }
 
     addPanel = new AddDesktopContainer(getPosition, deleteElement, placeElement);
     var formModule = new DesktopInnerForm();
     formModule.onDesktop(internalContainer);
     formModule.itemname = 'Demo form';
+    formModule.setTitle(formModule.itemname);
     addPanel.addComponentTolist(formModule);
     
 

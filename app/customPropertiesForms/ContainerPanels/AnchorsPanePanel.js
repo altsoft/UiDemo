@@ -11,11 +11,28 @@ function AnchorsPanePanel() {
     var internalContainer = new P.AnchorsPane();
     internalContainer.width = 800;
     internalContainer.height = 400;
+
+    var position = {'left': 0,
+        'right': 0,
+        'top': 0,
+        'bottom': 0};
+
+    form.mdlTop.data = position;
+    form.mdlBottom.data = position;
+    form.mdlLeft.data = position;
+    form.mdlRight.data = position;
+
+    form.mdlTop.field = 'top';
+    form.mdlBottom.field = 'bottom';
+    form.mdlLeft.field = 'left';
+    form.mdlRight.field = 'right';
+
+
     if (P.agent == P.HTML5) {
         internalContainer.element.style.border = "thin solid gray";
         internalContainer.element.style.borderRadius = "5px";
     }
-    
+
     var addPanel;
     var subject;
 
@@ -36,18 +53,18 @@ function AnchorsPanePanel() {
 
     function getPosition(aElement) {
         subject = aElement;
-        form.ffLeft.value = aElement.left;
-        form.ffTop.value = aElement.top;
-        form.ffBottom.value = aElement.bottom;
-        form.ffRight.value = aElement.right;
+        position.left = aElement.left;
+        position.top = aElement.top;
+        position.bottom = aElement.bottom;
+        position.right = aElement.right;
     }
 
     function deleteElement(aElement) {
         internalContainer.remove(aElement);
     }
 
-    function setDragDrop(aElement){
-            aElement.onMousePressed = function (event) {
+    function setDragDrop(aElement) {
+        aElement.onMousePressed = function (event) {
             var leftOffset = event.x;
             var topOffset = event.y;
 
@@ -74,19 +91,19 @@ function AnchorsPanePanel() {
 
     function placeElement(aElement, counter) {
         subject = aElement;
-        form.ffLeft.text = 0;
-        form.ffRight.text = 0;
-        form.ffTop.text = 0;
-        form.ffBottom.text = 0;
+        position.left = 0;
+        position.right = 0;
+        position.top = 0;
+        position.bottom = 0;
 
         internalContainer.add(aElement
-                , new P.Anchors(form.ffLeft.value,
+                , new P.Anchors(position.left,
                         aElement.width,
-                        form.ffRight.value,
-                        form.ffTop.value,
+                        position.right,
+                        position.top,
                         aElement.height,
-                        form.ffBottom.value));
-        aElement.toolTipText = "num " + counter + " id:" + internalContainer.count;
+                        position.bottom));
+        aElement.toolTipText = "Sample " + counter; //+ " id:" + internalContainer.count;
         aElement.child(0).text = "Drag&Drop me!"
         setDragDrop(aElement);
 
@@ -100,34 +117,36 @@ function AnchorsPanePanel() {
     comp.itemname = 'Sample';
     setDragDrop(comp);
     addPanel.addComponentTolist(comp);
-    
-    
+    position.left = 10;
+    position.top = 10;
+
+
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
         addPanel.showOnPanel(aPanel);
     };
 
-    form.ffTop.onValueChange = function (event) {
+    form.mdlTop.onValueChange = function (event) {
         if (subject) {
-            subject.top = form.ffTop.value;
+            subject.top = position.top;
         }
     };
 
-    form.ffBottom.onValueChange = function (event) {
+    form.mdlBottom.onValueChange = function (event) {
         if (subject) {
-            subject.bottom = form.ffBottom.value;
+            subject.bottom = position.bottom;
         }
     };
 
-    form.ffRight.onValueChange = function (event) {
+    form.mdlRight.onValueChange = function (event) {
         if (subject) {
-            subject.right = form.ffRight.value;
+            subject.right = position.right;
         }
     };
 
-    form.ffLeft.onValueChange = function (event) {
+    form.mdlLeft.onValueChange = function (event) {
         if (subject) {
-            subject.left = form.ffLeft.value;
+            subject.left = position.left;
         }
     };
 

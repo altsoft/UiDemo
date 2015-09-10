@@ -5,6 +5,7 @@
 
 var global = this;
 var demoMenuList = [];
+var groupList = [];
 function MainView() {
     var self = this
             , model = P.loadModel(this.constructor.name)
@@ -26,9 +27,20 @@ function MainView() {
     P.Icon.load('icons/expanded.png', function (data) {
         icnExpanded = data;
     });
+
     var icnCollapsed;
     P.Icon.load('icons/collapsed.png', function (data) {
         icnCollapsed = data;
+    });
+
+    var icnFolder;
+    P.Icon.load('icons/folder.png', function (data) {
+        icnFolder = data;
+    });
+
+    var icnFolderOpen;
+    P.Icon.load('icons/open.png', function (data) {
+        icnFolderOpen = data;
     });
 
     var demosList = new DemosList();
@@ -38,6 +50,27 @@ function MainView() {
     form.grdDemos.childrenField = 'childrenField';
     form.pnlDemoViews.show('pnlTextInfo');
     form.grdDemos.headerVisible = false;
+    form.grdDemos.showHorizontalLines = false;
+    form.grdDemos.showVerticalLines = false;
+    form.grdDemos.showOddRowsInOtherColor = false;
+    
+    if (P.agent == P.HTML5) {
+        form.lblViewSource.cursor = 'pointer';
+        form.lblCustomSource.cursor = 'pointer';
+    }
+    form.grdDemos.column.onRender = function (event) {
+        if (event.object.icon) {
+            event.cell.icon = event.object.icon;
+        } else {
+            event.cell.icon = icnFolder;
+        }
+    };
+
+    form.grdDemos.onMouseClicked = function (event) {
+        if (event.clickCount > 1) {
+
+        }
+    };
 
     function showDemo(aCustom, aWidget, aView) {
         aCustom.showOnPanel(form.pnlCustomProperties);
@@ -61,8 +94,10 @@ function MainView() {
             {
                 P.invokeLater(function () {
                     if (form.grdDemos.selected[0].createdCustomForm.unfolded) {
+                        form.lblCustomSource.icon = icnExpanded;
                         form.pnlCustomSource.height = form.pnlCustomSource.element.children[0].offsetHeight;
                     } else {
+                        form.lblCustomSource.icon = icnCollapsed;
                         form.pnlCustomSource.height = 0;
                     }
                     form.pnlCustomProperties.height = form.grdDemos.selected[0].createdCustomForm.getFormHeight();
@@ -76,7 +111,9 @@ function MainView() {
                 P.invokeLater(function () {
                     if (form.grdDemos.selected[0].createdViewForm.unfolded) {
                         form.pnlViewSourceCode.height = form.pnlViewSourceCode.element.children[0].offsetHeight;
+                        form.lblViewSource.icon = icnExpanded;
                     } else {
+                        form.lblViewSource.icon = icnCollapsed;
                         form.pnlViewSourceCode.height = 0;
                     }
                     form.pnlViewProperties.height = form.grdDemos.selected[0].createdViewForm.getFormHeight();
@@ -119,21 +156,37 @@ function MainView() {
         } else {
             form.pnlDemoViews.show('pnlTextInfo');
             form.lblInfo.text = form.grdDemos.selected[0].getInformation();
-            
         }
 
         form.lblShortInfo.text = hint;
 
 
-        if (form.grdDemos.selected[0].parentField) {
 
+
+        if (form.grdDemos.selected[0].parentField) {
             if (form.grdDemos.selected[0].createdCustomForm) {
                 var custom = form.grdDemos.selected[0].createdCustomForm;
                 var widget = form.grdDemos.selected[0].widget;
                 var demoForm = form.grdDemos.selected[0].demoForm;
                 showDemo(custom, widget, demoForm);
-                form.grdDemos.selected[0].createdViewForm.showOnPanel(form.pnlViewProperties);
-                onTabChanged();
+                if (form.grdDemos.selected[0].createdViewForm) {
+                    form.grdDemos.selected[0].createdViewForm.showOnPanel(form.pnlViewProperties);
+                    onTabChanged();
+                } else {
+                    P.require(viewForm, function () {
+                        var view = new global[viewForm](widget);
+                        view.setOnComponentResize(onComponentResize);
+                        view.showOnPanel(form.pnlViewProperties);
+                        form.grdDemos.selected[0].createdViewForm = view;
+                        form.grdDemos.selected[0].createdViewForm.unfolded = false;
+                        form.pnlViewSourceCode.element.innerHTML = '<pre class="brush: js">' + view.constructor.toString() + '</pre>';
+                        SyntaxHighlighter.highlight();
+                        if (custom.setCommonView) {
+                            custom.setCommonView(view);
+                        }
+                        onTabChanged();
+                    });
+                }
             } else {
                 P.require(customForm, function () {
                     var custom = new global[customForm]();
@@ -154,7 +207,7 @@ function MainView() {
                         form.grdDemos.selected[0].createdViewForm.unfolded = false;
                         form.pnlViewSourceCode.element.innerHTML = '<pre class="brush: js">' + view.constructor.toString() + '</pre>';
                         SyntaxHighlighter.highlight();
-                        if (custom.setCommonView){
+                        if (custom.setCommonView) {
                             custom.setCommonView(view);
                         }
                         onTabChanged();
@@ -162,7 +215,7 @@ function MainView() {
 
                 });
             }
-           
+
         }
 //        
     };

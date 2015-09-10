@@ -30,4 +30,7 @@ function DesktopInnerForm() {
     model.requery(function () {
     });
 
+    self.setTitle = function(aTitle){
+        form.title = aTitle;
+    }
 }

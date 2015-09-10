@@ -33,16 +33,6 @@ function TextAreaView(aDemoComponent) {
         aPanel.add(form.view);
     };
 
-    form.txtText.onActionPerformed = function () {
-        textArea.text = form.txtText.text;
-    };
-
-    textArea.onValueChange = function () {
-        form.txtText.text = textArea.text;
-    };
-
-    textArea.demoOnActionPerformed = textArea.onValueChange;
-
     form.txtEmptyText.onActionPerformed = function (event) {
         textArea.emptyText = form.txtEmptyText.text;
     };

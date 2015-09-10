@@ -37,9 +37,12 @@ function DemosList() {
  */\n\
 var label = new P.Label('Label')\n\
 label.text = 'new Text in a label'";
-    var plainWidget = createPlainWidget("Label", standardWidgets, "LabelView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var label = createPlainWidget("Label", standardWidgets, "LabelView", hint);
+    label.creationCode = creation;
+    P.Icon.load('icons/standard/label_16.png', function (data) {
+        label.icon = data;
+    });
+    demos.push(label);
 
     creation =
             "\
@@ -52,9 +55,12 @@ btn1.onActionPerformed = function() { \n\
   alert('Clicked!'); \n\
 }\n"
     hint = "Button is a simple button, which responds to the click action.";
-    plainWidget = createPlainWidget("Button", standardWidgets, "ButtonView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var button = createPlainWidget("Button", standardWidgets, "ButtonView", hint);
+    button.creationCode = creation;
+    P.Icon.load('icons/standard/button_16.png', function (data) {
+        button.icon = data;
+    });
+    demos.push(button);
 
     creation =
             "\
@@ -62,7 +68,7 @@ btn1.onActionPerformed = function() { \n\
  * var btn1 = new P.ToggleButton(text, icon, selected, iconTextGap, actionPerformed);\n\
  */\n\
 var btn = new ToggleButton(text, icon, iconTextGap, selected, actionPerformed);\n\
-btn1.text = 'Turn me on!;\n\
+btn1.text = 'Turn me on!';\n\
 btn1.onActionPerformed = function() {\n\
     if(btn.selected)\n\
         btn1.text = 'Turn me off!';\n\
@@ -70,9 +76,12 @@ btn1.onActionPerformed = function() {\n\
         btn1.text = 'Turn me on!';\n\
 }\n";
     hint = "ToggleButton is a button with two states: selected and not selected.";
-    plainWidget = createPlainWidget("Toggle button", standardWidgets, "ToggleButtonView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var tglBtn = createPlainWidget("Toggle button", standardWidgets, "ToggleButtonView", hint);
+    tglBtn.creationCode = creation;
+    P.Icon.load('icons/standard/toggle_button_16.png', function (data) {
+        tglBtn.icon = data;
+    });
+    demos.push(tglBtn);
 
     creation =
             "\
@@ -85,9 +94,12 @@ cb1.onValueChange = function(evt) {\n\
   alert('Value of check box 1 changed!');\n\
 }\n";
     hint = "CheckBox is a component with two states: selected/not selected.";
-    plainWidget = createPlainWidget("Check box", standardWidgets, "CheckBoxView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var chkBox = createPlainWidget("Check box", standardWidgets, "CheckBoxView", hint);
+    chkBox.creationCode = creation;
+    P.Icon.load('icons/standard/check_box_16.png', function (data) {
+        chkBox.icon = data;
+    });
+    demos.push(chkBox);
 
     creation =
             "\
@@ -100,21 +112,47 @@ rb1.onActionPerformed = function(evt) {\n\
     rb1.selected && alert('Radio button 1 selected!');\n\
 }\n";
     hint = "RadioButton is a component with two states: selected/not selected. Widgets of this type can be joined into groups.";
-    plainWidget = createPlainWidget("Radio button", standardWidgets, "RadioButtonView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var radioButton = createPlainWidget("Radio button", standardWidgets, "RadioButtonView", hint);
+    radioButton.creationCode = creation;
+    P.Icon.load('icons/standard/radio_button_16.png', function (data) {
+        radioButton.icon = data;
+    });
+    demos.push(radioButton);
+
+creation =
+            "\
+/*\n\
+ * var buttonGroup = new P.ButtonGroup();\n\
+ */\n\
+var buttonGroup = new P.ButtonGroup();\n\
+var rbA = new P.RadioButton('A', true);\n\
+var rbB = new P.RadioButton('B', false);\n\
+rbA.buttonGroup = buttonGroup;\n\
+rbB.buttonGroup = buttonGroup;\n\
+\n";
+    hint = "ButtonGroup is a special kind of a widget. ";
+    var buttonGroup = createPlainWidget("Button group", standardWidgets, "ButtonGroupView", hint);
+    buttonGroup.creationCode = creation;
+    P.Icon.load('icons/standard/button_group_16.png', function (data) {
+        buttonGroup.icon = data;
+    });
+    demos.push(buttonGroup);
 
     creation =
             "\
 /*\n\
  * var tf1 = new P.TextField(text);\n\
  */\n\
+var tf1 = new P.TextField(text);\n\
 tf1.emptyText = 'Enter your name...';\n\
 \n";
     hint = "TextField is a simple component, which allows you to edit single line of text.";
-    plainWidget = createPlainWidget("Text field", standardWidgets, "TextFieldView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var txtField = createPlainWidget("Text field", standardWidgets, "TextFieldView", hint);
+    txtField.creationCode = creation;
+    P.Icon.load('icons/standard/text_field_16.png', function (data) {
+        txtField.icon = data;
+    });
+    demos.push(txtField);
 
     creation =
             "\
@@ -129,9 +167,12 @@ s1l.onActionPerformed = function(evt) {\n\
   P.Logger.info('Slider moved.');\n\
 }\n";
     hint = "Slider is a component, which allows you to visually select a value by moving the slider lever within the specified interval.";
-    plainWidget = createPlainWidget("Slider", standardWidgets, "SliderView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var slider = createPlainWidget("Slider", standardWidgets, "SliderView", hint);
+    slider.creationCode = creation;
+    P.Icon.load('icons/standard/slider_16.png', function (data) {
+        slider.icon = data;
+    });
+    demos.push(slider);
 
     creation =
             "\
@@ -144,9 +185,12 @@ pb1.maximum = 100;\n\
 pb1.value = 20;\n\
 \n";
     hint = "ProgressBar is a component, which visually shows the progress of some task.";
-    plainWidget = createPlainWidget("Progress bar", standardWidgets, "ProgressBarView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var progressBar = createPlainWidget("Progress bar", standardWidgets, "ProgressBarView", hint);
+    progressBar.creationCode = creation;
+    P.Icon.load('icons/standard/progress_bar_16.png', function (data) {
+        progressBar.icon = data;
+    });
+    demos.push(progressBar);
 
     creation =
             "\
@@ -159,9 +203,12 @@ ff.format = 'dd.MM.yyyy HH:mm:ss';\n\
 ff.value = new Date();\n\
 \n";
     hint = "FormattedField is a component, which allows you to edit value of some specific type as the text.";
-    plainWidget = createPlainWidget("Formatted field", standardWidgets, "FormattedFieldView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var formattedField = createPlainWidget("Formatted field", standardWidgets, "FormattedFieldView", hint);
+    formattedField.creationCode = creation;
+    P.Icon.load('icons/standard/formatted_field_16.png', function (data) {
+        formattedField.icon = data;
+    });
+    demos.push(formattedField);
 
     creation =
             "\
@@ -171,9 +218,12 @@ ff.value = new Date();\n\
 var pf = new P.PasswordField();\n\
 \n";
     hint = "PasswordField is a simple input component, it displays placeholders instead of actual characters.";
-    plainWidget = createPlainWidget("Password field", standardWidgets, "PasswordFieldView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var passwordField = createPlainWidget("Password field", standardWidgets, "PasswordFieldView", hint);
+    passwordField.creationCode = creation;
+    P.Icon.load('icons/standard/password_field_16.png', function (data) {
+        passwordField.icon = data;
+    });
+    demos.push(passwordField);
 
     creation =
             "\
@@ -183,10 +233,12 @@ var pf = new P.PasswordField();\n\
 var textArea = new P.TextArea();\n\
 \n";
     hint = "TextArea is the text component for editing and displaying multistring text.";
-    plainWidget = createPlainWidget("Text area", standardWidgets, "TextAreaView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
-
+    var textArea = createPlainWidget("Text area", standardWidgets, "TextAreaView", hint);
+    textArea.creationCode = creation;
+    P.Icon.load('icons/standard/text_area_16.png', function (data) {
+        textArea.icon = data;
+    });
+    demos.push(textArea);
 
     creation =
             "\
@@ -197,26 +249,14 @@ var htmlArea = new P.HtmlArea();\n\
 htmlArea.text = '<p>Sample text</p>';\n\
 \n";
     hint = "HtmlArea is a component for editing and displaying HTML documents.";
-    plainWidget = createPlainWidget("Html area", standardWidgets, "HtmlAreaView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    var htmlArea = createPlainWidget("Html area", standardWidgets, "HtmlAreaView", hint);
+    htmlArea.creationCode = creation;
+    demos.push(htmlArea);
+    P.Icon.load('icons/standard/editor_pane_16.png', function (data) {
+        htmlArea.icon = data;
+    });
 
-
-    creation =
-            "\
-/*\n\
- * var buttonGroup = new P.ButtonGroup();\n\
- */\n\
-var buttonGroup = new P.ButtonGroup();\n\
-var rbA = new P.RadioButton('A', true);\n\
-var rbB = new P.RadioButton('B', false);\n\
-rbA.buttonGroup = buttonGroup;\n\
-rbB.buttonGroup = buttonGroup;\n\
-\n";
-    hint = "ButtonGroup is a special kind of a widget. ";
-    plainWidget = createPlainWidget("Button group", standardWidgets, "ButtonGroupView", hint);
-    plainWidget.creationCode = creation;
-    demos.push(plainWidget);
+    
 
     var modelWidgets = new DemoItem();
     modelWidgets.name = "Model Widgets";
@@ -233,9 +273,12 @@ modelCheck.data = model.entityA.cursor;\n\
 modelCheck.field = 'fieldA';\n\
 \n";
     hint = "ModelCheck is a scalar model widget representing a check box, the state of which is linked to an entity's field."
-    var modelWidget = createPlainWidget("Model check", modelWidgets, "ModelCheckCustom", hint);
-    modelWidget.creationCode = creation;
-    demos.push(modelWidget);
+    var modelCheck = createPlainWidget("Model check", modelWidgets, "ModelCheckCustom", hint);
+    modelCheck.creationCode = creation;
+    P.Icon.load('icons/model/check.png', function (data) {
+        modelCheck.icon = data;
+    });
+    demos.push(modelCheck);
 
     creation =
             "\
@@ -250,9 +293,12 @@ modelCombo.displayList = model.owners;\n\
 modelCombo.displayField = 'ownerName';\n\
 \n";
     hint = "ModelCombo is a scalar model widget representing a combo box that is bound to some data model field.";
-    var modelWidget = createPlainWidget("Model combo", modelWidgets, "ModelComboCustom", hint);
-    modelWidget.creationCode = creation;
-    demos.push(modelWidget);
+    var modelCombo = createPlainWidget("Model combo", modelWidgets, "ModelComboCustom", hint);
+    modelCombo.creationCode = creation;
+    P.Icon.load('icons/model/combo.png', function (data) {
+        modelCombo.icon = data;
+    });
+    demos.push(modelCombo);
 
     creation =
             "\
@@ -267,9 +313,12 @@ modelDate.timePicker = false;\n\
 modelDate.editable = true;\n\
 \n";
     hint = "ModelDate is a scalar model widget representing a date and bound to some date or timestamp field in the model.";
-    var modelWidget = createPlainWidget("Model date", modelWidgets, "ModelDateCustom", hint);
-    modelWidget.creationCode = creation;
-    demos.push(modelWidget);
+    var modelDate = createPlainWidget("Model date", modelWidgets, "ModelDateCustom", hint);
+    modelDate.creationCode = creation;
+    P.Icon.load('icons/model/date.png', function (data) {
+        modelDate.icon = data;
+    });
+    demos.push(modelDate);
 
     creation =
             "\
@@ -280,9 +329,12 @@ modelSpin.data = model.entityC;\n\
 modelSpin.field = 'cursor.count';\n\
 \n";
     hint = "ModelSpin is a scalar model widget, the state of which is linked to a field of a data model entity of number type.";
-    var modelWidget = createPlainWidget("Model spin", modelWidgets, "ModelSpinCustom", hint);
-    modelWidget.creationCode = creation;
-    demos.push(modelWidget);
+    var modelSpin = createPlainWidget("Model spin", modelWidgets, "ModelSpinCustom", hint);
+    modelSpin.creationCode = creation;
+    P.Icon.load('icons/model/spin.png', function (data) {
+        modelSpin.icon = data;
+    });
+    demos.push(modelSpin);
 
     creation =
             "\
@@ -294,9 +346,12 @@ mff.field = 'cursor.timeOfDeath';\n\
 mff.format = 'dd.MM.yyyy HH:mm:ss';\n\
 \n";
     hint = "ModelFormattedField is a scalar model widget, the state of which is linked to a field of the data model string or number type.";
-    var modelWidget = createPlainWidget("Model formatted field", modelWidgets, "ModelTextCustom", hint);
-    modelWidget.creationCode = creation;
-    demos.push(modelWidget);
+    var modelFormatted = createPlainWidget("Model formatted field", modelWidgets, "ModelTextCustom", hint);
+    modelFormatted.creationCode = creation;
+    P.Icon.load('icons/model/label.png', function (data) {
+        modelFormatted.icon = data;
+    });
+    demos.push(modelFormatted);
 
     creation =
             "\
@@ -306,9 +361,12 @@ mff.format = 'dd.MM.yyyy HH:mm:ss';\n\
 mta.field = model.entityB.schema.textField;\n\
 \n";
     hint = "ModelTextArea is a scalar model widget, the state of which is linked to a field of the data model of string or number type.";
-    var modelWidget = createPlainWidget("Model text area", modelWidgets, "ModelTextAreaCustom", hint);
-    modelWidget.creationCode = creation;
-    demos.push(modelWidget);
+    var modelTextArea = createPlainWidget("Model text area", modelWidgets, "ModelTextAreaCustom", hint);
+    modelTextArea.creationCode = creation;
+    P.Icon.load('icons/model/text.png', function (data) {
+        modelTextArea.icon = data;
+    });
+    demos.push(modelTextArea);
 
 
 //    var modelFormattedField = new MenuObject();
@@ -352,9 +410,12 @@ var comp = new P.Button('Sample');\n\
 pane.add(comp, new P.Anchors(10, 120, 0, 10, 30, 0));\n\
 \n";
     hint = "AnchorsPane is a container with the anchors layout.";
-    var container = createContainer("Anchors pane", containers, "AnchorsPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var anchorsPane = createContainer("Anchors pane", containers, "AnchorsPanePanel", hint);
+    anchorsPane.creationCode = creation;
+    P.Icon.load('icons/containers/AbsoluteLayout.gif', function (data) {
+        anchorsPane.icon = data;
+    });
+    demos.push(anchorsPane);
 
 
     creation =
@@ -369,9 +430,12 @@ var bottomComp = new P.Button('Bottom');\n\
 pane.add(bottomComp, P.VerticalalPosition.BOTTOM);\n\
 \n";
     hint = "BorderPane is a container with the border layout.";
-    container = createContainer("Border pane", containers, "BorderPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var borderPane = createContainer("Border pane", containers, "BorderPanePanel", hint);
+    borderPane.creationCode = creation;
+    P.Icon.load('icons/containers/borderLayout.gif', function (data) {
+        borderPane.icon = data;
+    });
+    demos.push(borderPane);
 
 
     creation =
@@ -385,9 +449,12 @@ var comp = new P.Button('Sample');\n\
 pane.add(comp);\n\
 \n";
     hint = "BoxPane is a container with the vertical or horizontal box layout.";
-    container = createContainer("VBox pane", containers, "VBoxPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var vBoxPane = createContainer("VBox pane", containers, "VBoxPanePanel", hint);
+    vBoxPane.creationCode = creation;
+    P.Icon.load('icons/containers/boxLayout.gif', function (data) {
+        vBoxPane.icon = data;
+    });
+    demos.push(vBoxPane);
 
 
     creation =
@@ -401,9 +468,12 @@ var comp = new P.Button('Sample');\n\
 pane.add(comp);\n\
 \n";
     hint = "BoxPane is a container with the vertical or horizontal box layout.";
-    container = createContainer("HBox pane", containers, "HBoxPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var hBoxPane = createContainer("HBox pane", containers, "HBoxPanePanel", hint);
+    hBoxPane.creationCode = creation;
+    P.Icon.load('icons/containers/boxLayout.gif', function (data) {
+        hBoxPane.icon = data;
+    });
+    demos.push(hBoxPane);
 
 
     creation =
@@ -420,9 +490,12 @@ pane.add(comp2, 1, 0);\n\
 pane.add(comp3, 2, 0);\n\
 \n";
     hint = "GridPane is a container with the grid layout. It is intended for static UI designs.";
-    container = createContainer("Grid pane", containers, "GridPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var gridPane = createContainer("Grid pane", containers, "GridPanePanel", hint);
+    gridPane.creationCode = creation;
+    P.Icon.load('icons/containers/gridLayout.gif', function (data) {
+        gridPane.icon = data;
+    });
+    demos.push(gridPane);
 
     creation =
             "\
@@ -434,9 +507,12 @@ var comp = new P.Button('Sample');\n\
 pane.add(comp);\n\
 \n";
     hint = "FlowPane is a container with the flow layout. ";
-    container = createContainer("Flow pane", containers, "FlowPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var flowPane = createContainer("Flow pane", containers, "FlowPanePanel", hint);
+    flowPane.creationCode = creation;
+    P.Icon.load('icons/containers/flowLayout.gif', function (data) {
+        flowPane.icon = data;
+    });
+    demos.push(flowPane);
 
 
     creation =
@@ -456,9 +532,12 @@ var formModule = new InnerForm();\n\
 formModule.onDesktop(desktop);\n\
 \n";
     hint = "DesktopPane is used to create a multi-document interface.";
-    container = createContainer("Desktop pane", containers, "DesktopPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var desktopPane = createContainer("Desktop pane", containers, "DesktopPanePanel", hint);
+    desktopPane.creationCode = creation;
+    P.Icon.load('icons/containers/desktop_pane_16.png', function (data) {
+        desktopPane.icon = data;
+    });
+    demos.push(desktopPane);
 
     creation =
             "\
@@ -475,9 +554,12 @@ pane.add(compC, 'C');\n\
 pane.show('B');//Shows the SampleB button\n\
 \n";
     hint = "CardPane is a container with the card layout.";
-    container = createContainer("Card pane", containers, "CardPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var cardLayout = createContainer("Card pane", containers, "CardPanePanel", hint);
+    cardLayout.creationCode = creation;
+    P.Icon.load('icons/containers/cardLayout.gif', function (data) {
+        cardLayout.icon = data;
+    });
+    demos.push(cardLayout);
 
 
     creation =
@@ -493,9 +575,12 @@ pane.add(tab1, 'Tab 1');\n\
 pane.add(tab2, 'Tab 2');\n\
 \n";
     hint = "TabbedPane container allows the user to switch between a group of widgets by clicking tabs with titles and icons.";
-    container = createContainer("Tabbed pane", containers, "TabbedPanePanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var tabbedPane = createContainer("Tabbed pane", containers, "TabbedPanePanel", hint);
+    tabbedPane.creationCode = creation;
+    P.Icon.load('icons/containers/tabbed_pane_16.png', function (data) {
+        tabbedPane.icon = data;
+    });
+    demos.push(tabbedPane);
 
     creation =
             "\
@@ -515,9 +600,12 @@ P.Icon.load('2.png', function(aLoaded){\n\
 });\n\
 \n";
     hint = "ToolBar is a container used to display widgets, which are responsible for the most common user actions";
-    container = createContainer("Toolbar", containers, "ToolbarPanel", hint);
-    container.creationCode = creation;
-    demos.push(container);
+    var toolBar = createContainer("Toolbar", containers, "ToolbarPanel", hint);
+    toolBar.creationCode = creation;
+    P.Icon.load('icons/containers/tool_bar_16.png', function (data) {
+        toolBar.icon = data;
+    });
+    demos.push(toolBar);
     /*    
      //    container = createContainer("TabbedPane",containers,"TabbedPanePanel",containersForm);
      //    demos.push(container);
@@ -532,9 +620,9 @@ P.Icon.load('2.png', function(aLoaded){\n\
     var menus = new DemoItem();
     menus.name = "Menus";
     demos.push(menus);
-    menus.setInformation("This is menus");
+    menus.setInformation("Menus widgets provide a convinient way to let the user choose one of several options.");
 
-creation =
+    creation =
             "\
 /*\n\
  * var menuBar = new P.MenuBar();\n\
@@ -553,12 +641,15 @@ item.onActionPerformed = function(evt) {\n\
 };\n\
 menu.add(item);\n\
 \n";
-    hint = "";
+    hint = "MenuBar widget is a form’s main menu bar, into which individual menus can be added.";
     var menu = createContainer("Menu", menus, "MenuCustom", hint, "MenuCommonProperties");
     menu.creationCode = creation;
-    demos.push(container);
+    P.Icon.load('icons/menu/menu_bar_16.png', function (data) {
+        menu.icon = data;
+    });
+    demos.push(menu);
 
-creation =
+    creation =
             "\
 /*\n\
  * var popup = new P.PopupMenu();\n\
@@ -576,10 +667,13 @@ item.onActionPerformed = function(evt) {\n\
 };\n\
 menu.add(item);\n\
 \n";
-    hint = "";
-    var menu = createContainer("Popup menu", menus, "PopupMenuCustom", hint, "MenuCommonProperties");
-    menu.creationCode = creation;
-    demos.push(container);
+    hint = "PopupMenu is an options selection window, which can be assigned to any widget.";
+    var popupMenu = createContainer("Popup menu", menus, "PopupMenuCustom", hint, "MenuCommonProperties");
+    popupMenu.creationCode = creation;
+    P.Icon.load('icons/menu/popup_menu_16.png', function (data) {
+        popupMenu.icon = data;
+    });
+    demos.push(popupMenu);
 
     self.getMenu = function () {
         return demos;

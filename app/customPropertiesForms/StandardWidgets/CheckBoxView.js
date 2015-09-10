@@ -8,7 +8,7 @@ function CheckBoxView() {
             , form = P.loadForm(this.constructor.name, model);
     var checkBox = new P.CheckBox("Check box");
     checkBox.height = 27;
-    checkBox.width = 100;
+    checkBox.width = 200;
 
     self.getDemoComponent = function () {
         return checkBox;
@@ -16,6 +16,19 @@ function CheckBoxView() {
 
     self.getViewComponent = function () {
         return checkBox;
+    };
+
+    form.mdlGroup.data = groupList;
+    form.mdlGroup.displayField = "name";
+    form.mdlGroup.displayList = groupList;
+    form.mdlGroup.field = "group";
+
+    form.mdlGroup.onValueChange = function (event) {
+        if (form.mdlGroup.value){
+        checkBox.buttonGroup = form.mdlGroup.value.group;
+        }else{
+            checkBox.buttonGroup = null;
+        }
     };
 
     function initWidgets() {
@@ -36,7 +49,7 @@ function CheckBoxView() {
         checkBox.selected = form.chbSelected1.selected;
     };
 
-    checkBox.OnActionPerformed = function (event) {
+    checkBox.onActionPerformed = function (event) {
         form.chbSelected1.selected = checkBox.selected;
     };
 

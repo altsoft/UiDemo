@@ -2,6 +2,7 @@
  * 
  * @author user
  */
+
 function ButtonGroupView() {
     var self = this
             , model = P.loadModel(this.constructor.name)
@@ -20,20 +21,24 @@ function ButtonGroupView() {
     self.getDemoComponent = function () {
         return groupWidget.getDemoComponent();
     };
-
-
-    var groupList = [];
-
+    
+    if (P.agent == P.HTML5) {
+        form.grdFreeItems.element.style.border = "thin solid LightGray";
+        form.grdFreeItems.element.style.borderRadius = "5px";
+        form.grdGroupItems.element.style.border = "thin solid LightGray";
+        form.grdGroupItems.element.style.borderRadius = "5px";
+    }
+    var freeItemsList = [];
     form.mdlGroups.data = groupList;
     form.mdlGroups.displayField = "name";
     form.mdlGroups.displayList = groupList;
     form.mdlGroups.field = "group";
 
-    form.mdlGroupItems.displayField = "name";
-    form.mdlGroupItems.field = "menu";
-
     form.grdGroupItems.draggableRows = true;
-    form.grdAllItems.draggableRows = true;
+    form.grdFreeItems.draggableRows = true;
+
+    form.grdFreeItems.data = freeItemsList;
+    form.grdFreeItems.items.field = 'name';
 
 
     var rbList = groupWidget.getAllRadioButtons();
@@ -42,12 +47,12 @@ function ButtonGroupView() {
     var secondMenuList = groupWidget.getSecondMenuItems();
 
     var radioGroup = new P.ButtonGroup();
-    addButtonGroupToList(radioGroup, 'First Two Radio buttons')
-    radioGroup.add(rbList[0]);
-    radioGroup.add(rbList[1]);
+    addButtonGroupToList(radioGroup, 'First Two Radio buttons');
+    rbList[0].buttonGroup = radioGroup;
+    rbList[1].buttonGroup = radioGroup;
 
     var toggleGroup = new P.ButtonGroup();
-    addButtonGroupToList(toggleGroup, 'First Two Toggle buttons')
+    addButtonGroupToList(toggleGroup, 'First Two Toggle buttons');
     toggleGroup.add(tglList[0]);
     toggleGroup.add(tglList[1]);
 
@@ -68,26 +73,6 @@ function ButtonGroupView() {
     allLastElements.add(firstMenuList[2]);
     allLastElements.add(secondMenuList[2]);
 
-
-//    var mdlItemsList = groupWidget.getCombo();
-//    mdlItemsList.data = allItemsList;
-//    mdlItemsList.displayList = allItemsList;
-//    mdlItemsList.displayField = 'name';
-//    mdlItemsList.field = 'menu';
-
-
-
-//    function btnsAvaliability(isEnable) {
-//        form.btnAddItem.enabled = isEnable;
-//        form.btnAddRadio.enabled = isEnable;
-//        form.btnAddCheck.enabled = isEnable;
-//        form.btnAddSeparator.enabled = isEnable;
-//    }
-//
-//    if (menuList.length === 0) {
-//        btnsAvaliability(false);
-//    }
-
     self.getViewComponent = function () {
         return groupWidget.getViewComponent();
     };
@@ -104,115 +89,93 @@ function ButtonGroupView() {
         return form.view.height;
     };
 
-//    function addItem(item) {
-//        form.mdlMenus.value.menu.add(item);
-//        var element = {name: item.displayName, menu: item};
-//        form.mdlMenus.value.childlist.push(element);
-//        allItemsList.push(element);
-//        mdlItemsList.value = element;
-//        form.mdlItem.data = form.mdlMenus.value.childlist;
-//        form.mdlItem.displayList = form.mdlMenus.value.childlist;
-//        form.mdlItem.value = element;
-//        item.onActionPerformed = function (event) {
-//            var item = event.source;
-//            for (var menu in menuList) {
-//                for (var itm in menuList[menu].childlist) {
-//                    if (menuList[menu].childlist[itm].menu === item) {
-//                        form.mdlMenus.value = menuList[menu];
-//                        form.mdlItem.value = menuList[menu].childlist[itm];
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
     form.mdlGroups.onValueChange = function (event) {
         if (form.mdlGroups.value) {
-            form.mdlGroupItems.data = form.mdlGroups.value.group.children();
-            form.mdlGroupItems.displayList = form.mdlGroups.value.group.children();
-            form.mdlGroupItems.value = form.mdlGroups.value.group.children()[0];
             form.grdGroupItems.data = form.mdlGroups.value.group.children();
             form.grdGroupItems.items.field = 'name';
-            
-//            form.grdGroupItems.items.
-            
         } else {
-            form.mdlGroupItems.data = null;
-            form.mdlGroupItems.value = null;
-            form.mdlGroupItems.displayList = null;
-            
             form.grdGroupItems.data = null;
             form.grdGroupItems.items.field = null;
         }
     };
-//
-//    form.btnDelMenu.onActionPerformed = function (event) {
-//        if (menuList.length != 0) {
-//            menuBar.remove(form.mdlMenus.value.menu);
-//            for (var item in form.mdlMenus.value.childlist) {
-//                allItemsList.splice(allItemsList.indexOf(form.mdlMenus.value.childlist[item]), 1)
-//                form.mdlMenus.value.childlist.splice(item, 1);
-//            }
-//            form.mdlMenus.value.childlist = [];
-//            allItemsList.splice(allItemsList.indexOf(form.mdlMenus.value), 1);
-//            mdlItemsList.value = allItemsList[0];
-//            form.mdlItem.value = form.mdlMenus.value.childlist[0];
-//            menuList.splice(menuList.indexOf(form.mdlMenus.value), 1);
-//            form.mdlMenus.value = menuList[0];
-//            if (form.mdlMenus.value) {
-//                form.mdlItem.value = form.mdlMenus.value.childlist[0];
-//            }
-//        }
-//    };
-//
-//    form.btnDelItem.onActionPerformed = function (event) {
-//        if (form.mdlItem.value) {
-//            form.mdlMenus.value.menu.remove(form.mdlItem.value.menu);
-//            allItemsList.splice(allItemsList.indexOf(form.mdlItem.value), 1);
-//            mdlItemsList.value = allItemsList[0];
-//            form.mdlMenus.value.childlist.splice(form.mdlMenus.value.childlist.indexOf(form.mdlItem.value), 1);
-//            form.mdlItem.value = form.mdlMenus.value.childlist[0];
-//        }
-//    };
-//    form.btnAddRadio.onActionPerformed = function (event) {
-//        var item = new P.RadioMenuItem(form.txtText.text);
-//        item.displayName = 'RadioMenuItem_' + form.txtText.text;
-//        addItem(item);
-//    };
-//
-//    form.btnAddSeparator.onActionPerformed = function (event) {
-//        var item = new P.MenuSeparator();
-//        item.displayName = 'MenuSeparator_' + form.txtText.text;
-//        addItem(item);
-//    };
-//
-//    mdlItemsList.onValueChange = function (event) {
-//        if (commonView) {
-//            commonView.setDemoComponent(mdlItemsList.value.menu);
-//        }
-//    };
 
     function addButtonGroupToList(btnGroup, aText) {
         var element = {name: 'Group_' + aText, group: btnGroup};
         groupList.push(element);
-//        allItemsList.push(element);
         form.mdlGroups.value = element;
-//        mdlItemsList.value = element;
         return btnGroup;
     }
 
     form.btnAddGroup.onActionPerformed = function (event) {
         var btnGroup = new P.ButtonGroup();
-        addButtonGroup(form.txtGrpDisplayName.text);
+        addButtonGroupToList(btnGroup,form.txtGrpDisplayName.text);
     };
+    
     form.btnDelGroup.onActionPerformed = function (event) {
         if (groupList.length != 0) {
             form.mdlGroups.value.group.children().forEach(function (item, i, arr) {
                 item.buttonGroup = null;
             });
             groupList.splice(groupList.indexOf(form.mdlGroups.value), 1);
-
             form.mdlGroups.value = groupList[0];
         }
     };
+
+    form.grdFreeItems.element.ondragenter = function (event) {
+        event.preventDefault();
+        for (var i = 0; i < event.dataTransfer.types.length; ++i){
+            if (event.dataTransfer.types[i] != 'text/modelgrid-row') {
+                event.dataTransfer.dropEffect = "none";
+            }
+        }
+        var dragged = (event.dataTransfer.getData("text/modelgrid-row"));
+        if (dragged) {
+            dragged = JSON.parse(dragged);
+            if (dragged.gridName === form.grdFreeItems.name) {
+                event.dataTransfer.dropEffect = "none";
+            }
+        }
+    };
+    form.grdFreeItems.element.ondragover = form.grdFreeItems.element.ondragenter;
+
+    form.grdGroupItems.element.ondragenter = function (event) {
+        event.preventDefault();
+                for (var i = 0; i < event.dataTransfer.types.length; ++i){
+            if (event.dataTransfer.types[i] != 'text/modelgrid-row') {
+                event.dataTransfer.dropEffect = "none";
+            }
+        }
+        var dragged = (event.dataTransfer.getData("text/modelgrid-row"));
+        if (dragged) {
+            dragged = JSON.parse(dragged);
+            if (dragged.gridName === form.grdGroupItems.name) {
+                event.dataTransfer.dropEffect = "none";
+            }
+        }
+    };
+    form.grdGroupItems.element.ondragover = form.grdGroupItems.element.ondragenter;
+
+    form.grdFreeItems.element.ondrop = function (event) {
+        event.preventDefault();
+        var dragged = JSON.parse(event.dataTransfer.getData("text/modelgrid-row"));
+        if (dragged.gridName === form.grdFreeItems.name) {
+            return;
+        }
+        freeItemsList.push(form.grdGroupItems.data[dragged.dataIndex]);
+        form.grdGroupItems.data[dragged.dataIndex].buttonGroup = null;
+        form.grdGroupItems.data = form.mdlGroups.value.group.children();
+    };
+
+    form.grdGroupItems.element.ondrop = function (event) {
+        event.preventDefault();
+        var dragged = JSON.parse(event.dataTransfer.getData("text/modelgrid-row"));
+        if (dragged.gridName === form.grdGroupItems.name) {
+            return;
+        }
+        form.grdFreeItems.data[dragged.dataIndex].buttonGroup = form.mdlGroups.value.group;
+        freeItemsList.splice(dragged.dataIndex, 1);
+        form.grdGroupItems.data = form.mdlGroups.value.group.children();
+    };
+
+
 }

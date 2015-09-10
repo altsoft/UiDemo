@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="129px" prefWidth="1090px"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="155px" prefWidth="1090px"/>
   <Label cursor="0" name="label" parent="view" prefHeight="20px" prefWidth="70px" text="Data">
     <AnchorsPaneConstraints height="20px" left="20px" top="15px" width="70px"/>
   </Label>
@@ -36,8 +36,8 @@
   <Label cursor="0" name="label1211" parent="view" prefHeight="20px" prefWidth="90px" text="Display Field">
     <AnchorsPaneConstraints height="20px" left="240px" top="53px" width="90px"/>
   </Label>
-  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="110px" prefWidth="570px">
-    <AnchorsPaneConstraints height="110px" left="510px" top="10px" width="570px"/>
+  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="130px" prefWidth="570px" rowsHeight="27">
+    <AnchorsPaneConstraints height="130px" left="510px" top="10px" width="570px"/>
     <ServiceGridColumn name="colService" resizable="true"/>
     <ModelGridColumn field="visit_id" name="colVisit_id" title="colVisit_id" width="75px">
       <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>

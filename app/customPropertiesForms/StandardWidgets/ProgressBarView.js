@@ -22,7 +22,7 @@ function ProgressBarView(aDemoComponent) {
     form.mdlMinimum.field = 'minimum';
     form.mdlValue.data = pbParams;
     form.mdlValue.field = 'value';
-    
+
 
     function initWidget() {
         pbParams.maximum = progressBar.maximum;
@@ -61,13 +61,18 @@ function ProgressBarView(aDemoComponent) {
     };
 
     form.txtText.onActionPerformed = function (event) {
-        progressBar.text = form.txtText.text;
+        if (form.txtText.text) {
+            progressBar.text = form.txtText.text;
+        } else {
+            progressBar.text = null;
+        }
+
     };
 
     self.getFormHeight = function () {
         return form.view.height;
     };
-    
+
     form.tglTransition.onActionPerformed = function (event) {
         var progress = progressBar.element.getElementsByClassName('gwt-ProgressBar-bar');
         if (form.tglTransition.selected) {

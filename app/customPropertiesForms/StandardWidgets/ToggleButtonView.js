@@ -17,11 +17,24 @@ function ToggleButtonView(aDemoComponent) {
         lblForm.showOnPanel(aPanel);
     };
 
+    form.mdlGroup.data = groupList;
+    form.mdlGroup.displayField = "name";
+    form.mdlGroup.displayList = groupList;
+    form.mdlGroup.field = "group";
+
+    form.mdlGroup.onValueChange = function (event) {
+        if (form.mdlGroup.value) {
+            toggleButton.buttonGroup = form.mdlGroup.value.group;
+        } else {
+            toggleButton.buttonGroup = null;
+        }
+    };
+
     form.chbSelected1.onActionPerformed = function (event) {
         toggleButton.selected = form.chbSelected1.selected;
     };
 
-    toggleButton.OnActionPerformed = function (event) {
+    toggleButton.onActionPerformed = function (event) {
         form.chbSelected1.selected = toggleButton.selected;
     };
     self.getDemoComponent = function () {
@@ -31,12 +44,12 @@ function ToggleButtonView(aDemoComponent) {
     self.getViewComponent = function () {
         return toggleButton;
     };
-    
+
     self.getFormHeight = function () {
         var commonHeight = lblForm.getFormHeight();
-        if (commonHeight>form.view.height){
+        if (commonHeight > form.view.height) {
             return commonHeight;
-        }else{
+        } else {
             return form.view.height;
         }
     };

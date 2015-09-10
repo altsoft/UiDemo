@@ -6,21 +6,30 @@ function CardPanePanel(aPlaygroundPanel) {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
+
     var counter = 1;
-    
+    var elementsList = [];
     var gaps = {'vGap': 5,
         'hGap': 5};
+
     form.mdlHGap.data = gaps;
     form.mdlHGap.field = 'hGap';
     form.mdlVGap.data = gaps;
     form.mdlVGap.field = 'vGap';
-    
+
+    form.mcmbElList.data = elementsList;
+    form.mcmbElList.displayField = "itemname";
+    form.mcmbElList.displayList = elementsList;
+    form.mcmbElList.field = "itemname";
+
+    var colorsArray = [new P.Color('#49a7f0'), new P.Color('#67eacc'), new P.Color('#6fea58'),
+        new P.Color('#ea6dda'), new P.Color('#fa9037'), P.Color.PINK,
+        new P.Color('#f04949'), new P.Color('#b6b6b6'), new P.Color('#f5e04f')];
+
     var internalContainer = new P.CardPane(gaps.hGap, gaps.vGap);
     var demoContainer = internalContainer;
     internalContainer.width = 800;
     internalContainer.height = 400;
-    
-    var cardsList = [];
 
     if (P.agent == P.HTML5) {
         internalContainer.element.style.border = "thin solid gray";
@@ -34,75 +43,38 @@ function CardPanePanel(aPlaygroundPanel) {
     self.getViewComponent = function () {
         return internalContainer;
     };
-
-    var addPanel;
-    var subject;
-
     self.show = function () {
         form.show();
     };
 
-    function getPosition(aElement) {
-        internalContainer.show(aElement.toolTipText);
+    function addComponentTolist(element) {
+        elementsList.push(element);
+        form.mcmbElList.value = element;
     }
 
-    function deleteElement(aElement) {
-        internalContainer.remove(aElement);
+    function createCard(aColor, aName) {
+        var pnlSubject = new P.BorderPane();
+        pnlSubject.background = new P.Color(aColor);
+        var label = new P.Label(aName);
+        label.width = 50;
+        pnlSubject.add(label);
+        pnlSubject.itemname = aName;
+        pnlSubject.toolTipText = aName;
+        internalContainer.add(pnlSubject, label.text);
+        addComponentTolist(pnlSubject);
     }
-
-    function placeElement(aElement, counter) {
-        for (var itm in internalContainer.children()) {
-            if (internalContainer.child(itm).toolTipText === form.txtCardName.text) {
-                alert("Card with same name allready exist");
-                return;
-            }
-        }
-        internalContainer.add(aElement, form.txtCardName.text);
-        internalContainer.show(form.txtCardName.text);
-        aElement.toolTipText = form.txtCardName.text;
-    }
-    ;
-
-    addPanel = new AddCardContainer(getPosition, deleteElement, placeElement);
-
-    var pnlSubject = new P.BorderPane();
-    pnlSubject.background = new P.Color('#49a7f0');
-    var label = new P.Label('Sample A');
-    label.width = 50;
-    pnlSubject.add(label);
-    pnlSubject.itemname = 'Sample A';
-    pnlSubject.toolTipText = 'Sample A';
-    internalContainer.add(pnlSubject,label.text);
-    addPanel.addComponentTolist(pnlSubject);
-     
-    pnlSubject = new P.BorderPane();
-    pnlSubject.background =new P.Color('#67eacc');
-    label = new P.Label('Sample B');
-    pnlSubject.add(label);
-    pnlSubject.itemname = 'Sample B';
-    pnlSubject.toolTipText = 'Sample B';
-    internalContainer.add(pnlSubject,label.text);
-     addPanel.addComponentTolist(pnlSubject);
-     
-    pnlSubject = new P.BorderPane();
-    pnlSubject.background = new P.Color('#6fea58');
-    label = new P.Label('Sample C');
-    pnlSubject.add(label);
-    pnlSubject.itemname = 'Sample C';
-    pnlSubject.toolTipText = 'Sample C';
-    internalContainer.add(pnlSubject,label.text);
-    addPanel.addComponentTolist(pnlSubject);
-    internalContainer.show('Sample B');
+    createCard('#49a7f0', 'Sample A');
+    createCard('#67eacc', 'Sample B');
+    createCard('#6fea58', 'Sample C');
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
-        addPanel.showOnPanel(aPanel);
     };
 
     self.getFormHeight = function () {
         return form.view.height;
     };
-    
+
     form.mdlHGap.onValueChange = function (event) {
         demoContainer.hgap = gaps.hGap;
     };
@@ -110,4 +82,50 @@ function CardPanePanel(aPlaygroundPanel) {
     form.mdlVGap.onValueChange = function (event) {
         demoContainer.vgap = gaps.vGap;
     };
+
+    form.btnAddComponent.onActionPerformed = function (event) {
+        var pnlSubject = new P.BorderPane();
+        var colorIndex = Math.floor(Math.random() * colorsArray.length);
+        pnlSubject.background = new P.Color(colorsArray[colorIndex]);
+        var label = new P.Label();
+        label.width = 200;
+        pnlSubject.add(label);
+        pnlSubject.onMousePressed = function (event) {
+            form.mcmbElList.value = pnlSubject;
+        };
+
+        var cardName;
+        if (form.txtCardName.text) {
+            cardName = form.txtCardName.text;
+        } else {
+            cardName = "Sample " + counter;
+            counter += 1;
+        }
+        for (var itm in internalContainer.children()) {
+            if (internalContainer.child(itm).toolTipText === cardName) {
+                alert("Card with same name allready exist");
+                return;
+            }
+        }
+
+        internalContainer.add(pnlSubject, cardName);
+        pnlSubject.toolTipText = cardName;
+        pnlSubject.itemname = cardName;
+        internalContainer.show(cardName);
+        label.text = cardName;
+        addComponentTolist(pnlSubject);
+    };
+
+    form.btnDelete.onActionPerformed = function (event) {
+        internalContainer.remove(form.mcmbElList.value);
+        elementsList.splice(elementsList.indexOf(form.mcmbElList.value), 1);
+        form.mcmbElList.value = elementsList[0];
+    };
+
+    form.mcmbElList.onValueChange = function (event) {
+        if (form.mcmbElList.value) {
+            internalContainer.show(form.mcmbElList.value.toolTipText);
+        }
+    };
+
 }

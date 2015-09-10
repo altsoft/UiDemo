@@ -61,18 +61,29 @@ function AddComponentContainer(aGetPosition, aDelete, aPlaceElement) {
         };
         placeElement(pnlSubject, counter);
         pnlSubject.itemname = pnlSubject.toolTipText;
-        self.addComponentTolist(pnlSubject);
-        if (!label.text) {
-            label.text = "Click me!";
+        if (pnlSubject.itemname) {
+            self.addComponentTolist(pnlSubject);
+            if (!label.text) {
+                label.text = "Click to select";
+            }
+            counter += 1;
         }
-        counter += 1;
     };
 
-    form.btnDelete.onActionPerformed = function (event) {
+    self.delete = function(event){
         deleteCallback(form.mcmbElList.value);
         elementsList.splice(elementsList.indexOf(form.mcmbElList.value), 1);
         form.mcmbElList.value = elementsList[0];
     };
+
+    self.deleteAll= function(event){
+        elementsList =[];
+        form.mcmbElList.displayList = elementsList;
+        form.mcmbElList.data = elementsList;
+    };
+
+    form.btnDelete.onActionPerformed = self.delete;
+    
 
     form.mdlHeight.onValueChange = function (event) {
         if (form.mcmbElList.value) {

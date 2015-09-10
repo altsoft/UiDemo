@@ -22,6 +22,28 @@ function CommonProperties(aDemoComponent) {
     form.mdlPopup.displayList = demoMenuList;
     form.mdlPopup.field = "menu";
 
+    var cursors = [{'name': 'default'},
+        {'name': 'crosshair'},
+        {'name': 'help'},
+        {'name': 'move'},
+        {'name': 'pointer'},
+        {'name': 'progress'},
+        {'name': 'text'},
+        {'name': 'wait'},
+        {'name': 'n-resize'},
+        {'name': 'ne-resize'},
+        {'name': 'e-resize'},
+        {'name': 'se-resize'},
+        {'name': 's-resize'},
+        {'name': 'sw-resize'},
+        {'name': 'w-resize'},
+        {'name': 'nw-resize'}];
+
+    form.mdlCursor.data = cursors;
+    form.mdlCursor.displayField = "name";
+    form.mdlCursor.displayList = cursors;
+    form.mdlCursor.field = "menu";
+
     self.show = function () {
         form.show();
     };
@@ -74,7 +96,7 @@ function CommonProperties(aDemoComponent) {
         if (demoComponent.foreground) {
             var previousColor = demoComponent.foreground;
         } else {
-            var previousColor = P.Color.WHITE;
+            var previousColor = '#526e4f';
         }
         P.selectColor(function (result) {
             demoComponent.foreground = new P.Color(result);
@@ -86,7 +108,7 @@ function CommonProperties(aDemoComponent) {
         if (demoComponent.background) {
             var previousColor = demoComponent.background;
         } else {
-            var previousColor = P.Color.WHITE;
+            var previousColor = '#bff1bc';
         }
 
         P.selectColor(function (result) {
@@ -100,14 +122,16 @@ function CommonProperties(aDemoComponent) {
         if (form.modelBackground.text) {
             demoComponent.background = new P.Color(form.modelBackground.text);
             form.chOpaque.selected = true;
-        }else{
-            demoComponent.background =null;
+        } else {
+            demoComponent.background = null;
         }
     };
 
     form.modelForeground.onValueChange = function (event) {
         if (form.modelBackground.text) {
             demoComponent.foreground = new P.Color(form.modelForeground.text);
+        }else {
+            demoComponent.foreground = null;
         }
     };
 
@@ -116,7 +140,7 @@ function CommonProperties(aDemoComponent) {
             P.require("FontSelectionDialog", function () {
                 aFontSelectionDialog = new FontSelectionDialog(demoComponent);
                 aFontSelectionDialog.showModal(demoComponent, function (aFont) {
-                    form.modelFont.text = aFont.family;
+                    form.modelFont.text = aFont.toString();
                 });
             },
                     function () {
@@ -125,7 +149,8 @@ function CommonProperties(aDemoComponent) {
             );
         } else {
             aFontSelectionDialog.showModal(demoComponent, function (aFont) {
-                form.modelFont.text = aFont.family;
+                
+                form.modelFont.text = aFont.toString();
             });
         }
     };
@@ -136,39 +161,6 @@ function CommonProperties(aDemoComponent) {
 
     form.txtToltip.onActionPerformed = function (event) {
         demoComponent.toolTipText = form.txtToltip.text;
-    };
-
-    form.btnCursor.onActionPerformed = function (event) {
-        var fileFilter = ".png,.ico,.gif,.jpg";
-        P.selectFile(function (aFile) {
-            var loading;
-            if (loading == null) {
-                if (aFile != null) {
-                    loading = P.Resource.upload(aFile, aFile.name,
-                            function (aUrl) {
-                                //We have uploaded only one file, but the system
-                                //return's us a array of urls
-                                loading = null;
-                                P.Icon.load(aUrl[0], function (uploadedFile) {
-                                    form.btnCursor.icon = uploadedFile;
-                                    demoComponent.cursor = uploadedFile;
-                                }, function (e) {
-                                    P.Logger.info(e);
-                                });
-                            },
-                            function (aEvent) {
-                                P.Logger.severe(aEvent);
-                            },
-                            function (aError) {
-                                loading = null;
-                                alert("Uploading is aborted with message: " + aError);
-                            }
-                    );
-                } else
-                    alert("Select a file please...");
-            } else
-                alert("Wait please while current upload ends!");
-        }, fileFilter);
     };
 
     form.chVisible.onValueChange = function (event) {
@@ -224,7 +216,52 @@ function CommonProperties(aDemoComponent) {
     form.mdlPopup.onValueChange = function (event) {
         if (form.mdlPopup.value) {
             demoComponent.componentPopupMenu = form.mdlPopup.value.menu;
+        } else {
+            demoComponent.componentPopupMenu = null;
         }
     };
+
+    form.mdlCursor.onValueChange = function (event) {
+        if (form.mdlCursor.value) {
+            demoComponent.cursor = form.mdlCursor.value.name;
+        } else {
+            demoComponent.cursor = null;
+        }
+    };
+    form.mdlCursor.onSelect = function (event) {
+        var fileFilter = ".png,.ico,.gif,.jpg";
+        P.selectFile(function (aFile) {
+            var loading;
+            if (loading == null) {
+                if (aFile != null) {
+                    loading = P.Resource.upload(aFile, aFile.name,
+                            function (aUrl) {
+                                //We have uploaded only one file, but the system
+                                //return's us a array of urls
+                                loading = null;
+                                P.Icon.load(aUrl[0], function (uploadedFile) {
+                                    demoComponent.cursor = 'url(' + uploadedFile.b + '), auto';
+                                    var fileCursor = {'name': demoComponent.cursor };
+                                    form.mdlCursor.value = fileCursor;
+                                }, function (e) {
+                                    P.Logger.info(e);
+                                });
+                            },
+                            function (aEvent) {
+                                P.Logger.severe(aEvent);
+                            },
+                            function (aError) {
+                                loading = null;
+                                alert("Uploading is aborted with message: " + aError);
+                            }
+                    );
+                } else
+                    alert("Select a file please...");
+            } else
+                alert("Wait please while current upload ends!");
+        }, fileFilter);
+    };
+
+
 
 }

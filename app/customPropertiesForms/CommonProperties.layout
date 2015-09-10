@@ -36,9 +36,6 @@
   <ModelFormattedField cursor="0" format="" name="modelForeground" parent="panel" prefHeight="27px" prefWidth="170px">
     <AnchorsPaneConstraints height="27px" left="482px" top="50px" width="170px"/>
   </ModelFormattedField>
-  <Button cursor="3" name="btnCursor" parent="panel" prefHeight="27px" prefWidth="170px" text="Select file...">
-    <AnchorsPaneConstraints height="27px" left="200px" top="90px" width="170px"/>
-  </Button>
   <CheckBox cursor="0" name="chVisible" parent="panel" prefHeight="15px" prefWidth="30px">
     <AnchorsPaneConstraints height="15px" left="90px" top="18px" width="30px"/>
   </CheckBox>
@@ -66,10 +63,10 @@
   <FormattedField cursor="0" emptyText="Set CSS border style" format="" name="ffBorder" parent="panel" prefHeight="27px" prefWidth="170px">
     <AnchorsPaneConstraints height="27px" left="200px" top="50px" width="170px"/>
   </FormattedField>
-  <ModelSpin cursor="0" name="mdlWidth" parent="panel" prefHeight="27px" prefWidth="120px">
+  <ModelSpin cursor="0" name="mdlWidth" nullable="false" parent="panel" prefHeight="27px" prefWidth="120px">
     <AnchorsPaneConstraints height="27px" left="720px" top="10px" width="120px"/>
   </ModelSpin>
-  <ModelSpin cursor="0" name="mdlHeight" parent="panel" prefHeight="27px" prefWidth="120px">
+  <ModelSpin cursor="0" name="mdlHeight" nullable="false" parent="panel" prefHeight="27px" prefWidth="120px">
     <AnchorsPaneConstraints height="27px" left="720px" top="50px" width="120px"/>
   </ModelSpin>
   <Label cursor="0" horizontalAlignment="10" name="lblWidth" parent="panel" prefHeight="27px" prefWidth="50px" text="Width">
@@ -80,5 +77,8 @@
   </Label>
   <ModelCombo cursor="0" name="mdlPopup" parent="panel" prefHeight="27px" prefWidth="170px" toolTipText="Create popup menus in 'Menu' section">
     <AnchorsPaneConstraints height="27px" left="200px" top="130px" width="170px"/>
+  </ModelCombo>
+  <ModelCombo cursor="0" name="mdlCursor" parent="panel" prefHeight="27px" prefWidth="170px">
+    <AnchorsPaneConstraints height="27px" left="200px" top="90px" width="170px"/>
   </ModelCombo>
 </layout>

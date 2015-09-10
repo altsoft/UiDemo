@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="126px" prefWidth="941px"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="153px" prefWidth="941px"/>
   <Label cursor="0" name="label" parent="view" prefHeight="20px" prefWidth="50px" text="Data">
     <AnchorsPaneConstraints height="20px" left="10px" top="15px" width="50px"/>
   </Label>
@@ -30,8 +30,8 @@
   <CheckBox cursor="0" name="chIsTime" parent="view" prefHeight="15px" prefWidth="30px">
     <AnchorsPaneConstraints height="15px" left="360px" top="56px" width="30px"/>
   </CheckBox>
-  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="110px" prefWidth="533px">
-    <AnchorsPaneConstraints height="110px" left="390px" top="10px" width="533px"/>
+  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="130px" prefWidth="533px" rowsHeight="27">
+    <AnchorsPaneConstraints height="130px" left="390px" top="10px" width="533px"/>
     <ServiceGridColumn name="colService" resizable="true"/>
     <ModelGridColumn field="visit_id" name="colVisit_id" title="colVisit_id" width="75px">
       <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>

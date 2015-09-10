@@ -58,7 +58,7 @@ function HBoxPanePanel(aPlaygroundPanel) {
     var placeElement = function (aElement, counter) {
         aElement.width = Math.floor(Math.random() * (100 - 20)) + 20;
         demoContainer.add(aElement);
-        aElement.toolTipText = "num " + counter + " id:" + demoContainer.count;
+        aElement.toolTipText = "Sample " + counter; // + " id:" + demoContainer.count;
     };
 
     addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);

@@ -43,9 +43,8 @@ function ToolbarPanel(aPlaygroundPanel) {
     function placeElement(aElement, counter) {
         aElement.height = internalContainer.height;
         internalContainer.add(aElement);
-        aElement.toolTipText = "num " + counter + " id:" + internalContainer.count;
+        aElement.toolTipText = "Sample " + counter; //+ " id:" + internalContainer.count;
     }
-    ;
 
     addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
     var b1 = new P.Button('One');

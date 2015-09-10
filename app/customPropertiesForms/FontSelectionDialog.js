@@ -9,26 +9,66 @@ function FontSelectionDialog(aDemoComponent) {
     form.minimizable = false;
     form.maximizable = false;
     form.resizable = false;
-    var fontSize = {'size':0};
+    var fontSize = {'size': 14};
     form.mdlSize.data = fontSize;
     form.mdlSize.field = 'size';
     var demoComponent;
     var onSelected;
 
+    var fontObject = {
+        'font': null,
+        'fontName': null,
+        'fontStyle': null,
+        'fontStyleText': null,
+        'fontSize': null,
+        'toString': function () {
+            switch (this.fontStyle) {
+                case P.FontStyle.NORMAL:
+                {
+                    fontObject.fontStyleText = 'Normal';
+                    break;
+                }
+                case P.FontStyle.BOLD:
+                {
+                    fontObject.fontStyleText = 'Bold';
+                    break;
+                }
+                case P.FontStyle.ITALIC:
+                {
+                    fontObject.fontStyleText = 'Italic';
+                    break;
+                }
+                case P.FontStyle.BOLD_ITALIC:
+                {
+                    fontObject.fontStyleText = 'Bold Italic';
+                    break;
+                }
+                default :
+                {
+                    fontObject.fontStyleText = 'Normal';
+                    break
+                }
+            }
+            return this.fontName + ' ' + this.fontSize + ' ' + this.fontStyleText;
+        }
+    };
 
     function getFont() {
-        var fontStyle = P.FontStyle.NORMAL;
+        fontObject.fontStyle = P.FontStyle.NORMAL;
         if (form.tglBold.selected) {
-            fontStyle = P.FontStyle.BOLD;
+            fontObject.fontStyle = P.FontStyle.BOLD;
         }
         if (form.tglItalic.selected) {
-            fontStyle = P.FontStyle.ITALIC;
+            fontObject.fontStyle = P.FontStyle.ITALIC;
         }
         if (form.tglBold.selected & form.tglItalic.selected) {
-            fontStyle = P.FontStyle.BOLD_ITALIC;
+            fontObject.fontStyle = P.FontStyle.BOLD_ITALIC;
         }
-        var size = fontSize.size;
-        return new P.Font(model.fonts.cursor.FontName, fontStyle, size);
+        fontObject.fontSize = fontSize.size;
+        fontObject.fontName = form.modelCombo.value.FontName;
+        fontObject.font = new P.Font(form.modelCombo.value.FontName, fontObject.fontStyle, fontSize.size);
+
+        return fontObject;
     }
 
     function presetOnLoad() {
@@ -40,6 +80,10 @@ function FontSelectionDialog(aDemoComponent) {
         }
         if (demoComponent.fontObject) {
             model.fonts.cursor = demoComponent.fontObject;
+        } else {
+            model.requery(function () {
+                form.modelCombo.value = model.fonts.cursor;
+            });
         }
         if (demoComponent.fontSize) {
             fontSize.size = demoComponent.fontSize;
@@ -59,7 +103,7 @@ function FontSelectionDialog(aDemoComponent) {
         onSelected = aOnSelected;
         presetOnLoad();
         form.showModal();
-        
+
     };
 
     form.btnCancel.onActionPerformed = function (event) {
@@ -68,10 +112,17 @@ function FontSelectionDialog(aDemoComponent) {
 
     form.btnOk.onActionPerformed = function (event) {
         var font = getFont();
-        demoComponent.font = font;
+        demoComponent.font = font.font;
         demoComponent.fontObject = model.fonts.cursor;
-        demoComponent.fontSize = fontSize.size;
+        demoComponent.fontSize = font.fontSize;
         onSelected(font);
         form.close();
     };
+    
+    form.mdlSize.onValueChange = function(event) {
+        if (fontSize.size <=0){
+            fontSize.size = 1;
+        }
+    };
+
 }

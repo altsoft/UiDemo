@@ -59,7 +59,7 @@ function VBoxPanePanel(aPlaygroundPanel) {
     function placeElement(aElement, counter) {
         aElement.height = Math.floor(Math.random() * (100 - 20)) + 20;
         demoContainer.add(aElement);
-        aElement.toolTipText = "num " + counter + " id:" + demoContainer.count;
+        aElement.toolTipText = "Sample " + counter;// + " id:" + demoContainer.count;
     }
     ;
 

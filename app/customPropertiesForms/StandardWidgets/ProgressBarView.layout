@@ -22,13 +22,13 @@
   <TextField cursor="0" name="txtText" parent="panel" prefHeight="27px" prefWidth="120px" text="textField">
     <AnchorsPaneConstraints height="27px" left="280px" top="10px" width="120px"/>
   </TextField>
-  <ModelSpin cursor="0" name="mdlMaximum" parent="panel" prefHeight="27px" prefWidth="120px">
+  <ModelSpin cursor="0" name="mdlMaximum" nullable="false" parent="panel" prefHeight="27px" prefWidth="120px">
     <AnchorsPaneConstraints height="27px" left="90px" top="10px" width="120px"/>
   </ModelSpin>
-  <ModelSpin cursor="0" name="mdlMinimum" parent="panel" prefHeight="27px" prefWidth="120px">
+  <ModelSpin cursor="0" name="mdlMinimum" nullable="false" parent="panel" prefHeight="27px" prefWidth="120px">
     <AnchorsPaneConstraints height="27px" left="90px" top="50px" width="120px"/>
   </ModelSpin>
-  <ModelSpin cursor="0" name="mdlValue" parent="panel" prefHeight="27px" prefWidth="120px">
+  <ModelSpin cursor="0" name="mdlValue" nullable="false" parent="panel" prefHeight="27px" prefWidth="120px">
     <AnchorsPaneConstraints height="27px" left="90px" top="90px" width="120px"/>
   </ModelSpin>
   <ToggleButton cursor="0" name="tglTransition" parent="panel" prefHeight="27px" prefWidth="120px" text="Transition">

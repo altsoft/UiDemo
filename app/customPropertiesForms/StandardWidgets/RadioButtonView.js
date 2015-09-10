@@ -6,9 +6,9 @@ function RadioButtonView() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
-    var radioButton = new P.RadioButton("Check box");
+    var radioButton = new P.RadioButton("Radio button");
     radioButton.height = 27;
-    radioButton.width = 100;
+    radioButton.width = 200;
 
     self.getDemoComponent = function () {
         return radioButton;
@@ -23,6 +23,19 @@ function RadioButtonView() {
         form.txtText.text = radioButton.text;
     }
 
+    form.mdlGroup.data = groupList;
+    form.mdlGroup.displayField = "name";
+    form.mdlGroup.displayList = groupList;
+    form.mdlGroup.field = "group";
+
+    form.mdlGroup.onValueChange = function (event) {
+        if (form.mdlGroup.value) {
+            radioButton.buttonGroup = form.mdlGroup.value.group;
+        } else {
+            radioButton.buttonGroup = null;
+        }
+    };
+
     self.show = function () {
         form.show();
     };
@@ -36,7 +49,7 @@ function RadioButtonView() {
         radioButton.selected = form.chbSelected1.selected;
     };
 
-    radioButton.OnActionPerformed = function (event) {
+    radioButton.onActionPerformed = function (event) {
         form.chbSelected1.selected = radioButton.selected;
     };
 

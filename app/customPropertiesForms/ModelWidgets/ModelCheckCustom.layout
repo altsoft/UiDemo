@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="126px" prefWidth="963px"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="151px" prefWidth="608px"/>
   <Label cursor="0" name="label" parent="view" prefHeight="20px" prefWidth="70px" text="Data">
     <AnchorsPaneConstraints height="20px" left="10px" top="15px" width="70px"/>
   </Label>
@@ -18,29 +18,18 @@
   <TextField cursor="0" name="txtText" parent="view" prefHeight="27px" prefWidth="170px" text="textField">
     <AnchorsPaneConstraints height="27px" left="50px" top="90px" width="170px"/>
   </TextField>
-  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="110px" prefWidth="730px">
-    <AnchorsPaneConstraints height="110px" left="230px" right="3px" top="10px"/>
+  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="130px" prefWidth="370px" rowsHeight="27">
+    <font family="Monospaced" size="15" style="0"/>
+    <AnchorsPaneConstraints height="130px" left="230px" top="10px" width="370px"/>
     <ServiceGridColumn name="colService" resizable="true"/>
-    <ModelGridColumn field="visit_id" name="colVisit_id" title="colVisit_id" width="99px">
-      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="pet" name="colPet_id" title="colPet_id" width="99px">
+    <ModelGridColumn field="pet" name="colPet_id" title="Name" width="112px">
       <ModelCombo displayField="name" displayList="qAllPets"/>
     </ModelGridColumn>
-    <ModelGridColumn field="fromdate" name="colFromdate" title="colFromdate" width="99px">
-      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="todate" name="colTodate" title="colTodate" width="100px">
-      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="description" name="colDescription" title="colDescription" width="99px">
+    <ModelGridColumn field="description" name="colDescription" title="Visit description" width="112px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="ispaid" name="colIspaid" title="colIspaid" width="100px">
+    <ModelGridColumn field="ispaid" name="colIspaid" title="Visit is Paid" width="111px">
       <ModelCheckBox/>
-    </ModelGridColumn>
-    <ModelGridColumn field="cost" name="colCost" title="colCost" width="99px">
-      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
     </ModelGridColumn>
   </ModelGrid>
 </layout>
