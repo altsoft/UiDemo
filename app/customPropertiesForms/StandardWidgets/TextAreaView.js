@@ -12,7 +12,6 @@ function TextAreaView(aDemoComponent) {
     textArea.width = 800;
 
     function initWidget() {
-        form.txtText.text = textArea.text;
         textArea.emptyText = form.txtEmptyText.text;
     }
 
