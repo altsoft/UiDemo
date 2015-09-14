@@ -4,21 +4,15 @@
  * @constructor
  */
 function DemosList() {
-    var self = this, model = P.loadModel(this.constructor.name);
+    var self = this;
 
-    // TODO : place constructor code here
-
-    self.execute = function () {
-        // TODO : place application code here
-    };
-
-    var createPlainWidget = function (aName, aParent, aCustomForm, aHint) {
+    function createPlainWidget(aName, aParent, aCustomForm, aHint) {
         var widget = new DemoItem();
         widget.name = aName;
-        widget.parentField = aParent;
         widget.setCustomForm(aCustomForm);
-        widget.setCommonForm("CommonProperties");
         widget.setHint(aHint);
+        widget.setCommonForm("CommonProperties");
+        widget.parentField = aParent;
         aParent.childrenField.push(widget);
         return widget;
     };
@@ -30,13 +24,12 @@ function DemosList() {
     demos.push(standardWidgets);
 
     var hint = "Label is a widget with a short piece of text, images or text with an image.";
-    var creation =
-            "\
-/*\n\
- * var label = new P.Label(text, icon, iconTextGap);\n\
- */\n\
-var label = new P.Label('Label')\n\
-label.text = 'new Text in a label'";
+    var creation = "\
+        /**\n\
+         * var label = new P.Label(text, icon, iconTextGap);\n\
+         */\n\
+        var label = new P.Label('Label');\n\
+        label.text = 'new Text in a label';";
     var label = createPlainWidget("Label", standardWidgets, "LabelView", hint);
     label.creationCode = creation;
     P.Icon.load('icons/standard/label_16.png', function (data) {
@@ -382,17 +375,17 @@ mta.field = model.entityB.schema.textField;\n\
 //    modelWidgets.childrenField.push(modelTextArea);
 //
     var createContainer = function (aName, aParent, aCustomForm, aHint, aCommonForm) {
-        var widget = new DemoItem();
-        widget.name = aName;
-        widget.parentField = aParent;
-        widget.setCustomForm(aCustomForm);
+        var demo = new DemoItem();
+        demo.name = aName;
+        demo.parentField = aParent;
+        demo.setCustomForm(aCustomForm);
         if (!aCommonForm) {
             aCommonForm = 'CommonProperties';
         }
-        widget.setCommonForm(aCommonForm);
-        widget.setHint(aHint);
-        aParent.childrenField.push(widget);
-        return widget;
+        demo.setCommonForm(aCommonForm);
+        demo.setHint(aHint);
+        aParent.childrenField.push(demo);
+        return demo;
     };
 
     var containers = new DemoItem();
@@ -675,9 +668,149 @@ menu.add(item);\n\
     });
     demos.push(popupMenu);
 
+    var modelGrid = new DemoItem();
+    modelGrid.name = "Model Grid";
+    demos.push(modelGrid);
+    modelGrid.setInformation("Model grid is a powerful widget to display and enter data, which is presented in a tabular form and as a tree.");
+
+    var gridBasic = new DemoItem();
+    gridBasic.name = "Simple Grid";
+    gridBasic.setInformation("Drag columns to change theirs position. Drag a column's right border to change its width.");
+    gridBasic.setCustomForm("SimpleGrid");
+    gridBasic.parentField = modelGrid;
+    modelGrid.childrenField.push(gridBasic);
+    demos.push(gridBasic);
+    
+    var gridTree = new DemoItem();
+    gridTree.name = "Tree Grid";
+    gridTree.setInformation("Model grid can be used as a TreeGrid.");
+    gridTree.setCustomForm("TreeGrid");
+    gridTree.parentField = modelGrid;
+    modelGrid.childrenField.push(gridTree);
+    demos.push(gridTree);
+    
+    var gridMultiSort = new DemoItem();
+    gridMultiSort.name = "Multi Sort";
+    gridMultiSort.setInformation("It is possible to sort grid's rows by multiple columns at a time.");
+    gridMultiSort.setCustomForm("MultiSort");
+    gridMultiSort.parentField = modelGrid;
+    modelGrid.childrenField.push(gridMultiSort);
+    demos.push(gridMultiSort);
+    
+    var gridMultiHeader = new DemoItem();
+    gridMultiHeader.name = "Multi Header";
+    gridMultiHeader.setInformation("It is possible to construct multi columns header in any ModelGrid widget.");
+    gridMultiHeader.setCustomForm("MultiHeader");
+    gridMultiHeader.parentField = modelGrid;
+    modelGrid.childrenField.push(gridMultiHeader);
+    demos.push(gridMultiHeader);
+    
+    var gridDND = new DemoItem();
+    gridDND.name = "Rows Dragging";
+    gridDND.setInformation("Grid rows are allowed to be dragged.");
+    gridDND.setCustomForm("RowsDND");
+    gridDND.parentField = modelGrid;
+    modelGrid.childrenField.push(gridDND);
+    demos.push(gridDND);
+    
+    var gridFrozenRows = new DemoItem();
+    gridFrozenRows.name = "Frozen Rows";
+    gridFrozenRows.setInformation("Some grid rows may be frozen. Frozen rows are not scrollable");
+    gridFrozenRows.setCustomForm("FrozenRows");
+    gridFrozenRows.parentField = modelGrid;
+    modelGrid.childrenField.push(gridFrozenRows);
+    demos.push(gridFrozenRows);
+    
+    var gridFrozenColumns = new DemoItem();
+    gridFrozenColumns.name = "Frozen Columns";
+    gridFrozenColumns.setInformation("Some grid columns may be frozen. Frozen columns are not scrollable");
+    gridFrozenColumns.setCustomForm("FrozenColumns");
+    gridFrozenColumns.parentField = modelGrid;
+    modelGrid.childrenField.push(gridFrozenColumns);
+    demos.push(gridFrozenColumns);
+    
+    var gridRowsSelection = new DemoItem();
+    gridRowsSelection.name = "Rows Selection";
+    gridRowsSelection.setInformation("Some service columns are provided with ModelGrid.");
+    gridRowsSelection.setCustomForm("RowsSelection");
+    gridRowsSelection.parentField = modelGrid;
+    modelGrid.childrenField.push(gridRowsSelection);
+    demos.push(gridRowsSelection);
+    
+    var gridEditingInline = new DemoItem();
+    gridEditingInline.name = "Inline Editing";
+    gridEditingInline.setInformation("Grid cells are allowed to be edited in place.");
+    gridEditingInline.setCustomForm("EditingInline");
+    gridEditingInline.parentField = modelGrid;
+    modelGrid.childrenField.push(gridEditingInline);
+    demos.push(gridEditingInline);
+    
+    var gridEditingPopup = new DemoItem();
+    gridEditingPopup.name = "Popup Editing";
+    gridEditingPopup.setInformation("Grid cells may be edited with popup editor as well as inline.");
+    gridEditingPopup.setCustomForm("EditingPopup");
+    gridEditingPopup.parentField = modelGrid;
+    modelGrid.childrenField.push(gridEditingPopup);
+    demos.push(gridEditingPopup);
+    
+    var gridDetails = new DemoItem();
+    gridDetails.name = "Details View";
+    gridDetails.setInformation("Platypus.js ORM provides detail collections, which may be viewed in a ModelGrid.");
+    gridDetails.setCustomForm("Details");
+    gridDetails.parentField = modelGrid;
+    modelGrid.childrenField.push(gridDetails);
+    demos.push(gridDetails);
+    
+    var gridFilters = new DemoItem();
+    gridFilters.name = "Filtering Data";
+    gridFilters.setInformation("ModelGrid's data can be easily filtered, riddled or sorted in developer preferred manner.");
+    gridFilters.setCustomForm("Filters");
+    gridFilters.parentField = modelGrid;
+    modelGrid.childrenField.push(gridFilters);
+    demos.push(gridFilters);
+    
+    var gridTreeView = new DemoItem();
+    gridTreeView.name = "Tree View";
+    gridTreeView.setInformation("Tree view on top of a ModelGrid.");
+    gridTreeView.setCustomForm("TreeView");
+    gridTreeView.parentField = modelGrid;
+    modelGrid.childrenField.push(gridTreeView);
+    demos.push(gridTreeView);
+    
+    var gridListView = new DemoItem();
+    gridListView.name = "List View";
+    gridListView.setInformation("Simple list on top of a ModelGrid.");
+    gridListView.setCustomForm("ListView");
+    gridListView.parentField = modelGrid;
+    modelGrid.childrenField.push(gridListView);
+    demos.push(gridListView);
+    
+    var gridOrmBinding = new DemoItem();
+    gridOrmBinding.name = "ORM Binding";
+    gridOrmBinding.setInformation("Cross browser Platypus.js binding may be used with grid and Platypus.js model's data.");
+    gridOrmBinding.setCustomForm("OrmBinding");
+    gridOrmBinding.parentField = modelGrid;
+    modelGrid.childrenField.push(gridOrmBinding);
+    demos.push(gridOrmBinding);
+    
+    var gridOOBinding = new DemoItem();
+    gridOOBinding.name = "O.o Binding";
+    gridOOBinding.setInformation("If browser supports Object.observe(), than plain JavaScript array may be bound with ModelGrid.");
+    gridOOBinding.setCustomForm("OOBinding");
+    gridOOBinding.parentField = modelGrid;
+    modelGrid.childrenField.push(gridOOBinding);
+    demos.push(gridOOBinding);
+    
+    var gridToExcel = new DemoItem();
+    gridToExcel.name = "Export to Excel";
+    gridToExcel.setInformation("Platypus.js has Reports subsystem, which provides a way to generate Excel documents.");
+    gridToExcel.setCustomForm("ToExcel");
+    gridToExcel.parentField = modelGrid;
+    modelGrid.childrenField.push(gridToExcel);
+    demos.push(gridToExcel);
+    
     self.getMenu = function () {
         return demos;
-    }
-
+    };
 
 }
