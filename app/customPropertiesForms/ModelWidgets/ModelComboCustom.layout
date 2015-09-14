@@ -36,29 +36,17 @@
   <Label cursor="0" name="label1211" parent="view" prefHeight="20px" prefWidth="90px" text="Display Field">
     <AnchorsPaneConstraints height="20px" left="240px" top="53px" width="90px"/>
   </Label>
-  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="130px" prefWidth="570px" rowsHeight="27">
-    <AnchorsPaneConstraints height="130px" left="510px" top="10px" width="570px"/>
+  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="130px" prefWidth="420px" rowsHeight="27">
+    <AnchorsPaneConstraints height="130px" left="510px" top="10px" width="420px"/>
     <ServiceGridColumn name="colService" resizable="true"/>
-    <ModelGridColumn field="visit_id" name="colVisit_id" title="colVisit_id" width="75px">
-      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="pet" name="colPet_id" preferredWidth="120px" title="colPet_id" width="120px">
+    <ModelGridColumn field="pet" name="colPet_id" preferredWidth="120px" title="Name" width="158px">
       <ModelCombo displayField="name" displayList="qAllPets"/>
     </ModelGridColumn>
-    <ModelGridColumn field="fromdate" name="colFromdate" title="colFromdate" width="75px">
-      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="todate" name="colTodate" title="colTodate" width="75px">
-      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
-    </ModelGridColumn>
-    <ModelGridColumn field="description" name="colDescription" title="colDescription" width="75px">
+    <ModelGridColumn field="description" name="colDescription" title="Visit description" width="114px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="ispaid" name="colIspaid" title="colIspaid" width="75px">
+    <ModelGridColumn field="ispaid" name="colIspaid" title="Visit is paid" width="113px">
       <ModelCheckBox/>
-    </ModelGridColumn>
-    <ModelGridColumn field="cost" name="colCost" title="colCost" width="75px">
-      <ModelSpin max="1.7976931348623157E308" min="-1.7976931348623157E308"/>
     </ModelGridColumn>
   </ModelGrid>
 </layout>

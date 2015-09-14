@@ -28,7 +28,7 @@
     <ModelGridColumn field="description" name="colDescription" title="Visit description" width="112px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="ispaid" name="colIspaid" title="Visit is Paid" width="111px">
+    <ModelGridColumn field="ispaid" name="colIspaid" title="Visit is paid" width="111px">
       <ModelCheckBox/>
     </ModelGridColumn>
   </ModelGrid>

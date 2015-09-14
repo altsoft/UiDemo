@@ -59,4 +59,7 @@ function ModelTextCustom() {
     self.getFormHeight = function () {
         return form.view.height;
     };
+    form.txtFormat.onActionPerformed = function(event) {
+        // TODO Добавьте здесь свой код
+    };
 }
