@@ -23,7 +23,7 @@
     <font family="Monospaced" size="15" style="1"/>
     <AnchorsPaneConstraints height="29px" left="70px" top="90px" width="30px"/>
   </ToggleButton>
-  <ModelCombo cursor="0" data="fonts" displayField="FontName" displayList="fonts" field="FontName" name="modelCombo" parent="view" prefHeight="27px" prefWidth="160px">
+  <ModelCombo cursor="0" name="mdlFont" nullable="false" parent="view" prefHeight="27px" prefWidth="160px">
     <AnchorsPaneConstraints height="27px" left="70px" right="8px" top="12px"/>
   </ModelCombo>
   <ModelSpin cursor="0" name="mdlSize" nullable="false" parent="view" prefHeight="27px" prefWidth="160px">

@@ -15,6 +15,24 @@ function FontSelectionDialog(aDemoComponent) {
     var demoComponent;
     var onSelected;
 
+    var fonts = [{FontName: "Arial"},
+            {FontName: "Comic sans ms"},
+            {FontName: "Courier"},
+            {FontName: "Helvetica"},
+            {FontName: "Lucida console"},
+            {FontName: "Monospace"},
+            {FontName: "Serif"},
+            {FontName: "Tahoma"},
+            {FontName: "Times New Roman"},
+            {FontName: "Verdana"},
+            {FontName: "Webdings"},
+            {FontName: "Western"}];
+
+    form.mdlFont.data = fonts;
+    form.mdlFont.field = 'FontName';
+    form.mdlFont.displayField = 'FontName';
+    form.mdlFont.displayList = fonts;
+
     var fontObject = {
         'font': null,
         'fontName': null,
@@ -65,8 +83,8 @@ function FontSelectionDialog(aDemoComponent) {
             fontObject.fontStyle = P.FontStyle.BOLD_ITALIC;
         }
         fontObject.fontSize = fontSize.size;
-        fontObject.fontName = form.modelCombo.value.FontName;
-        fontObject.font = new P.Font(form.modelCombo.value.FontName, fontObject.fontStyle, fontSize.size);
+        fontObject.fontName = form.mdlFont.value.FontName;
+        fontObject.font = new P.Font(form.mdlFont.value.FontName, fontObject.fontStyle, fontSize.size);
 
         return fontObject;
     }
@@ -79,11 +97,10 @@ function FontSelectionDialog(aDemoComponent) {
             form.tglItalic.selected = true;
         }
         if (demoComponent.fontObject) {
-            model.fonts.cursor = demoComponent.fontObject;
-        } else {
-            model.requery(function () {
-                form.modelCombo.value = model.fonts.cursor;
-            });
+            form.mdlFont.value = demoComponent.fontObject;
+        } 
+        else {
+                form.mdlFont.value = fonts[0];
         }
         if (demoComponent.fontSize) {
             fontSize.size = demoComponent.fontSize;
@@ -94,16 +111,11 @@ function FontSelectionDialog(aDemoComponent) {
         form.show();
     };
 
-    model.requery(function () {
-
-    });
-
     self.showModal = function (aDemoComponent, aOnSelected) {
         demoComponent = aDemoComponent;
         onSelected = aOnSelected;
         presetOnLoad();
         form.showModal();
-
     };
 
     form.btnCancel.onActionPerformed = function (event) {
@@ -113,7 +125,7 @@ function FontSelectionDialog(aDemoComponent) {
     form.btnOk.onActionPerformed = function (event) {
         var font = getFont();
         demoComponent.font = font.font;
-        demoComponent.fontObject = model.fonts.cursor;
+        demoComponent.fontObject = form.mdlFont.value;
         demoComponent.fontSize = font.fontSize;
         onSelected(font);
         form.close();

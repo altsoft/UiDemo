@@ -46,8 +46,8 @@ function MainView() {
     var demosList = new DemosList();
     form.grdDemos.data = demosList.getMenu();
     form.grdDemos.column.field = "name";
-    form.grdDemos.parentField = 'parentField';
-    form.grdDemos.childrenField = 'childrenField';
+    form.grdDemos.parentField = 'parent';
+    form.grdDemos.childrenField = 'children';
     form.pnlDemoViews.show('pnlTextInfo');
     form.grdDemos.headerVisible = false;
     form.grdDemos.showHorizontalLines = false;
@@ -147,23 +147,19 @@ function MainView() {
             });
         }
 
-        var customForm = form.grdDemos.selected[0].getCustomForm(); //form of custom proprties
-        var viewForm = form.grdDemos.selected[0].getCommonForm(); //form of commom properties
+        var customForm = form.grdDemos.selected[0].customForm; //form of custom proprties
+        var viewForm = form.grdDemos.selected[0].commonForm; //form of commom properties
 
-        var hint = form.grdDemos.selected[0].getHint();
-        if (form.grdDemos.selected[0].parentField) {
+        var hint = form.grdDemos.selected[0].hint;
+        if (form.grdDemos.selected[0].parent) {
             form.pnlDemoViews.show('pnlDemonstration');
         } else {
             form.pnlDemoViews.show('pnlTextInfo');
-            form.lblInfo.text = form.grdDemos.selected[0].getInformation();
+            form.lblInfo.text = form.grdDemos.selected[0].information;
         }
 
         form.lblShortInfo.text = hint;
-
-
-
-
-        if (form.grdDemos.selected[0].parentField) {
+        if (form.grdDemos.selected[0].parent) {
             if (form.grdDemos.selected[0].createdCustomForm) {
                 var custom = form.grdDemos.selected[0].createdCustomForm;
                 var widget = form.grdDemos.selected[0].widget;
@@ -217,23 +213,21 @@ function MainView() {
             }
 
         }
-//        
     };
     self.show = function () {
-        try {
+        if (P.agent == P.HTML5) {
             form.view.showOn(document.getElementById('Main'));
             P.invokeLater(function () {
                 form.grdDemos.select(demosList.getMenu()[0]);
                 var loadingProgress = document.getElementById('LoadingProgress');
                 loadingProgress.remove();
             });
-        } catch (ex) {
+        } else {
             form.show();
             P.invokeLater(function () {
                 form.maximize();
             });
         }
-//        form.pnlCommon.clear();
     };
 
     form.tpSections.onItemSelected = function (event) {

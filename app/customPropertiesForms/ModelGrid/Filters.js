@@ -5,7 +5,7 @@
  * @author mg
  * {global P}
  */
-function EditingInline() {
+function Filters() {
     var self = this
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);

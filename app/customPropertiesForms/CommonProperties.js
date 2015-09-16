@@ -22,22 +22,22 @@ function CommonProperties(aDemoComponent) {
     form.mdlPopup.displayList = demoMenuList;
     form.mdlPopup.field = "menu";
 
-    var cursors = [{'name': 'default'},
-        {'name': 'crosshair'},
+    var cursors = [{'name': P.Cursor.DEFAULT},
+        {'name': P.Cursor.CROSSHAIR},
         {'name': 'help'},
-        {'name': 'move'},
+        {'name': P.Cursor.MOVE},
         {'name': 'pointer'},
         {'name': 'progress'},
-        {'name': 'text'},
-        {'name': 'wait'},
-        {'name': 'n-resize'},
-        {'name': 'ne-resize'},
-        {'name': 'e-resize'},
-        {'name': 'se-resize'},
-        {'name': 's-resize'},
-        {'name': 'sw-resize'},
-        {'name': 'w-resize'},
-        {'name': 'nw-resize'}];
+        {'name': P.Cursor.TEXT},
+        {'name': P.Cursor.WAIT},
+        {'name': P.Cursor.N_RESIZE},
+        {'name': P.Cursor.NE_RESIZE},
+        {'name': P.Cursor.E_RESIZE},
+        {'name': P.Cursor.SE_RESIZE},
+        {'name': P.Cursor.S_RESIZE},
+        {'name': P.Cursor.SW_RESIZE},
+        {'name': P.Cursor.W_RESIZE},
+        {'name': P.Cursor.NW_RESIZE}];
 
     form.mdlCursor.data = cursors;
     form.mdlCursor.displayField = "name";

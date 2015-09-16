@@ -3,7 +3,7 @@
  * @author user
  * @constructor
  */
-function DemoItem() {
+function DemoItem_() {
     var self = this, model = P.loadModel(this.constructor.name);
 
 
