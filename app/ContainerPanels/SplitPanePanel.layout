@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <ButtonGroup name="buttonGroup"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="209px" prefWidth="253px"/>
+  <FormattedField cursor="0" format="" name="ffHeight1" parent="view" prefHeight="27px" prefWidth="115px" text="35">
+    <AnchorsPaneConstraints height="27px" left="80px" top="85px" width="115px"/>
+  </FormattedField>
+  <FormattedField cursor="0" format="" name="ffWidth1" parent="view" prefHeight="27px" prefWidth="115px" text="80">
+    <AnchorsPaneConstraints height="27px" left="80px" top="121px" width="115px"/>
+  </FormattedField>
+  <Label cursor="0" horizontalAlignment="10" name="label13" parent="view" prefHeight="17px" prefWidth="60px" text="VGap">
+    <AnchorsPaneConstraints height="17px" left="12px" top="126px" width="60px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label2" parent="view" prefHeight="17px" prefWidth="72px" text="HGap">
+    <AnchorsPaneConstraints height="17px" left="12px" top="90px" width="72px"/>
+  </Label>
+  <FormattedField cursor="0" format="" name="ffHeight" parent="view" prefHeight="27px" prefWidth="115px" text="35">
+    <AnchorsPaneConstraints height="27px" left="80px" top="12px" width="115px"/>
+  </FormattedField>
+  <FormattedField cursor="0" format="" name="ffWidth" parent="view" prefHeight="27px" prefWidth="115px" text="80">
+    <AnchorsPaneConstraints height="27px" left="80px" top="48px" width="115px"/>
+  </FormattedField>
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="17px" prefWidth="72px" text="Height">
+    <AnchorsPaneConstraints height="17px" left="12px" top="17px" width="72px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label1" parent="view" prefHeight="17px" prefWidth="60px" text="Width">
+    <AnchorsPaneConstraints height="17px" left="12px" top="53px" width="60px"/>
+  </Label>
+  <RadioButton buttonGroup="buttonGroup" cursor="0" name="radioButton" parent="view" prefHeight="24px" prefWidth="110px" text="Horizontal">
+    <AnchorsPaneConstraints bottom="5px" height="24px" left="10px" width="110px"/>
+  </RadioButton>
+  <RadioButton buttonGroup="buttonGroup" cursor="0" name="radioButton1" parent="view" prefHeight="24px" prefWidth="118px" text="Vertical">
+    <AnchorsPaneConstraints bottom="25px" height="24px" left="10px" width="118px"/>
+  </RadioButton>
+</layout>

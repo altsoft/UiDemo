@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <entity Name="qAllVisits" Title="" entityHeight="200" entityIconified="false" entityId="143317350981023" entityLocationX="170" entityLocationY="190" entityWidth="150" queryId="qAllVisits" tableName="" tableSchemaName=""/>
-  <entity Name="qAllPets" Title="" entityHeight="200" entityIconified="false" entityId="143317351211545" entityLocationX="434" entityLocationY="208" entityWidth="150" queryId="qAllPets" tableName="" tableSchemaName=""/>
-  <referenceRelation collectionPropertyName="pets" leftEntityFieldName="pet_id" leftEntityId="143317350981023" rightEntityFieldName="pets_id" rightEntityId="143317351211545" scalarPropertyName="pet"/>
-</datamodel>

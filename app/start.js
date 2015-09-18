@@ -5,7 +5,7 @@
 // this === global
 (function () {
     function ready() {
-        P.cacheBust = true;
+        P.cacheBust = false;
         P.require('MainView', function(){
             var m = new MainView();
             m.show();

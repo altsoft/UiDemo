@@ -5,7 +5,7 @@
 
 var global = this;
 var demoMenuList = [];
-var groupList = [];
+var buttonGroups = [];
 function MainView() {
     var self = this
             , model = P.loadModel(this.constructor.name)
@@ -53,7 +53,7 @@ function MainView() {
     form.grdDemos.showHorizontalLines = false;
     form.grdDemos.showVerticalLines = false;
     form.grdDemos.showOddRowsInOtherColor = false;
-    
+
     if (P.agent == P.HTML5) {
         form.lblViewSource.cursor = 'pointer';
         form.lblCustomSource.cursor = 'pointer';
@@ -160,68 +160,46 @@ function MainView() {
 
         form.lblShortInfo.text = hint;
         if (form.grdDemos.selected[0].parent) {
-            if (form.grdDemos.selected[0].createdCustomForm) {
-                var custom = form.grdDemos.selected[0].createdCustomForm;
-                var widget = form.grdDemos.selected[0].widget;
-                var demoForm = form.grdDemos.selected[0].demoForm;
+            P.require(customForm, function () {
+                var custom = new global[customForm]();
+                var widget = custom.getDemoComponent();
+                var demoForm = custom.getViewComponent();
                 showDemo(custom, widget, demoForm);
-                if (form.grdDemos.selected[0].createdViewForm) {
-                    form.grdDemos.selected[0].createdViewForm.showOnPanel(form.pnlViewProperties);
-                    onTabChanged();
-                } else {
-                    P.require(viewForm, function () {
-                        var view = new global[viewForm](widget);
-                        view.setOnComponentResize(onComponentResize);
-                        view.showOnPanel(form.pnlViewProperties);
-                        form.grdDemos.selected[0].createdViewForm = view;
-                        form.grdDemos.selected[0].createdViewForm.unfolded = false;
-                        form.pnlViewSourceCode.element.innerHTML = '<pre class="brush: js">' + view.constructor.toString() + '</pre>';
-                        SyntaxHighlighter.highlight();
-                        if (custom.setCommonView) {
-                            custom.setCommonView(view);
-                        }
-                        onTabChanged();
-                    });
-                }
-            } else {
-                P.require(customForm, function () {
-                    var custom = new global[customForm]();
-                    var widget = custom.getDemoComponent();
-                    var demoForm = custom.getViewComponent();
-                    showDemo(custom, widget, demoForm);
 
-                    form.grdDemos.selected[0].createdCustomForm = custom;
-                    form.grdDemos.selected[0].createdCustomForm.unfolded = false;
-                    form.grdDemos.selected[0].widget = widget;
-                    form.grdDemos.selected[0].demoForm = demoForm;
+                form.grdDemos.selected[0].createdCustomForm = custom;
+                form.grdDemos.selected[0].createdCustomForm.unfolded = false;
+                form.grdDemos.selected[0].widget = widget;
+                form.grdDemos.selected[0].demoForm = demoForm;
+                SyntaxHighlighter.highlight();
+                P.require(viewForm, function () {
+                    var view = new global[viewForm](widget);
+                    view.setOnComponentResize(onComponentResize);
+                    view.showOnPanel(form.pnlViewProperties);
+                    form.grdDemos.selected[0].createdViewForm = view;
+                    form.grdDemos.selected[0].createdViewForm.unfolded = false;
+                    form.pnlViewSourceCode.element.innerHTML = '<pre class="brush: js">' + view.constructor.toString() + '</pre>';
                     SyntaxHighlighter.highlight();
-                    P.require(viewForm, function () {
-                        var view = new global[viewForm](widget);
-                        view.setOnComponentResize(onComponentResize);
-                        view.showOnPanel(form.pnlViewProperties);
-                        form.grdDemos.selected[0].createdViewForm = view;
-                        form.grdDemos.selected[0].createdViewForm.unfolded = false;
-                        form.pnlViewSourceCode.element.innerHTML = '<pre class="brush: js">' + view.constructor.toString() + '</pre>';
-                        SyntaxHighlighter.highlight();
-                        if (custom.setCommonView) {
-                            custom.setCommonView(view);
-                        }
-                        onTabChanged();
-                    });
-
+                    if (custom.setCommonView) {
+                        custom.setCommonView(view);
+                    }
+                    onTabChanged();
                 });
-            }
+
+            });
 
         }
     };
     self.show = function () {
         if (P.agent == P.HTML5) {
             form.view.showOn(document.getElementById('Main'));
-            P.invokeLater(function () {
-                form.grdDemos.select(demosList.getMenu()[0]);
-                var loadingProgress = document.getElementById('LoadingProgress');
-                loadingProgress.remove();
+            P.require(["syntaxhighlighter_3.0.83/scripts/shCore.js", "syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"], function () {
+                P.invokeLater(function () {
+                    form.grdDemos.select(demosList.getMenu()[0]);
+                    var loadingProgress = document.getElementById('LoadingProgress');
+                    loadingProgress.remove();
+                });
             });
+
         } else {
             form.show();
             P.invokeLater(function () {

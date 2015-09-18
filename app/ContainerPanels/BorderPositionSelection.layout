@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><layout maximizable="false" minimizable="false" resizable="false" title="Select element's position" view="view">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="126px" prefWidth="163px"/>
+  <Button cursor="0" name="btnOk" parent="view" prefHeight="29px" prefWidth="68px" text="OK">
+    <AnchorsPaneConstraints bottom="7px" height="29px" left="10px" width="68px"/>
+  </Button>
+  <Button cursor="0" name="btnCancel" parent="view" prefHeight="29px" prefWidth="68px" text="Cancel">
+    <AnchorsPaneConstraints bottom="7px" height="29px" left="82px" width="68px"/>
+  </Button>
+  <RadioButton cursor="0" name="rbBottom" parent="view" prefHeight="24px" prefWidth="118px" text="Bottom">
+    <AnchorsPaneConstraints height="24px" left="10px" top="50px" width="118px"/>
+  </RadioButton>
+  <RadioButton cursor="0" name="rbTop" parent="view" prefHeight="24px" prefWidth="60px" text="Top">
+    <AnchorsPaneConstraints height="24px" left="90px" top="10px" width="60px"/>
+  </RadioButton>
+  <RadioButton cursor="0" name="rbLeft" parent="view" prefHeight="24px" prefWidth="60px" text="Left">
+    <AnchorsPaneConstraints height="24px" left="10px" top="10px" width="60px"/>
+  </RadioButton>
+  <RadioButton cursor="0" name="rbCenter" parent="view" prefHeight="24px" prefWidth="90px" text="Center">
+    <AnchorsPaneConstraints height="24px" left="50px" top="30px" width="90px"/>
+  </RadioButton>
+  <RadioButton cursor="0" name="rbRight" parent="view" prefHeight="24px" prefWidth="70px" text="Right">
+    <AnchorsPaneConstraints height="24px" left="90px" top="50px" width="70px"/>
+  </RadioButton>
+</layout>

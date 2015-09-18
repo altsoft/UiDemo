@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <ButtonGroup name="btnGrpHorisontalPosition"/>
+  <ButtonGroup name="buttonGroup"/>
+  <ButtonGroup name="buttonGroup1"/>
+  <ButtonGroup name="buttonGroup2"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="173px" prefWidth="556px"/>
+  <AnchorsPane cursor="0" name="panel" parent="view" prefHeight="270px" prefWidth="700px">
+    <AnchorsPaneConstraints bottom="-6px" height="270px" left="0px" right="-4px" top="0px" width="700px"/>
+  </AnchorsPane>
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="panel" prefHeight="17px" prefWidth="100px" text="Source view">
+    <AnchorsPaneConstraints height="17px" left="200px" top="10px" width="100px"/>
+  </Label>
+  <ScrollPane cursor="0" name="scrollPane" parent="panel" prefHeight="130px" prefWidth="540px">
+    <AnchorsPaneConstraints height="130px" left="10px" top="30px" width="540px"/>
+  </ScrollPane>
+  <TextArea name="txtSource" parent="scrollPane" prefHeight="128px" prefWidth="538px" text="textArea"/>
+</layout>
