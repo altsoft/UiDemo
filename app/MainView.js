@@ -189,15 +189,14 @@ function MainView() {
 
         }
     };
+    
     self.show = function () {
         if (P.agent == P.HTML5) {
             form.view.showOn(document.getElementById('Main'));
-            P.require(["syntaxhighlighter_3.0.83/scripts/shCore.js", "syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"], function () {
-                P.invokeLater(function () {
-                    form.grdDemos.select(demosList.getMenu()[0]);
-                    var loadingProgress = document.getElementById('LoadingProgress');
-                    loadingProgress.remove();
-                });
+            P.invokeLater(function () {
+                form.grdDemos.select(demosList.getMenu()[0]);
+                var loadingProgress = document.getElementById('LoadingProgress');
+                loadingProgress.remove();
             });
 
         } else {

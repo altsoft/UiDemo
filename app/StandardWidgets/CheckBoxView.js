@@ -18,9 +18,9 @@ function CheckBoxView() {
         return checkBox;
     };
 
-    form.mdlGroup.data = groupList;
+    form.mdlGroup.data = buttonGroups;
     form.mdlGroup.displayField = "name";
-    form.mdlGroup.displayList = groupList;
+    form.mdlGroup.displayList = buttonGroups;
     form.mdlGroup.field = "group";
 
     form.mdlGroup.onValueChange = function (event) {

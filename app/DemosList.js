@@ -384,6 +384,7 @@ function DemosList() {
             , containers
             , "DesktopPanePanel"
             , "CommonProperties"
+            , 'icons/containers/desktop_pane_16.png'
             , "DesktopPane is used to create a multi-document interface."
             , "/**\n"
             + "* var pane = new P.DesktopPane();\n"
@@ -706,7 +707,7 @@ function DemosList() {
             + "\n"));
 
 //gridOOBinding 
-        demos.push(createWidget("O.o Binding"
+    demos.push(createWidget("O.o Binding"
             , modelGrid
             , "OOBinding"
             , "CommonProperties"
@@ -718,7 +719,7 @@ function DemosList() {
             + "\n"));
 
 //gridToExcel
-            demos.push(createWidget("Export to Excel"
+    demos.push(createWidget("Export to Excel"
             , modelGrid
             , "ToExcel"
             , "CommonProperties"

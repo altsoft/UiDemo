@@ -8,6 +8,7 @@ function ButtonGroupView() {
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
 
+
     self.show = function () {
         form.show();
     };
@@ -21,6 +22,8 @@ function ButtonGroupView() {
     self.getDemoComponent = function () {
         return groupWidget.getDemoComponent();
     };
+    
+    
     
     if (P.agent == P.HTML5) {
         form.grdFreeItems.element.style.border = "thin solid LightGray";
