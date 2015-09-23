@@ -8,6 +8,7 @@ function ToggleButtonView(aDemoComponent) {
             , form = P.loadForm(this.constructor.name, model);
 
     var toggleButton = new P.ToggleButton("Toggle button");
+    toggleButton.name = "Toggle button";
     toggleButton.height = 27;
     toggleButton.width = 100;
     var lblForm;
@@ -17,10 +18,8 @@ function ToggleButtonView(aDemoComponent) {
         lblForm.showOnPanel(aPanel);
     };
 
-    form.mdlGroup.data = buttonGroups;
     form.mdlGroup.displayField = "name";
     form.mdlGroup.displayList = buttonGroups;
-    form.mdlGroup.field = "group";
 
     form.mdlGroup.onValueChange = function (event) {
         if (form.mdlGroup.value) {

@@ -25,10 +25,8 @@ function ModelTextAreaCustom() {
     mdlTextArea.height = 100;
     form.txtData.text = 'model.qAllOwners';
 
-    form.mcField.data = fieldsList;
     form.mcField.displayList = fieldsList;
     form.mcField.displayField = 'field';
-    form.mcField.field = 'field';
 
     for (var item in fieldsList) {
         if (fieldsList[item].field === mdlTextArea.field) {

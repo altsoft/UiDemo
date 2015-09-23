@@ -24,10 +24,8 @@ function ModelDateCustom() {
     form.txtData.text = "model.qAllVisits";
     form.txtFormat.text = mdlDate.format;
 
-    form.mcField.data = fieldsList;
     form.mcField.displayList = fieldsList;
     form.mcField.displayField = 'field';
-    form.mcField.field = 'field';
 
     for (var item in fieldsList) {
         if (fieldsList[item].field === mdlDate.field) {

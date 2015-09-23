@@ -23,8 +23,6 @@ function ButtonGroupView() {
         return groupWidget.getDemoComponent();
     };
     
-    
-    
     if (P.agent == P.HTML5) {
         form.grdFreeItems.element.style.border = "thin solid LightGray";
         form.grdFreeItems.element.style.borderRadius = "5px";
@@ -32,10 +30,9 @@ function ButtonGroupView() {
         form.grdGroupItems.element.style.borderRadius = "5px";
     }
     var freeItemsList = [];
-    form.mdlGroups.data = buttonGroups;
+
     form.mdlGroups.displayField = "name";
     form.mdlGroups.displayList = buttonGroups;
-    form.mdlGroups.field = "group";
 
     form.grdGroupItems.draggableRows = true;
     form.grdFreeItems.draggableRows = true;

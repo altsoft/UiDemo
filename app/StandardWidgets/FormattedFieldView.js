@@ -60,10 +60,10 @@ function FormattedFieldView() {
 
     function initWidget() {
         form.txtFormat.text = formattedField.format;
-        form.mcmbValueType.data = valueTypes;
+//        form.mcmbValueType.data = valueTypes;
         form.mcmbValueType.displayField = 'name';
         form.mcmbValueType.displayList = valueTypes;
-        form.mcmbValueType.field = 'valueType';
+//        form.mcmbValueType.field = 'valueType';
         form.txtEmptyText.text = formattedField.emptyText;
         form.mcmbValueType.value = valueTypes[0];
     }
@@ -82,9 +82,7 @@ function FormattedFieldView() {
     };
 
     formattedField.onValueChange = function (event) {
-        //P.Logger.info(formattedField.value);
         form.ffValue.text = formattedField.value;
-        //P.Logger.info(form.ffValue.text);
     };
 
     form.txtEmptyText.onActionPerformed = function (event) {

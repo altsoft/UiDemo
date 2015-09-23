@@ -24,19 +24,17 @@ function MenuCustom() {
 
     var menuBar = self.getDemoComponent();
     var mdlItemsList = menuView.getCombo();
-    mdlItemsList.data = allItemsList;
+    
     mdlItemsList.displayList = allItemsList;
     mdlItemsList.displayField = 'name';
-    mdlItemsList.field = 'menu';
 
     var menuList = [];
 
-    form.mdlMenus.data = menuList;
     form.mdlMenus.displayField = "name";
     form.mdlMenus.displayList = menuList;
-    form.mdlMenus.field = "menu";
+
     form.mdlItem.displayField = "name";
-    form.mdlItem.field = "menu";
+//    form.mdlItem.field = "menu";
 
     var menu = new P.Menu("Demo");
     menuBar.add(menu);
@@ -94,9 +92,6 @@ function MenuCustom() {
     btnGroup.add(item);
     addItem(item);
     
-
-
-
     function btnsAvaliability(isEnable) {
         form.btnAddItem.enabled = isEnable;
         form.btnAddRadio.enabled = isEnable;
@@ -146,7 +141,7 @@ function MenuCustom() {
         form.mdlMenus.value.childlist.push(element);
         allItemsList.push(element);
         mdlItemsList.value = element;
-        form.mdlItem.data = form.mdlMenus.value.childlist;
+//        form.mdlItem.data = form.mdlMenus.value.childlist;
         form.mdlItem.displayList = form.mdlMenus.value.childlist;
         form.mdlItem.value = element;
         item.onActionPerformed = function (event) {
@@ -175,7 +170,7 @@ function MenuCustom() {
             btnsAvaliability(true);
         }
         if (form.mdlMenus.value) {
-            form.mdlItem.data = form.mdlMenus.value.childlist;
+//            form.mdlItem.data = form.mdlMenus.value.childlist;
             form.mdlItem.displayList = form.mdlMenus.value.childlist;
             form.mdlItem.value = form.mdlMenus.value.childlist[0];
         }

@@ -64,7 +64,6 @@ function AnchorsPanePanel() {
     }
 
     function setDragDrop(aElement) {
-
         aElement.onMousePressed = function (event) {
             var leftOffset = event.x;
             var topOffset = event.y;
@@ -82,6 +81,7 @@ function AnchorsPanePanel() {
                 aElement.top = event.y - topOffset;
                 getPosition(aElement);
                 internalContainer.onMouseMoved = null;
+                internalContainer.onMouseReleased = null;
                 aElement.onMouseReleased = null;
             };
 
@@ -89,6 +89,7 @@ function AnchorsPanePanel() {
                 //event.stopPropagation();
                 internalContainer.onMouseMoved = null;
                 aElement.onMouseReleased = null;
+                internalContainer.onMouseReleased = null;
             };
         };
     }

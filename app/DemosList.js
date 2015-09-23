@@ -4,8 +4,8 @@
  * @constructor
  */
 function DemosList() {
-    var self = this;
-    function createWidget(aName, aParent, aCustomForm, aCommonForm, aIcon, aHint, aCreation) {
+//    var self = this;
+    function createWidget(aName, aParent, aCustomForm, aCommonForm, aIcon, aHint, aCreation, aDependencies) {
         var widget = {}
         widget.name = aName;
         widget.customForm = aCustomForm;
@@ -17,6 +17,7 @@ function DemosList() {
         P.Icon.load(aIcon, function (data) {
             widget.icon = data;
         });
+        widget.dependencies = aDependencies;
         return widget;
     }
 
@@ -36,7 +37,8 @@ function DemosList() {
             + "* var label = new P.Label(text, icon, iconTextGap);\n"
             + "*/\n"
             + "var label = new P.Label('Label');\n"
-            + "label.text = 'new Text in a label';"));
+            + "label.text = 'new Text in a label';"
+            , "PopupMenuCustom"));
     demos.push(createWidget("Button"
             , standardWidgets
             , "ButtonView"
@@ -50,7 +52,8 @@ function DemosList() {
             + "btn1.text = 'Click me'; \n"
             + "btn1.onActionPerformed = function() { \n"
             + "     alert('Clicked!'); \n"
-            + "}\n"));
+            + "}\n"
+            ,"PopupMenuCustom" ));
     demos.push(createWidget("Toggle button"
             , standardWidgets
             , "ToggleButtonView"
@@ -67,7 +70,8 @@ function DemosList() {
             + "        btn1.text = 'Turn me off!';\n"
             + "   else \n"
             + "        btn1.text = 'Turn me on!';\n"
-            + "}\n"));
+            + "}\n"
+            ,["ButtonGroupView","PopupMenuCustom"]));
     demos.push(createWidget("Check box"
             , standardWidgets
             , "CheckBoxView"
@@ -81,7 +85,8 @@ function DemosList() {
             + "cb1.selected = true;\n"
             + "cb1.onValueChange = function(evt) {\n"
             + "    alert('Value of check box 1 changed!');\n"
-            + "}\n"));
+            + "}\n"
+            ,["ButtonGroupView","PopupMenuCustom"]));
     demos.push(createWidget("Radio button"
             , standardWidgets
             , "RadioButtonView"
@@ -95,7 +100,8 @@ function DemosList() {
             + "rb1.selected = true;\n"
             + "rb1.onActionPerformed = function(evt) {\n"
             + "    rb1.selected && alert('Radio button 1 selected!');\n"
-            + "}\n"));
+            + "}\n"
+            ,["ButtonGroupView","PopupMenuCustom"]));
     demos.push(createWidget("Button group"
             , standardWidgets
             , "ButtonGroupView"
@@ -110,7 +116,8 @@ function DemosList() {
             + "var rbB = new P.RadioButton('B', false);\n"
             + "rbA.buttonGroup = buttonGroup;\n"
             + "rbB.buttonGroup = buttonGroup;\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Text field"
             , standardWidgets
             , "TextFieldView"
@@ -122,7 +129,8 @@ function DemosList() {
             + "*/\n"
             + "var tf1 = new P.TextField(text);\n"
             + "tf1.emptyText = 'Enter your name...';\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Slider"
             , standardWidgets
             , "SliderView"
@@ -138,7 +146,8 @@ function DemosList() {
             + "sl1.value = 50;\n"
             + "s1l.onActionPerformed = function(evt) {\n"
             + "    P.Logger.info('Slider moved.');\n"
-            + "}\n"));
+            + "}\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Progress bar"
             , standardWidgets
             , "ProgressBarView"
@@ -152,7 +161,8 @@ function DemosList() {
             + "pb1.minimum = 0;\n"
             + "pb1.maximum = 100;\n"
             + "pb1.value = 20;\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Formatted field"
             , standardWidgets
             , "FormattedFieldView"
@@ -166,7 +176,8 @@ function DemosList() {
             + "ff.valueType = Date;\n"
             + "ff.format = 'dd.MM.yyyy HH:mm:ss';\n"
             + "ff.value = new Date();\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Password field"
             , standardWidgets
             , "PasswordFieldView"
@@ -177,7 +188,8 @@ function DemosList() {
             + "* var pf = new P.PasswordField(text);\n"
             + "*/\n"
             + "var pf = new P.PasswordField();\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Text area"
             , standardWidgets
             , "TextAreaView"
@@ -188,7 +200,8 @@ function DemosList() {
             + "* var textArea = new P.TextArea(text);\n"
             + "*/\n"
             + "var textArea = new P.TextArea();\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Html area"
             , standardWidgets
             , "HtmlAreaView"
@@ -201,7 +214,7 @@ function DemosList() {
             + "var htmlArea = new P.HtmlArea();\n"
             + "htmlArea.text = '<p>Sample text</p>';\n"
             + "\n"
-            ));
+            ,"PopupMenuCustom"));
     var modelWidgets = {};
     modelWidgets.name = "Model Widgets";
     modelWidgets.children = [];
@@ -219,7 +232,8 @@ function DemosList() {
             + "var modelCheck = new P.ModelCheckBox(); \n"
             + "modelCheck.data = model.entityA.cursor;\n"
             + "modelCheck.field = 'fieldA';\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Model combo"
             , modelWidgets
             , "ModelComboCustom"
@@ -235,7 +249,8 @@ function DemosList() {
             + "//Lookup fields:\n"
             + "modelCombo.displayList = model.owners;\n"
             + "modelCombo.displayField = 'ownerName';\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Model date"
             , modelWidgets
             , "ModelDateCustom"
@@ -251,7 +266,8 @@ function DemosList() {
             + "modelDate.datePicker = true;\n"
             + "modelDate.timePicker = false;\n"
             + "modelDate.editable = true;\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Model spin"
             , modelWidgets
             , "ModelSpinCustom"
@@ -263,7 +279,8 @@ function DemosList() {
             + "*/\n"
             + "modelSpin.data = model.entityC;\n"
             + "modelSpin.field = 'cursor.count';\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Model formatted field"
             , modelWidgets
             , "ModelTextCustom"
@@ -276,7 +293,8 @@ function DemosList() {
             + "mff.data = model.entityA;\n"
             + "mff.field = 'cursor.timeOfDeath';\n"
             + "mff.format = 'dd.MM.yyyy HH:mm:ss';\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Model text area"
             , modelWidgets
             , "ModelTextAreaCustom"
@@ -287,7 +305,8 @@ function DemosList() {
             + "* var mta = new ModelTextArea();\n"
             + "*/\n"
             + "mta.field = model.entityB.schema.textField;\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     var containers = {};
     containers.name = "Containers";
     containers.children = [];
@@ -305,7 +324,8 @@ function DemosList() {
             + "var pane = new P.AnchorsPane();\n"
             + "var comp = new P.Button('Sample');\n"
             + "pane.add(comp, new P.Anchors(10, 120, 0, 10, 30, 0));\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Border pane"
             , containers
             , "BorderPanePanel"
@@ -321,7 +341,7 @@ function DemosList() {
             + "var bottomComp = new P.Button('Bottom');\n"
             + "pane.add(bottomComp, P.VerticalalPosition.BOTTOM);\n"
             + "\n"
-            ));
+            ,"PopupMenuCustom"));
     demos.push(createWidget("VBox pane"
             , containers
             , "VBoxPanePanel"
@@ -335,7 +355,8 @@ function DemosList() {
             + "var pane = new P.BoxPane(P.Orientation.VERTICAL, 0, 20);\n"
             + "var comp = new P.Button('Sample');\n"
             + "pane.add(comp);\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("HBox pane"
             , containers
             , "HBoxPanePanel"
@@ -349,7 +370,8 @@ function DemosList() {
             + "var pane = new P.BoxPane(P.Orientation.HORIZONTAL, 20, 0);\n"
             + "var comp = new P.Button('Sample');\n"
             + "pane.add(comp);\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Grid pane"
             , containers
             , "GridPanePanel"
@@ -366,7 +388,8 @@ function DemosList() {
             + "pane.add(comp1, 0, 0);\n"
             + "pane.add(comp2, 1, 0);\n"
             + "pane.add(comp3, 2, 0);\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Flow pane"
             , containers
             , "FlowPanePanel"
@@ -379,7 +402,8 @@ function DemosList() {
             + "var pane = new P.FlowPane();\n"
             + "var comp = new P.Button('Sample');\n"
             + "pane.add(comp);\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Desktop pane"
             , containers
             , "DesktopPanePanel"
@@ -400,7 +424,7 @@ function DemosList() {
             + "var formModule = new InnerForm();\n"
             + "formModule.onDesktop(desktop);\n"
             + "\n"
-            ));
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Card pane"
             , containers
             , "CardPanePanel"
@@ -418,7 +442,8 @@ function DemosList() {
             + "var compC = new P.Button('SampleC');\n"
             + "pane.add(compC, 'C');\n"
             + "pane.show('B');//Shows the SampleB button\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Tabbed pane"
             , containers
             , "TabbedPanePanel"
@@ -434,7 +459,8 @@ function DemosList() {
             + "var tab2 = new P.AnchorsPane();\n"
             + "pane.add(tab1, 'Tab 1');\n"
             + "pane.add(tab2, 'Tab 2');\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
     demos.push(createWidget("Toolbar"
             , containers
             , "ToolbarPanel"
@@ -455,7 +481,8 @@ function DemosList() {
             + "P.Icon.load('2.png', function(aLoaded){\n"
             + "    b2.icon = aLoaded;\n"
             + "});\n"
-            + "\n"));
+            + "\n"
+            ,"PopupMenuCustom"));
 
     var menus = {};
     menus.name = "Menus";
@@ -731,7 +758,7 @@ function DemosList() {
             + "\n"));
 
 
-    self.getMenu = function () {
+//    self.getMenu = function () {
         return demos;
-    };
+//    };
 }

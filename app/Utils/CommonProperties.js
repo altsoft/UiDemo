@@ -12,15 +12,13 @@ function CommonProperties(aDemoComponent) {
 
     var componentSize = {'width': 0,
         'height': 0};
-    form.mdlWidth.data = componentSize;
+    
     form.mdlWidth.field = 'width';
     form.mdlHeight.data = componentSize;
-    form.mdlHeight.field = 'height';
 
-    form.mdlPopup.data = demoMenuList;
     form.mdlPopup.displayField = "name";
     form.mdlPopup.displayList = demoMenuList;
-    form.mdlPopup.field = "menu";
+    
 
     var cursors = [{'name': P.Cursor.DEFAULT},
         {'name': P.Cursor.CROSSHAIR},

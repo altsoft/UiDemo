@@ -25,19 +25,19 @@ function PopupMenuCustom() {
 
     var demoPane = self.getDemoComponent();
     var mdlItemsList = menuView.getCombo();
-    mdlItemsList.data = allItemsList;
+//    mdlItemsList.data = allItemsList;
     mdlItemsList.displayList = allItemsList;
     mdlItemsList.displayField = 'name';
-    mdlItemsList.field = 'menu';
+//    mdlItemsList.field = 'menu';
 
    
 
-    form.mdlMenus.data = demoMenuList;
+//    form.mdlMenus.data = demoMenuList;
     form.mdlMenus.displayField = "name";
     form.mdlMenus.displayList = demoMenuList;
-    form.mdlMenus.field = "menu";
+//    form.mdlMenus.field = "menu";
     form.mdlItem.displayField = "name";
-    form.mdlItem.field = "menu";
+//    form.mdlItem.field = "menu";
 
     function btnsAvaliability(isEnable) {
         form.btnAddItem.enabled = isEnable;
@@ -137,7 +137,7 @@ var menu = new P.PopupMenu();
         form.mdlMenus.value.childlist.push(element);
         allItemsList.push(element);
         mdlItemsList.value = element;
-        form.mdlItem.data = form.mdlMenus.value.childlist;
+//        form.mdlItem.data = form.mdlMenus.value.childlist;
         form.mdlItem.displayList = form.mdlMenus.value.childlist;
         form.mdlItem.value = element;
         item.onActionPerformed = function (event) {
@@ -166,7 +166,7 @@ var menu = new P.PopupMenu();
             btnsAvaliability(true);
         }
         if (form.mdlMenus.value) {
-            form.mdlItem.data = form.mdlMenus.value.childlist;
+//            form.mdlItem.data = form.mdlMenus.value.childlist;
             form.mdlItem.displayList = form.mdlMenus.value.childlist;
             form.mdlItem.value = form.mdlMenus.value.childlist[0];
             demoPane.componentPopupMenu = form.mdlMenus.value.menu;

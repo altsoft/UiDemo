@@ -7,6 +7,7 @@ function CheckBoxView() {
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
     var checkBox = new P.CheckBox("Check box");
+    checkBox.name = "Check box";
     checkBox.height = 27;
     checkBox.width = 200;
 
@@ -18,10 +19,8 @@ function CheckBoxView() {
         return checkBox;
     };
 
-    form.mdlGroup.data = buttonGroups;
     form.mdlGroup.displayField = "name";
     form.mdlGroup.displayList = buttonGroups;
-    form.mdlGroup.field = "group";
 
     form.mdlGroup.onValueChange = function (event) {
         if (form.mdlGroup.value){

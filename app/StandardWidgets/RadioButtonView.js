@@ -7,6 +7,7 @@ function RadioButtonView() {
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
     var radioButton = new P.RadioButton("Radio button");
+    radioButton.name = 'Radio button';
     radioButton.height = 27;
     radioButton.width = 200;
 
@@ -23,10 +24,8 @@ function RadioButtonView() {
         form.txtText.text = radioButton.text;
     }
 
-    form.mdlGroup.data = buttonGroups;
     form.mdlGroup.displayField = "name";
     form.mdlGroup.displayList = buttonGroups;
-    form.mdlGroup.field = "group";
 
     form.mdlGroup.onValueChange = function (event) {
         if (form.mdlGroup.value) {

@@ -43,8 +43,8 @@ function MainView() {
         icnFolderOpen = data;
     });
 
-    var demosList = new DemosList();
-    form.grdDemos.data = demosList.getMenu();
+    var demosList = DemosList();
+    form.grdDemos.data = demosList;
     form.grdDemos.column.field = "name";
     form.grdDemos.parentField = 'parent';
     form.grdDemos.childrenField = 'children';
@@ -150,6 +150,7 @@ function MainView() {
         var customForm = form.grdDemos.selected[0].customForm; //form of custom proprties
         var viewForm = form.grdDemos.selected[0].commonForm; //form of commom properties
 
+
         var hint = form.grdDemos.selected[0].hint;
         if (form.grdDemos.selected[0].parent) {
             form.pnlDemoViews.show('pnlDemonstration');
@@ -157,27 +158,64 @@ function MainView() {
             form.pnlDemoViews.show('pnlTextInfo');
             form.lblInfo.text = form.grdDemos.selected[0].information;
         }
-
         form.lblShortInfo.text = hint;
-        if (form.grdDemos.selected[0].parent) {
-            P.require(customForm, function () {
-                var custom = new global[customForm]();
-                var widget = custom.getDemoComponent();
-                var demoForm = custom.getViewComponent();
-                showDemo(custom, widget, demoForm);
 
-                form.grdDemos.selected[0].createdCustomForm = custom;
-                form.grdDemos.selected[0].createdCustomForm.unfolded = false;
+        var modules = [];
+        if (form.grdDemos.selected[0].dependencies) {
+            modules.push(customForm);
+            if (Array.isArray(form.grdDemos.selected[0].dependencies)) {
+                Array.prototype.push.apply(modules, form.grdDemos.selected[0].dependencies);
+            } else {
+                modules.push(form.grdDemos.selected[0].dependencies);
+            }
+        } else {
+            modules = customForm;
+        }
+
+        if (form.grdDemos.selected[0].parent) {
+            P.require(modules, function () {
+                if (form.grdDemos.selected[0].dependencies) {
+                    var dependencies = [];
+                    if (!Array.isArray(form.grdDemos.selected[0].dependencies)) {
+                        dependencies.push(form.grdDemos.selected[0].dependencies);
+                    } else {
+                        dependencies = form.grdDemos.selected[0].dependencies;
+                    }
+                    dependencies.forEach(function (item, i, arr) {
+                        if (!global[item].created) {
+                            global[item].created = new global[item]();
+                        }
+                    });
+                }
+                if (!global[customForm].created) {
+                    global[customForm].created = new global[customForm]();
+                }
+                var custom = global[customForm].created;
+                if (form.grdDemos.selected[0].createdCustomForm) {
+                    var widget = form.grdDemos.selected[0].widget;
+                    var demoForm = form.grdDemos.selected[0].demoForm;
+                } else {
+                    var widget = custom.getDemoComponent();
+                    var demoForm = custom.getViewComponent();
+                    custom.unfolded = false;
+                    form.grdDemos.selected[0].createdCustomForm = custom;
+                }
+                showDemo(custom, widget, demoForm);
                 form.grdDemos.selected[0].widget = widget;
                 form.grdDemos.selected[0].demoForm = demoForm;
                 SyntaxHighlighter.highlight();
                 P.require(viewForm, function () {
-                    var view = new global[viewForm](widget);
-                    view.setOnComponentResize(onComponentResize);
+                    if (form.grdDemos.selected[0].createdViewForm) {
+                        var view = form.grdDemos.selected[0].createdViewForm;
+                    } else {
+                        var view = new global[viewForm](widget);
+                        view.unfolded = false;
+                        form.pnlViewSourceCode.element.innerHTML = '<pre class="brush: js">' + view.constructor.toString() + '</pre>';
+                        view.setOnComponentResize(onComponentResize);
+                        form.grdDemos.selected[0].createdViewForm = view;
+                    }
                     view.showOnPanel(form.pnlViewProperties);
-                    form.grdDemos.selected[0].createdViewForm = view;
-                    form.grdDemos.selected[0].createdViewForm.unfolded = false;
-                    form.pnlViewSourceCode.element.innerHTML = '<pre class="brush: js">' + view.constructor.toString() + '</pre>';
+
                     SyntaxHighlighter.highlight();
                     if (custom.setCommonView) {
                         custom.setCommonView(view);
@@ -186,19 +224,17 @@ function MainView() {
                 });
 
             });
-
         }
     };
-    
+
     self.show = function () {
         if (P.agent == P.HTML5) {
             form.view.showOn(document.getElementById('Main'));
             P.invokeLater(function () {
-                form.grdDemos.select(demosList.getMenu()[0]);
+                form.grdDemos.select(demosList[0]);
                 var loadingProgress = document.getElementById('LoadingProgress');
                 loadingProgress.remove();
             });
-
         } else {
             form.show();
             P.invokeLater(function () {
