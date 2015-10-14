@@ -28,17 +28,17 @@ function FormattedFieldView() {
         }, {
             name: 'Date',
             valueType: Date,
-            format: 'h:mm:ss a z EEEE MMMM dd yyyy',
+            format: 'HH:mm:ss z MMMM.dd.yyyy',
             value: new Date()
         }, {
             name: 'Time',
             valueType: Date,
-            format: 'h:mm:ss a z',
-            value: new Date() //'1:22:17 PM',
+            format: 'HH:mm:ss z',
+            value: new Date() //'13:22:17',
         }, {
             name: 'RegExped string',
             valueType: RegExp,
-            format: '\\d{4}.\d{3}',
+            format: '\\d*\\.?\\d*',
             value: '1234.567'
         }, {
             name: 'Custom (Percent)',
@@ -97,13 +97,13 @@ function FormattedFieldView() {
 
     function onParsePercent(event) {
         var text = event.source.text;
-        text = text.replace("$", "");
+        text = text.replace("%", "");
         var value = +text;
         if (isNaN(value)) {
             event.source.background = P.Color.PINK;
             return null;
         } else {
-            event.source.background = P.Color.WHITE;
+            event.source.background = null;
             return value / 100;
         }
     }
@@ -127,7 +127,7 @@ function FormattedFieldView() {
             event.source.background = P.Color.PINK;
             return null;
         } else {
-            event.source.background = P.Color.WHITE;
+            event.source.background = null;
             return value;
         }
     }
@@ -147,7 +147,7 @@ function FormattedFieldView() {
         value = value.replace(/\s/gi, '');
         value = value.split(',');
         if (value) {
-            event.source.background = P.Color.WHITE;
+            event.source.background = null;
             return value;
         } else {
             event.source.background = P.Color.PINK;
@@ -160,8 +160,8 @@ function FormattedFieldView() {
     }
 
     form.mcmbValueType.onValueChange = function (event) {
-        formattedField.background = P.Color.WHITE;
-
+        formattedField.background = null;
+        
         if (form.mcmbValueType.value.valueType === 'Percent') {
             formattedField.onParse = onParsePercent;
             formattedField.onFormat = onFormatPercent;

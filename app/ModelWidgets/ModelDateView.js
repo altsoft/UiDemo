@@ -13,7 +13,7 @@ function ModelDateView() {
     widget.data = model.qAllVisits;
     widget.field = 'cursor.fromdate';
     widget.valueType = Date;
-    widget.format = 'h:mm:ss a z EEEE MMMM dd yyyy'
+    widget.format = 'HH:mm:ss z MMMM dd yyyys'
     form.panel.add(widget);
 
     self.show = function () {

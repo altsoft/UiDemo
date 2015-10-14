@@ -79,7 +79,9 @@ function ButtonGroupView() {
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
+        
         form.mdlGroups.value = buttonGroups[0];
+        form.grdGroupItems.data = form.mdlGroups.value.group.children();
     };
 
     model.requery(function () {

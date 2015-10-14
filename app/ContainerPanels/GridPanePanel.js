@@ -44,10 +44,6 @@ function GridPanePanel() {
     form.mdlHeight.data = componentSize;
     form.mdlHeight.field = 'height';
 
-    var colorsArray = [new P.Color('#49a7f0'), new P.Color('#67eacc'), new P.Color('#6fea58'),
-        new P.Color('#ea6dda'), new P.Color('#fa9037'), P.Color.PINK,
-        new P.Color('#f04949'), new P.Color('#b6b6b6'), new P.Color('#f5e04f')];
-
     var internalContainer = new P.BorderPane();//1x1
     var demoContainer = new P.GridPane(grid.rows, grid.colls, gaps.hGap, gaps.vGap);
 

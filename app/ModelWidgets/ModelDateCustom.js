@@ -12,18 +12,18 @@ function ModelDateCustom() {
     };
 
     var mdlDate = new P.ModelDate();
+    mdlDate.valueType = Date;
+    mdlDate.format = 'HH:mm:ss z MMMM dd yyyy';
     mdlDate.data = model.qAllVisits;
     mdlDate.field = 'cursor.fromdate';
-    mdlDate.valueType = Date;
-    mdlDate.format = 'h:mm:ss a z EEEE MMMM dd yyyy'
-    mdlDate.width = 300;
+    
+    mdlDate.width = 500;
     mdlDate.height = 29;
     var fieldsList = [{field: 'cursor.fromdate'}, {field: 'cursor.todate'}];
     form.chIsDate.selected = mdlDate.datePicker;
     form.chIsTime.selected = mdlDate.timePicker;
     form.txtData.text = "model.qAllVisits";
     form.txtFormat.text = mdlDate.format;
-
     form.mcField.displayList = fieldsList;
     form.mcField.displayField = 'field';
 
@@ -32,7 +32,6 @@ function ModelDateCustom() {
             form.mcField.value = fieldsList[item];
         }
     }
-
 
     form.mcField.onValueChange = function (event) {
         if (form.mcField.value) {
