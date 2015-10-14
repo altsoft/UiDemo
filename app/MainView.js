@@ -6,6 +6,10 @@
 var global = this;
 var demoMenuList = [];
 var buttonGroups = [];
+var colorsArray = [new P.Color('#49a7f0'), new P.Color('#67eacc'), new P.Color('#6fea58'),
+    new P.Color('#ea6dda'), new P.Color('#fa9037'), P.Color.PINK,
+    new P.Color('#f04949'), new P.Color('#b6b6b6'), new P.Color('#f5e04f')];
+
 function MainView() {
     var self = this
             , model = P.loadModel(this.constructor.name)
@@ -66,20 +70,6 @@ function MainView() {
         }
     };
 
-    form.grdDemos.onMouseClicked = function (event) {
-        if (event.clickCount > 1) {
-
-        }
-    };
-
-    function showDemo(aCustom, aWidget, aView) {
-        aCustom.showOnPanel(form.pnlCustomProperties);
-        form.pnlCustomSource.element.innerHTML = '<pre class="brush: js">' + aCustom.constructor.toString() + '</pre>';
-        form.pnlPlayground.add(aView, new P.Anchors(hMargin, aView.width, hMargin, vMargin, aView.height, null));
-        form.pnlPlayground.height = aView.height + vMargin * 2;
-        form.pnlPlayground.remove(lbLoad);
-    }
-
     function onTabChanged() {
         SyntaxHighlighter.highlight();
         switch (form.tpSections.selectedIndex) {
@@ -126,18 +116,16 @@ function MainView() {
     }
 
     var onComponentResize = function (height) {
-        form.pnlPlayground.height = form.grdDemos.selected[0].demoForm.height + hMargin * 2;
+        if (height) {
+            form.pnlPlayground.height = height + hMargin * 2;
+        }
     };
 
     form.grdDemos.onItemSelected = function (event) {
-        form.pnlViewProperties.clear();
         form.pnlPlayground.clear(); //Clean demo components place
-        form.pnlCustomProperties.clear();
-
         var w = Math.round(form.pnlPlayground.width / 2 - 100);
-
         form.pnlPlayground.height = lbLoad.height + 2 * hMargin;
-        form.pnlPlayground.add(lbLoad, new P.Anchors(w, 200, w, hMargin, 200, hMargin))
+        form.pnlPlayground.add(lbLoad, new P.Anchors(w, 200, w, hMargin, 200, hMargin));
         form.pnlCreation.clear();
 
         if (form.grdDemos.selected[0].creationCode) {
@@ -149,7 +137,6 @@ function MainView() {
 
         var customForm = form.grdDemos.selected[0].customForm; //form of custom proprties
         var viewForm = form.grdDemos.selected[0].commonForm; //form of commom properties
-
 
         var hint = form.grdDemos.selected[0].hint;
         if (form.grdDemos.selected[0].parent) {
@@ -173,7 +160,10 @@ function MainView() {
         }
 
         if (form.grdDemos.selected[0].parent) {
+            var widget;
+            var demoForm;
             P.require(modules, function () {
+
                 if (form.grdDemos.selected[0].dependencies) {
                     var dependencies = [];
                     if (!Array.isArray(form.grdDemos.selected[0].dependencies)) {
@@ -191,20 +181,35 @@ function MainView() {
                     global[customForm].created = new global[customForm]();
                 }
                 var custom = global[customForm].created;
-                if (form.grdDemos.selected[0].createdCustomForm) {
-                    var widget = form.grdDemos.selected[0].widget;
-                    var demoForm = form.grdDemos.selected[0].demoForm;
-                } else {
-                    var widget = custom.getDemoComponent();
-                    var demoForm = custom.getViewComponent();
-                    custom.unfolded = false;
-                    form.grdDemos.selected[0].createdCustomForm = custom;
+                P.Logger.info(customForm);
+//                if (form.grdDemos.selected[0].createdCustomForm) {
+//                    widget = form.grdDemos.selected[0].widget;
+//                    demoForm = form.grdDemos.selected[0].demoForm;
+//                } else {
+                widget = custom.getDemoComponent();
+                demoForm = custom.getViewComponent();
+                custom.unfolded = false;
+                form.grdDemos.selected[0].createdCustomForm = custom;
+//                }
+                form.pnlCustomProperties.clear();
+                custom.showOnPanel(form.pnlCustomProperties);
+                try {
+                    form.pnlCustomSource.element.innerHTML = '<pre class="brush: js">' + custom.constructor.toString() + '</pre>';
+                    form.pnlPlayground.clear();
+                    form.pnlPlayground.add(demoForm, new P.Anchors(hMargin, demoForm.width, hMargin, vMargin, demoForm.height, null));
+
+                    form.pnlPlayground.height = demoForm.height + vMargin * 2;
+                    form.pnlPlayground.remove(lbLoad);
+                } catch (ex) {
+                    P.Logger.warning(ex);
+                    P.Logger.warning("Here again");
                 }
-                showDemo(custom, widget, demoForm);
+
                 form.grdDemos.selected[0].widget = widget;
                 form.grdDemos.selected[0].demoForm = demoForm;
                 SyntaxHighlighter.highlight();
                 P.require(viewForm, function () {
+
                     if (form.grdDemos.selected[0].createdViewForm) {
                         var view = form.grdDemos.selected[0].createdViewForm;
                     } else {
@@ -214,9 +219,8 @@ function MainView() {
                         view.setOnComponentResize(onComponentResize);
                         form.grdDemos.selected[0].createdViewForm = view;
                     }
+                    form.pnlViewProperties.clear();
                     view.showOnPanel(form.pnlViewProperties);
-
-                    SyntaxHighlighter.highlight();
                     if (custom.setCommonView) {
                         custom.setCommonView(view);
                     }
@@ -225,6 +229,7 @@ function MainView() {
 
             });
         }
+
     };
 
     self.show = function () {

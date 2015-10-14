@@ -96,7 +96,7 @@ function FormattedFieldView() {
             event.source.background = P.Color.PINK;
             return null;
         } else {
-            event.source.background = P.Color.WHITE;
+            event.source.background = null;
             return value / 100;
         }
     }
@@ -113,7 +113,7 @@ function FormattedFieldView() {
             event.source.background = P.Color.PINK;
             return null;
         } else {
-            event.source.background = P.Color.WHITE;
+            event.source.background = null;
             return value;
         }
     }
@@ -127,7 +127,7 @@ function FormattedFieldView() {
         value = value.replace(" ", "");
         value = value.split(",");
         if (value) {
-            event.source.background = P.Color.WHITE;
+            event.source.background = null;
             return value;
         } else {
             event.source.background = P.Color.PINK;
@@ -140,7 +140,7 @@ function FormattedFieldView() {
     }
 
     form.mcmbValueType.onValueChange = function (event) {
-        formattedField.background = P.Color.WHITE;
+        formattedField.background = null;
         
         if (form.mcmbValueType.value.valueType === 'Percent') {
             formattedField.onParse = onParsePercent;

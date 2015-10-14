@@ -12,13 +12,16 @@ function CommonProperties(aDemoComponent) {
 
     var componentSize = {'width': 0,
         'height': 0};
-    
-    form.mdlWidth.field = 'width';
+
+    form.mdlWidth.data = componentSize;
     form.mdlHeight.data = componentSize;
+    form.mdlWidth.field = 'width';
+    form.mdlHeight.field = 'height';
+
 
     form.mdlPopup.displayField = "name";
     form.mdlPopup.displayList = demoMenuList;
-    
+
 
     var cursors = [{'name': P.Cursor.DEFAULT},
         {'name': P.Cursor.CROSSHAIR},
@@ -37,10 +40,8 @@ function CommonProperties(aDemoComponent) {
         {'name': P.Cursor.W_RESIZE},
         {'name': P.Cursor.NW_RESIZE}];
 
-    form.mdlCursor.data = cursors;
     form.mdlCursor.displayField = "name";
     form.mdlCursor.displayList = cursors;
-    form.mdlCursor.field = "menu";
 
     self.show = function () {
         form.show();
@@ -64,7 +65,7 @@ function CommonProperties(aDemoComponent) {
         form.chOpaque.selected = demoComponent.opaque;
         componentSize.width = demoComponent.width;
         componentSize.height = demoComponent.height;
-        form.mdlHeight.value = componentSize.height;
+//        form.mdlHeight.value = componentSize.height;
 
         if (demoComponent.componentPopupMenu) {
             for (var menu in demoMenuList) {
@@ -77,12 +78,6 @@ function CommonProperties(aDemoComponent) {
             form.mdlPopup.value = null;
         }
 
-        form.mdlHeight.onValueChange = function (event) {
-            demoComponent.height = componentSize.height;
-            if (onComponentResize) {
-                onComponentResize(componentSize.height);
-            }
-        };
     }
 
     self.showOnPanel = function (aPanel) {
@@ -128,7 +123,7 @@ function CommonProperties(aDemoComponent) {
     form.modelForeground.onValueChange = function (event) {
         if (form.modelBackground.text) {
             demoComponent.foreground = new P.Color(form.modelForeground.text);
-        }else {
+        } else {
             demoComponent.foreground = null;
         }
     };
@@ -147,7 +142,7 @@ function CommonProperties(aDemoComponent) {
             );
         } else {
             aFontSelectionDialog.showModal(demoComponent, function (aFont) {
-                
+
                 form.modelFont.text = aFont.toString();
             });
         }
@@ -203,6 +198,15 @@ function CommonProperties(aDemoComponent) {
         demoComponent.width = componentSize.width;
     };
 
+    form.mdlHeight.onValueChange = function (event) {
+        demoComponent.height = componentSize.height;
+        if (onComponentResize) {
+            if (componentSize.height){
+                onComponentResize(componentSize.height);
+            }
+        }
+    };
+
     self.setOnComponentResize = function (aCallback) {
         onComponentResize = aCallback;
     };
@@ -226,6 +230,7 @@ function CommonProperties(aDemoComponent) {
             demoComponent.cursor = null;
         }
     };
+
     form.mdlCursor.onSelect = function (event) {
         var fileFilter = ".png,.ico,.gif,.jpg";
         P.selectFile(function (aFile) {
@@ -239,7 +244,7 @@ function CommonProperties(aDemoComponent) {
                                 loading = null;
                                 P.Icon.load(aUrl[0], function (uploadedFile) {
                                     demoComponent.cursor = 'url(' + uploadedFile.b + '), auto';
-                                    var fileCursor = {'name': demoComponent.cursor };
+                                    var fileCursor = {'name': demoComponent.cursor};
                                     form.mdlCursor.value = fileCursor;
                                 }, function (e) {
                                     P.Logger.info(e);
