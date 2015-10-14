@@ -8,3 +8,4 @@ appCache
 reports
 *lock.*
 *.trace.db
+*.war
