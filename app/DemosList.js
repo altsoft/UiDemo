@@ -553,7 +553,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Drag columns to change theirs position. Drag a column's right border to change its width."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -566,7 +566,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Model grid can be used as a TreeGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -578,7 +578,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "It is possible to sort grid's rows by multiple columns at a time."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -591,7 +591,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "It is possible to construct multi columns header in any ModelGrid widget."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -603,7 +603,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Grid rows are allowed to be dragged."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -615,7 +615,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Some grid rows may be frozen. Frozen rows are not scrollable"
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -628,7 +628,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Some grid columns may be frozen. Frozen columns are not scrollable"
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -640,7 +640,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Some service columns are provided with ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -653,7 +653,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Grid cells are allowed to be edited in place."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -666,7 +666,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Grid cells may be edited with popup editor as well as inline."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -679,7 +679,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Platypus.js ORM provides detail collections, which may be viewed in a ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -691,7 +691,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "ModelGrid's data can be easily filtered, riddled or sorted in developer preferred manner."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -703,7 +703,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Tree view on top of a ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -716,7 +716,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Simple list on top of a ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -729,7 +729,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Cross browser Platypus.js binding may be used with grid and Platypus.js model's data."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -741,7 +741,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "If browser supports Object.observe(), than plain JavaScript array may be bound with ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
@@ -753,7 +753,7 @@ function DemosList() {
             , 'icons/menu/popup_menu_16.png'
             , "Platypus.js has Reports subsystem, which provides a way to generate Excel documents."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 

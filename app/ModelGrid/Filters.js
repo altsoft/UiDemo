@@ -14,13 +14,46 @@ function Filters() {
         form.show();
     };
 
-    self.showOnPanel = function (aPanel) {
-        aPanel.add(form.view);
+    var widget = new P.AnchorsPane();
+    widget.width = 750;
+    widget.height = 120;
+
+    var petsGrid = new P.ModelGrid();
+    petsGrid.editable = petsGrid.deletable = petsGrid.insertable = false;
+
+    petsGrid.addColumnNode(new P.ServiceGridColumn());
+
+    var colName = new P.ModelGridColumn();
+    colName.title = "Pet";
+    colName.minWidth = 107;
+    colName.field = 'name';
+    petsGrid.addColumnNode(colName);
+
+    var filterInput = new P.FormattedField();
+    var filterLabel = new P.Label('Filter pets by name:');
+
+    widget.add(filterLabel, {left: 0, width: 200, top: 0, bottom: 0, height: 20});
+    widget.add(filterInput, {left: 0, width: 200, top: 25, bottom: 0, height: 20});
+    widget.add(petsGrid, {left: 250, width: 150, top: 0, bottom: 0, height: 120});
+
+    filterInput.onValueChange = filterInput.onKeyReleased = function (evt) {
+        var filterKey = filterInput.text;
+        filterPets(filterKey);
     };
 
-    var widget = new P.BorderPane();
-    widget.length = 10;
-    widget.width = 10;
+    function filterPets(aKey) {
+        var filtered = model.qAllPets.filter(function (aPet) {
+            return aPet.name.toLowerCase().indexOf(aKey.toLowerCase()) !== -1;
+        });
+        petsGrid.data = filtered;
+    }
+
+    self.showOnPanel = function (aPanel) {
+        aPanel.add(form.view);
+        model.requery(function () {
+            petsGrid.data = model.qAllPets;
+        });
+    };
 
     self.getDemoComponent = function () {
         return widget;
@@ -33,10 +66,4 @@ function Filters() {
     self.getFormHeight = function () {
         return form.view.height;
     };
-    // TODO : place your code here
-
-    model.requery(function () {
-        // TODO : place your code here
-    });
-
 }

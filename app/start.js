@@ -4,7 +4,7 @@
  */
 require(['facade'], function (F) {
     var global = this;
-    //F.cacheBust(true);
+    F.cacheBust(true);
     F.export(global);
     require('MainView', function(MainView){
         var m = new MainView();
