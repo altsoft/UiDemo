@@ -55,6 +55,8 @@ function MultiHeader() {
     colDates.addColumnNode(colToDate);
     grid.addColumnNode(colIsPaid);
     
+    //grid.frozenColumns = 2;
+    
     widget.add(grid);
 
     self.showOnPanel = function (aPanel) {

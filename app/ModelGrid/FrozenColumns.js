@@ -30,19 +30,19 @@ function FrozenColumns() {
     colName.editor.displayField = 'name';
     var colFromDate = new P.ModelGridColumn();
     colFromDate.title = 'From date';
-    colFromDate.minWidth = 107;
+    colFromDate.minWidth = 150;
     colFromDate.field = 'fromdate';
     colFromDate.editor = new P.ModelDate();
     colFromDate.editor.format = 'dd.MM.yyyy';
     var colToDate = new P.ModelGridColumn();
     colToDate.title = 'To date';
-    colToDate.minWidth = 107;
+    colToDate.minWidth = 150;
     colToDate.field = 'todate';
     colToDate.editor = new P.ModelDate();
     colToDate.editor.format = 'dd.MM.yyyy';
     var colIsPaid = new P.ModelGridColumn();
     colIsPaid.title = 'Paid';
-    colIsPaid.minWidth = 65;
+    colIsPaid.minWidth = 150;
     colIsPaid.field = 'ispaid';
     colIsPaid.editor = new P.ModelCheckBox();
     
