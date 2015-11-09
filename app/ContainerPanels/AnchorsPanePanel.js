@@ -28,7 +28,7 @@ function AnchorsPanePanel() {
     form.mdlRight.field = 'right';
 
 
-    if (P.agent == P.HTML5) {
+    if (P.agent === P.HTML5) {
         internalContainer.element.style.border = "thin solid gray";
         internalContainer.element.style.borderRadius = "5px";
     }

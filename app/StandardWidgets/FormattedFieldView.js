@@ -28,28 +28,28 @@ function FormattedFieldView() {
         }, {
             name: 'Date',
             valueType: Date,
-            format: 'h:mm:ss a z EEEE MMMM dd yyyy',
+            format: 'HH:mm:ss z MMMM.dd.yyyy',
             value: new Date()
         }, {
             name: 'Time',
             valueType: Date,
-            format: 'h:mm:ss a z',
-            value: new Date() //'1:22:17 PM',
+            format: 'HH:mm:ss z',
+            value: new Date() //'13:22:17',
         }, {
             name: 'RegExped string',
             valueType: RegExp,
-            format: '\\d{4}.\d{3}',
+            format: '\\d*\\.?\\d*',
             value: '1234.567'
         }, {
             name: 'Custom (Percent)',
             valueType: 'Percent',
             format: '',
-            value: 1234.567
+            value: 0.25
         }, {
             name: 'Custom (Currency)',
             valueType: 'Currency',
             format: '',
-            value: 1234.567
+            value: 1500.25
         }, {
             name: 'Custom (Array)',
             valueType: 'Array',
@@ -82,7 +82,12 @@ function FormattedFieldView() {
     };
 
     formattedField.onValueChange = function (event) {
-        form.ffValue.text = formattedField.value;
+        if (Array.isArray(event.source.value))
+            form.ffValue.text = '[object Array] | length: ' + event.source.value.length;
+        else if (event.source.value !== null)
+            form.ffValue.text = '' + event.source.value;
+        else
+            form.ffValue.text = '';
     };
 
     form.txtEmptyText.onActionPerformed = function (event) {
@@ -91,7 +96,9 @@ function FormattedFieldView() {
 
 
     function onParsePercent(event) {
-        var value = +event.source.text;
+        var text = event.source.text;
+        text = text.replace("%", "");
+        var value = +text;
         if (isNaN(value)) {
             event.source.background = P.Color.PINK;
             return null;
@@ -102,13 +109,20 @@ function FormattedFieldView() {
     }
 
     function onFormatPercent(event) {
-        return event.source.value !== null ? (event.source.value * 100) + "%" : "";
+        var value = event.source.value;
+        if (value !== null) {
+            value *= 100;
+            value = Math.round(value * 1e+10) / 1e+10;
+            return value + ' %';
+        } else {
+            return '';
+        }
     }
 
     function onParseCurrency(event) {
-        var value = event.source.text;
-        value =  value.replace("$", "");
-        value = +value;
+        var text = event.source.text;
+        text = text.replace("$", "");
+        var value = +text;
         if (isNaN(value)) {
             event.source.background = P.Color.PINK;
             return null;
@@ -119,13 +133,19 @@ function FormattedFieldView() {
     }
 
     function onFormatCurrency(event) {
-        return event.source.value !== null ? event.source.value + " $" : "";
+        if (event.source.value !== null) {
+            var value = event.source.value;
+            value = Math.round(value * 100) / 100;
+            return value + " $";
+        } else {
+            return '';
+        }
     }
 
     function onParseArray(event) {
         var value = event.source.text;
-        value = value.replace(" ", "");
-        value = value.split(",");
+        value = value.replace(/\s/gi, '');
+        value = value.split(',');
         if (value) {
             event.source.background = null;
             return value;
@@ -136,7 +156,7 @@ function FormattedFieldView() {
     }
 
     function onFormatArray(event) {
-        return event.source.value !== null ? event.source.value.toString() : "";
+        return event.source.value !== null ? event.source.value.join(', ') : '';
     }
 
     form.mcmbValueType.onValueChange = function (event) {
@@ -157,7 +177,7 @@ function FormattedFieldView() {
         }
 //        formattedField.text = "";
 //        formattedField.value = null;
-       
+
         formattedField.valueType = form.mcmbValueType.value.valueType;
         form.txtFormat.text = form.mcmbValueType.value.format;
         formattedField.value = form.mcmbValueType.value.value;

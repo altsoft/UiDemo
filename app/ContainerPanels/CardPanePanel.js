@@ -17,10 +17,8 @@ function CardPanePanel(aPlaygroundPanel) {
     form.mdlVGap.data = gaps;
     form.mdlVGap.field = 'vGap';
 
-    form.mcmbElList.data = elementsList;
     form.mcmbElList.displayField = "itemname";
     form.mcmbElList.displayList = elementsList;
-    form.mcmbElList.field = "itemname";
 
     var internalContainer = new P.CardPane(gaps.hGap, gaps.vGap);
     var demoContainer = internalContainer;

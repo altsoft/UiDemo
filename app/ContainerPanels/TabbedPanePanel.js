@@ -10,10 +10,8 @@ function TabbedPanePanel(aPlaygroundPanel) {
     var counter = 1;
     var elementsList = [];
 
-    form.mcmbElList.data = elementsList;
     form.mcmbElList.displayField = "itemname";
     form.mcmbElList.displayList = elementsList;
-    form.mcmbElList.field = "itemname";
 
     var internalContainer = new P.TabbedPane();
     var demoContainer = internalContainer;

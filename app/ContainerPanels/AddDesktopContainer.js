@@ -12,10 +12,8 @@ function AddDesktopContainer(aGetPosition, aDelete, aPlaceElement) {
     var deleteCallback = aDelete;
     var elementsList = [];
 
-    form.mcmbElList.data = elementsList;
     form.mcmbElList.displayField = "itemname";
     form.mcmbElList.displayList = elementsList;
-    form.mcmbElList.field = "itemname";
 
     self.show = function () {
         form.show();

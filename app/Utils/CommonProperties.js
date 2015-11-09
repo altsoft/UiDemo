@@ -53,10 +53,10 @@ function CommonProperties(aDemoComponent) {
     };
 
     function initWidget() {
-        form.modelForeground.text = demoComponent.foreground;
-        form.modelBackground.text = demoComponent.background;
+        form.modelForeground.text = demoComponent.foreground ? '' + demoComponent.foreground : '';
+        form.modelBackground.text = demoComponent.background ? '' + demoComponent.background : '';
         if (demoComponent.font) {
-            form.modelFont.text = demoComponent.font.family;
+            form.modelFont.text = '' + demoComponent.font;
         }
         form.chVisible.selected = demoComponent.visible;
         form.txtToltip.text = demoComponent.toolTipText;
@@ -129,23 +129,14 @@ function CommonProperties(aDemoComponent) {
     };
 
     form.modelFont.onSelect = function (event) {
-        if (!aFontSelectionDialog) {
-            P.require("FontSelectionDialog", function () {
-                aFontSelectionDialog = new FontSelectionDialog(demoComponent);
-                aFontSelectionDialog.showModal(demoComponent, function (aFont) {
-                    form.modelFont.text = aFont.toString();
-                });
-            },
-                    function () {
-                        alert("Module access problem");
-                    }
-            );
-        } else {
+        P.require("FontSelectionDialog", function () {
+            aFontSelectionDialog = new FontSelectionDialog(demoComponent);
             aFontSelectionDialog.showModal(demoComponent, function (aFont) {
-
-                form.modelFont.text = aFont.toString();
+                form.modelFont.text = '' + aFont;
             });
-        }
+        }, function (e) {
+            P.Logger.severe(e);
+        });
     };
 
     form.txtToltip.onKeyTyped = function (event) {

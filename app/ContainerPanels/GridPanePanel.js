@@ -34,10 +34,8 @@ function GridPanePanel() {
     var elementsList = [];
     var counter = 1;
 
-    form.mcmbElList.data = elementsList;
     form.mcmbElList.displayField = "itemname";
     form.mcmbElList.displayList = elementsList;
-    form.mcmbElList.field = "itemname";
 
     var componentSize = {'width': 0,
         'height': 0};
@@ -142,7 +140,6 @@ function GridPanePanel() {
         internalContainer.clear();
         elementsList = [];
         form.mcmbElList.displayList = elementsList;
-        form.mcmbElList.data = elementsList;
         demoContainer = new P.GridPane(grid.rows, grid.colls, gaps.hGap, gaps.vGap);
         internalContainer.add(demoContainer);
     }

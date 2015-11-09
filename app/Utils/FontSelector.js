@@ -9,9 +9,6 @@ function FontSelectionDialog(aDemoComponent) {
     form.minimizable = false;
     form.maximizable = false;
     form.resizable = false;
-    var fontSize = {'size': 14};
-    form.mdlSize.data = fontSize;
-    form.mdlSize.field = 'size';
     var demoComponent;
     var onSelected;
 
@@ -28,82 +25,31 @@ function FontSelectionDialog(aDemoComponent) {
             {FontName: "Webdings"},
             {FontName: "Western"}];
 
-    form.mdlFont.data = fonts;
-    form.mdlFont.field = 'FontName';
     form.mdlFont.displayField = 'FontName';
     form.mdlFont.displayList = fonts;
 
-    var fontObject = {
-        'font': null,
-        'fontName': null,
-        'fontStyle': null,
-        'fontStyleText': null,
-        'fontSize': null,
-        'toString': function () {
-            switch (this.fontStyle) {
-                case P.FontStyle.NORMAL:
-                {
-                    fontObject.fontStyleText = 'Normal';
-                    break;
-                }
-                case P.FontStyle.BOLD:
-                {
-                    fontObject.fontStyleText = 'Bold';
-                    break;
-                }
-                case P.FontStyle.ITALIC:
-                {
-                    fontObject.fontStyleText = 'Italic';
-                    break;
-                }
-                case P.FontStyle.BOLD_ITALIC:
-                {
-                    fontObject.fontStyleText = 'Bold Italic';
-                    break;
-                }
-                default :
-                {
-                    fontObject.fontStyleText = 'Normal';
-                    break
-                }
-            }
-            return this.fontName + ' ' + this.fontSize + ' ' + this.fontStyleText;
-        }
-    };
-
     function getFont() {
-        fontObject.fontStyle = P.FontStyle.NORMAL;
-        if (form.tglBold.selected) {
-            fontObject.fontStyle = P.FontStyle.BOLD;
-        }
-        if (form.tglItalic.selected) {
-            fontObject.fontStyle = P.FontStyle.ITALIC;
-        }
-        if (form.tglBold.selected & form.tglItalic.selected) {
-            fontObject.fontStyle = P.FontStyle.BOLD_ITALIC;
-        }
-        fontObject.fontSize = fontSize.size;
-        fontObject.fontName = form.mdlFont.value.FontName;
-        fontObject.font = new P.Font(form.mdlFont.value.FontName, fontObject.fontStyle, fontSize.size);
-
-        return fontObject;
+        var style;
+        if(form.tglBold.selected && form.tglItalic.selected)
+            style = P.FontStyle.BOLD_ITALIC;
+        else if(form.tglBold.selected)
+            style = P.FontStyle.BOLD;
+        else if(form.tglItalic.selected)
+            style = P.FontStyle.ITALIC;
+        else
+            style = P.FontStyle.NORMAL;
+        return new P.Font(form.mdlFont.value.FontName, style, form.mdlSize.value);
     }
 
     function presetOnLoad() {
-        if (demoComponent.isBold) {
-            form.tglBold.selected = true;
-        }
-        if (demoComponent.isItalic) {
-            form.tglItalic.selected = true;
-        }
-        if (demoComponent.fontObject) {
-            form.mdlFont.value = demoComponent.fontObject;
-        } 
-        else {
-                form.mdlFont.value = fonts[0];
-        }
-        if (demoComponent.fontSize) {
-            fontSize.size = demoComponent.fontSize;
+        if (demoComponent.font) {
+            form.mdlFont.value = {FontName: demoComponent.font.family};
+            form.mdlSize.value = demoComponent.font.size;
+            form.tglBold.selected = demoComponent.font.style === P.FontStyle.BOLD_ITALIC || demoComponent.font.style === P.FontStyle.BOLD;
+            form.tglItalic.selected = demoComponent.font.style === P.FontStyle.BOLD_ITALIC || demoComponent.font.style === P.FontStyle.ITALIC;
+        } else {
+            form.mdlFont.value = fonts[0];
+            form.mdlSize.value = 12;
         }
     }
 
@@ -124,9 +70,7 @@ function FontSelectionDialog(aDemoComponent) {
 
     form.btnOk.onActionPerformed = function (event) {
         var font = getFont();
-        demoComponent.font = font.font;
-        demoComponent.fontObject = form.mdlFont.value;
-        demoComponent.fontSize = font.fontSize;
+        demoComponent.font = font;
         onSelected(font);
         form.close();
     };

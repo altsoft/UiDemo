@@ -13,7 +13,7 @@ function ModelDateCustom() {
 
     var mdlDate = new P.ModelDate();
     mdlDate.valueType = Date;
-    mdlDate.format = 'h:mm:ss a z EEEE MMMM dd yyyy';
+    mdlDate.format = 'HH:mm:ss z MMMM dd yyyy';
     mdlDate.data = model.qAllVisits;
     mdlDate.field = 'cursor.fromdate';
     

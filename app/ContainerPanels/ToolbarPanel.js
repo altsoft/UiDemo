@@ -8,7 +8,7 @@ function ToolbarPanel(aPlaygroundPanel) {
             , form = P.loadForm(this.constructor.name, model);
     var counter = 1;
     var internalContainer = new P.ToolBar();
-    internalContainer.width = 800;
+    internalContainer.width = 765;
     internalContainer.height = 50;
 
 

@@ -5,20 +5,20 @@
  */
 function DemosList() {
 //    var self = this;
-    function createWidget(aName, aParent, aCustomForm, aCommonForm, aIcon, aHint, aCreation, aDependencies) {
-        var widget = {}
-        widget.name = aName;
-        widget.customForm = aCustomForm;
-        widget.hint = aHint;
-        widget.commonForm = aCommonForm;
-        widget.parent = aParent;
-        aParent.children.push(widget);
-        widget.creationCode = aCreation;
+    function createDemo(aName, aParent, aCustomForm, aCommonForm, aIcon, aHint, aCreation, aDependencies) {
+        var demo = {};
+        demo.name = aName;
+        demo.customForm = aCustomForm;
+        demo.hint = aHint;
+        demo.commonForm = aCommonForm;
+        demo.parent = aParent;
+        aParent.children.push(demo);
+        demo.creationCode = aCreation;
         P.Icon.load(aIcon, function (data) {
-            widget.icon = data;
+            demo.icon = data;
         });
-        widget.dependencies = aDependencies;
-        return widget;
+        demo.dependencies = aDependencies;
+        return demo;
     }
 
     var demos = [];
@@ -27,7 +27,7 @@ function DemosList() {
     standardWidgets.name = "Standard Widgets";
     standardWidgets.information = "This is standard widgets";
     demos.push(standardWidgets);
-    demos.push(createWidget("Label"
+    demos.push(createDemo("Label"
             , standardWidgets
             , "LabelView"
             , "CommonProperties"
@@ -39,7 +39,7 @@ function DemosList() {
             + "var label = new P.Label('Label');\n"
             + "label.text = 'new Text in a label';"
             , "PopupMenuCustom"));
-    demos.push(createWidget("Button"
+    demos.push(createDemo("Button"
             , standardWidgets
             , "ButtonView"
             , "CommonProperties"
@@ -54,7 +54,7 @@ function DemosList() {
             + "     alert('Clicked!'); \n"
             + "}\n"
             ,"PopupMenuCustom" ));
-    demos.push(createWidget("Toggle button"
+    demos.push(createDemo("Toggle button"
             , standardWidgets
             , "ToggleButtonView"
             , "CommonProperties"
@@ -72,7 +72,7 @@ function DemosList() {
             + "        btn1.text = 'Turn me on!';\n"
             + "}\n"
             ,["ButtonGroupView","PopupMenuCustom"]));
-    demos.push(createWidget("Check box"
+    demos.push(createDemo("Check box"
             , standardWidgets
             , "CheckBoxView"
             , "CommonProperties"
@@ -87,7 +87,7 @@ function DemosList() {
             + "    alert('Value of check box 1 changed!');\n"
             + "}\n"
             ,["ButtonGroupView","PopupMenuCustom"]));
-    demos.push(createWidget("Radio button"
+    demos.push(createDemo("Radio button"
             , standardWidgets
             , "RadioButtonView"
             , "CommonProperties"
@@ -102,7 +102,7 @@ function DemosList() {
             + "    rb1.selected && alert('Radio button 1 selected!');\n"
             + "}\n"
             ,["ButtonGroupView","PopupMenuCustom"]));
-    demos.push(createWidget("Button group"
+    demos.push(createDemo("Button group"
             , standardWidgets
             , "ButtonGroupView"
             , "CommonProperties"
@@ -118,7 +118,7 @@ function DemosList() {
             + "rbB.buttonGroup = buttonGroup;\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Text field"
+    demos.push(createDemo("Text field"
             , standardWidgets
             , "TextFieldView"
             , "CommonProperties"
@@ -131,7 +131,7 @@ function DemosList() {
             + "tf1.emptyText = 'Enter your name...';\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Slider"
+    demos.push(createDemo("Slider"
             , standardWidgets
             , "SliderView"
             , "CommonProperties"
@@ -148,7 +148,7 @@ function DemosList() {
             + "    P.Logger.info('Slider moved.');\n"
             + "}\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Progress bar"
+    demos.push(createDemo("Progress bar"
             , standardWidgets
             , "ProgressBarView"
             , "CommonProperties"
@@ -163,7 +163,7 @@ function DemosList() {
             + "pb1.value = 20;\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Formatted field"
+    demos.push(createDemo("Formatted field"
             , standardWidgets
             , "FormattedFieldView"
             , "CommonProperties"
@@ -178,7 +178,7 @@ function DemosList() {
             + "ff.value = new Date();\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Password field"
+    demos.push(createDemo("Password field"
             , standardWidgets
             , "PasswordFieldView"
             , "CommonProperties"
@@ -190,7 +190,7 @@ function DemosList() {
             + "var pf = new P.PasswordField();\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Text area"
+    demos.push(createDemo("Text area"
             , standardWidgets
             , "TextAreaView"
             , "CommonProperties"
@@ -202,7 +202,7 @@ function DemosList() {
             + "var textArea = new P.TextArea();\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Html area"
+    demos.push(createDemo("Html area"
             , standardWidgets
             , "HtmlAreaView"
             , "CommonProperties"
@@ -218,9 +218,9 @@ function DemosList() {
     var modelWidgets = {};
     modelWidgets.name = "Model Widgets";
     modelWidgets.children = [];
-    standardWidgets.information = "This is model widgets";
+    modelWidgets.information = "This is model widgets";
     demos.push(modelWidgets);
-    demos.push(createWidget("Model check"
+    demos.push(createDemo("Model check"
             , modelWidgets
             , "ModelCheckCustom"
             , "CommonProperties"
@@ -234,7 +234,7 @@ function DemosList() {
             + "modelCheck.field = 'fieldA';\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Model combo"
+    demos.push(createDemo("Model combo"
             , modelWidgets
             , "ModelComboCustom"
             , "CommonProperties"
@@ -251,7 +251,7 @@ function DemosList() {
             + "modelCombo.displayField = 'ownerName';\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Model date"
+    demos.push(createDemo("Model date"
             , modelWidgets
             , "ModelDateCustom"
             , "CommonProperties"
@@ -268,7 +268,7 @@ function DemosList() {
             + "modelDate.editable = true;\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Model spin"
+    demos.push(createDemo("Model spin"
             , modelWidgets
             , "ModelSpinCustom"
             , "CommonProperties"
@@ -281,7 +281,7 @@ function DemosList() {
             + "modelSpin.field = 'cursor.count';\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Model formatted field"
+    demos.push(createDemo("Model formatted field"
             , modelWidgets
             , "ModelTextCustom"
             , "CommonProperties"
@@ -295,7 +295,7 @@ function DemosList() {
             + "mff.format = 'dd.MM.yyyy HH:mm:ss';\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Model text area"
+    demos.push(createDemo("Model text area"
             , modelWidgets
             , "ModelTextAreaCustom"
             , "CommonProperties"
@@ -312,7 +312,7 @@ function DemosList() {
     containers.children = [];
     containers.information = "This is containers";
     demos.push(containers);
-    demos.push(createWidget("Anchors pane"
+    demos.push(createDemo("Anchors pane"
             , containers
             , "AnchorsPanePanel"
             , "CommonProperties"
@@ -326,7 +326,7 @@ function DemosList() {
             + "pane.add(comp, new P.Anchors(10, 120, 0, 10, 30, 0));\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Border pane"
+    demos.push(createDemo("Border pane"
             , containers
             , "BorderPanePanel"
             , "CommonProperties"
@@ -342,7 +342,7 @@ function DemosList() {
             + "pane.add(bottomComp, P.VerticalalPosition.BOTTOM);\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("VBox pane"
+    demos.push(createDemo("VBox pane"
             , containers
             , "VBoxPanePanel"
             , "CommonProperties"
@@ -357,7 +357,7 @@ function DemosList() {
             + "pane.add(comp);\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("HBox pane"
+    demos.push(createDemo("HBox pane"
             , containers
             , "HBoxPanePanel"
             , "CommonProperties"
@@ -372,7 +372,7 @@ function DemosList() {
             + "pane.add(comp);\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Grid pane"
+    demos.push(createDemo("Grid pane"
             , containers
             , "GridPanePanel"
             , "CommonProperties"
@@ -390,7 +390,7 @@ function DemosList() {
             + "pane.add(comp3, 2, 0);\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Flow pane"
+    demos.push(createDemo("Flow pane"
             , containers
             , "FlowPanePanel"
             , "CommonProperties"
@@ -404,7 +404,7 @@ function DemosList() {
             + "pane.add(comp);\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Desktop pane"
+    demos.push(createDemo("Desktop pane"
             , containers
             , "DesktopPanePanel"
             , "CommonProperties"
@@ -425,7 +425,7 @@ function DemosList() {
             + "formModule.onDesktop(desktop);\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Card pane"
+    demos.push(createDemo("Card pane"
             , containers
             , "CardPanePanel"
             , "CommonProperties"
@@ -444,7 +444,7 @@ function DemosList() {
             + "pane.show('B');//Shows the SampleB button\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Tabbed pane"
+    demos.push(createDemo("Tabbed pane"
             , containers
             , "TabbedPanePanel"
             , "CommonProperties"
@@ -461,7 +461,7 @@ function DemosList() {
             + "pane.add(tab2, 'Tab 2');\n"
             + "\n"
             ,"PopupMenuCustom"));
-    demos.push(createWidget("Toolbar"
+    demos.push(createDemo("Toolbar"
             , containers
             , "ToolbarPanel"
             , "CommonProperties"
@@ -490,7 +490,7 @@ function DemosList() {
     menus.information = "Menus widgets provide a convinient way to let the user choose one of several options.";
     demos.push(menus);
 
-    demos.push(createWidget("Menu"
+    demos.push(createDemo("Menu"
             , menus
             , "MenuCustom"
             , "MenuCommonProperties"
@@ -514,7 +514,7 @@ function DemosList() {
             + "menu.add(item);\n"
             + "\n"));
 
-    demos.push(createWidget("Popup menu"
+    demos.push(createDemo("Popup menu"
             , menus
             , "PopupMenuCustom"
             , "MenuCommonProperties"
@@ -546,214 +546,214 @@ function DemosList() {
     demos.push(modelGrid);
 
 //gridBasic
-    demos.push(createWidget("Simple Grid"
+    demos.push(createDemo("Simple Grid"
             , modelGrid
             , "SimpleGrid"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Drag columns to change theirs position. Drag a column's right border to change its width."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //var gridTree
 
-    demos.push(createWidget("Tree Grid"
+    demos.push(createDemo("Tree Grid"
             , modelGrid
             , "TreeGrid"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Model grid can be used as a TreeGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //gridMultiSort
-    demos.push(createWidget("Multi Sort"
+    demos.push(createDemo("Multi Sort"
             , modelGrid
             , "MultiSort"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "It is possible to sort grid's rows by multiple columns at a time."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 
 //gridMultiHeader;
-    demos.push(createWidget("Multi Header"
+    demos.push(createDemo("Multi Header"
             , modelGrid
             , "MultiHeader"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "It is possible to construct multi columns header in any ModelGrid widget."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 // gridDND
-    demos.push(createWidget("Rows Dragging"
+    demos.push(createDemo("Rows Dragging"
             , modelGrid
             , "RowsDND"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Grid rows are allowed to be dragged."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //gridFrozenRows
-    demos.push(createWidget("Frozen Rows"
+    demos.push(createDemo("Frozen Rows"
             , modelGrid
             , "FrozenRows"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Some grid rows may be frozen. Frozen rows are not scrollable"
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //
 //gridFrozenColumns;
-    demos.push(createWidget("Frozen Columns"
+    demos.push(createDemo("Frozen Columns"
             , modelGrid
             , "FrozenColumns"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Some grid columns may be frozen. Frozen columns are not scrollable"
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //gridRowsSelection
-    demos.push(createWidget("Rows Selection"
+    demos.push(createDemo("Rows Selection"
             , modelGrid
             , "RowsSelection"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Some service columns are provided with ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //
 //gridEditingInline 
-    demos.push(createWidget("Inline Editing"
+    demos.push(createDemo("Inline Editing"
             , modelGrid
             , "EditingInline"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Grid cells are allowed to be edited in place."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //
 //gridEditingPopup
-    demos.push(createWidget("Popup Editing"
+    demos.push(createDemo("Popup Editing"
             , modelGrid
             , "EditingPopup"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Grid cells may be edited with popup editor as well as inline."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //
 //gridDetails
-    demos.push(createWidget("Details View"
+    demos.push(createDemo("Details View"
             , modelGrid
             , "Details"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Platypus.js ORM provides detail collections, which may be viewed in a ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //gridFilters
-    demos.push(createWidget("Filtering Data"
+    demos.push(createDemo("Filtering Data"
             , modelGrid
             , "Filters"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "ModelGrid's data can be easily filtered, riddled or sorted in developer preferred manner."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //gridTreeView
-    demos.push(createWidget("Tree View"
+    demos.push(createDemo("Tree View"
             , modelGrid
             , "TreeView"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Tree view on top of a ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //
 //gridListView 
-    demos.push(createWidget("List View"
+    demos.push(createDemo("List View"
             , modelGrid
             , "ListView"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Simple list on top of a ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //
 //gridOrmBinding
-    demos.push(createWidget("ORM Binding"
+    demos.push(createDemo("ORM Binding"
             , modelGrid
             , "OrmBinding"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Cross browser Platypus.js binding may be used with grid and Platypus.js model's data."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //gridOOBinding 
-    demos.push(createWidget("O.o Binding"
+    demos.push(createDemo("O.o Binding"
             , modelGrid
             , "OOBinding"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "If browser supports Object.observe(), than plain JavaScript array may be bound with ModelGrid."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
 //gridToExcel
-    demos.push(createWidget("Export to Excel"
+    demos.push(createDemo("Export to Excel"
             , modelGrid
             , "ToExcel"
             , "CommonProperties"
             , 'icons/menu/popup_menu_16.png'
             , "Platypus.js has Reports subsystem, which provides a way to generate Excel documents."
             , "/**\n"
-            + " * \n"
+            + " * See customizer's source code please.\n"
             + " */\n"
             + "\n"));
 
