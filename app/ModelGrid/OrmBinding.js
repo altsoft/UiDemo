@@ -14,50 +14,58 @@ function OrmBinding() {
         form.show();
     };
 
-    var widget = new P.BorderPane();
+    var widget = new P.AnchorsPane();
     widget.width = 500;
-    widget.height = 120;
+    widget.height = 300;
+
+    var grid1 = initGrid();
+    var grid2 = initGrid();
     
-    var grid = new P.ModelGrid();
+    function initGrid() {
+        var grid = new P.ModelGrid();
+
+        grid.deletable = grid.insertable = false;
+        var colService = new P.ServiceGridColumn();
+        var colName = new P.ModelGridColumn();
+        colName.title = "Pet's name";
+        colName.minWidth = 107;
+        colName.field = 'pet';
+        colName.editor = new P.ModelCombo();
+        colName.editor.displayField = 'name';
+        var colFromDate = new P.ModelGridColumn();
+        colFromDate.title = 'From date';
+        colFromDate.minWidth = 107;
+        colFromDate.field = 'fromdate';
+        colFromDate.editor = new P.ModelDate();
+        colFromDate.editor.format = 'dd.MM.yyyy';
+        var colToDate = new P.ModelGridColumn();
+        colToDate.title = 'To date';
+        colToDate.minWidth = 107;
+        colToDate.field = 'todate';
+        colToDate.editor = new P.ModelDate();
+        colToDate.editor.format = 'dd.MM.yyyy';
+        var colIsPaid = new P.ModelGridColumn();
+        colIsPaid.title = 'Paid';
+        colIsPaid.minWidth = 65;
+        colIsPaid.field = 'ispaid';
+        colIsPaid.editor = new P.ModelCheckBox();
+
+        grid.addColumnNode(colService);
+        grid.addColumnNode(colName);
+        grid.addColumnNode(colFromDate);
+        grid.addColumnNode(colToDate);
+        grid.addColumnNode(colIsPaid);
+        
+        return grid;
+    }
     
-    grid.editable = grid.deletable = grid.insertable = false;
-    var colService = new P.ServiceGridColumn();
-    var colName = new P.ModelGridColumn();
-    colName.title = "Pet's name";
-    colName.minWidth = 107;
-    colName.field = 'pet'; 
-    colName.editor = new P.ModelCombo();
-    colName.editor.displayField = 'name';
-    var colFromDate = new P.ModelGridColumn();
-    colFromDate.title = 'From date';
-    colFromDate.minWidth = 107;
-    colFromDate.field = 'fromdate';
-    colFromDate.editor = new P.ModelDate();
-    colFromDate.editor.format = 'dd.MM.yyyy';
-    var colToDate = new P.ModelGridColumn();
-    colToDate.title = 'To date';
-    colToDate.minWidth = 107;
-    colToDate.field = 'todate';
-    colToDate.editor = new P.ModelDate();
-    colToDate.editor.format = 'dd.MM.yyyy';
-    var colIsPaid = new P.ModelGridColumn();
-    colIsPaid.title = 'Paid';
-    colIsPaid.minWidth = 65;
-    colIsPaid.field = 'ispaid';
-    colIsPaid.editor = new P.ModelCheckBox();
-    
-    grid.addColumnNode(colService);
-    grid.addColumnNode(colName);
-    grid.addColumnNode(colFromDate);
-    grid.addColumnNode(colToDate);
-    grid.addColumnNode(colIsPaid);
-    
-    widget.add(grid);
+    widget.add(grid1, {left: 0, top: 0, width: 500, height: 120});
+    widget.add(grid2, {left: 0, top: 130, width: 500, height: 120});
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
-        model.requery(function(){
-            grid.data = model.qAllVisits;
+        model.requery(function () {
+            grid1.data = grid2.data = model.qAllVisits;
         });
     };
 
