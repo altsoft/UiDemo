@@ -83,7 +83,8 @@ function MainView() {
             case 1:
             {
                 P.invokeLater(function () {
-                    if (form.grdDemos.selected[0].createdCustomForm.unfolded) {
+                    var selectedItem = form.grdDemos.selected[0];
+                    if (!selectedItem.createdCustomForm || selectedItem.createdCustomForm.unfolded) {
                         form.lblCustomSource.icon = icnExpanded;
                         form.pnlCustomSource.height = form.pnlCustomSource.element.children[0].offsetHeight;
                     } else {

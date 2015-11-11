@@ -74,11 +74,11 @@ function ProgressBarView(aDemoComponent) {
     };
 
     form.tglTransition.onActionPerformed = function (event) {
-        var progress = progressBar.element.getElementsByClassName('gwt-ProgressBar-bar');
+        var progress = progressBar.element.getElementsByClassName('progress-bar');
         if (form.tglTransition.selected) {
-            progress[0].style.transition = 'linear width 1s';
-        } else {
             progress[0].style.transition = null;
+        } else {
+            progress[0].style.transition = 'linear width 0s';
         }
     };
     form.tglTransition.onActionPerformed();
