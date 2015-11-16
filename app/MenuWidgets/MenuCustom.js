@@ -48,8 +48,11 @@ function MenuCustom() {
     item.displayName = 'MenuItem_DemoMenu 1';
     addItem(item);
     
-    var subMenu = new P.MenuItem('Submenu_1');
-    subMenu.displayName = 'Submenu_1';
+    var subMenu = new P.Menu('Submenu_1');
+    subMenu.text = 'Sub menu';
+    subMenu.add(new P.MenuItem("Sub item 1"));
+    subMenu.add(new P.MenuItem("Sub item 2"));
+    subMenu.add(new P.MenuItem("Sub item 3"));
     addItem(subMenu);
     
     item = new P.MenuSeparator()
