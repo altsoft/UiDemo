@@ -21,12 +21,12 @@
   <MenuBar cursor="0" name="menuBar" parent="view" prefHeight="20px" prefWidth="130px">
     <AnchorsPaneConstraints height="20px" left="290px" top="13px" width="130px"/>
   </MenuBar>
-  <Menu background="#3c3b37" cursor="0" foreground="#dfdbd2" name="mnuFirst" parent="menuBar" prefHeight="18px" prefWidth="39px" text="First"/>
-  <RadioMenuItem cursor="0" focusable="true" name="firstRadioMenuItem" parent="mnuFirst" prefHeight="0px" prefWidth="0px" selected="true" text="FirstMenuItem1"/>
-  <RadioMenuItem cursor="0" focusable="true" name="firstRadioMenuItem1" parent="mnuFirst" prefHeight="0px" prefWidth="0px" selected="true" text="FirstMenuItem2"/>
-  <RadioMenuItem cursor="0" focusable="true" name="firstRadioMenuItem2" parent="mnuFirst" prefHeight="0px" prefWidth="0px" selected="true" text="FirstMenuItem3"/>
-  <Menu background="#3c3b37" cursor="0" foreground="#dfdbd2" name="mnuSecond" parent="menuBar" prefHeight="18px" prefWidth="61px" text="Second"/>
-  <RadioMenuItem cursor="0" focusable="true" name="secondRadioMenuItem" parent="mnuSecond" prefHeight="23px" prefWidth="243px" selected="true" text="SecondMenuItem1"/>
-  <RadioMenuItem cursor="0" focusable="true" name="secondRadioMenuItem1" parent="mnuSecond" prefHeight="23px" prefWidth="243px" selected="true" text="SecondMenuItem1"/>
-  <RadioMenuItem cursor="0" focusable="true" name="secondRadioMenuItem2" parent="mnuSecond" prefHeight="23px" prefWidth="243px" selected="true" text="SecondMenuItem1"/>
+  <Menu cursor="0" name="mnuFirst" parent="menuBar" prefHeight="18px" prefWidth="31px" text="First"/>
+  <RadioMenuItem cursor="0" focusable="true" name="firstRadioMenuItem" parent="mnuFirst" prefHeight="22px" prefWidth="207px" selected="true" text="FirstMenuItem1"/>
+  <RadioMenuItem cursor="0" focusable="true" name="firstRadioMenuItem1" parent="mnuFirst" prefHeight="22px" prefWidth="207px" selected="true" text="FirstMenuItem2"/>
+  <RadioMenuItem cursor="0" focusable="true" name="firstRadioMenuItem2" parent="mnuFirst" prefHeight="22px" prefWidth="207px" selected="true" text="FirstMenuItem3"/>
+  <Menu cursor="0" name="mnuSecond" parent="menuBar" prefHeight="18px" prefWidth="47px" text="Second"/>
+  <RadioMenuItem cursor="0" focusable="true" name="secondRadioMenuItem" parent="mnuSecond" prefHeight="0px" prefWidth="0px" selected="true" text="SecondMenuItem1"/>
+  <RadioMenuItem cursor="0" focusable="true" name="secondRadioMenuItem1" parent="mnuSecond" prefHeight="0px" prefWidth="0px" selected="true" text="SecondMenuItem1"/>
+  <RadioMenuItem cursor="0" focusable="true" name="secondRadioMenuItem2" parent="mnuSecond" prefHeight="0px" prefWidth="0px" selected="true" text="SecondMenuItem1"/>
 </layout>
