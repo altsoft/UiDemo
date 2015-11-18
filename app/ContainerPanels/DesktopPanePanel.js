@@ -14,6 +14,7 @@ function DesktopPanePanel() {
     if (P.agent == P.HTML5) {
         internalContainer.element.style.border = "thin solid gray";
         internalContainer.element.style.borderRadius = "5px";
+        internalContainer.element.style.background = "#345";
     }
     var addPanel;
     var subject;

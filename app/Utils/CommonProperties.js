@@ -172,11 +172,11 @@ function CommonProperties(aDemoComponent) {
     };
 
     form.chOpaque.onValueChange = function (event) {
-        if (event.source.selected) {
-            demoComponent.opaque = true;
-        } else {
-            demoComponent.opaque = false;
-        }
+//        if (event.source.selected) {
+//            demoComponent.opaque = true;
+//        } else {
+//            demoComponent.opaque = false;
+//        }
     };
 
     form.ffBorder.onValueChange = function (event) {
