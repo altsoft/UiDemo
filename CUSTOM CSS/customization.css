@@ -1,0 +1,12 @@
+.gwt-ProgressBar-text {
+    mix-blend-mode: difference;
+}
+
+.gwt-SliderBar-shell {
+    border: none;
+}
+
+.gwt-SliderBar-line {
+    height: 25px;
+    border-radius: 3px;
+}
