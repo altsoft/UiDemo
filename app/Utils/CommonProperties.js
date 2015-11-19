@@ -172,11 +172,13 @@ function CommonProperties(aDemoComponent) {
     };
 
     form.chOpaque.onValueChange = function (event) {
-//        if (event.source.selected) {
-//            demoComponent.opaque = true;
-//        } else {
-//            demoComponent.opaque = false;
-//        }
+        if (demoComponent instanceof P.Label) {
+            if (event.source.selected) {
+                demoComponent.opaque = true;
+            } else {
+                demoComponent.opaque = false;
+            }
+        }
     };
 
     form.ffBorder.onValueChange = function (event) {
@@ -192,7 +194,7 @@ function CommonProperties(aDemoComponent) {
     form.mdlHeight.onValueChange = function (event) {
         demoComponent.height = componentSize.height;
         if (onComponentResize) {
-            if (componentSize.height){
+            if (componentSize.height) {
                 onComponentResize(componentSize.height);
             }
         }
