@@ -1,0 +1,109 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20.11.2015, 9:37:02
+    Author     : Алексей
+*/
+
+
+.grid-cell {
+    padding: 7px;
+}
+
+.grid-column-header {
+    padding: 7px
+}
+
+.grid-odd-row-gwt-uid-1071 {
+    background-color: rgba(52, 152, 219,0.1);
+}
+
+.service_column {
+    padding: 8px 0px 0px 0px;
+}
+
+.date-time-picker {
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.datePickerNextButton, .datePickerPreviousButton, .datePickerMonth {
+    padding: 4px 5px;
+    width: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.datePickerNextButton, .datePickerPreviousButton {
+    font-size: 21px;
+}
+
+.datePickerNextButton:hover, .datePickerPreviousButton:hover, .datePickerMonth:hover {
+    background: #f0f0f0;
+}
+
+.datePickerMonth {
+    font-weight: bold;
+    width: 140px;
+}
+
+.datePickerWeekdayLabel, .datePickerWeekendLabel {
+    font-weight: bold;
+}
+
+.datePickerWeekdayLabel, .datePickerDay, .datePickerWeekendLabel {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 4px 5px;
+    border-radius: 4px;
+}
+
+.datePickerDayIsFiller {
+    color: #a0a0a0;
+}
+
+.datePickerDay:hover {
+    cursor: pointer;
+    color: #fff;
+    background: #399adc;
+    background-image: linear-gradient(to bottom, #399adc, #2d8bc9);
+}
+
+.datePickerDayIsFiller: hover {
+    color: #eee;
+}
+
+.date-time-picker {
+    box-shadow: 3px 1px 16px 1px rgba(0, 0, 0, 0.2)
+}
+
+.date-time-picker:after {
+    content: '';
+    display: inline-block;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    position: absolute;
+    top: -5px;
+    left: 205px;
+}
+.date-time-picker:before {
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -6px;
+    left: 204px;
+}
