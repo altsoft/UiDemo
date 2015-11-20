@@ -7,7 +7,7 @@
   <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem2"/>
   <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem1" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem1"/>
   <AnchorsPane cursor="0" name="view" prefHeight="584px" prefWidth="1082px"/>
-  <ModelGrid cursor="0" editable="false" name="grdDemos" parent="view" prefHeight="563px" prefWidth="220px">
+  <ModelGrid cursor="0" editable="false" name="grdDemos" parent="view" prefHeight="563px" prefWidth="220px" rowsHeight="30">
     <AnchorsPaneConstraints bottom="11px" left="10px" top="10px" width="220px"/>
     <ModelGridColumn name="column" title="Demos" width="218px">
       <ModelFormattedField format=""/>
