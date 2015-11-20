@@ -67,6 +67,11 @@ and open the template in the editor.
     border-radius: 4px;
 }
 
+.datePickerDayIsValue {
+    background: rgba(57, 154, 220, 0.27);
+    background-image: linear-gradient(to bottom, rgba(57, 154, 220, 0.27), rgba(45, 139, 201, 0.27));
+}
+
 .datePickerDayIsFiller {
     color: #a0a0a0;
 }
