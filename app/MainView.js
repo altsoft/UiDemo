@@ -66,7 +66,7 @@ function MainView() {
         if (event.object.icon) {
             event.cell.icon = event.object.icon;
         } else {
-            event.cell.icon = icnFolder;
+            //event.cell.icon = icnFolder;
         }
     };
 
