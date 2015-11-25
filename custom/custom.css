@@ -1,0 +1,126 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25.11.2015, 14:19:38
+    Author     : Алексей
+*/
+
+div.time-picker-button, div.date-picker-button, div.date-select, div.decorator-clear
+, div.grid-columns-chevron{
+    background-image: none;
+}
+
+div.date-select:before, div.time-picker-button:before, div.date-picker-button:before
+, div.decorator-clear:before, div.grid-columns-chevron:before {
+    font-family: Flaticon;
+    font-size: 16px;
+    position: relative;
+}
+
+div.time-picker-button:before, div.date-picker-button:before {
+    top: 7px;
+    left: 50%;
+    margin-left: -10px;
+}
+
+div.date-select:before, div.decorator-clear:before {
+    top: 6px;
+}
+
+div.time-picker-button, div.date-picker-button {
+    height: 28px!important;
+}
+
+div.date-select {
+    width: 25px;
+}
+
+div.date-select:before {
+    content: "\e007";
+}
+
+.decorator-clear {
+    width: 14px;
+    padding-right: 3px;
+}
+
+div.decorator-clear:before {
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+    font-size: 12px;
+    content: "\e006";
+}
+
+div.time-picker-button:before {
+    content: "\e004";
+}
+
+div.date-picker-button:before {
+    content: "\e007";
+}
+
+div.grid-columns-chevron {
+    right: 4px;
+    opacity: 0.6;
+    height: 15px;
+    width: 15px;
+    color: white;
+    text-shadow: 1px 1px 1px rgb(0,0,0);
+}
+div.grid-columns-chevron:hover {
+    opacity: 1;
+}
+
+div.grid-columns-chevron:before {
+    content: "\e016";
+}
+
+.grid-column-header {
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.grid-marker-cell-cursor:before {
+    content: "\e011";
+}
+
+.treegrid-expanded-cell, .treegrid-collapased-cell {
+    background-image: none;
+}
+
+div.treegrid-expanded-cell:before, div.treegrid-collapased-cell:before {
+    font-family: Flaticon;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    margin-left: -8px;
+    color: #337ab7;
+}
+
+div.treegrid-expanded-cell:before {
+    content: "\e00a";
+}
+
+div.treegrid-collapased-cell:before {
+    content: "\e012";
+}
+
+div.window-tool-minimize:before {
+    content: "\e009";
+}
+
+.window-tool-maximize:before {
+    content: "\e00b";
+}
+
+.window-tool-close:before {
+    content: "\e008";
+}
+
+.window-tool-restore:before {
+    content: "\e015";
+}
