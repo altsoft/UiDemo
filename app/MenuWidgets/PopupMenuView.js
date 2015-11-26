@@ -4,12 +4,9 @@
  */
 function PopupMenuView(allItemsList) {
     var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
+            , form = P.loadForm(this.constructor.name);
     var widget = new P.Label('Right click to call popup menu');
     form.panel.add(widget);
-    model.requery(function () {
-    });
 
     self.getDemoComponent = function () {
         return widget;

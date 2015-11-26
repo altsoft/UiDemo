@@ -8,14 +8,8 @@ function ToolbarPanel(aPlaygroundPanel) {
             , form = P.loadForm(this.constructor.name, model);
     var counter = 1;
     var internalContainer = new P.ToolBar();
-    internalContainer.width = 765;
-    internalContainer.height = 50;
-
-
-    if (P.agent == P.HTML5) {
-        internalContainer.element.style.border = "thin solid gray";
-        internalContainer.element.style.borderRadius = "5px";
-    }
+    internalContainer.width = 752;
+    internalContainer.height = 40;
 
     self.getDemoComponent = function () {
         return internalContainer;

@@ -2,6 +2,8 @@
  * 
  * @author jskonst
  */
+/* global P */
+/* global SyntaxHighlighter */
 
 var global = this;
 var demoMenuList = [];
@@ -27,28 +29,8 @@ function MainView() {
         lbLoad.text = null;
     });
 
-    var icnExpanded;
-    P.Icon.load('icons/expanded.png', function (data) {
-        icnExpanded = data;
-    });
-
-    var icnCollapsed;
-    P.Icon.load('icons/collapsed.png', function (data) {
-        icnCollapsed = data;
-    });
-
-    var icnFolder;
-    P.Icon.load('icons/folder.png', function (data) {
-        icnFolder = data;
-    });
-
-    var icnFolderOpen;
-    P.Icon.load('icons/open.png', function (data) {
-        icnFolderOpen = data;
-    });
-
-    var demosList = DemosList();
-    form.grdDemos.data = demosList;
+    var demos = demosList();
+    form.grdDemos.data = demos;
     form.grdDemos.column.field = "name";
     form.grdDemos.parentField = 'parent';
     form.grdDemos.childrenField = 'children';
@@ -58,17 +40,47 @@ function MainView() {
     form.grdDemos.showVerticalLines = false;
     form.grdDemos.showOddRowsInOtherColor = false;
 
-    if (P.agent == P.HTML5) {
+    if (P.agent === P.HTML5) {
         form.lblViewSource.cursor = 'pointer';
         form.lblCustomSource.cursor = 'pointer';
     }
     form.grdDemos.column.onRender = function (event) {
         if (event.object.icon) {
-            event.cell.icon = event.object.icon;
-        } else {
-            //event.cell.icon = icnFolder;
+            if (event.object.loadedIcon)
+                event.cell.icon = event.object.loadedIcon;
+            else {
+                P.Icon.load(event.object.icon, function (aLoaded) {
+                    event.cell.icon = aLoaded;
+                    event.object.loadedIcon = aLoaded;
+                });
+            }
         }
     };
+
+    var ensureExpandedCollapsedIcons = (function () {
+        var icnExpanded;
+        var icnCollapsed;
+        return function (aIconsConsumer) {
+            if (icnExpanded && icnCollapsed) {
+                P.invokeLater(function () {
+                    aIconsConsumer(icnExpanded, icnCollapsed);
+                });
+            } else {
+                P.Icon.load('icons/expanded.png', function (data) {
+                    icnExpanded = data;
+                    if (icnExpanded && icnCollapsed) {
+                        aIconsConsumer(icnExpanded, icnCollapsed);
+                    }
+                });
+                P.Icon.load('icons/collapsed.png', function (data) {
+                    icnCollapsed = data;
+                    if (icnExpanded && icnCollapsed) {
+                        aIconsConsumer(icnExpanded, icnCollapsed);
+                    }
+                });
+            }
+        };
+    }());
 
     function onTabChanged() {
         SyntaxHighlighter.highlight();
@@ -82,7 +94,7 @@ function MainView() {
             }
             case 1:
             {
-                P.invokeLater(function () {
+                ensureExpandedCollapsedIcons(function (icnExpanded, icnCollapsed) {
                     var selectedItem = form.grdDemos.selected[0];
                     if (!selectedItem.createdCustomForm || selectedItem.createdCustomForm.unfolded) {
                         form.lblCustomSource.icon = icnExpanded;
@@ -99,7 +111,7 @@ function MainView() {
             }
             case 2:
             {
-                P.invokeLater(function () {
+                ensureExpandedCollapsedIcons(function (icnExpanded, icnCollapsed) {
                     if (form.grdDemos.selected[0].createdViewForm.unfolded) {
                         form.pnlViewSourceCode.height = form.pnlViewSourceCode.element.children[0].offsetHeight;
                         form.lblViewSource.icon = icnExpanded;
@@ -234,10 +246,10 @@ function MainView() {
     };
 
     self.show = function () {
-        if (P.agent == P.HTML5) {
+        if (P.agent === P.HTML5) {
             form.view.showOn(document.getElementById('Main'));
             P.invokeLater(function () {
-                form.grdDemos.select(demosList[0]);
+                form.grdDemos.select(demos[0]);
                 var loadingProgress = document.getElementById('LoadingProgress');
                 loadingProgress.remove();
             });
@@ -254,30 +266,34 @@ function MainView() {
     };
 
     form.lblCustomSource.onMouseClicked = function (event) {
-        if (form.grdDemos.selected[0].createdCustomForm.unfolded) {
-            form.lblCustomSource.icon = icnCollapsed;
-            form.pnlCustomSource.height = 0;
-            form.grdDemos.selected[0].createdCustomForm.unfolded = false;
-        } else {
-            form.lblCustomSource.icon = icnExpanded;
-            form.pnlCustomSource.height = form.pnlCustomSource.element.children[0].offsetHeight;
-            form.grdDemos.selected[0].createdCustomForm.unfolded = true;
-        }
-        form.pnlCustomize.height = form.pnlCustomProperties.height + form.lblCustomSource.height + form.pnlCustomSource.height;
-        form.tpSections.height = form.pnlCustomize.height + tabTitleHeight;
+        ensureExpandedCollapsedIcons(function (icnExpanded, icnCollapsed) {
+            if (form.grdDemos.selected[0].createdCustomForm.unfolded) {
+                form.lblCustomSource.icon = icnCollapsed;
+                form.pnlCustomSource.height = 0;
+                form.grdDemos.selected[0].createdCustomForm.unfolded = false;
+            } else {
+                form.lblCustomSource.icon = icnExpanded;
+                form.pnlCustomSource.height = form.pnlCustomSource.element.children[0].offsetHeight;
+                form.grdDemos.selected[0].createdCustomForm.unfolded = true;
+            }
+            form.pnlCustomize.height = form.pnlCustomProperties.height + form.lblCustomSource.height + form.pnlCustomSource.height;
+            form.tpSections.height = form.pnlCustomize.height + tabTitleHeight;
+        });
     };
 
     form.lblViewSource.onMouseClicked = function (event) {
-        if (form.grdDemos.selected[0].createdViewForm.unfolded) {
-            form.lblViewSource.icon = icnCollapsed;
-            form.pnlViewSourceCode.height = 0;
-            form.grdDemos.selected[0].createdViewForm.unfolded = false;
-        } else {
-            form.lblViewSource.icon = icnExpanded;
-            form.pnlViewSourceCode.height = form.pnlViewSourceCode.element.children[0].offsetHeight;
-            form.grdDemos.selected[0].createdViewForm.unfolded = true;
-        }
-        form.pnlView.height = form.pnlViewProperties.height + form.lblViewSource.height + form.pnlViewSourceCode.height;
-        form.tpSections.height = form.pnlView.height + tabTitleHeight;
+        ensureExpandedCollapsedIcons(function (icnExpanded, icnCollapsed) {
+            if (form.grdDemos.selected[0].createdViewForm.unfolded) {
+                form.lblViewSource.icon = icnCollapsed;
+                form.pnlViewSourceCode.height = 0;
+                form.grdDemos.selected[0].createdViewForm.unfolded = false;
+            } else {
+                form.lblViewSource.icon = icnExpanded;
+                form.pnlViewSourceCode.height = form.pnlViewSourceCode.element.children[0].offsetHeight;
+                form.grdDemos.selected[0].createdViewForm.unfolded = true;
+            }
+            form.pnlView.height = form.pnlViewProperties.height + form.lblViewSource.height + form.pnlViewSourceCode.height;
+            form.tpSections.height = form.pnlView.height + tabTitleHeight;
+        });
     };
 }

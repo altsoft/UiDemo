@@ -24,10 +24,11 @@ function EditingPopup() {
     var colService = new P.ServiceGridColumn();
     var colName = new P.ModelGridColumn();
     colName.title = "Pet";
-    colName.minWidth = 107;
+    colName.minWidth = 10;
     colName.field = 'pet'; 
     colName.editor = new P.ModelCombo();
     colName.editor.displayField = 'name';
+    colName.editor.list = false;
     // In demo code it is ok, but in production, modules dependencied should be
     // resolved more accurate.
     require('PetSelector', function(PetSelector){

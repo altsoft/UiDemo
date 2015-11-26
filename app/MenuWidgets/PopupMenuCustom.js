@@ -16,7 +16,6 @@ function PopupMenuCustom() {
         commonView = view;
     };
 
-
     var allItemsList = [];
     var menuView = new PopupMenuView(allItemsList);
     self.getDemoComponent = function () {
@@ -46,7 +45,7 @@ function PopupMenuCustom() {
         form.btnAddSeparator.enabled = isEnable;
     }
 
-var menu = new P.PopupMenu();
+    var menu = new P.PopupMenu();
     var element = {name: 'Popup menu 1', menu: menu, childlist: []};
     demoMenuList.push(element);
     allItemsList.push(element);
