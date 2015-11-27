@@ -611,7 +611,7 @@ function demosList() {
                     + "\n"},
 //
 //gridFrozenColumns;
-        {name: 'rozen Columns'
+        {name: 'Frozen Columns'
             , parent: modelGrid
             , customForm: "FrozenColumns"
             , commonForm: "CommonProperties"
