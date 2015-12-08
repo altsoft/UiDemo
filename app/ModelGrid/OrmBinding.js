@@ -16,7 +16,7 @@ function OrmBinding() {
 
     var widget = new P.AnchorsPane();
     widget.width = 500;
-    widget.height = 300;
+    widget.height = 400;
 
     var grid1 = initGrid();
     var grid2 = initGrid();
@@ -59,8 +59,8 @@ function OrmBinding() {
         return grid;
     }
     
-    widget.add(grid1, {left: 0, top: 0, width: 500, height: 120});
-    widget.add(grid2, {left: 0, top: 130, width: 500, height: 120});
+    widget.add(grid1, {left: 0, top: 0, width: 500, height: 180});
+    widget.add(grid2, {left: 0, top: 210, width: 500, height: 180});
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);

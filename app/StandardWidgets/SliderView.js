@@ -10,6 +10,7 @@ function SliderView(aDemoComponent) {
     var slider = new P.Slider("Slider");
     slider.height = 40;
     slider.width = 500;
+    slider.value = 60;
 
     var sliderParams = {'maximum': 100,
         'minimum': 0,

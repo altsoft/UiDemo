@@ -16,7 +16,7 @@ function Filters() {
 
     var widget = new P.AnchorsPane();
     widget.width = 750;
-    widget.height = 120;
+    widget.height = 180;
 
     var petsGrid = new P.ModelGrid();
     petsGrid.editable = petsGrid.deletable = petsGrid.insertable = false;
@@ -33,8 +33,8 @@ function Filters() {
     var filterLabel = new P.Label('Filter pets by name:');
 
     widget.add(filterLabel, {left: 0, width: 200, top: 0, bottom: 0, height: 20});
-    widget.add(filterInput, {left: 0, width: 200, top: 25, bottom: 0, height: 20});
-    widget.add(petsGrid, {left: 250, width: 150, top: 0, bottom: 0, height: 120});
+    widget.add(filterInput, {left: 0, width: 200, top: 30, bottom: 0, height: 30});
+    widget.add(petsGrid, {left: 250, width: 200, top: 20, bottom: 0, height: 150});
 
     filterInput.onValueChange = filterInput.onKeyReleased = function (evt) {
         var filterKey = filterInput.text;

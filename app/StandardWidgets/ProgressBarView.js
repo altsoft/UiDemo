@@ -9,6 +9,7 @@ function ProgressBarView(aDemoComponent) {
     var progressBar = new P.ProgressBar();
     progressBar.height = 30;
     progressBar.width = 500;
+    progressBar.value = 60;
     form.tglTransition.selected = true;
 
 

@@ -194,7 +194,7 @@ function MainView() {
                     global[customForm].created = new global[customForm]();
                 }
                 var custom = global[customForm].created;
-                P.Logger.info(customForm);
+//                P.Logger.info(customForm);
 //                if (form.grdDemos.selected[0].createdCustomForm) {
 //                    widget = form.grdDemos.selected[0].widget;
 //                    demoForm = form.grdDemos.selected[0].demoForm;

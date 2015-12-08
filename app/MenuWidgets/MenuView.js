@@ -11,9 +11,6 @@ function MenuView(allItemsList) {
     
     form.panel.add(widget);
 
-    model.requery(function () {
-    });
-
     self.getDemoComponent = function () {
         return widget;
     };

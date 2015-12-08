@@ -15,8 +15,8 @@ function MultiHeader() {
     };
 
     var widget = new P.BorderPane();
-    widget.width = 500;
-    widget.height = 150;
+    widget.width = 600;
+    widget.height = 190;
     
     var grid = new P.ModelGrid();
     

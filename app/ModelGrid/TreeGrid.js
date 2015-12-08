@@ -29,7 +29,7 @@ function TreeGrid() {
 
     var widget = new P.AnchorsPane();
     widget.width = 750;
-    widget.height = 120;
+    widget.height = 180;
 
     var ownersPetsGrid = new P.ModelGrid();
     ownersPetsGrid.editable = ownersPetsGrid.deletable = ownersPetsGrid.insertable = false;
@@ -44,7 +44,7 @@ function TreeGrid() {
     colName.field = 'aName';
     ownersPetsGrid.addColumnNode(colName);
 
-    widget.add(ownersPetsGrid, {left: 0, width: 150, top: 0, bottom: 0, height: 120});
+    widget.add(ownersPetsGrid, {left: 0, width: 200, top: 0, bottom: 0, height: 170});
     
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);

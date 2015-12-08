@@ -16,7 +16,7 @@ function ToExcel() {
 
     var widget = new P.AnchorsPane();
     widget.width = 500;
-    widget.height = 150;
+    widget.height = 200;
 
     var grdExport = new P.ModelGrid();
     grdExport.editable = grdExport.deletable = grdExport.insertable = false;
@@ -68,7 +68,7 @@ function ToExcel() {
     };
 
     widget.add(btnReport, {left: 0, width: 100, top: 0, height: 30});
-    widget.add(grdExport, {left: 0, width: 500, top: 40, height: 120});
+    widget.add(grdExport, {left: 0, width: 500, top: 40, height: 160});
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);

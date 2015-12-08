@@ -16,7 +16,7 @@ function OOBinding() {
 
     var widget = new P.AnchorsPane();
     widget.width = 500;
-    widget.height = 300;
+    widget.height = 400;
 
     function initGrid() {
         var grid = new P.ModelGrid();
@@ -56,18 +56,18 @@ function OOBinding() {
 
     var grid1 = initGrid();
     var grid2 = initGrid();
-    widget.add(grid1, {left: 0, top: 0, width: 500, height: 120});
-    widget.add(grid2, {left: 0, top: 130, width: 500, height: 120});
+    widget.add(grid1, {left: 0, top: 0, width: 500, height: 180});
+    widget.add(grid2, {left: 0, top: 210, width: 500, height: 180});
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
         grid1.data = grid2.data = [
-            {pet: 'Vaska', fromdate: new Date(), todate: new Date(), ispaid: true},
-            {pet: 'Drujok', fromdate: new Date(), todate: new Date(), ispaid: false},
             {pet: 'Jerry', fromdate: new Date(), todate: new Date(), ispaid: true},
             {pet: 'Tom', fromdate: new Date(), todate: new Date(), ispaid: false},
+            {pet: 'Drujok', fromdate: new Date(), todate: new Date(), ispaid: false},
+            {pet: 'Mailo', fromdate: new Date(), todate: new Date(), ispaid: false},
             {pet: 'Pick', fromdate: new Date(), todate: new Date(), ispaid: true},
-            {pet: 'Mailo', fromdate: new Date(), todate: new Date(), ispaid: false}
+            {pet: 'Vaska', fromdate: new Date(), todate: new Date(), ispaid: true}
         ];
     };
 

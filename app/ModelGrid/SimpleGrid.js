@@ -16,7 +16,7 @@ function SimpleGrid() {
 
     var widget = new P.BorderPane();
     widget.width = 500;
-    widget.height = 120;
+    widget.height = 150;
     
     var grid = new P.ModelGrid();
     grid.editable = grid.deletable = grid.insertable = false;

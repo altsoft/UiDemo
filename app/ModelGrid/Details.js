@@ -16,7 +16,7 @@ function Details() {
 
     var widget = new P.AnchorsPane();
     widget.width = 750;
-    widget.height = 120;
+    widget.height = 170;
     
     var masterGrid = new P.ModelGrid();
     masterGrid.editable = masterGrid.deletable = masterGrid.insertable = false;
@@ -29,7 +29,7 @@ function Details() {
     colName.field = 'name'; 
     masterGrid.addColumnNode(colName);
     
-    widget.add(masterGrid, {left: 0, width: 150, top: 0, bottom: 0});
+    widget.add(masterGrid, {left: 0, width: 170, top: 0, bottom: 0});
     
     var detailGrid = new P.ModelGrid();
     
@@ -57,7 +57,7 @@ function Details() {
     detailGrid.addColumnNode(colToDate);
     detailGrid.addColumnNode(colIsPaid);
     
-    widget.add(detailGrid, {left: 170, width: 400, top: 0, bottom: 0, height: 120});
+    widget.add(detailGrid, {left: 200, width: 400, top: 0, bottom: 0, height: 120});
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);
