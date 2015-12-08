@@ -133,14 +133,18 @@ function MainView() {
             form.pnlPlayground.height = height + hMargin * 2;
         }
     };
-
+    var widget;
+    var demoForm;
+    var w = Math.round(form.pnlPlayground.width / 2 - 100);
+    form.pnlPlayground.add(lbLoad, new P.Anchors(w, 200, w, hMargin, 200, hMargin));
+    lbLoad.visible = false;
     form.grdDemos.onItemSelected = function (event) {
-        form.pnlPlayground.clear(); //Clean demo components place
-        var w = Math.round(form.pnlPlayground.width / 2 - 100);
+        
         form.pnlPlayground.height = lbLoad.height + 2 * hMargin;
-        form.pnlPlayground.add(lbLoad, new P.Anchors(w, 200, w, hMargin, 200, hMargin));
-        form.pnlCreation.clear();
-
+        lbLoad.visible = true;
+        if (demoForm){
+            form.pnlPlayground.remove(demoForm); //Clean demo components place
+        }
         if (form.grdDemos.selected[0].creationCode) {
             form.pnlCreation.element.innerHTML = '<pre class="brush: js">' + form.grdDemos.selected[0].creationCode + '</pre>';
             P.invokeLater(function () {
@@ -173,10 +177,9 @@ function MainView() {
         }
 
         if (form.grdDemos.selected[0].parent) {
-            var widget;
-            var demoForm;
-            P.require(modules, function () {
 
+            P.require(modules, function () {
+                   lbLoad.visible = false;
                 if (form.grdDemos.selected[0].dependencies) {
                     var dependencies = [];
                     if (!Array.isArray(form.grdDemos.selected[0].dependencies)) {
@@ -208,11 +211,8 @@ function MainView() {
                 custom.showOnPanel(form.pnlCustomProperties);
                 try {
                     form.pnlCustomSource.element.innerHTML = '<pre class="brush: js">' + custom.constructor.toString() + '</pre>';
-                    form.pnlPlayground.clear();
                     form.pnlPlayground.add(demoForm, new P.Anchors(hMargin, demoForm.width, hMargin, vMargin, demoForm.height, null));
-
                     form.pnlPlayground.height = demoForm.height + vMargin * 2;
-                    form.pnlPlayground.remove(lbLoad);
                 } catch (ex) {
                     P.Logger.warning(ex);
                     P.Logger.warning("Here again");
@@ -240,6 +240,9 @@ function MainView() {
                     onTabChanged();
                 });
 
+            }, function (){
+                lbLoad.visible = false;
+                P.Logger.warning('Something bad havejust happend');
             });
         }
 
