@@ -55,6 +55,11 @@ function FormattedFieldView() {
             valueType: 'Array',
             format: '',
             value: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        }, {
+            name: 'Custom (E-mail)',
+            valueType: 'Email',
+            format: '',
+            value: 'test@test.com'
         }
     ];
 
@@ -159,9 +164,26 @@ function FormattedFieldView() {
         return event.source.value !== null ? event.source.value.join(', ') : '';
     }
 
+    function onParseEmail(event) {
+        var value = event.source.text;
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (re.test(value)) {
+            event.source.background = null;
+            event.source.toolTipText = "";
+            return value;
+        } else {
+            event.source.background = P.Color.PINK;
+            event.source.toolTipText = "Enter valid E-mail adress";
+            return null;
+        }
+    }
+    function onFormatEmail(event) {
+        return event.source.value !== null ? event.source.value : event.source.text;
+    }
+
     form.mcmbValueType.onValueChange = function (event) {
         formattedField.background = null;
-        
+
         if (form.mcmbValueType.value.valueType === 'Percent') {
             formattedField.onParse = onParsePercent;
             formattedField.onFormat = onFormatPercent;
@@ -171,6 +193,9 @@ function FormattedFieldView() {
         } else if (form.mcmbValueType.value.valueType === 'Array') {
             formattedField.onParse = onParseArray;
             formattedField.onFormat = onFormatArray;
+        } else if (form.mcmbValueType.value.valueType === 'Email') {
+            formattedField.onParse = onParseEmail;
+            formattedField.onFormat = onFormatEmail;
         } else {
             formattedField.onParse = null;
             formattedField.onFormat = null;
