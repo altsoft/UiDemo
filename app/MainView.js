@@ -8,9 +8,13 @@
 var global = this;
 var demoMenuList = [];
 var buttonGroups = [];
-var colorsArray = [new P.Color('#49a7f0'), new P.Color('#67eacc'), new P.Color('#6fea58'),
-    new P.Color('#ea6dda'), new P.Color('#fa9037'), P.Color.PINK,
-    new P.Color('#f04949'), new P.Color('#b6b6b6'), new P.Color('#f5e04f')];
+var colorsArray = [new P.Color('#E74C3C'), new P.Color('#26A65B'), new P.Color('#2980b9'),
+    new P.Color('#27ae60'), new P.Color('#c0392b'), P.Color.PINK,
+    new P.Color('#8e44ad'), new P.Color('#1dd2af'), new P.Color('#19b698'), new P.Color('#40d47e'),
+    new P.Color('#2cc36b'), new P.Color('#4aa3df'), new P.Color('#2e8ece'), new P.Color('#a66bbe'),
+    new P.Color('#9b50ba'), new P.Color('#3d566e'), new P.Color('#354b60'), new P.Color('#f2ca27'),
+    new P.Color('#e98b39'), new P.Color('#f4a62a'), new P.Color('#ec5e00'), new P.Color('#ea6153'),
+    new P.Color('#d14233'), new P.Color('#fbfcfc')];
 
 function MainView() {
     var self = this
@@ -143,7 +147,7 @@ function MainView() {
         var demoForm;
         var w = Math.round(form.pnlPlayground.width / 2 - 100);
         form.pnlPlayground.clear(); //Clean demo components place
-         form.pnlPlayground.height = lbLoad.height + 2 * hMargin;
+        form.pnlPlayground.height = lbLoad.height + 2 * hMargin;
         form.pnlPlayground.add(lbLoad, new P.Anchors(w, 200, w, hMargin, 200, hMargin));
 
         if (form.grdDemos.selected[0].creationCode) {
