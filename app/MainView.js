@@ -9,12 +9,20 @@ var global = this;
 var demoMenuList = [];
 var buttonGroups = [];
 var colorsArray = [new P.Color('#E74C3C'), new P.Color('#26A65B'), new P.Color('#2980b9'),
-    new P.Color('#27ae60'), new P.Color('#c0392b'), P.Color.PINK,
+    new P.Color('#27ae60'), new P.Color('#c0392b'), P.Color.PINK, new P.Color('#7F8C8D'),
     new P.Color('#8e44ad'), new P.Color('#1dd2af'), new P.Color('#19b698'), new P.Color('#40d47e'),
     new P.Color('#2cc36b'), new P.Color('#4aa3df'), new P.Color('#2e8ece'), new P.Color('#a66bbe'),
     new P.Color('#9b50ba'), new P.Color('#3d566e'), new P.Color('#354b60'), new P.Color('#f2ca27'),
     new P.Color('#e98b39'), new P.Color('#f4a62a'), new P.Color('#ec5e00'), new P.Color('#ea6153'),
-    new P.Color('#d14233'), new P.Color('#fbfcfc')];
+    new P.Color('#d14233'), new P.Color('#cbd0d3'), new P.Color('#a3b1b2'),
+    new P.Color('#8c9899'), new P.Color('#1ABC9C'), new P.Color('#16A085'), new P.Color('#2ECC71'),
+    new P.Color('#27AE60'), new P.Color('#3498DB'), new P.Color('#2980B9'), new P.Color('#9B59B6'),
+    new P.Color('#8E44AD'), new P.Color('#34495E'), new P.Color('#2C3E50'), new P.Color('#F1C40F'),
+    new P.Color('#F39C12'), new P.Color('#E67E22'), new P.Color('#D35400'), new P.Color('#E74C3C'),
+    new P.Color('#C0392B'), new P.Color('#95A5A6')
+
+
+];
 
 function MainView() {
     var self = this
