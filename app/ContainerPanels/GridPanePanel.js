@@ -111,26 +111,26 @@ function GridPanePanel() {
         });
     }
 
-    placePnlElement('#49a7f0', 0, 0);
-    placePnlElement('#67eacc', 0, 1);
+    placePnlElement('#2980b9', 0, 0);
+    placePnlElement('#1dd2af', 0, 1);
     var btn1 = new P.Button('Cell 0.2');
     demoContainer.add(btn1, 0, 2);
     btn1.itemname = btn1.text;
     addComponentTolist(btn1);
 
-    placePnlElement('#6fea58', 1, 0);
+    placePnlElement('#40d47e', 1, 0);
     var btn2 = new P.Button('Cell 1.1');
     btn2.itemname = btn2.text;
     demoContainer.add(btn2, 1, 1);
     addComponentTolist(btn2);
-    placePnlElement('#ea6dda', 1, 2);
+    placePnlElement('#9b50ba', 1, 2);
 
     var btn3 = new P.Button('Cell 2.0');
     btn3.itemname = btn3.text;
     demoContainer.add(btn3, 2, 0);
     addComponentTolist(btn3);
-    placePnlElement('#fa9037', 2, 1);
-    placePnlElement('#f04949', 2, 2);
+    placePnlElement('#D35400', 2, 1);
+    placePnlElement('#E74C3C', 2, 2);
 
     self.showOnPanel = function (aPanel) {
         aPanel.add(form.view);

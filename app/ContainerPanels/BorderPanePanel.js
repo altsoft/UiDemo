@@ -64,11 +64,11 @@ function BorderPanePanel() {
         demoContainer.add(pnlSubject, aPosition);
     }
 
-    placePnlElement('#49a7f0', 'TOP', P.VerticalPosition.TOP, null, 50);
-    placePnlElement('#ea6dda', 'BOTTOM', P.VerticalPosition.BOTTOM, null, 50);
-    placePnlElement('#f5e04f', 'CENTER', P.HorizontalPosition.CENTER);
-    placePnlElement('#67eacc', 'LEFT', P.HorizontalPosition.LEFT, 60);
-    placePnlElement('#6fea58', 'RIGHT', P.HorizontalPosition.RIGHT, 60);
+    placePnlElement('#2980b9', 'TOP', P.VerticalPosition.TOP, null, 50);
+    placePnlElement('#9b50ba', 'BOTTOM', P.VerticalPosition.BOTTOM, null, 50);
+    placePnlElement('#F1C40F', 'CENTER', P.HorizontalPosition.CENTER);
+    placePnlElement('#19b698', 'LEFT', P.HorizontalPosition.LEFT, 60);
+    placePnlElement('#26A65B', 'RIGHT', P.HorizontalPosition.RIGHT, 60);
     form.mcmbElList.displayList = demoContainer.children();
 
     self.showOnPanel = function (aPanel) {
