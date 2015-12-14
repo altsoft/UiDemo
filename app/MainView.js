@@ -145,6 +145,7 @@ function MainView() {
     form.grdDemos.onItemSelected = function (event) {
         var widget;
         var demoForm;
+        form.grdDemos.expand(event.item);
         var w = Math.round(form.pnlPlayground.width / 2 - 100);
         form.pnlPlayground.clear(); //Clean demo components place
         form.pnlPlayground.height = lbLoad.height + 2 * hMargin;
