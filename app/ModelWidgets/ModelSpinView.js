@@ -14,8 +14,8 @@ function ModelSpinView() {
     widget.field = "cursor.cost";
     widget.emptyText = "Enter cost...";
     form.panel.add(widget);
+    
     model.requery(function () {
-        // TODO : place your code here
     });
 
     self.getDemoComponent = function () {

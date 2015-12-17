@@ -20,8 +20,6 @@ var colorsArray = [new P.Color('#E74C3C'), new P.Color('#26A65B'), new P.Color('
     new P.Color('#8E44AD'), new P.Color('#34495E'), new P.Color('#2C3E50'), new P.Color('#F1C40F'),
     new P.Color('#F39C12'), new P.Color('#E67E22'), new P.Color('#D35400'), new P.Color('#E74C3C'),
     new P.Color('#C0392B'), new P.Color('#95A5A6')
-
-
 ];
 
 function MainView() {
@@ -150,10 +148,15 @@ function MainView() {
     var w = Math.round(form.pnlPlayground.width / 2 - 100);
     form.pnlPlayground.add(lbLoad, new P.Anchors(w, 200, w, hMargin, 200, hMargin));
     lbLoad.visible = false;
+    form.grdDemos.onMouseClicked = function(event) {
+        if(event.clickCount === 1){
+            form.grdDemos.toggle(form.grdDemos.selected[0]);
+        }
+    };
+
     form.grdDemos.onItemSelected = function (event) {
         var widget;
         var demoForm;
-        form.grdDemos.expand(event.item);
         var w = Math.round(form.pnlPlayground.width / 2 - 100);
         form.pnlPlayground.clear(); //Clean demo components place
         form.pnlPlayground.height = lbLoad.height + 2 * hMargin;
@@ -178,48 +181,27 @@ function MainView() {
         }
         form.lblShortInfo.text = hint;
 
-        var modules = [];
+        var modules = [customForm];
         if (form.grdDemos.selected[0].dependencies) {
-            modules.push(customForm);
             if (Array.isArray(form.grdDemos.selected[0].dependencies)) {
                 Array.prototype.push.apply(modules, form.grdDemos.selected[0].dependencies);
             } else {
                 modules.push(form.grdDemos.selected[0].dependencies);
             }
-        } else {
-            modules = customForm;
         }
 
         if (form.grdDemos.selected[0].parent) {
-
             P.require(modules, function () {
-                if (form.grdDemos.selected[0].dependencies) {
-                    var dependencies = [];
-                    if (!Array.isArray(form.grdDemos.selected[0].dependencies)) {
-                        dependencies.push(form.grdDemos.selected[0].dependencies);
-                    } else {
-                        dependencies = form.grdDemos.selected[0].dependencies;
+                modules.forEach(function (aModule) {
+                    if (!global[aModule].created) {
+                        global[aModule].created = new global[aModule]();
                     }
-                    dependencies.forEach(function (item, i, arr) {
-                        if (!global[item].created) {
-                            global[item].created = new global[item]();
-                        }
-                    });
-                }
-                if (!global[customForm].created) {
-                    global[customForm].created = new global[customForm]();
-                }
+                });
                 var custom = global[customForm].created;
-//                P.Logger.info(customForm);
-//                if (form.grdDemos.selected[0].createdCustomForm) {
-//                    widget = form.grdDemos.selected[0].widget;
-//                    demoForm = form.grdDemos.selected[0].demoForm;
-//                } else {
                 widget = custom.getDemoComponent();
                 demoForm = custom.getViewComponent();
                 custom.unfolded = false;
                 form.grdDemos.selected[0].createdCustomForm = custom;
-//                }
                 form.pnlCustomProperties.clear();
                 custom.showOnPanel(form.pnlCustomProperties);
                 try {

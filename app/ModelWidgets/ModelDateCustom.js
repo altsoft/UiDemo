@@ -17,8 +17,8 @@ function ModelDateCustom() {
     mdlDate.data = model.qAllVisits;
     mdlDate.field = 'cursor.fromdate';
     
-    mdlDate.width = 500;
-    mdlDate.height = 29;
+    mdlDate.width = 300;
+    mdlDate.height = 30;
     var fieldsList = [{field: 'cursor.fromdate'}, {field: 'cursor.todate'}];
     form.chIsDate.selected = mdlDate.datePicker;
     form.chIsTime.selected = mdlDate.timePicker;

@@ -11,15 +11,13 @@ function ModelSpinCustom() {
         form.show();
     };
 
-    var demoComponent = new ModelSpinView();
-
-   
     var mdlSpin = new P.ModelSpin();
     mdlSpin.data = model.qAllVisits;
     mdlSpin.field = "cursor.cost";
     mdlSpin.emptyText = "Enter cost...";
-    mdlSpin.height = 29;
+    
     mdlSpin.width = 300;
+    mdlSpin.height = 30;
     form.txtData.text = "model.qAllVisits";
     form.txtField.text = "'" + mdlSpin.field + "'";
     form.txtValue.text = mdlSpin.value;

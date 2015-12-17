@@ -24,8 +24,8 @@ function ModelTextCustom() {
     var mdlText = new P.ModelFormattedField();
     mdlText.data = model.qAllOwners;
     mdlText.field = "cursor.firstname";
-    mdlText.height = 29;
-    mdlText.width = 200;
+    mdlText.height = 30;
+    mdlText.width = 300;
     form.txtData.text = 'model.qAllOwners';
     form.mcField.displayList = fieldsList;
     form.mcField.displayField = 'field';

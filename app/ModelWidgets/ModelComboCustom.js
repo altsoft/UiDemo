@@ -18,8 +18,8 @@ function ModelComboCustom() {
     mdlComboBox.displayList = model.qAllPets;
     mdlComboBox.emptyText = "Choose a pet...";
     mdlComboBox.field = "cursor.pet";
-    mdlComboBox.height =29;
-    mdlComboBox.width = 200;
+    mdlComboBox.width = 300;
+    mdlComboBox.height = 30;
     
     form.txtData.text = "model.qAllVisits";
     form.txtField.text = "'" + mdlComboBox.field + "'";
