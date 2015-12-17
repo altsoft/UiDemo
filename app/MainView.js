@@ -250,7 +250,7 @@ function MainView() {
             P.invokeLater(function () {
                 form.grdDemos.select(demos[0]);
                 var loadingProgress = document.getElementById('LoadingProgress');
-                loadingProgress.remove();
+                loadingProgress.parentNode.removeChild(loadingProgress);
             });
         } else {
             form.show();
