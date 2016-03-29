@@ -2,37 +2,39 @@
  * 
  * @author user
  */
-function ModelCheckView() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-    var widget;
-    widget = new P.ModelCheckBox();
-    widget.data = model.qAllVisits;
-    widget.field = "cursor.ispaid";
-    widget.text = "ispaid";
-    form.panel.add(widget);
+define('ModelCheckView', ['orm', 'forms', 'ui', 'forms/model-check-box'], function (Orm, Forms, Ui, ModelCheckBox, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , model = Orm.loadModel(ModuleName)
+                , form = Forms.loadForm(ModuleName, model);
+        var widget = new ModelCheckBox();
+        widget.data = model.qAllVisits;
+        widget.field = "cursor.ispaid";
+        widget.text = "ispaid";
+        form.panel.add(widget);
 
-    model.requery(function () {
-    });
+        model.requery(function () {
+        });
 
-    self.getDemoComponent = function () {
-        return widget;
-    };
+        self.getDemoComponent = function () {
+            return widget;
+        };
 
-    self.getViewComponent = function () {
-        return form.view;
-    };
+        self.getViewComponent = function () {
+            return form.view;
+        };
 
-    self.show = function () {
-        form.show();
-    };
+        self.show = function () {
+            form.show();
+        };
 
-    self.getWidget = function () {
-        return widget;
-    };
+        self.getWidget = function () {
+            return widget;
+        };
 
-    self.getFormHeight = function () {
-        return form.view.height;
-    };
-}
+        self.getFormHeight = function () {
+            return form.view.height;
+        };
+    }
+    return module_constructor;
+});

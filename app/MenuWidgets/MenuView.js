@@ -2,36 +2,39 @@
  * 
  * @author user
  */
-function MenuView(allItemsList) {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-    var widget;
-    widget = new P.MenuBar();
-    
-    form.panel.add(widget);
+define('MenuView', ['forms', 'ui', 'forms/menu-bar'], function (Forms, Ui, MenuBar, ModuleName) {
+    function module_constructor(allItemsList) {
+        var self = this
+                , form = Forms.loadForm(ModuleName);
 
-    self.getDemoComponent = function () {
-        return widget;
-    };
+        var widget;
+        widget = new MenuBar();
 
-    self.getViewComponent = function () {
-        return form.view;
-    };
-    
-    self.getCombo = function () {
-        return form.mdlItemsList;
-    };
+        form.panel.add(widget);
 
-    self.show = function () {
-        form.show();
-    };
+        self.getDemoComponent = function () {
+            return widget;
+        };
 
-    self.getWidget = function () {
-        return widget;
-    };
+        self.getViewComponent = function () {
+            return form.view;
+        };
 
-    self.getFormHeight = function () {
-        return form.view.height;
-    };
-}
+        self.getCombo = function () {
+            return form.mdlItemsList;
+        };
+
+        self.show = function () {
+            form.show();
+        };
+
+        self.getWidget = function () {
+            return widget;
+        };
+
+        self.getFormHeight = function () {
+            return form.view.height;
+        };
+    }
+    return module_constructor;
+});

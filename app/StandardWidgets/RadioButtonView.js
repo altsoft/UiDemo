@@ -2,61 +2,65 @@
  * 
  * @author jskonst
  */
-function RadioButtonView() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-    var radioButton = new P.RadioButton("Radio button");
-    radioButton.name = 'Radio button';
-    radioButton.height = 27;
-    radioButton.width = 200;
+define('RadioButtonView', ['forms', 'ui', 'forms/radio-button','ButtonGroupView'], 
+function (Forms, Ui, RadioButton,ButtonGroupView, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , form = Forms.loadForm(ModuleName);
 
-    self.getDemoComponent = function () {
-        return radioButton;
-    };
+        var radioButton = new RadioButton("Radio button");
+        radioButton.name = 'Radio button';
+        radioButton.height = 27;
+        radioButton.width = 200;
 
-    self.getViewComponent = function () {
-        return radioButton;
-    };
+        self.getDemoComponent = function () {
+            return radioButton;
+        };
 
-    function initWidgets() {
-        form.chbSelected1.selected = radioButton.selected;
-        form.txtText.text = radioButton.text;
-    }
+        self.getViewComponent = function () {
+            return radioButton;
+        };
 
-    form.mdlGroup.displayField = "name";
-    form.mdlGroup.displayList = buttonGroups;
-
-    form.mdlGroup.onValueChange = function (event) {
-        if (form.mdlGroup.value) {
-            radioButton.buttonGroup = form.mdlGroup.value.group;
-        } else {
-            radioButton.buttonGroup = null;
+        function initWidgets() {
+            form.chbSelected1.selected = radioButton.selected;
+            form.txtText.text = radioButton.text;
         }
-    };
 
-    self.show = function () {
-        form.show();
-    };
+        form.mdlGroup.displayField = "name";
+        form.mdlGroup.displayList = new ButtonGroupView().getButtonGroups();
 
-    self.showOnPanel = function (aPanel) {
-        initWidgets();
-        aPanel.add(form.view);
-    };
+        form.mdlGroup.onValueChange = function (event) {
+            if (form.mdlGroup.value) {
+                radioButton.buttonGroup = form.mdlGroup.value.group;
+            } else {
+                radioButton.buttonGroup = null;
+            }
+        };
 
-    form.chbSelected1.onActionPerformed = function (event) {
-        radioButton.selected = form.chbSelected1.selected;
-    };
+        self.show = function () {
+            form.show();
+        };
 
-    radioButton.onActionPerformed = function (event) {
-        form.chbSelected1.selected = radioButton.selected;
-    };
+        self.showOnPanel = function (aPanel) {
+            initWidgets();
+            aPanel.add(form.view);
+        };
 
-    form.txtText.onActionPerformed = function (event) {
-        radioButton.text = form.txtText.text;
-    };
-    
-    self.getFormHeight = function () {
-        return form.view.height;
-    };
-}
+        form.chbSelected1.onActionPerformed = function (event) {
+            radioButton.selected = form.chbSelected1.selected;
+        };
+
+        radioButton.onActionPerformed = function (event) {
+            form.chbSelected1.selected = radioButton.selected;
+        };
+
+        form.txtText.onActionPerformed = function (event) {
+            radioButton.text = form.txtText.text;
+        };
+
+        self.getFormHeight = function () {
+            return form.view.height;
+        };
+    }
+    return module_constructor;
+});

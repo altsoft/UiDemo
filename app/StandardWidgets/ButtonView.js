@@ -2,12 +2,12 @@
  * 
  * @author jskonst
  */
-function ButtonView() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-
-    var button = new P.Button("Button");
+define('ButtonView', ['forms','forms/button','LabelView'], function (Forms, Button,LabelView, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , form = Forms.loadForm(ModuleName);
+                
+    var button = new Button("Button");
     button.height = 27;
     button.width = 100;
     var lblForm;
@@ -33,3 +33,5 @@ function ButtonView() {
         }
     };
 }
+    return module_constructor;
+});

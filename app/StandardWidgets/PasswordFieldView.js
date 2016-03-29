@@ -2,50 +2,52 @@
  * 
  * @author jskonst
  */
-function PasswordFieldView(aDemoComponent) {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
+define('PasswordFieldView', ['forms', 'ui', 'forms/password-field'], function (Forms, Ui, PasswordField, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , form = Forms.loadForm(ModuleName);
 
-    var passwordField = new P.PasswordField("Password");
-    passwordField.height = 27;
-    passwordField.width = 200;
+        var passwordField = new PasswordField("Password");
+        passwordField.height = 27;
+        passwordField.width = 200;
 
-    function initWidget() {
-        form.txtText.text = passwordField.text;
-        passwordField.emptyText = form.txtEmptyText.text;
+        function initWidget() {
+            form.txtText.text = passwordField.text;
+            passwordField.emptyText = form.txtEmptyText.text;
+        }
+
+        self.getDemoComponent = function () {
+            return passwordField;
+        };
+
+        self.getViewComponent = function () {
+            return passwordField;
+        };
+
+        self.show = function () {
+            form.show();
+        };
+
+        self.showOnPanel = function (aPanel) {
+            initWidget();
+            aPanel.add(form.view);
+        };
+
+        form.txtText.onActionPerformed = function () {
+            passwordField.text = form.txtText.text;
+        };
+
+        passwordField.onValueChange = function () {
+            form.txtText.text = passwordField.text;
+        };
+
+        form.txtEmptyText.onActionPerformed = function (event) {
+            passwordField.emptyText = form.txtEmptyText.text;
+        };
+
+        self.getFormHeight = function () {
+            return form.view.height;
+        };
     }
-
-    self.getDemoComponent = function () {
-        return passwordField;
-    };
-
-    self.getViewComponent = function () {
-        return passwordField;
-    };
-
-    self.show = function () {
-        form.show();
-    };
-
-    self.showOnPanel = function (aPanel) {
-        initWidget();
-        aPanel.add(form.view);
-    };
-
-    form.txtText.onActionPerformed = function () {
-        passwordField.text = form.txtText.text;
-    };
-
-    passwordField.onValueChange = function () {
-        form.txtText.text = passwordField.text;
-    };
-
-    form.txtEmptyText.onActionPerformed = function (event) {
-        passwordField.emptyText = form.txtEmptyText.text;
-    };
-
-    self.getFormHeight = function () {
-        return form.view.height;
-    };
-}
+    return module_constructor;
+});

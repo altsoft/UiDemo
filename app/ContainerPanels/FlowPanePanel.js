@@ -2,100 +2,105 @@
  * 
  * @author user
  */
-function FlowPanePanel(aPlaygroundPanel) {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-    var counter = 1;
-    var internalContainer = new P.BorderPane();
-    var scrollContainer = new P.ScrollPane();
-    scrollContainer.verticalScrollBarPolicy = P.ScrollBarPolicy.AUTO;
-    scrollContainer.horizontalScrollBarPolicy = P.ScrollBarPolicy.NEVER;
-    
-    var gaps = {'vGap': 5,
-        'hGap': 5};
-    form.mdlHGap.data = gaps;
-    form.mdlHGap.field = 'hGap';
-    form.mdlVGap.data = gaps;
-    form.mdlVGap.field = 'vGap';
-    
-    var demoContainer = new P.FlowPane(gaps.hGap, gaps.vGap);
-    internalContainer.width = 800;
-    internalContainer.height = 400;
+define('FlowPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane',
+    'forms/flow-pane', 'environment', 'forms/button','AddComponentContainer'],
+        function (Forms, Ui, BorderPane, ScrollPane, FlowPane, Env, Button,AddComponentContainer, ModuleName) {
+            function module_constructor(aPlaygroundPanel) {
+                var self = this
+                        , form = Forms.loadForm(ModuleName);
 
-    if (form.chbIsScroll.selected) {
-        scrollContainer.add(demoContainer);
-        internalContainer.add(scrollContainer);
-    } else {
-        internalContainer.add(demoContainer);
-    }
+                var counter = 1;
+                var internalContainer = new BorderPane();
+                var scrollContainer = new ScrollPane();
+                scrollContainer.verticalScrollBarPolicy = Ui.ScrollBarPolicy.AUTO;
+                scrollContainer.horizontalScrollBarPolicy = Ui.ScrollBarPolicy.NEVER;
 
-    if (P.agent == P.HTML5) {
-        internalContainer.element.style.border = "thin solid gray";
-        internalContainer.element.style.borderRadius = "5px";
-    }
+                var gaps = {'vGap': 5,
+                    'hGap': 5};
+                form.mdlHGap.data = gaps;
+                form.mdlHGap.field = 'hGap';
+                form.mdlVGap.data = gaps;
+                form.mdlVGap.field = 'vGap';
 
-    self.getDemoComponent = function () {
-        return internalContainer;
-    };
+                var demoContainer = new FlowPane(gaps.hGap, gaps.vGap);
+                internalContainer.width = 800;
+                internalContainer.height = 400;
 
-    self.getViewComponent = function () {
-        return internalContainer;
-    };
+                if (form.chbIsScroll.selected) {
+                    scrollContainer.add(demoContainer);
+                    internalContainer.add(scrollContainer);
+                } else {
+                    internalContainer.add(demoContainer);
+                }
 
-    var addPanel;
-    var subject;
+                if (Env.agent == Env.HTML5) {
+                    internalContainer.element.style.border = "thin solid gray";
+                    internalContainer.element.style.borderRadius = "5px";
+                }
 
-    self.show = function () {
-        form.show();
-    };
+                self.getDemoComponent = function () {
+                    return internalContainer;
+                };
 
-    function getPosition(aElement) {
-        subject = aElement;
-    }
+                self.getViewComponent = function () {
+                    return internalContainer;
+                };
 
-    function deleteElement(aElement) {
-        internalContainer.remove(aElement);
-    }
+                var addPanel;
+                var subject;
 
-    function placeElement(aElement, counter) {
-        aElement.height = Math.floor(Math.random() * (100 - 20)) + 20;
-        demoContainer.add(aElement);
-        aElement.toolTipText = "Sample " + counter; // + " id:" + demoContainer.count;
-    }
+                self.show = function () {
+                    form.show();
+                };
 
-    addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
-    var comp = new P.Button('Sample');
-    comp.height = 30;
-    comp.width = 120;
-    comp.itemname = comp.text;
-    demoContainer.add(comp);
-    addPanel.addComponentTolist(comp);
+                function getPosition(aElement) {
+                    subject = aElement;
+                }
 
-    self.showOnPanel = function (aPanel) {
-        aPanel.add(form.view);
-        addPanel.showOnPanel(aPanel);
-    };
+                function deleteElement(aElement) {
+                    internalContainer.remove(aElement);
+                }
 
-    form.chbIsScroll.onActionPerformed = function (event) {
-        internalContainer.clear();
-        if (event.source.selected) {
-            scrollContainer.add(demoContainer);
-            internalContainer.add(scrollContainer);
-        } else {
-            internalContainer.add(demoContainer);
-        }
-    };
+                function placeElement(aElement, counter) {
+                    aElement.height = Math.floor(Math.random() * (100 - 20)) + 20;
+                    demoContainer.add(aElement);
+                    aElement.toolTipText = "Sample " + counter; // + " id:" + demoContainer.count;
+                }
 
-    self.getFormHeight = function () {
-        return form.view.height;
-    };
-    
-    form.mdlHGap.onValueChange = function (event) {
-        demoContainer.hgap = gaps.hGap;
-    };
+                addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
+                var comp = new Button('Sample');
+                comp.height = 30;
+                comp.width = 120;
+                comp.itemname = comp.text;
+                demoContainer.add(comp);
+                addPanel.addComponentTolist(comp);
 
-    form.mdlVGap.onValueChange = function (event) {
-        demoContainer.vgap = gaps.vGap;
-    };
-}
+                self.showOnPanel = function (aPanel) {
+                    aPanel.add(form.view);
+                    addPanel.showOnPanel(aPanel);
+                };
+
+                form.chbIsScroll.onActionPerformed = function (event) {
+                    internalContainer.clear();
+                    if (event.source.selected) {
+                        scrollContainer.add(demoContainer);
+                        internalContainer.add(scrollContainer);
+                    } else {
+                        internalContainer.add(demoContainer);
+                    }
+                };
+
+                self.getFormHeight = function () {
+                    return form.view.height;
+                };
+
+                form.mdlHGap.onValueChange = function (event) {
+                    demoContainer.hgap = gaps.hGap;
+                };
+
+                form.mdlVGap.onValueChange = function (event) {
+                    demoContainer.vgap = gaps.vGap;
+                };
+            }
+            return module_constructor;
+        });

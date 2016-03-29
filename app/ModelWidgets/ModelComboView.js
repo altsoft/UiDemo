@@ -2,37 +2,39 @@
  * 
  * @author user
  */
-function ModelComboView() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-    var widget;
+define('ModelComboView', ['orm', 'forms', 'ui', 'forms/model-combo'], function (Orm, Forms, Ui, ModelCombo, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , model = Orm.loadModel(ModuleName)
+                , form = Forms.loadForm(ModuleName, model);
 
-    form.panel.clear();
-    widget = new P.ModelCombo();
-    widget.data = model.qAllVisits;
-    widget.displayField = "name";
-    widget.displayList = model.qAllPets;
-    widget.emptyText = "Choose a pet...";
-    widget.field = "cursor.pet";
-    form.panel.add(widget);
+        var widget;
+        form.panel.clear();
+        widget = new ModelCombo();
+        widget.data = model.qAllVisits;
+        widget.displayField = "name";
+        widget.displayList = model.qAllPets;
+        widget.emptyText = "Choose a pet...";
+        widget.field = "cursor.pet";
+        form.panel.add(widget);
 
-    self.show = function () {
-        form.show();
-    };
-    // TODO : place your code here
-
-    model.requery(function () {
+        self.show = function () {
+            form.show();
+        };
         // TODO : place your code here
-    });
 
-    self.getDemoComponent = function () {
-        return widget;
-    };
+        model.requery(function () {
+            // TODO : place your code here
+        });
 
-    self.getViewComponent = function () {
-        return form.view;
-    };
+        self.getDemoComponent = function () {
+            return widget;
+        };
 
+        self.getViewComponent = function () {
+            return form.view;
+        };
 
-}
+    }
+    return module_constructor;
+});

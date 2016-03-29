@@ -1,36 +1,32 @@
-/* global P */
-
 /**
  * 
  * @author user
- * {global P}
  */
-function DesktopInnerForm() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-    self.onWindowClosed;
-    self.show = function () {
-        form.show();
-    };
+define('DesktopInnerForm', ['forms', 'ui'], function (Forms, Ui, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , form = Forms.loadForm(ModuleName);
 
-    self.onDesktop = function (aDesktop) {
-        form.showInternalFrame(aDesktop);
-    };
+        self.onWindowClosed;
+        self.show = function () {
+            form.show();
+        };
 
-    self.close = function () {
-        form.close();
-        
-    };
-    
-    form.onWindowClosed = function(event) {
-        self.onWindowClosed();
-    };
+        self.onDesktop = function (aDesktop) {
+            form.showInternalFrame(aDesktop);
+        };
 
-    model.requery(function () {
-    });
+        self.close = function () {
+            form.close();
+        };
 
-    self.setTitle = function(aTitle){
-        form.title = aTitle;
+        form.onWindowClosed = function (event) {
+            self.onWindowClosed();
+        };
+
+        self.setTitle = function (aTitle) {
+            form.title = aTitle;
+        }
     }
-}
+    return module_constructor;
+});

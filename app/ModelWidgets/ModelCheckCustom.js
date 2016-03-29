@@ -2,52 +2,55 @@
  * 
  * @author user
  */
-function ModelCheckCustom() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
+define('ModelCheckCustom', ['orm', 'forms', 'ui', 'forms/model-check-box'], function (Orm, Forms, Ui, ModelCheckBox, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , model = Orm.loadModel(ModuleName)
+                , form = Forms.loadForm(ModuleName, model);
 
-    self.show = function () {
-        form.show();
-    };
+        self.show = function () {
+            form.show();
+        };
 
 //    var modelCheckView = new ModelCheckView();
-    //var mdlCheckBox = self.getDemoComponent();
-    
-    var mdlCheckBox = new P.ModelCheckBox();
-    mdlCheckBox.height = 29;
-    mdlCheckBox.width = 200;
-    mdlCheckBox.data = model.qAllVisits;
-    mdlCheckBox.field = "cursor.ispaid";
-    mdlCheckBox.text = "ispaid";
-    
-    form.txtData.text = "model.qAllVisits";
-    form.txtField.text = "'" + mdlCheckBox.field + "'";
-    form.txtText.text = mdlCheckBox.text;
+        //var mdlCheckBox = self.getDemoComponent();
 
-    self.getDemoComponent = function () {
-        return mdlCheckBox;
-    };
+        var mdlCheckBox = new ModelCheckBox();
+        mdlCheckBox.height = 29;
+        mdlCheckBox.width = 200;
+        mdlCheckBox.data = model.qAllVisits;
+        mdlCheckBox.field = "cursor.ispaid";
+        mdlCheckBox.text = "ispaid";
 
-    self.getViewComponent = function () {
-        return mdlCheckBox;
-        //return modelCheckView.getViewComponent();
-        
-    };
+        form.txtData.text = "model.qAllVisits";
+        form.txtField.text = "'" + mdlCheckBox.field + "'";
+        form.txtText.text = mdlCheckBox.text;
 
-    self.showOnPanel = function (aPanel) {
-        aPanel.add(form.view);
-    };
+        self.getDemoComponent = function () {
+            return mdlCheckBox;
+        };
 
-    model.requery(function () {
-        // TODO : place your code here
-    });
+        self.getViewComponent = function () {
+            return mdlCheckBox;
+            //return modelCheckView.getViewComponent();
 
-    self.getFormHeight = function () {
-        return form.view.height;
-    };
+        };
 
-    form.txtText.onActionPerformed = function (event) {
-        mdlCheckBox.text = form.txtText.text;
-    };
-}
+        self.showOnPanel = function (aPanel) {
+            aPanel.add(form.view);
+        };
+
+        model.requery(function () {
+            // TODO : place your code here
+        });
+
+        self.getFormHeight = function () {
+            return form.view.height;
+        };
+
+        form.txtText.onActionPerformed = function (event) {
+            mdlCheckBox.text = form.txtText.text;
+        };
+    }
+    return module_constructor;
+});

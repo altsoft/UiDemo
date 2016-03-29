@@ -1,63 +1,59 @@
-/* global P */
-
 /**
  * 
  * @author user
- * {global P}
+ * 
  */
-function BorderPositionSelection() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-    var onSucsess;
-    var grid;
-    
-    var btnGrpPos = new P.ButtonGroup();
-    btnGrpPos.add(form.rbTop);
-    btnGrpPos.add(form.rbLeft);
-    btnGrpPos.add(form.rbCenter);
-    btnGrpPos.add(form.rbRight);
-    btnGrpPos.add(form.rbBottom);
-    
-    form.rbCenter.selected = true;
+define('BorderPositionSelection', ['forms', 'ui'],// 'froms/button-group'],
+        function (Forms, Ui, ButtonGroup, ModuleName) {
+            function module_constructor() {
+                var self = this
+                        , form = Forms.loadForm(ModuleName);
 
-    self.show = function () {
-        form.show();
-    };
+                var onSucsess;
+                var grid;
 
-    model.requery(function () {
-        // TODO : place your code here
-    });
+                var btnGrpPos = new ButtonGroup();
+                btnGrpPos.add(form.rbTop);
+                btnGrpPos.add(form.rbLeft);
+                btnGrpPos.add(form.rbCenter);
+                btnGrpPos.add(form.rbRight);
+                btnGrpPos.add(form.rbBottom);
 
-    self.showModal = function (aOnSucsess) {
-        onSucsess = aOnSucsess;
-        form.showModal();
-    };
+                form.rbCenter.selected = true;
 
-    form.btnCancel.onActionPerformed = function (event) {
-        form.close();
-    };
-    form.btnOk.onActionPerformed = function (event) {
-        var position;
-        if (form.rbTop.selected) {
-            position = P.VerticalPosition.TOP
-        }
-        if (form.rbLeft.selected) {
-            position = P.HorizontalPosition.LEFT
-        }
-        if (form.rbCenter.selected) {
-            position = P.VerticalPosition.CENTER
-        }
-        if (form.rbRight.selected) {
-            position = P.HorizontalPosition.RIGHT
-        }
-        if (form.rbBottom.selected) {
-            position = P.VerticalPosition.BOTTOM
-        }
+                self.show = function () {
+                    form.show();
+                };
 
-        onSucsess(position);
-        form.close();
-    };
+                self.showModal = function (aOnSucsess) {
+                    onSucsess = aOnSucsess;
+                    form.showModal();
+                };
 
+                form.btnCancel.onActionPerformed = function (event) {
+                    form.close();
+                };
+                form.btnOk.onActionPerformed = function (event) {
+                    var position;
+                    if (form.rbTop.selected) {
+                        position = Ui.VerticalPosition.TOP
+                    }
+                    if (form.rbLeft.selected) {
+                        position = Ui.HorizontalPosition.LEFT
+                    }
+                    if (form.rbCenter.selected) {
+                        position = Ui.VerticalPosition.CENTER
+                    }
+                    if (form.rbRight.selected) {
+                        position = Ui.HorizontalPosition.RIGHT
+                    }
+                    if (form.rbBottom.selected) {
+                        position = Ui.VerticalPosition.BOTTOM
+                    }
 
-}
+                    onSucsess(position);
+                    form.close();
+                };
+            }
+            return module_constructor;
+        });

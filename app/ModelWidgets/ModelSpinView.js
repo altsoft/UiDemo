@@ -2,32 +2,34 @@
  * 
  * @author user
  */
-function ModelSpinView() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-    var widget;
+define('ModelSpinView', ['orm', 'forms', 'ui', 'forms/model-spin'], function (Orm, Forms, Ui, ModelSpin, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , model = Orm.loadModel(ModuleName)
+                , form = Forms.loadForm(ModuleName, model);
 
-    form.panel.clear();
-    widget = new P.ModelSpin();
-    widget.data = model.qAllVisits;
-    widget.field = "cursor.cost";
-    widget.emptyText = "Enter cost...";
-    form.panel.add(widget);
-    
-    model.requery(function () {
-    });
+        var widget;
+        form.panel.clear();
+        widget = new ModelSpin();
+        widget.data = model.qAllVisits;
+        widget.field = "cursor.cost";
+        widget.emptyText = "Enter cost...";
+        form.panel.add(widget);
 
-    self.getDemoComponent = function () {
-        return widget;
-    };
+        model.requery(function () {
+        });
 
-    self.getViewComponent = function () {
-        return form.view;
-    };
+        self.getDemoComponent = function () {
+            return widget;
+        };
 
-    self.getFormView = function () {
-        return form.view;
-    };
+        self.getViewComponent = function () {
+            return form.view;
+        };
 
-}
+        self.getFormView = function () {
+            return form.view;
+        };
+    }
+    return module_constructor;
+});

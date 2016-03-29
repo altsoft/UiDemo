@@ -2,16 +2,17 @@
  * 
  * @author user
  */
-function ModelSpinCustom() {
-    var self = this
-            , model = P.loadModel(this.constructor.name)
-            , form = P.loadForm(this.constructor.name, model);
-
+define('ModelSpinCustom', ['orm', 'forms', 'ui','forms/model-spin'], function (Orm, Forms, Ui,ModelSpin, ModuleName) {
+    function module_constructor() {
+        var self = this
+                , model = Orm.loadModel(ModuleName)
+                , form = Forms.loadForm(ModuleName, model);
+                
     self.show = function () {
         form.show();
     };
 
-    var mdlSpin = new P.ModelSpin();
+    var mdlSpin = new ModelSpin();
     mdlSpin.data = model.qAllVisits;
     mdlSpin.field = "cursor.cost";
     mdlSpin.emptyText = "Enter cost...";
@@ -51,3 +52,5 @@ function ModelSpinCustom() {
     };
 
 }
+    return module_constructor;
+});

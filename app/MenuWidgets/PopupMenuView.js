@@ -2,33 +2,37 @@
  * 
  * @author user
  */
-function PopupMenuView(allItemsList) {
-    var self = this
-            , form = P.loadForm(this.constructor.name);
-    var widget = new P.Label('Right click to call popup menu');
-    form.panel.add(widget);
+define('PopupMenuView', ['forms', 'ui', 'forms/label'], function (Forms, Ui, Label, ModuleName) {
+    function module_constructor(allItemsList) {
+        var self = this
+                , form = Forms.loadForm(ModuleName);
 
-    self.getDemoComponent = function () {
-        return widget;
-    };
+        var widget = new Label('Right click to call popup menu');
+        form.panel.add(widget);
 
-    self.getViewComponent = function () {
-        return form.view;
-    };
+        self.getDemoComponent = function () {
+            return widget;
+        };
 
-    self.getCombo = function () {
-        return form.mdlItemsList;
-    };
+        self.getViewComponent = function () {
+            return form.view;
+        };
 
-    self.show = function () {
-        form.show();
-    };
+        self.getCombo = function () {
+            return form.mdlItemsList;
+        };
 
-    self.getWidget = function () {
-        return widget;
-    };
+        self.show = function () {
+            form.show();
+        };
 
-    self.getFormHeight = function () {
-        return form.view.height;
-    };
-}
+        self.getWidget = function () {
+            return widget;
+        };
+
+        self.getFormHeight = function () {
+            return form.view.height;
+        };
+    }
+    return module_constructor;
+});
