@@ -3,9 +3,8 @@
  * @author user
  */
 
-define('BorderPanePanel', ['forms', 'BorderPositionSelection'],
-        function (Forms, BorderPositionSelection, ModuleName) {
-            //function (Forms, Ui, Env, BorderPane, Label, ModuleName) {
+define('BorderPanePanel', ['forms', 'ui', 'environment', 'forms/border-pane', 'forms/label', 'BorderPositionSelection'],
+        function (Forms, Ui, Env, BorderPane, Label, BorderPositionSelection, ModuleName) {
             function module_constructor() {
                 var self = this
                         , form = Forms.loadForm(ModuleName);

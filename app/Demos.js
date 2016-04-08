@@ -3,7 +3,7 @@
  * @author user
  * @constructor
  */
-function DemosList() {
+function Demos() {
     var standardWidgets = {
         name: "Standard Widgets",
         children: [],
@@ -29,7 +29,7 @@ function DemosList() {
         information: "Model grid is a powerful widget to display and enter data, which is presented in a tabular form and as a tree."
     };
 
-    var demos = [
+    var content = [
         standardWidgets,
         {name: 'Label'
             , parent: standardWidgets
@@ -38,9 +38,9 @@ function DemosList() {
             , icon: 'icons/standard/label_16.png'
             , hint: "Label is a widget with a short piece of text, images or text with an image."
             , creationCode: "/**\n"
-                    + "* var label = new Label(text, icon, iconTextGap);\n"
-                    + "*/\n"
-                    + "require('forms/label',function(Label){\n"
+                    + " * var label = new Label(text, icon, iconTextGap);\n"
+                    + " */\n"
+                    + "require('forms/label', function(Label){\n"
                     + "     var label = new Label('Label');\n"
                     + "     label.text = 'new Text in a label';\n"
                     + "});"
@@ -52,9 +52,9 @@ function DemosList() {
             , icon: 'icons/standard/button_16.png'
             , hint: "Button is a simple button, which responds to the click action."
             , creationCode: "/**\n"
-                    + "* var btn = new Button(text, icon, iconTextGap, actionPerformed);\n"
-                    + "*/\n"
-                    + "require('forms/button',function(Button){\n"
+                    + " * var btn = new Button(text, icon, iconTextGap, actionPerformed);\n"
+                    + " */\n"
+                    + "require('forms/button', function(Button){\n"
                     + "     var btn = new Button('Click me'); \n"
                     + "     btn.text = 'Click me'; \n"
                     + "     btn.onActionPerformed = function() { \n"
@@ -69,9 +69,9 @@ function DemosList() {
             , icon: 'icons/standard/toggle_button_16.png'
             , hint: "ToggleButton is a button with two states: selected and not selected."
             , creationCode: "/**\n"
-                    + "* var btn = new ToggleButton(text, icon, selected, iconTextGap, actionPerformed);\n"
-                    + "*/\n"
-                    + "require('forms/toggle-button',function(ToggleButton){\n"
+                    + " * var btn = new ToggleButton(text, icon, selected, iconTextGap, actionPerformed);\n"
+                    + " */\n"
+                    + "require('forms/toggle-button', function(ToggleButton){\n"
                     + "     var btn = new ToggleButton(text, icon, iconTextGap, selected, actionPerformed);\n"
                     + "     btn.text = 'Turn me on!';\n"
                     + "     btn.onActionPerformed = function() {\n"
@@ -89,9 +89,9 @@ function DemosList() {
             , icon: 'icons/standard/drop_down_button_16.png'
             , hint: "DropDownButton is a button with two popup menu."
             , creationCode: "/**\n"
-                    + "* var btn = new DropDownButton(text, icon, iconTextGap, actionPerformed);\n"
-                    + "*/\n"
-                    + "require('forms/drop-down-button',function(DropDownButton){\n"
+                    + " * var btn = new DropDownButton(text, icon, iconTextGap, actionPerformed);\n"
+                    + " */\n"
+                    + "require('forms/drop-down-button', function(DropDownButton){\n"
                     + "     var btn = new DropDownButton(text, icon, iconTextGap, actionPerformed);\n"
                     + "     btn.text = 'Click my right side';\n"
                     + "     btn.onActionPerformed = function() {\n"
@@ -106,9 +106,9 @@ function DemosList() {
             , icon: 'icons/standard/check_box_16.png'
             , hint: "CheckBox is a component with two states: selected/not selected."
             , creationCode: "/**\n"
-                    + "* var cb = new CheckBox(text, selected, actionPerformed);\n"
-                    + "*/\n"
-                    + "require('forms/check-box',function(CheckBox){\n"
+                    + " * var cb = new CheckBox(text, selected, actionPerformed);\n"
+                    + " */\n"
+                    + "require('forms/check-box', function(CheckBox){\n"
                     + "     cb1.text = 'Check box 1';\n"
                     + "     cb1.selected = true;\n"
                     + "     cb1.onValueChange = function(evt) {\n"
@@ -123,9 +123,9 @@ function DemosList() {
             , icon: 'icons/standard/radio_button_16.png'
             , hint: "RadioButton is a component with two states: selected/not selected. Widgets of this type can be joined into groups."
             , creationCode: "/**\n"
-                    + "* var rb1 = new RadioButton(text, selected, actionPerformed);\n"
-                    + "*/\n"
-                    + "require('forms/radio-button',function(RadioButton){\n"
+                    + " * var rb1 = new RadioButton(text, selected, actionPerformed);\n"
+                    + " */\n"
+                    + "require('forms/radio-button', function(RadioButton){\n"
                     + "     rb1.text = new RadioButton();"
                     + "     rb1.text = 'Radio button 1';\n"
                     + "     rb1.selected = true;\n"
@@ -141,9 +141,9 @@ function DemosList() {
             , icon: 'icons/standard/button_group_16.png'
             , hint: "ButtonGroup is a special kind of a widget. "
             , creationCode: "/**\n"
-                    + "* var buttonGroup = new ButtonGroup();\n"
-                    + "*/\n"
-                    + "require(['forms/button-group','forms/radio-button'],function(ButtonGroup,RadioButton){\n"
+                    + " * var buttonGroup = new ButtonGroup();\n"
+                    + " */\n"
+                    + "require(['forms/button-group', 'forms/radio-button'],function(ButtonGroup,RadioButton){\n"
                     + "     var buttonGroup = new ButtonGroup();\n"
                     + "     var rbA = new RadioButton('A', true);\n"
                     + "     var rbB = new RadioButton('B', false);\n"
@@ -158,9 +158,9 @@ function DemosList() {
             , icon: 'icons/standard/text_field_16.png'
             , hint: "TextField is a simple component, which allows you to edit single line of text."
             , creationCode: "/**\n"
-                    + "* var tf1 = new TextField(text);\n"
-                    + "*/\n"
-                    + "require('forms/text-field',function(TextField){\n"
+                    + " * var tf1 = new TextField(text);\n"
+                    + " */\n"
+                    + "require('forms/text-field', function(TextField){\n"
                     + "     var tf1 = new TextField(text);\n"
                     + "     tf1.emptyText = 'Enter your name...';\n"
                     + "});"
@@ -172,9 +172,9 @@ function DemosList() {
             , icon: 'icons/standard/slider_16.png'
             , hint: "Slider is a component, which allows you to visually select a value by moving the slider lever within the specified interval."
             , creationCode: "/**\n"
-                    + "* var sl = new Slider(min, max, value);\n"
-                    + "*/\n"
-                    + "require(['forms/slider','logger'],function(Slider,Logger){\n"
+                    + " * var sl = new Slider(min, max, value);\n"
+                    + " */\n"
+                    + "require(['forms/slider','logger'], function(Slider,Logger){\n"
                     + "     var sl1 = new Slider();\n"
                     + "     sl1.minimum = 0;\n"
                     + "     sl1.maximum = 100;\n"
@@ -191,9 +191,9 @@ function DemosList() {
             , icon: 'icons/standard/progress_bar_16.png'
             , hint: "ProgressBar is a component, which visually shows the progress of some task."
             , creationCode: "/**\n"
-                    + "* var pb = new ProgressBar(min, max);\n"
-                    + "*/\n"
-                    + "require(['forms/brogress-bar'],function(ProgressBar){\n"
+                    + " * var pb = new ProgressBar(min, max);\n"
+                    + " */\n"
+                    + "require(['forms/brogress-bar'], function(ProgressBar){\n"
                     + "     var pb1 = new ProgressBar();\n"
                     + "     pb1.minimum = 0;\n"
                     + "     pb1.maximum = 100;\n"
@@ -207,8 +207,8 @@ function DemosList() {
             , icon: 'icons/standard/formatted_field_16.png'
             , hint: "FormattedField is a component, which allows you to edit value of some specific type as the text."
             , creationCode: "/**\n"
-                    + "* var ff = new FormattedField();\n"
-                    + "*/\n"
+                    + " * var ff = new FormattedField();\n"
+                    + " */\n"
                     + "require(['forms/formatted-field'],function(FormattedField){\n"
                     + "     var ff = new FormattedField();\n"
                     + "     ff.valueType = Date;\n"
@@ -223,9 +223,9 @@ function DemosList() {
             , icon: 'icons/standard/password_field_16.png'
             , hint: "PasswordField is a simple input component, it displays placeholders instead of actual characters."
             , creationCode: "/**\n"
-                    + "* var pf = new PasswordField(text);\n"
-                    + "*/\n"
-                    + "require(['forms/password-field'],function(PasswordField){\n"
+                    + " * var pf = new PasswordField(text);\n"
+                    + " */\n"
+                    + "require(['forms/password-field'], function(PasswordField){\n"
                     + "var pf = new PasswordField();\n"
                     + "\n"
                     + "});"
@@ -237,9 +237,9 @@ function DemosList() {
             , icon: 'icons/standard/text_area_16.png'
             , hint: "TextArea is the text component for editing and displaying multistring text."
             , creationCode: "/**\n"
-                    + "* var textArea = new TextArea(text);\n"
-                    + "*/\n"
-                    + "require(['forms/text-area'],function(TextArea){\n"
+                    + " * var textArea = new TextArea(text);\n"
+                    + " */\n"
+                    + "require(['forms/text-area'], function(TextArea){\n"
                     + "     var textArea = new TextArea();\n"
                     + "});"
             , dependencies: "PopupMenuCustom"},
@@ -250,9 +250,9 @@ function DemosList() {
             , icon: 'icons/standard/editor_pane_16.png'
             , hint: "HtmlArea is a component for editing and displaying HTML documents."
             , creationCode: "/**\n"
-                    + "* var textArea = new HtmlArea(text);\n"
-                    + "*/\n"
-                    + "require(['forms/html-area'],function(HtmlArea){\n"
+                    + " * var textArea = new HtmlArea(text);\n"
+                    + " */\n"
+                    + "require(['forms/html-area'], function(HtmlArea){\n"
                     + "     var htmlArea = new HtmlArea();\n"
                     + "     htmlArea.text = '<p>Sample text</p>';\n"
                     + "});"
@@ -265,9 +265,9 @@ function DemosList() {
             , icon: 'icons/model/check.png'
             , hint: "ModelCheck is a scalar model widget representing a check box, the state of which is linked to an entity's field."
             , creationCode: "/**\n"
-                    + "* var modelCheck = new ModelCheckBox();\n"
-                    + "*/\n"
-                    + "require(['forms/model-check-box'],function(ModelCheckBox){\n"
+                    + " * var modelCheck = new ModelCheckBox();\n"
+                    + " */\n"
+                    + "require(['forms/model-check-box'], function(ModelCheckBox){\n"
                     + "     var modelCheck = new ModelCheckBox(); \n"
                     + "     modelCheck.data = model.entityA;\n"
                     + "     modelCheck.field = 'cursor.fieldA';\n"
@@ -280,10 +280,10 @@ function DemosList() {
             , icon: 'icons/model/combo.png'
             , hint: "ModelCombo is a scalar model widget representing a combo box that is bound to some data model field."
             , creationCode: "/**\n"
-                    + "* var modelCombo = new ModelCombo();\n"
-                    + "*/\n"
+                    + " * var modelCombo = new ModelCombo();\n"
+                    + " */\n"
                     + "//Specify value field as a model parameter:\n"
-                    + "require(['forms/model-combo'],function(ModelCombo){\n"
+                    + "require(['forms/model-combo'], function(ModelCombo){\n"
                     + "     var modelCombo = new ModelCombo();\n"
                     + "     modelCombo.data = model.pets;\n"
                     + "     modelCombo.field = 'cursor.owner';\n"
@@ -299,9 +299,9 @@ function DemosList() {
             , icon: 'icons/model/date.png'
             , hint: "ModelDate is a scalar model widget representing a date and bound to some date or timestamp field in the model."
             , creationCode: "/**\n"
-                    + "* var modelDate = new ModelDate();\n"
-                    + "*/\n"
-                    + "require(['forms/model-date'],function(ModelDate){\n"
+                    + " * var modelDate = new ModelDate();\n"
+                    + " */\n"
+                    + "require(['forms/model-date'], function(ModelDate){\n"
                     + "     var modelDate = new ModelDate();\n"
                     + "     modelDate.data = model.pets;\n"
                     + "     modelDate.field = 'cursor.dateOfBirth';\n"
@@ -318,9 +318,9 @@ function DemosList() {
             , icon: 'icons/model/spin.png'
             , hint: "ModelSpin is a scalar model widget, the state of which is linked to a field of a data model entity of number type."
             , creationCode: "/**\n"
-                    + "* var modelSpin = new ModelSpin();\n"
-                    + "*/\n"
-                    + "require(['forms/model-spin'],function(modelSpin){\n"
+                    + " * var modelSpin = new ModelSpin();\n"
+                    + " */\n"
+                    + "require(['forms/model-spin'], function(modelSpin){\n"
                     + "     var modelSpin = new ModelSpin();\n"
                     + "     modelSpin.data = model.entityC;\n"
                     + "     modelSpin.field = 'cursor.count';\n"
@@ -333,9 +333,9 @@ function DemosList() {
             , icon: 'icons/model/label.png'
             , hint: "ModelFormattedField is a scalar model widget, the state of which is linked to a field of the data model string or number type."
             , creationCode: "/**\n"
-                    + "* var mff = new ModelFormattedField();\n"
-                    + "*/\n"
-                    + "require(['forms/model-formatted-field'],function(ModelFormattedField){\n"
+                    + " * var mff = new ModelFormattedField();\n"
+                    + " */\n"
+                    + "require(['forms/model-formatted-field'], function(ModelFormattedField){\n"
                     + "     var mff = new ModelFormattedField();\n"
                     + "     mff.data = model.entityA;\n"
                     + "     mff.field = 'cursor.timeOfDeath';\n"
@@ -349,9 +349,9 @@ function DemosList() {
             , icon: 'icons/model/text.png'
             , hint: "ModelTextArea is a scalar model widget, the state of which is linked to a field of the data model of string or number type."
             , creationCode: "/**\n"
-                    + "* var mta = new ModelTextArea();\n"
-                    + "*/\n"
-                    + "require(['forms/model-text-area'],function(ModelTextArea){\n"
+                    + " * var mta = new ModelTextArea();\n"
+                    + " */\n"
+                    + "require(['forms/model-text-area'], function(ModelTextArea){\n"
                     + "     var mta = new ModelTextArea();\n"
                     + "     mta.field = model.entityB.schema.textField;\n"
                     + "});"
@@ -364,9 +364,9 @@ function DemosList() {
             , icon: 'icons/containers/AbsoluteLayout.gif'
             , hint: "AnchorsPane is a container with the anchors layout."
             , creationCode: "/**\n"
-                    + "* var pane = new AnchorsPane();\n"
-                    + "*/\n"
-                    + "require(['forms/anchors-pane','forms/button'],function(AnchorsPane,Button){\n"
+                    + " * var pane = new AnchorsPane();\n"
+                    + " */\n"
+                    + "require(['forms/anchors-pane','forms/button'], function(AnchorsPane,Button){\n"
                     + "     var pane = new AnchorsPane();\n"
                     + "     var comp = new Button('Sample');\n"
                     + "     pane.add(comp, {left: 10,\n"
@@ -384,9 +384,9 @@ function DemosList() {
             , icon: 'icons/containers/borderLayout.gif'
             , hint: "BorderPane is a container with the border layout."
             , creationCode: "/**\n"
-                    + "* var pane = new BorderPane(hgap, vgap);\n"
-                    + "*/\n"
-                    + "require(['forms/border-pane','forms/button','ui'],function(BorderPane,Button,Ui){\n"
+                    + " * var pane = new BorderPane(hgap, vgap);\n"
+                    + " */\n"
+                    + "require(['forms/border-pane','forms/button','ui'], function(BorderPane,Button,Ui){\n"
                     + "     var pane = new BorderPane();\n"
                     + "     var topComp = new Button('Top');\n"
                     + "     pane.add(topComp, Ui.VerticalPosition.TOP);\n"
@@ -401,10 +401,10 @@ function DemosList() {
             , icon: 'icons/containers/boxLayout.gif'
             , hint: "BoxPane is a container with the vertical or horizontal box layout."
             , creationCode: "/**\n"
-                    + "* var pane = new BoxPane(orientation, hgap, vgap);\n"
-                    + "*/\n"
+                    + " * var pane = new BoxPane(orientation, hgap, vgap);\n"
+                    + " */\n"
                     + "// vertical box with 20 pixels vertical gap \n"
-                    + "require(['forms/box-pane','forms/button','ui'],function(BoxPane,Button,Ui){\n"
+                    + "require(['forms/box-pane','forms/button','ui'], function(BoxPane,Button,Ui){\n"
                     + "     var pane = new BoxPane(Ui.Orientation.VERTICAL, 0, 20);\n"
                     + "     var comp = new Button('Sample');\n"
                     + "     pane.add(comp);\n"
@@ -417,10 +417,10 @@ function DemosList() {
             , icon: 'icons/containers/boxLayout.gif'
             , hint: "BoxPane is a container with the vertical or horizontal box layout."
             , creationCode: "/**\n"
-                    + "* var pane = new BoxPane(orientation, hgap, vgap);\n"
-                    + "*/\n"
+                    + " * var pane = new BoxPane(orientation, hgap, vgap);\n"
+                    + " */\n"
                     + "// horizontal box with 20 pixels horizontal gap \n"
-                    + "require(['forms/box-pane','forms/button','ui'],function(BoxPane,Button,Ui){\n"
+                    + "require(['forms/box-pane','forms/button','ui'], function(BoxPane,Button,Ui){\n"
                     + "     var pane = new BoxPane(Ui.Orientation.HORIZONTAL, 20, 0);\n"
                     + "     var comp = new Button('Sample');\n"
                     + "     pane.add(comp);\n"
@@ -433,9 +433,9 @@ function DemosList() {
             , icon: 'icons/containers/gridLayout.gif'
             , hint: "GridPane is a container with the grid layout. It is intended for static UI designs."
             , creationCode: "/**\n"
-                    + "* var pane = new GridPane(rows, cols, hgap, vgap);\n"
-                    + "*/\n"
-                    + "require(['forms/grid-pane','forms/button'],function(GridPane,Button){\n"
+                    + " * var pane = new GridPane(rows, cols, hgap, vgap);\n"
+                    + " */\n"
+                    + "require(['forms/grid-pane','forms/button'], function(GridPane,Button){\n"
                     + "     var pane = new GridPane(3, 1);\n"
                     + "     var comp1 = new Button('1');\n"
                     + "     var comp2 = new Button('2');\n"
@@ -452,9 +452,9 @@ function DemosList() {
             , icon: 'icons/containers/flowLayout.gif'
             , hint: "FlowPane is a container with the flow layout. "
             , creationCode: "/**\n"
-                    + "* var pane = new FlowPane(hgap, vgap);\n"
-                    + "*/\n"
-                    + "require(['forms/flow-pane','forms/button'],function(FlowPane, Button){\n"
+                    + " * var pane = new FlowPane(hgap, vgap);\n"
+                    + " */\n"
+                    + "require(['forms/flow-pane','forms/button'], function(FlowPane, Button){\n"
                     + "     var pane = new FlowPane();\n"
                     + "     var comp = new Button('Sample');\n"
                     + "     pane.add(comp);\n"
@@ -467,9 +467,9 @@ function DemosList() {
             , icon: 'icons/containers/desktop_pane_16.png'
             , hint: "DesktopPane is used to create a multi-document interface."
             , creationCode: "/**\n"
-                    + "* var pane = new DesktopPane();\n"
-                    + "*/\n"
-                    + "define ('InnerForm', ['forms'],function (Forms, ModuleName) {\n"
+                    + " * var pane = new DesktopPane();\n"
+                    + " */\n"
+                    + "define ('InnerForm', ['forms'], function (Forms, ModuleName) {\n"
                     + "     function module_constructor() {\n"
                     + "         var form = Forms.loadForm(ModuleName);\n"
                     + "         this.onDesktop = function(aDesktop){\n"
@@ -492,9 +492,9 @@ function DemosList() {
             , icon: 'icons/containers/cardLayout.gif'
             , hint: "CardPane is a container with the card layout."
             , creationCode: "/**\n"
-                    + "* var pane = new CardPane(hgap, vgap);\n"
-                    + "*/\n"
-                    + "require(['forms/card-pane','forms/button'],function(CardPane, Button){\n"
+                    + " * var pane = new CardPane(hgap, vgap);\n"
+                    + " */\n"
+                    + "require(['forms/card-pane','forms/button'], function(CardPane, Button){\n"
                     + "     var pane = new CardPane();\n"
                     + "     var compA = new Button('SampleA');\n"
                     + "     pane.add(compA, 'A');\n"
@@ -512,10 +512,10 @@ function DemosList() {
             , icon: 'icons/containers/tabbed_pane_16.png'
             , hint: "TabbedPane container allows the user to switch between a group of widgets by clicking tabs with titles and icons."
             , creationCode: "/**\n"
-                    + "* var pane = new TabbedPane();\n"
-                    + "* pane.add(widget, text, icon);\n"
-                    + "**/\n"
-                    + "require(['forms/tabbed-pane','forms/anchors-pane'],function(TabbedPane, AnchorsPane){\n"
+                    + " * var pane = new TabbedPane();\n"
+                    + " * pane.add(widget, text, icon);\n"
+                    + "*/\n"
+                    + "require(['forms/tabbed-pane','forms/anchors-pane'], function(TabbedPane, AnchorsPane){\n"
                     + "     var pane = new TabbedPane();\n"
                     + "     var tab1 = new AnchorsPane();\n"
                     + "     var tab2 = new AnchorsPane();\n"
@@ -530,9 +530,9 @@ function DemosList() {
             , icon: 'icons/containers/tool_bar_16.png'
             , hint: "ToolBar is a container used to display widgets, which are responsible for the most common user actions"
             , creationCode: "/**\n"
-                    + "* var toolbar = new ToolBar();\n"
-                    + "*/\n"
-                    + "require(['forms/tool-bar','forms/button','ui'],function(ToolBar, Button, Ui){\n"
+                    + " * var toolbar = new ToolBar();\n"
+                    + " */\n"
+                    + "require(['forms/tool-bar','forms/button','ui'], function(ToolBar, Button, Ui){\n"
                     + "     var toolbar = new ToolBar();\n"
                     + "     var b1 = new Button();\n"
                     + "     pane.add(b1);\n"
@@ -554,14 +554,14 @@ function DemosList() {
             , icon: 'icons/menu/menu_bar_16.png'
             , hint: "MenuBar widget is a form’s main menu bar, into which individual menus can be added."
             , creationCode: "/**\n"
-                    + "* var menuBar = new MenuBar();\n"
-                    + "* var menu = new Menu(text); \n"
-                    + "* var menuItem = new MenuItem(text, icon, actionPerformed);\n"
-                    + "* var checkMenuItem = new CheckMenuItem(text, selected, actionPerformed);\n"
-                    + "* var radioMenuItem = new RadioMenuItem(text, selected, actionPerformed);\n"
-                    + "* var separator = new MenuSeparator();\n"
+                    + " * var menuBar = new MenuBar();\n"
+                    + " * var menu = new Menu(text); \n"
+                    + " * var menuItem = new MenuItem(text, icon, actionPerformed);\n"
+                    + " * var checkMenuItem = new CheckMenuItem(text, selected, actionPerformed);\n"
+                    + " * var radioMenuItem = new RadioMenuItem(text, selected, actionPerformed);\n"
+                    + " * var separator = new MenuSeparator();\n"
                     + "*/\n"
-                    + "require(['forms/menu-bar','forms/menu', 'forms/menu-item'],function(MenuBar, Menu, MenuItem){\n"
+                    + "require(['forms/menu-bar','forms/menu', 'forms/menu-item'], function(MenuBar, Menu, MenuItem){\n"
                     + "     var menuBar = new MenuBar();\n"
                     + "     var menu = new Menu(text);\n"
                     + "     menuBar.add(menu);\n"
@@ -586,7 +586,7 @@ function DemosList() {
                     + " * var radioMenuItem = new RadioMenuItem(text, selected, actionPerformed);\n"
                     + " * var separator = new MenuSeparator();\n"
                     + " */\n"
-                    + "require(['forms/popup-menu','forms/label', 'forms/menu-item'],function(PopupMenu, Label, MenuItem){\n"
+                    + "require(['forms/popup-menu','forms/label', 'forms/menu-item'], function(PopupMenu, Label, MenuItem){\n"
                     + "     var popup = new PopupMenu();\n"
                     + "     var label = new Label('Sample');\n"
                     + "     var item = new MenuItem('Sample');\n"
@@ -789,10 +789,10 @@ function DemosList() {
                     + "\n"}
     ];
 
-    demos.forEach(function (aDemo) {
+    content.forEach(function (aDemo) {
         if (aDemo.parent) {
             aDemo.parent.children.push(aDemo);
         }
     });
-    return demos;
+    return content;
 }

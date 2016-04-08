@@ -3,14 +3,14 @@
  * @author user
  * 
  */
-define('BorderPositionSelection', ['forms', 'ui'],// 'froms/button-group'],
+define('BorderPositionSelection', ['forms', 'ui','forms/button-group'],
         function (Forms, Ui, ButtonGroup, ModuleName) {
             function module_constructor() {
                 var self = this
                         , form = Forms.loadForm(ModuleName);
 
                 var onSucsess;
-                var grid;
+//                var grid;
 
                 var btnGrpPos = new ButtonGroup();
                 btnGrpPos.add(form.rbTop);
@@ -36,21 +36,20 @@ define('BorderPositionSelection', ['forms', 'ui'],// 'froms/button-group'],
                 form.btnOk.onActionPerformed = function (event) {
                     var position;
                     if (form.rbTop.selected) {
-                        position = Ui.VerticalPosition.TOP
+                        position = Ui.VerticalPosition.TOP;
                     }
                     if (form.rbLeft.selected) {
-                        position = Ui.HorizontalPosition.LEFT
+                        position = Ui.HorizontalPosition.LEFT;
                     }
                     if (form.rbCenter.selected) {
-                        position = Ui.VerticalPosition.CENTER
+                        position = Ui.VerticalPosition.CENTER;
                     }
                     if (form.rbRight.selected) {
-                        position = Ui.HorizontalPosition.RIGHT
+                        position = Ui.HorizontalPosition.RIGHT;
                     }
                     if (form.rbBottom.selected) {
-                        position = Ui.VerticalPosition.BOTTOM
+                        position = Ui.VerticalPosition.BOTTOM;
                     }
-
                     onSucsess(position);
                     form.close();
                 };

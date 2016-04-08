@@ -2,7 +2,7 @@
  * 
  * @author jskonst
  */
-define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 'DemosList'],
+define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 'Demos'],
         function (Orm, Forms, Ui, Env, Label, Invoke, Logger, demosList, ModuleName) {
             function module_constructor() {
                 var self = this
@@ -14,7 +14,7 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                 var hMargin = 10;
                 var vMargin = 10;
                 var tabTitleHeight = 50;
-                // TODO 1 
+
                 Ui.Icon.load('icons/loading5.gif', function (data) {
                     lbLoad.icon = data;
                     lbLoad.text = null;
@@ -30,6 +30,7 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                 form.grdDemos.showHorizontalLines = false;
                 form.grdDemos.showVerticalLines = false;
                 form.grdDemos.showOddRowsInOtherColor = false;
+
                 if (Env.agent === Env.HTML5) {
                     form.lblViewSource.cursor = 'pointer';
                     form.lblCustomSource.cursor = 'pointer';
@@ -47,6 +48,13 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                         }
                     }
                 };
+
+                form.grdDemos.onMouseClicked = function (event) {
+                    if (event.clickCount === 1) {
+                        form.grdDemos.toggle(form.grdDemos.selected[0]);
+                    }
+                };
+
                 var ensureExpandedCollapsedIcons = (function () {
                     var icnExpanded;
                     var icnCollapsed;
@@ -71,8 +79,8 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                         }
                     };
                 }());
+
                 function onTabChanged() {
-//                     SyntaxHighlighter.highlight();
                     switch (form.tpSections.selectedIndex) {
                         case 0:
                         {
@@ -122,24 +130,38 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                         form.pnlPlayground.height = height + hMargin * 2;
                     }
                 };
-                var widget;
-                var demoForm;
-                var w = Math.round(form.pnlPlayground.width / 2 - 100);
-                form.pnlPlayground.add(lbLoad, {left: w,
-                    width: 200,
-                    right: w,
-                    top: hMargin,
-                    height: 200,
-                    bottom: hMargin});
-                lbLoad.visible = false;
-                form.grdDemos.onMouseClicked = function (event) {
-                    if (event.clickCount === 1) {
-                        form.grdDemos.toggle(form.grdDemos.selected[0]);
-                    }
-                };
+
+                function showDemo(custom, common) {
+                    form.pnlCustomProperties.clear();
+                    form.pnlViewProperties.clear();
+                    form.pnlPlayground.clear(); //Clean demo components place
+                    var widget = custom.getDemoComponent();
+                    var demoForm = custom.getViewComponent();
+                    common.setDemoComponent(widget);
+                    custom.unfolded = false;
+                    common.unfolded = false;
+
+                    custom.showOnPanel(form.pnlCustomProperties);
+                    form.pnlCustomSource.element.innerHTML = '<pre><code class="javascript">' + custom.constructor.toString() + '</code></pre>';
+                    hljs.highlightBlock(form.pnlCustomSource.element);
+
+                    form.pnlPlayground.add(demoForm, {left: hMargin,
+                        width: demoForm.width,
+                        right: hMargin,
+                        top: vMargin,
+                        height: demoForm.height,
+                        bottom: null}
+                    );
+
+                    form.pnlPlayground.height = demoForm.height + vMargin * 2;
+                    form.pnlViewSourceCode.element.innerHTML = '<pre><code class="javascript">' + common.constructor.toString() + '</code></pre>';
+                    hljs.highlightBlock(form.pnlViewSourceCode.element);
+                    common.setOnComponentResize(onComponentResize);
+                    common.showOnPanel(form.pnlViewProperties);
+                    onTabChanged();
+                }
+
                 form.grdDemos.onItemSelected = function (event) {
-                    var widget;
-                    var demoForm;
                     var w = Math.round(form.pnlPlayground.width / 2 - 100);
                     form.pnlPlayground.clear(); //Clean demo components place
                     form.pnlPlayground.height = lbLoad.height + 2 * hMargin;
@@ -149,15 +171,7 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                         top: hMargin,
                         height: 200,
                         bottom: hMargin});
-                    if (form.grdDemos.selected[0].creationCode) {
-//                         form.pnlCreation.element.innerHTML = '<pre class="brush: js">' + form.grdDemos.selected[0].creationCode + '</pre>';
-                        form.pnlCreation.element.innerHTML = '<pre><code class="javascript">' + form.grdDemos.selected[0].creationCode + '</code></pre>';
-                        hljs.highlightBlock(form.pnlCreation.element);
-                        Invoke.later(function () {
-                            form.tpSections.height = form.pnlCreation.element.children[0].offsetHeight + tabTitleHeight;
-                        });
-                    }
-
+                    lbLoad.visible = true;
                     //In case of parent or child - chow different card on cardpane
                     if (form.grdDemos.selected[0].parent) {
                         form.pnlDemoViews.show('pnlDemonstration');
@@ -169,65 +183,34 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                     }
 
                     if (form.grdDemos.selected[0].parent) {
+
+                        if (form.grdDemos.selected[0].creationCode) {
+                            form.pnlCreation.element.innerHTML = '<pre><code class="javascript">' + form.grdDemos.selected[0].creationCode + '</code></pre>';
+                            hljs.highlightBlock(form.pnlCreation.element);
+                            Invoke.later(function () {
+                                form.tpSections.height = form.pnlCreation.element.children[0].offsetHeight + tabTitleHeight;
+                            });
+                        }
+
+                        var demo = form.grdDemos.selected[0];
                         require([form.grdDemos.selected[0].customForm,
-                            form.grdDemos.selected[0].commonForm],
-                                function (aCustom, aCommon) {
-
-                                    var custom;
-                                    var common;
-                                    if (form.grdDemos.selected[0].createdCustomForm && form.grdDemos.selected[0].createdViewForm) {
-                                        custom = form.grdDemos.selected[0].createdCustomForm; //form of custom proprties
-                                        common = form.grdDemos.selected[0].createdViewForm; //form of commom properties
-                                    } else {
-                                        form.grdDemos.selected[0].createdCustomForm = new aCustom(); //form of custom proprties
-                                        form.grdDemos.selected[0].createdViewForm = new aCommon(); //form of commom properties
-                                        custom = form.grdDemos.selected[0].createdCustomForm; //form of custom proprties
-                                        common = form.grdDemos.selected[0].createdViewForm; //form of commom properties
+                            form.grdDemos.selected[0].commonForm]
+                                , function (aCustom, aCommon) {
+                                    if (!(demo.createdCustomForm && demo.createdViewForm)) {
+                                        demo.createdCustomForm = new aCustom(); //form of custom proprties
+                                        demo.createdViewForm = new aCommon(); //form of commom properties
                                     }
-                                    widget = custom.getDemoComponent();
-                                    demoForm = custom.getViewComponent();
-                                    common.setDemoComponent(widget);
-
-                                    custom.unfolded = false;
-                                    form.pnlCustomProperties.clear();
-                                    custom.showOnPanel(form.pnlCustomProperties);
-                                    form.pnlPlayground.clear(); //Clean demo components place
-//                                     form.pnlCustomSource.element.innerHTML = '<pre class="brush: js">' + custom.constructor.toString() + '</pre>';
-                                    form.pnlCustomSource.element.innerHTML = '<pre><code class="javascript">' + custom.constructor.toString() + '</code></pre>';
-                                    hljs.highlightBlock(form.pnlCustomSource.element);
-
-                                    form.pnlPlayground.add(demoForm, {left: hMargin,
-                                        width: demoForm.width,
-                                        right: hMargin,
-                                        top: vMargin,
-                                        height: demoForm.height,
-                                        bottom: null}
-                                    );
-                                    form.pnlPlayground.height = demoForm.height + vMargin * 2;
-
-                                    //SyntaxHighlighter.highlight();
-//                                     hljs.highlightBlock(block);
-
-                                    form.pnlViewProperties.clear();
-                                    common.unfolded = false;
-//                                     form.pnlViewSourceCode.element.innerHTML = '<pre class="brush: js">' + common.constructor.toString() + '</pre>';
-                                    form.pnlViewSourceCode.element.innerHTML = '<pre><code class="javascript">' + common.constructor.toString() + '</code></pre>';
-                                     hljs.highlightBlock(form.pnlViewSourceCode.element);
-                                     
-                                    common.setOnComponentResize(onComponentResize);
-                                    common.showOnPanel(form.pnlViewProperties);
-
-                                    //hljs.initHighlightingOnLoad();
-
-//                                    custom.setCommonView(common);
-                                    onTabChanged();
-                                },function(){
-                                    Logger.info("Something");             
+                                    if (demo === form.grdDemos.selected[0]) {
+                                        showDemo(demo.createdCustomForm, demo.createdViewForm);
+                                    }
                                 }
-                                );
+                        , function () {
+                            Logger.info("Something bad have happend");
+                        }
+                        );
                     }
-
                 };
+
                 self.show = function () {
                     if (Env.agent === Env.HTML5) {
                         form.view.showOn(document.getElementById('Main'));
@@ -243,26 +226,13 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                         });
                     }
                 };
+
                 form.tpSections.onItemSelected = function (event) {
                     onTabChanged();
                 };
-                function collapsedCallback(form, icnExpanded, icnCollapsed) {
-                    if (form.grdDemos.selected[0].createdCustomForm.unfolded) {
-                        form.lblCustomSource.icon = icnCollapsed;
-                        form.pnlCustomSource.height = 0;
-                        form.grdDemos.selected[0].createdCustomForm.unfolded = false;
-                    } else {
-                        form.lblCustomSource.icon = icnExpanded;
-                        form.pnlCustomSource.height = form.pnlCustomSource.element.children[0].offsetHeight;
-                        form.grdDemos.selected[0].createdCustomForm.unfolded = true;
-                    }
-                    form.pnlCustomize.height = form.pnlCustomProperties.height + form.lblCustomSource.height + form.pnlCustomSource.height;
-                    form.tpSections.height = form.pnlCustomize.height + tabTitleHeight;
-                }
 
                 form.lblCustomSource.onMouseClicked = function (event) {
-                    ensureExpandedCollapsedIcons(
-//                            collapsedCallback
+                    ensureExpandedCollapsedIcons1(
                             function (icnExpanded, icnCollapsed) {
                                 if (form.grdDemos.selected[0].createdCustomForm.unfolded) {
                                     form.lblCustomSource.icon = icnCollapsed;
@@ -278,9 +248,9 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                             }
                     );
                 };
+
                 form.lblViewSource.onMouseClicked = function (event) {
                     ensureExpandedCollapsedIcons(
-//                            collapsedCallback
                             function (icnExpanded, icnCollapsed) {
                                 if (form.grdDemos.selected[0].createdViewForm.unfolded) {
                                     form.lblViewSource.icon = icnCollapsed;
