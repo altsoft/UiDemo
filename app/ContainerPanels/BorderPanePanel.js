@@ -3,8 +3,8 @@
  * @author user
  */
 
-define('BorderPanePanel', ['forms', 'ui', 'environment', 'forms/border-pane', 'forms/label', 'BorderPositionSelection'],
-        function (Forms, Ui, Env, BorderPane, Label, BorderPositionSelection, ModuleName) {
+define('BorderPanePanel', ['forms', 'ui', 'environment', 'forms/border-pane', 'forms/label', 'BorderPositionSelection', 'Utils/Pallete'],
+        function (Forms, Ui, Env, BorderPane, Label, BorderPositionSelection, Pallete, ModuleName) {
             function module_constructor() {
                 var self = this
                         , form = Forms.loadForm(ModuleName);

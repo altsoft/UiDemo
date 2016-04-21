@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-define('StandardWidgets', ['LabelView'
+define(['LabelView'
             , 'ButtonView'
             , 'ButtonGroupView'
             , 'CheckBoxView'
@@ -22,6 +22,5 @@ define('StandardWidgets', ['LabelView'
                 , DropDownButtonView, FormattedFieldView, HtmlAreaView, PasswordFieldView
                 , ProgressBarView, RadioButtonView, SliderView, TextAreaView
                 , TextFieldView, ToggleButtonView) {
-
 
         });

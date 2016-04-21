@@ -10,7 +10,6 @@ define('MenuCommonProperties', ['forms', 'ui', 'logger'], function (Forms, Ui, L
                 , form = Forms.loadForm(ModuleName);
 
         var demoComponent = aDemoComponent;
-        var aFontSelectionDialog;
         var onComponentResize;
 
         self.show = function () {
@@ -47,7 +46,7 @@ define('MenuCommonProperties', ['forms', 'ui', 'logger'], function (Forms, Ui, L
             } else {
                 var previousColor = Ui.Color.WHITE;
             }
-            P.selectColor(function (result) {
+            Ui.selectColor(function (result) {
                 demoComponent.foreground = new Ui.Color(result);
                 form.modelForeground.text = result;
             }, previousColor);
@@ -60,7 +59,7 @@ define('MenuCommonProperties', ['forms', 'ui', 'logger'], function (Forms, Ui, L
                 var previousColor = Ui.Color.WHITE;
             }
 
-            P.selectColor(function (result) {
+            Ui.selectColor(function (result) {
                 demoComponent.background = new Ui.Color(result);
                 form.modelBackground.text = result;
             }, previousColor);
@@ -76,22 +75,12 @@ define('MenuCommonProperties', ['forms', 'ui', 'logger'], function (Forms, Ui, L
         };
 
         form.modelFont.onSelect = function (event) {
-            if (!aFontSelectionDialog) {
-                P.require("FontSelectionDialog", function () {
-                    aFontSelectionDialog = new FontSelectionDialog(demoComponent);
-                    aFontSelectionDialog.showModal(demoComponent, function (aFont) {
-                        form.modelFont.text = aFont.family;
-                    });
-                },
-                        function () {
-                            alert("Module access problem");
-                        }
-                );
-            } else {
-                aFontSelectionDialog.showModal(demoComponent, function (aFont) {
+            require("FontSelectionDialog", function (FontSelectionDialog) {
+                var fontSelector = new FontSelectionDialog(demoComponent);
+                fontSelector.showModal(demoComponent, function (aFont) {
                     form.modelFont.text = aFont.family;
                 });
-            }
+            });
         };
 
         form.txtToltip.onKeyTyped = function (event) {
@@ -104,16 +93,16 @@ define('MenuCommonProperties', ['forms', 'ui', 'logger'], function (Forms, Ui, L
 
         form.btnCursor.onActionPerformed = function (event) {
             var fileFilter = ".png,.ico,.gif,.jpg";
-            P.selectFile(function (aFile) {
+            Ui.selectFile(function (aFile) {
                 var loading;
                 if (loading == null) {
                     if (aFile != null) {
-                        loading = P.Resource.upload(aFile, aFile.name,
+                        loading = Ui.Resource.upload(aFile, aFile.name,
                                 function (aUrl) {
                                     //We have uploaded only one file, but the system
                                     //return's us a array of urls
                                     loading = null;
-                                    P.Icon.load(aUrl[0], function (uploadedFile) {
+                                    Ui.Icon.load(aUrl[0], function (uploadedFile) {
                                         form.btnCursor.icon = uploadedFile;
                                         demoComponent.cursor = uploadedFile;
                                     }, function (e) {

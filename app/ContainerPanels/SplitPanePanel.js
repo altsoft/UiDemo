@@ -2,8 +2,8 @@
  * 
  * @author user
  */
-define('SplitPanePanel', ['forms', 'ui', 'forms/split-pane'],
-        function (Forms, Ui, SplitPane, ModuleName) {
+define('SplitPanePanel', ['forms', 'ui', 'forms/split-pane','AnchorsPanePanel'],
+        function (Forms, Ui, SplitPane,AnchorsPanePanel, ModuleName) {
             function module_constructor(aPlaygroundPanel) {
                 var self = this
                         , form = Forms.loadForm(ModuleName);
@@ -29,7 +29,7 @@ define('SplitPanePanel', ['forms', 'ui', 'forms/split-pane'],
                     pnl2.background = Ui.Color.GREEN;
                     internalContainer.add(pnl1);
                     internalContainer.add(pnl2);
-                    internalContainer.background = P.Color.RED;
+                    internalContainer.background = Ui.Color.RED;
                 }
 
 

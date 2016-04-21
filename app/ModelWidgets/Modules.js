@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-define('ModelWidgets', ['ModelCheckCustom'
+define(['ModelCheckCustom'
             , 'ModelCheckView'
             , 'ModelComboCustom'
             , 'ModelComboView'

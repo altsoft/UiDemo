@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-define('Containers', ['AnchorsPanePanel'
+define(['AnchorsPanePanel'
             , 'BorderPanePanel'
             , 'CardPanePanel'
             , 'DesktopPanePanel'
@@ -14,10 +14,9 @@ define('Containers', ['AnchorsPanePanel'
             , 'SplitPanePanel'
             , 'TabbedPanePanel'
             , 'ToolbarPanel'
-            , 'VBoxPanePanel']
+            , 'VBoxPanePanel'
+            , 'AddComponentContainer']
         , function (AnchorsPanePanel, BorderPanePanel, CardPanePanel, DesktopPanePanel
                 , FlowPanePanel, GridPanePanel, HBoxPanePanel, SplitPanePanel
-                , TabbedPanePanel, ToolbarPanel, VBoxPanePanel, ModuleName) {
-
-
+                , TabbedPanePanel, ToolbarPanel, VBoxPanePanel, AddComponentContainer, ModuleName) {
         });

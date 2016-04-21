@@ -3,11 +3,13 @@
  * @author jskonst
  */
 
-define('LabelView', ['forms', 'ui', 'forms/label', 'forms/button-group', 'resource', 'logger', 'PopupMenuCustom'],
-        function (Forms, Ui, Label, ButtonGroup, Resource, Logger,PopupMenuCustom, ModuleName) {
+define('LabelView', ['forms', 'ui', 'forms/label', 'forms/button-group', 'resource', 'logger', 'PopupMenuCustom', 'orm'],
+        function (Forms, Ui, Label, ButtonGroup, Resource, Logger, PopupMenuCustom, Orm, ModuleName) {
             function module_constructor(aDemoComponent) {
                 var self = this
+                        , model = Orm.loadModel(ModuleName)
                         , form = Forms.loadForm(ModuleName);
+
                 if (aDemoComponent) {
                     var demoComponent = aDemoComponent;
                 } else {

@@ -4,10 +4,25 @@
  * and open the template in the editor.
  */
 
-define('ModelGrid', ['SimpleGrid', 'TreeGrid', 'MultiSort', 'MultiHeader'
-            , 'RowsDND', 'FrozenRows', 'FrozenColumns', 'RowsSelection'
-            , 'EditingInline', 'Details', 'Filters', 'TreeView'
-            , 'OrmBinding', 'OOBinding', 'ToExcel']
+define([
+    'SimpleGrid'
+            , 'TreeGrid'
+            , 'MultiSort'
+            , 'MultiHeader'
+            , 'RowsDND'
+            , 'FrozenRows'
+            , 'FrozenColumns'
+            , 'RowsSelection'
+            , 'EditingInline'
+            , 'EditingPopup'
+            , 'Details'
+            , 'Filters'
+            , 'TreeView'
+            , 'ListView'
+            , 'OrmBinding'
+            , 'OOBinding'
+            , 'ToExcel'
+        ]
         , function (SimpleGrid, TreeGrid, MultiSort, MultiHeader
                 , RowsDND, FrozenRows, FrozenColumns, RowsSelection
                 , EditingInline, EditingPopup, Details, Filters

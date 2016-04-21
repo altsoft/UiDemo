@@ -2,7 +2,7 @@
  * 
  * @author jskonst
  */
-define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 'Demos'],
+define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 'Demos'],
         function (Orm, Forms, Ui, Env, Label, Invoke, Logger, demosList, ModuleName) {
             function module_constructor() {
                 var self = this
@@ -20,8 +20,7 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                     lbLoad.text = null;
                 });
 
-                var demos = new demosList();
-                form.grdDemos.data = demos;
+                form.grdDemos.data = demosList;
                 form.grdDemos.column.field = "name";
                 form.grdDemos.parentField = 'parent';
                 form.grdDemos.childrenField = 'children';
@@ -215,7 +214,7 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                     if (Env.agent === Env.HTML5) {
                         form.view.showOn(document.getElementById('Main'));
                         Invoke.later(function () {
-                            form.grdDemos.select(demos[0]);
+                            form.grdDemos.select(demosList[0]);
                             var loadingProgress = document.getElementById('LoadingProgress');
                             loadingProgress.parentNode.removeChild(loadingProgress);
                         });
@@ -232,7 +231,7 @@ define('MainView', ['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke'
                 };
 
                 form.lblCustomSource.onMouseClicked = function (event) {
-                    ensureExpandedCollapsedIcons1(
+                    ensureExpandedCollapsedIcons(
                             function (icnExpanded, icnCollapsed) {
                                 if (form.grdDemos.selected[0].createdCustomForm.unfolded) {
                                     form.lblCustomSource.icon = icnCollapsed;
