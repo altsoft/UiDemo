@@ -57,7 +57,7 @@ define('TabbedPanePanel', ['forms', 'ui', 'forms/tabbed-pane', 'environment', 'f
                 counter += 1;
                 createDemoTab('#6fea58', 'Tab 3');
                 counter += 1;
-
+                form.mcmbElList.value = internalContainer.children()[0];
 
                 self.showOnPanel = function (aPanel) {
                     aPanel.add(form.view);

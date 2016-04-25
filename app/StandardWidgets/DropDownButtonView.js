@@ -10,7 +10,7 @@ define('DropDownButtonView', ['forms', 'ui', 'forms/drop-down-button', 'forms/po
 
         var dropDownButton = new DropDownButton("Drop down button");
         dropDownButton.onActionPerformed = function (evt) {
-            alert('Action!');
+            alert('Action from \"'+  evt.source.text + '\"');
         };
         dropDownButton.name = "DropDown button";
         dropDownButton.height = 27;

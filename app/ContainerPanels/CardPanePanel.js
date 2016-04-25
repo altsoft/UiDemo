@@ -61,6 +61,7 @@ define('CardPanePanel', ['forms', 'ui', 'forms/card-pane', 'environment', 'forms
                 createCard('#49a7f0', 'Sample A');
                 createCard('#67eacc', 'Sample B');
                 createCard('#6fea58', 'Sample C');
+                form.mcmbElList.value = internalContainer.children()[0];
 
                 self.showOnPanel = function (aPanel) {
                     aPanel.add(form.view);

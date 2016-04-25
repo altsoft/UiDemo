@@ -30,11 +30,6 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                 form.grdDemos.showVerticalLines = false;
                 form.grdDemos.showOddRowsInOtherColor = false;
 
-                if (Env.agent === Env.HTML5) {
-                    form.lblViewSource.cursor = 'pointer';
-                    form.lblCustomSource.cursor = 'pointer';
-                }
-
                 form.grdDemos.column.onRender = function (event) {
                     if (event.object.icon) {
                         if (event.object.loadedIcon)
@@ -54,31 +49,6 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     }
                 };
 
-                var ensureExpandedCollapsedIcons = (function () {
-                    var icnExpanded;
-                    var icnCollapsed;
-                    return function (aIconsConsumer) {
-                        if (icnExpanded && icnCollapsed) {
-                            Invoke.later(function () {
-                                aIconsConsumer(icnExpanded, icnCollapsed);
-                            });
-                        } else {
-                            Ui.Icon.load('icons/expanded.png', function (data) {
-                                icnExpanded = data;
-                                if (icnExpanded && icnCollapsed) {
-                                    aIconsConsumer(icnExpanded, icnCollapsed);
-                                }
-                            });
-                            Ui.Icon.load('icons/collapsed.png', function (data) {
-                                icnCollapsed = data;
-                                if (icnExpanded && icnCollapsed) {
-                                    aIconsConsumer(icnExpanded, icnCollapsed);
-                                }
-                            });
-                        }
-                    };
-                }());
-
                 function onTabChanged() {
                     switch (form.tpSections.selectedIndex) {
                         case 0:
@@ -90,35 +60,16 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                         }
                         case 1:
                         {
-                            ensureExpandedCollapsedIcons(function (icnExpanded, icnCollapsed) {
-                                var selectedItem = form.grdDemos.selected[0];
-                                if (!selectedItem.createdCustomForm || selectedItem.createdCustomForm.unfolded) {
-                                    form.lblCustomSource.icon = icnExpanded;
-                                    form.pnlCustomSource.height = form.pnlCustomSource.element.children[0].offsetHeight;
-                                } else {
-                                    form.lblCustomSource.icon = icnCollapsed;
-                                    form.pnlCustomSource.height = 0;
-                                }
-                                form.pnlCustomProperties.height = form.grdDemos.selected[0].createdCustomForm.getFormHeight();
-                                form.pnlCustomize.height = form.pnlCustomProperties.height + form.lblCustomSource.height + form.pnlCustomSource.height;
-                                form.tpSections.height = form.pnlCustomize.height + tabTitleHeight;
-                            });
+                            form.pnlCustomProperties.height = form.grdDemos.selected[0].createdCustomForm.getFormHeight();
+                            form.pnlCustomize.height = form.pnlCustomProperties.height;
+                            form.tpSections.height = form.pnlCustomize.height + tabTitleHeight;
                             break;
                         }
                         case 2:
                         {
-                            ensureExpandedCollapsedIcons(function (icnExpanded, icnCollapsed) {
-                                if (form.grdDemos.selected[0].createdViewForm.unfolded) {
-                                    form.pnlViewSourceCode.height = form.pnlViewSourceCode.element.children[0].offsetHeight;
-                                    form.lblViewSource.icon = icnExpanded;
-                                } else {
-                                    form.lblViewSource.icon = icnCollapsed;
-                                    form.pnlViewSourceCode.height = 0;
-                                }
-                                form.pnlViewProperties.height = form.grdDemos.selected[0].createdViewForm.getFormHeight();
-                                form.pnlView.height = form.pnlViewProperties.height + form.lblViewSource.height + form.pnlViewSourceCode.height;
-                                form.tpSections.height = form.pnlView.height + tabTitleHeight;
-                            });
+                            form.pnlViewProperties.height = form.grdDemos.selected[0].createdViewForm.getFormHeight();
+                            form.pnlView.height = form.pnlViewProperties.height;
+                            form.tpSections.height = form.pnlView.height + tabTitleHeight;
                             break;
                         }
                     }
@@ -139,11 +90,7 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     common.setDemoComponent(widget);
                     custom.unfolded = false;
                     common.unfolded = false;
-
                     custom.showOnPanel(form.pnlCustomProperties);
-                    form.pnlCustomSource.element.innerHTML = '<pre><code class="javascript">' + custom.constructor.toString() + '</code></pre>';
-                    hljs.highlightBlock(form.pnlCustomSource.element);
-
                     form.pnlPlayground.add(demoForm, {left: hMargin,
                         width: demoForm.width,
                         right: hMargin,
@@ -153,8 +100,6 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     );
 
                     form.pnlPlayground.height = demoForm.height + vMargin * 2;
-                    form.pnlViewSourceCode.element.innerHTML = '<pre><code class="javascript">' + common.constructor.toString() + '</code></pre>';
-                    hljs.highlightBlock(form.pnlViewSourceCode.element);
                     common.setOnComponentResize(onComponentResize);
                     common.showOnPanel(form.pnlViewProperties);
                     onTabChanged();
@@ -202,11 +147,7 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                                     if (demo === form.grdDemos.selected[0]) {
                                         showDemo(demo.createdCustomForm, demo.createdViewForm);
                                     }
-                                }
-                        , function () {
-                            Logger.info("Something bad have happend");
-                        }
-                        );
+                                });
                     }
                 };
 
@@ -228,42 +169,6 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
 
                 form.tpSections.onItemSelected = function (event) {
                     onTabChanged();
-                };
-
-                form.lblCustomSource.onMouseClicked = function (event) {
-                    ensureExpandedCollapsedIcons(
-                            function (icnExpanded, icnCollapsed) {
-                                if (form.grdDemos.selected[0].createdCustomForm.unfolded) {
-                                    form.lblCustomSource.icon = icnCollapsed;
-                                    form.pnlCustomSource.height = 0;
-                                    form.grdDemos.selected[0].createdCustomForm.unfolded = false;
-                                } else {
-                                    form.lblCustomSource.icon = icnExpanded;
-                                    form.pnlCustomSource.height = form.pnlCustomSource.element.children[0].offsetHeight;
-                                    form.grdDemos.selected[0].createdCustomForm.unfolded = true;
-                                }
-                                form.pnlCustomize.height = form.pnlCustomProperties.height + form.lblCustomSource.height + form.pnlCustomSource.height;
-                                form.tpSections.height = form.pnlCustomize.height + tabTitleHeight;
-                            }
-                    );
-                };
-
-                form.lblViewSource.onMouseClicked = function (event) {
-                    ensureExpandedCollapsedIcons(
-                            function (icnExpanded, icnCollapsed) {
-                                if (form.grdDemos.selected[0].createdViewForm.unfolded) {
-                                    form.lblViewSource.icon = icnCollapsed;
-                                    form.pnlViewSourceCode.height = 0;
-                                    form.grdDemos.selected[0].createdViewForm.unfolded = false;
-                                } else {
-                                    form.lblViewSource.icon = icnExpanded;
-                                    form.pnlViewSourceCode.height = form.pnlViewSourceCode.element.children[0].offsetHeight;
-                                    form.grdDemos.selected[0].createdViewForm.unfolded = true;
-                                }
-                                form.pnlView.height = form.pnlViewProperties.height + form.lblViewSource.height + form.pnlViewSourceCode.height;
-                                form.tpSections.height = form.pnlView.height + tabTitleHeight;
-                            }
-                    );
                 };
             }
             return module_constructor;

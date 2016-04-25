@@ -37,10 +37,10 @@
       <ModelCombo displayField="name" displayList="qAllPets"/>
     </ModelGridColumn>
     <ModelGridColumn field="fromdate" name="colFromdate" title="from Date" width="86px">
-      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+      <ModelDate format="MMMM dd yyyy"/>
     </ModelGridColumn>
     <ModelGridColumn field="todate" name="colTodate" title="to Date" width="87px">
-      <ModelDate dateFormat="dd.MM.yyyy HH:mm:ss.SSS"/>
+      <ModelDate format="MMMM dd yyyy"/>
     </ModelGridColumn>
     <ModelGridColumn field="ispaid" name="colIspaid" title="Visit is paid" width="86px">
       <ModelCheckBox/>

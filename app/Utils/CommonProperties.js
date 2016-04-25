@@ -125,7 +125,7 @@ define('CommonProperties', ['orm', 'forms', 'ui', 'environment', 'logger', 'form
                 };
 
                 form.modelForeground.onValueChange = function (event) {
-                    if (form.modelBackground.text) {
+                    if (form.modelForeground.text) {
                         demoComponent.foreground = new Ui.Color(form.modelForeground.text);
                     } else {
                         demoComponent.foreground = null;

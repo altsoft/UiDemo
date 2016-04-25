@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="233px" prefWidth="614px"/>
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="250px" prefWidth="810px"/>
   <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="17px" prefWidth="70px" text="Format">
     <AnchorsPaneConstraints height="17px" left="260px" top="17px" width="70px"/>
   </Label>
@@ -18,29 +18,29 @@
   <TextField cursor="0" enabled="false" name="txtData" parent="view" prefHeight="27px" prefWidth="170px" text="textField">
     <AnchorsPaneConstraints height="27px" left="50px" top="12px" width="170px"/>
   </TextField>
-  <ModelGrid cursor="0" data="qAllOwners" name="modelGrid1" parent="view" prefHeight="130px" prefWidth="590px">
-    <AnchorsPaneConstraints height="130px" left="10px" right="14px" top="90px"/>
+  <ModelGrid cursor="0" data="qAllOwners" name="modelGrid1" parent="view" prefHeight="150px" prefWidth="786px">
+    <AnchorsPaneConstraints bottom="10px" left="10px" right="14px" top="90px"/>
     <ServiceGridColumn name="colService" resizable="true"/>
-    <ModelGridColumn field="firstname" name="colFirstname" title="First name" width="93px">
+    <ModelGridColumn field="firstname" name="colFirstname" title="First name" width="125px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="lastname" name="colLastname" title="Last name" width="92px">
+    <ModelGridColumn field="lastname" name="colLastname" title="Last name" width="125px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="address" name="colAddress" title="Address" width="93px">
+    <ModelGridColumn field="address" name="colAddress" title="Address" width="125px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="city" name="colCity" title="City" width="92px">
+    <ModelGridColumn field="city" name="colCity" title="City" width="125px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="telephone" name="colTelephone" title="Telephone" width="93px">
+    <ModelGridColumn field="telephone" name="colTelephone" title="Telephone" width="126px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
-    <ModelGridColumn field="email" name="colEmail" title="E-mail" width="92px">
+    <ModelGridColumn field="email" name="colEmail" title="E-mail" width="125px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
   </ModelGrid>
-  <Label cursor="0" name="label1" parent="view" prefHeight="40px" prefWidth="370px" text="Note that custom format is set for different fields. This causes the email validation, names capitalization and checking phone numbers.">
+  <Label cursor="0" name="label1" parent="view" prefHeight="40px" prefWidth="566px" text="Note that custom format is set for different fields. This causes the email validation, names capitalization and checking phone numbers.">
     <AnchorsPaneConstraints height="40px" left="230px" right="14px" top="40px"/>
   </Label>
 </layout>
