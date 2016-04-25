@@ -1,10 +1,9 @@
 /**
  * 
  * @author mg
- * @module ToExcelExport
  * @public
  */
-define(['orm', 'template'], function (Orm, loadTemplate, ModuleName) {
+define('ToExcelExport', ['orm', 'template'], function (Orm, loadTemplate, ModuleName) {
     return function () {
         var self = this
                 , model = Orm.loadModel(ModuleName)

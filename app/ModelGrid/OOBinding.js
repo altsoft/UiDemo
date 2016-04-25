@@ -3,9 +3,9 @@
  * @author mg
  */
 
-define('OOBinding', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
+define('OOBinding', ['orm', 'forms', 'forms/anchors-pane', 'forms/model-grid',
     'forms/service-grid-column', 'forms/model-grid-column', 'forms/model-date', 'forms/model-check-box'],
-        function (Orm, Forms, Ui, AnchorsPane, ModelCombo, ModelGrid,
+        function (Orm, Forms, AnchorsPane, ModelGrid,
                 ServiceGridColumn, ModelGridColumn, ModelDate, ModelCheckBox, ModuleName) {
             function module_constructor() {
                 var self = this
@@ -18,7 +18,7 @@ define('OOBinding', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-co
 
                 var widget = new AnchorsPane();
                 widget.width = 500;
-                widget.height = 400;
+                widget.height = 510;
 
                 function initGrid() {
                     var grid = new ModelGrid();
@@ -58,8 +58,8 @@ define('OOBinding', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-co
 
                 var grid1 = initGrid();
                 var grid2 = initGrid();
-                widget.add(grid1, {left: 0, top: 0, width: 500, height: 180});
-                widget.add(grid2, {left: 0, top: 210, width: 500, height: 180});
+                widget.add(grid1, {left: 0, top: 0, width: 500, height: 245});
+                widget.add(grid2, {left: 0, top: 260, width: 500, height: 245});
 
                 self.showOnPanel = function (aPanel) {
                     aPanel.add(form.view);
@@ -84,10 +84,8 @@ define('OOBinding', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-co
                 self.getFormHeight = function () {
                     return form.view.height;
                 };
-                // TODO : place your code here
 
                 model.requery(function () {
-                    // TODO : place your code here
                 });
 
             }
