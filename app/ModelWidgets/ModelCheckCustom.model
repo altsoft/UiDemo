@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <entity Name="qAllPets" Title="" entityHeight="200" entityIconified="false" entityId="143826276591191" entityLocationX="595" entityLocationY="183" entityWidth="150" queryId="qAllPets" tableName="" tableSchemaName=""/>
   <entity Name="qAllVisits" Title="" entityHeight="200" entityIconified="false" entityId="143826275851959" entityLocationX="204" entityLocationY="174" entityWidth="150" queryId="qAllVisits" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="pet_id" leftEntityId="143826275851959" rightEntityFieldName="pets_id" rightEntityId="143826276591191"/>
+  <referenceRelation collectionPropertyName="visits" leftEntityFieldName="pet_id" leftEntityId="143826275851959" rightEntityFieldName="pets_id" rightEntityId="143826276591191" scalarPropertyName="pet"/>
 </datamodel>

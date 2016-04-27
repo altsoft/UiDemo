@@ -33,5 +33,6 @@ find $COMPRESSED_FOLDER/app/ContainerPanels -type f -not -name 'Modules.*' -dele
 find $COMPRESSED_FOLDER/app/Utils -type f -not -name 'Modules.*' -delete
 echo "Creating index"
 java -jar $TOOLS -index -app-folder $COMPRESSED_FOLDER/app/ -processed-folder $COMPRESSED_FOLDER/app/ -indexed-modules $COMPRESSED_FOLDER/app/Modules.js
+cp $SOURCE_FOLDER/app/ModelGrid/ToExcelExport.* $COMPRESSED_FOLDER/app/ModelGrid/
 echo 'Now you should add init="Modules.js" nearby  source-path="app" in application-start.html'
 

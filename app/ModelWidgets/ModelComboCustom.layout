@@ -36,8 +36,8 @@
   <Label cursor="0" name="label1211" parent="view" prefHeight="20px" prefWidth="90px" text="Display Field">
     <AnchorsPaneConstraints height="20px" left="240px" top="53px" width="90px"/>
   </Label>
-  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="130px" prefWidth="420px" rowsHeight="27">
-    <AnchorsPaneConstraints height="130px" left="510px" top="10px" width="420px"/>
+  <ModelGrid cursor="0" data="qAllVisits" name="modelGrid" parent="view" prefHeight="140px" prefWidth="420px" rowsHeight="27">
+    <AnchorsPaneConstraints bottom="5px" left="510px" top="10px" width="420px"/>
     <ServiceGridColumn name="colService" resizable="true"/>
     <ModelGridColumn field="pet" name="colPet_id" preferredWidth="120px" title="Name" width="158px">
       <ModelCombo displayField="name" displayList="qAllPets"/>

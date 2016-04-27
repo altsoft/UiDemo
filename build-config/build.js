@@ -92,6 +92,7 @@
         , FontSelectionDialog: 'Utils/FontSelector'
     }
     , findNestedDependencies: false
+    , preserveLicenseComments: false
     , modules: [
         {
             name: "StandardWidgets/Modules"
