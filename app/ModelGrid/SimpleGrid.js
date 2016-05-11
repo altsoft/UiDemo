@@ -27,6 +27,7 @@ define('SimpleGrid', ['orm', 'forms', 'ui', 'forms/border-pane', 'forms/model-co
                 colName.minWidth = 107;
                 colName.sortable = true;
                 colName.field = 'pet';
+                colName.sortField = 'pet.name';
                 colName.editor = new ModelCombo();
                 colName.editor.displayField = 'name';
 
