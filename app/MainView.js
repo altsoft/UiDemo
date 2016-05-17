@@ -20,6 +20,8 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     lbLoad.text = null;
                 });
 
+                form.pnlDemonstrationContent.height = null;
+                
                 form.grdDemos.data = demosList;
                 form.grdDemos.column.field = "name";
                 form.grdDemos.parentField = 'parent';

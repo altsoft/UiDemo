@@ -13,6 +13,7 @@ define('HBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                 var counter = 1;
                 var internalContainer = new BorderPane();
                 var scrollContainer = new ScrollPane();
+                scrollContainer.verticalScrollBarPolicy = Ui.ScrollBarPolicy.NEVER;
                 var demoContainer = new BoxPane(Ui.Orientation.HORIZONTAL);
                 internalContainer.width = 800;
                 internalContainer.height = 400;
