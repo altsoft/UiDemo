@@ -123,6 +123,34 @@ task cleanTomcat(type: Delete){
     delete tomcatDir
 }
 
+task h2Exec(type: JavaExec) {
+    classpath fileTree(sharedLibDir)
+    main 'org.h2.tools.Server'
+    args '-tcp'
+}
+h2Exec.dependsOn buildContainerLibs
+
+task h2() {
+    doFirst {
+        def h2Server = new ProcessBuilder(h2Exec.commandLine)
+                    .redirectErrorStream(true)
+                    .start()
+        def h2StdOut = new InputStreamReader(h2Server.getInputStream())
+        try{
+            def h2NextLine = h2StdOut.readLine()
+            while(!h2NextLine.contains('TCP server running at')){
+                println(h2NextLine)
+                h2NextLine = h2StdOut.readLine()
+            }
+            println("H2 server started")
+            println()
+        }finally{
+            h2StdOut.close()
+        }
+    }    
+}
+h2.dependsOn buildContainerLibs
+
 def asProps = { fileName ->
     def loaded = new Properties()
     def inputFile = file(fileName)
@@ -173,7 +201,7 @@ task configureTomcat(type: Copy){
         def contextNode = contexts[0];
         def datasources = [] as Set
         props.each {
-            def matcher = (it.key =~ "datasource\\.([a-zA-Z_]+)\\..*")
+            def matcher = (it.key =~ "datasource\\.([a-zA-Z_/\\-]+)\\..*")
             if(matcher.matches()){
                 def dsName = matcher.group(1)
                 datasources << dsName
@@ -265,7 +293,8 @@ tomcat.dependsOn buildTomcat,
                  configureTomcat,
                  distilleLib,
                  explodeWrappers,
-                 explodePwc
+                 explodePwc,
+                 h2
 
 def completeSeArgs = {
     def args = ['-url', "${file(webAppDirName).toURI().toURL()}"]
@@ -327,7 +356,8 @@ task platypusServer(type: JavaExec) {
 platypusServer.dependsOn buildContainerLibs,
                          distilleLib,
                          explodeWrappers,
-                         explodePwc
+                         explodePwc,
+                         h2
                          
 def platypusClientLogDirName = "${buildDir}/platypus-client/logs"
 
@@ -363,16 +393,11 @@ task platypusClient(type: JavaExec) {
 platypusClient.dependsOn buildContainerLibs,
                          distilleLib,
                          explodeWrappers,
-                         explodePwc
+                         explodePwc,
+                         h2
 
 task browser(){
     doFirst {
         java.awt.Desktop.desktop.browse webAppUrl.toURI()
     }
-}
-
-task h2(type: JavaExec) {
-    classpath fileTree(sharedLibDir)
-    main 'org.h2.tools.Server'
-    args '-tcp'
 }

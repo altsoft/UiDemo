@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="90px" prefWidth="823px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label13" parent="view" prefHeight="17px" prefWidth="42px" text="VGap">
+    <AnchorsPaneConstraints height="17px" left="10px" top="55px" width="42px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="40px" text="HGap">
+    <AnchorsPaneConstraints height="17px" left="10px" top="20px" width="40px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="17px" prefWidth="48px" text="Rows">
+    <AnchorsPaneConstraints height="17px" left="172px" top="20px" width="48px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label1" parent="view" prefHeight="17px" prefWidth="48px" text="Colls">
+    <AnchorsPaneConstraints height="17px" left="172px" top="55px" width="48px"/>
+  </Label>
+  <Button cursor="0" name="btnSetGrid" parent="view" prefHeight="28px" prefWidth="80px" text="Set Grid">
+    <AnchorsPaneConstraints height="28px" left="330px" top="12px" width="80px"/>
+  </Button>
+  <ModelSpin cursor="0" name="mdlHGap" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="60px" top="15px" width="100px"/>
+  </ModelSpin>
+  <ModelSpin cursor="0" name="mdlVGap" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="60px" top="50px" width="100px"/>
+  </ModelSpin>
+  <ModelSpin cursor="0" name="mdlRows" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="220px" top="12px" width="100px"/>
+  </ModelSpin>
+  <ModelSpin cursor="0" name="mdlColls" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="220px" top="50px" width="100px"/>
+  </ModelSpin>
+  <Button cursor="0" name="btnAddComponent" parent="view" prefHeight="27px" prefWidth="220px" text="Add component">
+    <AnchorsPaneConstraints height="27px" left="590px" top="12px" width="220px"/>
+  </Button>
+  <Label cursor="0" horizontalAlignment="10" name="label2" parent="view" prefHeight="17px" prefWidth="50px" text="Height">
+    <AnchorsPaneConstraints height="17px" left="420px" top="17px" width="50px"/>
+  </Label>
+  <Label cursor="0" horizontalAlignment="10" name="label12" parent="view" prefHeight="17px" prefWidth="50px" text="Width">
+    <AnchorsPaneConstraints height="17px" left="420px" top="56px" width="50px"/>
+  </Label>
+  <ModelCombo cursor="0" name="mcmbElList" parent="view" prefHeight="29px" prefWidth="150px">
+    <AnchorsPaneConstraints height="29px" left="590px" top="50px" width="150px"/>
+  </ModelCombo>
+  <Button cursor="0" name="btnDelete" parent="view" prefHeight="27px" prefWidth="60px" text="Delete">
+    <AnchorsPaneConstraints height="27px" left="750px" top="51px" width="60px"/>
+  </Button>
+  <ModelSpin cursor="0" name="mdlHeight" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="480px" top="12px" width="100px"/>
+  </ModelSpin>
+  <ModelSpin cursor="0" name="mdlWidth" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="480px" top="51px" width="100px"/>
+  </ModelSpin>
+</layout>

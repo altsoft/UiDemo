@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane background="#ffffff" cursor="0" name="view" prefHeight="240px" prefWidth="626px"/>
+  <BorderPane background="#ffffff" cursor="0" name="panel" parent="view" prefHeight="90px" prefWidth="620px">
+    <AnchorsPaneConstraints height="90px" left="0px" right="6px" top="0px"/>
+  </BorderPane>
+  <ModelGrid cursor="0" data="qAllOwners" name="modelGrid" parent="view" prefHeight="141px" prefWidth="626px">
+    <AnchorsPaneConstraints bottom="-1px" left="0px" right="0px" top="100px"/>
+    <ServiceGridColumn name="colService" resizable="true"/>
+    <ModelGridColumn field="firstname" name="colFirstname" title="colFirstname" width="99px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="lastname" name="colLastname" title="colLastname" width="98px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="address" name="colAddress" title="colAddress" width="99px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="city" name="colCity" title="colCity" width="98px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="telephone" name="colTelephone" title="colTelephone" width="99px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+    <ModelGridColumn field="email" name="colEmail" title="colEmail" width="98px">
+      <ModelFormattedField format=""/>
+    </ModelGridColumn>
+  </ModelGrid>
+</layout>

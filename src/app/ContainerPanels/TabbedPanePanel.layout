@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <AnchorsPane cursor="0" name="view" prefHeight="94px" prefWidth="263px"/>
+  <TextField cursor="0" emptyText="Enter tab name..." name="txtTabName" parent="view" prefHeight="27px" prefWidth="150px">
+    <AnchorsPaneConstraints height="27px" left="10px" top="12px" width="150px"/>
+  </TextField>
+  <Button cursor="0" name="btnAddComponent" parent="view" prefHeight="27px" prefWidth="80px" text="Add">
+    <AnchorsPaneConstraints height="27px" left="170px" top="12px" width="80px"/>
+  </Button>
+  <ModelCombo cursor="0" name="mcmbElList" nullable="false" parent="view" prefHeight="29px" prefWidth="150px">
+    <AnchorsPaneConstraints height="29px" left="10px" top="50px" width="150px"/>
+  </ModelCombo>
+  <Button cursor="0" name="btnDelete" parent="view" prefHeight="27px" prefWidth="80px" text="Delete">
+    <AnchorsPaneConstraints height="27px" left="170px" top="51px" width="80px"/>
+  </Button>
+</layout>

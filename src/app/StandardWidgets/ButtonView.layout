@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
+  <ButtonGroup name="btnGrpHorisontalPosition"/>
+  <ButtonGroup name="buttonGroup"/>
+  <ButtonGroup name="buttonGroup1"/>
+  <ButtonGroup name="buttonGroup2"/>
+  <AnchorsPane cursor="0" name="view" prefHeight="128px" prefWidth="46px"/>
+</layout>
