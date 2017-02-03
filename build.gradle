@@ -123,6 +123,20 @@ task cleanTomcat(type: Delete){
     delete tomcatDir
 }
 
+task cleanReports(type: Delete){
+    file("${webAppDirName}/reports").listFiles().each {
+        cleanReports.delete it
+    }
+}
+clean.dependsOn cleanReports
+
+task cleanPub(type: Delete){
+    file("${webAppDirName}/pub").listFiles().each {
+        cleanPub.delete it
+    }
+}
+clean.dependsOn cleanPub
+
 task h2Exec(type: JavaExec) {
     classpath fileTree(sharedLibDir)
     main 'org.h2.tools.Server'
