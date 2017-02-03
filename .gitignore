@@ -1,11 +1,4 @@
+.gradle
+.nb-gradle
+build
 private.properties
-web
-WEB-INF
-META-INF
-pub
-.DS_Store
-appCache
-reports
-*lock.*
-*.trace.db
-*.war

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="63" entityLocationY="16" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142849853566941" entityLocationX="510" entityLocationY="13" entityWidth="150" tableAlias="t" tableName="OWNERS" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142849733155590" entityLocationX="336" entityLocationY="14" entityWidth="150" tableAlias="t1" tableName="PETS" tableSchemaName=""/>
-</datamodel>
