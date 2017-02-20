@@ -85,7 +85,7 @@
         , TreeView: 'ModelGrid/TreeView'
         , ListView: 'ModelGrid/ListView'
         , OrmBinding: 'ModelGrid/OrmBinding'
-        , OOBinding: 'ModelGrid/OOBinding'
+        , Es6Binding: 'ModelGrid/Es6Binding'
         , ToExcel: 'ModelGrid/ToExcel'
         //Utils
         , CommonProperties: 'Utils/CommonProperties'

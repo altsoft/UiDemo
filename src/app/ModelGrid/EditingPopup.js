@@ -2,7 +2,7 @@
  * 
  * @author mg
  */
-define('EditingPopup', ['orm', 'forms', 'ui', 'forms/border-pane', 'forms/model-combo', 'forms/model-grid',
+define(['orm', 'forms', 'ui', 'forms/border-pane', 'forms/model-combo', 'forms/model-grid',
     'forms/service-grid-column', 'forms/model-grid-column', 'forms/model-date', 'forms/model-check-box', 'PetSelector'],
         function (Orm, Forms, Ui, BorderPane, ModelCombo, ModelGrid, ServiceGridColumn,
                 ModelGridColumn, ModelDate, ModelCheckBox, PetSelector, ModuleName) {

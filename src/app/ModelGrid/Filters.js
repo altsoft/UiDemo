@@ -3,7 +3,7 @@
  * @author mg
  */
 
-define('Filters', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
+define(['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
     'forms/service-grid-column', 'forms/model-grid-column', 'forms/formatted-field', 'forms/label'],
         function (Orm, Forms, Ui, AnchorsPane, ModelCombo, ModelGrid, ServiceGridColumn, ModelGridColumn, FormattedField, Label, ModuleName) {
             function module_constructor() {

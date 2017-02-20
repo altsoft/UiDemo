@@ -2,8 +2,7 @@
  * 
  * @author mg
  */
-
-define('OOBinding', ['orm', 'forms', 'forms/anchors-pane', 'forms/model-grid',
+define(['orm', 'forms', 'forms/anchors-pane', 'forms/model-grid',
     'forms/service-grid-column', 'forms/model-grid-column', 'forms/model-date', 'forms/model-check-box'],
         function (Orm, Forms, AnchorsPane, ModelGrid,
                 ServiceGridColumn, ModelGridColumn, ModelDate, ModelCheckBox, ModuleName) {
@@ -60,17 +59,25 @@ define('OOBinding', ['orm', 'forms', 'forms/anchors-pane', 'forms/model-grid',
                 var grid2 = initGrid();
                 widget.add(grid1, {left: 0, top: 0, width: 500, height: 245});
                 widget.add(grid2, {left: 0, top: 260, width: 500, height: 245});
+                var bindingHandler = {set: function changed(obj, prop, value) {
+                        obj[prop] = value;
+                        if (prop === 'pet' || prop === 'fromdate' || prop === 'todate' || prop === 'ispaid') {
+                            grid1.changed(obj);
+                            grid2.changed(obj);
+                        }
+                    }};
 
                 self.showOnPanel = function (aPanel) {
                     aPanel.add(form.view);
-                    grid1.data = grid2.data = [
-                        {pet: 'Jerry', fromdate: new Date(), todate: new Date(), ispaid: true},
-                        {pet: 'Tom', fromdate: new Date(), todate: new Date(), ispaid: false},
-                        {pet: 'Drujok', fromdate: new Date(), todate: new Date(), ispaid: false},
-                        {pet: 'Mailo', fromdate: new Date(), todate: new Date(), ispaid: false},
-                        {pet: 'Pick', fromdate: new Date(), todate: new Date(), ispaid: true},
-                        {pet: 'Vaska', fromdate: new Date(), todate: new Date(), ispaid: true}
+                    var gridData = [
+                        new Proxy({pet: 'Jerry', fromdate: new Date(), todate: new Date(), ispaid: true}, bindingHandler),
+                        new Proxy({pet: 'Tom', fromdate: new Date(), todate: new Date(), ispaid: false}, bindingHandler),
+                        new Proxy({pet: 'Drujok', fromdate: new Date(), todate: new Date(), ispaid: false}, bindingHandler),
+                        new Proxy({pet: 'Mailo', fromdate: new Date(), todate: new Date(), ispaid: false}, bindingHandler),
+                        new Proxy({pet: 'Pick', fromdate: new Date(), todate: new Date(), ispaid: true}, bindingHandler),
+                        new Proxy({pet: 'Vaska', fromdate: new Date(), todate: new Date(), ispaid: true}, bindingHandler)
                     ];
+                    grid1.data = grid2.data = gridData;
                 };
 
                 self.getDemoComponent = function () {

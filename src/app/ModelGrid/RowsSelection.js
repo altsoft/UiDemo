@@ -2,7 +2,7 @@
  * 
  * @author mg
  */
-define('RowsSelection', ['orm', 'forms', 'ui', 'forms/border-pane', 'forms/model-combo', 'forms/model-grid',
+define(['orm', 'forms', 'ui', 'forms/border-pane', 'forms/model-combo', 'forms/model-grid',
     'forms/model-grid-column', 'forms/model-date', 'forms/model-check-box', 'forms/radio-grid-column', 'forms/check-grid-column'],
         function (Orm, Forms, Ui, BorderPane, ModelCombo, ModelGrid,
                 ModelGridColumn, ModelDate, ModelCheckBox, RadioGridColumn, CheckGridColumn, ModuleName) {

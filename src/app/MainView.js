@@ -2,8 +2,8 @@
  * 
  * @author jskonst
  */
-define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 'Demos'],
-        function (Orm, Forms, Ui, Env, Label, Invoke, Logger, demosList, ModuleName) {
+define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 'Demos', 'resource'],
+        function (Orm, Forms, Ui, Env, Label, Invoke, Logger, demos, Resource, ModuleName) {
             function module_constructor() {
                 var self = this
                         , model = Orm.loadModel(ModuleName)
@@ -21,8 +21,8 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                 });
 
                 form.pnlDemonstrationContent.height = null;
-                
-                form.grdDemos.data = demosList;
+
+                form.grdDemos.data = demos;
                 form.grdDemos.column.field = "name";
                 form.grdDemos.parentField = 'parent';
                 form.grdDemos.childrenField = 'children';
@@ -128,28 +128,32 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                         form.lblInfo.text = form.grdDemos.selected[0].information;
                     }
 
-                    if (form.grdDemos.selected[0].parent) {
-
-                        if (form.grdDemos.selected[0].creationCode) {
-                            form.pnlCreation.element.innerHTML = '<pre><code class="javascript">' + form.grdDemos.selected[0].creationCode + '</code></pre>';
-                            hljs.highlightBlock(form.pnlCreation.element);
-                            Invoke.later(function () {
-                                form.tpSections.height = form.pnlCreation.element.children[0].offsetHeight + tabTitleHeight;
-                            });
-                        }
-
-                        var demo = form.grdDemos.selected[0];
-                        require([form.grdDemos.selected[0].customForm,
-                            form.grdDemos.selected[0].commonForm]
-                                , function (aCustom, aCommon) {
-                                    if (!(demo.createdCustomForm && demo.createdViewForm)) {
-                                        demo.createdCustomForm = new aCustom(); //form of custom proprties
-                                        demo.createdViewForm = new aCommon(); //form of commom properties
-                                    }
-                                    if (demo === form.grdDemos.selected[0]) {
-                                        showDemo(demo.createdCustomForm, demo.createdViewForm);
-                                    }
+                    var demo = form.grdDemos.selected[0];
+                    if (demo.parent) {
+                        require([demo.customForm, demo.commonForm], function (aCustom, aCommon) {
+                            function loaded() {
+                                form.pnlCreation.element.innerHTML = '<pre><code class="javascript">' + form.grdDemos.selected[0].creationCode + '</code></pre>';
+                                hljs.highlightBlock(form.pnlCreation.element);
+                                Invoke.later(function () {
+                                    form.tpSections.height = form.pnlCreation.element.children[0].offsetHeight + tabTitleHeight;
                                 });
+                                if (!(demo.createdCustomForm && demo.createdViewForm)) {
+                                    demo.createdCustomForm = new aCustom(); //form of custom proprties
+                                    demo.createdViewForm = new aCommon(); //form of commom properties
+                                }
+                                if (demo === form.grdDemos.selected[0]) {
+                                    showDemo(demo.createdCustomForm, demo.createdViewForm);
+                                }
+                            }
+                            if(demo.creationCode == null){
+                                Resource.loadText(demo.customForm + '.js', function(aContent){
+                                    demo.creationCode = aContent;
+                                    loaded();
+                                });
+                            } else {
+                                loaded();
+                            }
+                        });
                     }
                 };
 
@@ -157,7 +161,7 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     if (Env.agent === Env.HTML5) {
                         form.view.showOn(document.getElementById('Main'));
                         Invoke.later(function () {
-                            form.grdDemos.select(demosList[0]);
+                            form.grdDemos.select(demos[0]);
                             var loadingProgress = document.getElementById('LoadingProgress');
                             loadingProgress.parentNode.removeChild(loadingProgress);
                         });

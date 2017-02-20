@@ -3,7 +3,7 @@
  * @author mg
  */
 
-define('Details', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-grid',
+define(['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-grid',
     'forms/service-grid-column', 'forms/model-grid-column', 'forms/model-date', 'forms/model-check-box'],
         function (Orm, Forms, Ui, AnchorsPane, ModelGrid, ServiceGridColumn, ModelGridColumn, ModelDate, ModelCheckBox, ModuleName) {
             function module_constructor() {

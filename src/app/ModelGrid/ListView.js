@@ -2,7 +2,7 @@
  * 
  * @author mg
  */
-define('ListView', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
+define(['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
     'forms/service-grid-column', 'forms/model-grid-column', 'forms/model-date', 'forms/model-check-box'],
         function (Orm, Forms, Ui, AnchorsPane, ModelCombo, ModelGrid,
                 ServiceGridColumn, ModelGridColumn, ModelDate, ModelCheckBox, ModuleName) {

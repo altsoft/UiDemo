@@ -2,7 +2,7 @@
  * 
  * @author mg
  */
-define('TreeView', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
+define(['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
     'forms/model-grid-column'],
         function (Orm, Forms, Ui, AnchorsPane, ModelCombo, ModelGrid,
                 ModelGridColumn, ModuleName) {

@@ -2,7 +2,7 @@
  * 
  * @author mg
  */
-define('TreeGrid', ['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
+define(['orm', 'forms', 'ui', 'forms/anchors-pane', 'forms/model-combo', 'forms/model-grid',
     'forms/service-grid-column', 'forms/model-grid-column', 'forms/model-date', 'forms/model-check-box', 'forms/button', 'rpc'],
         function (Orm, Forms, Ui, AnchorsPane, ModelCombo, ModelGrid,
                 ServiceGridColumn, ModelGridColumn, ModelDate, ModelCheckBox, Button, Rpc, ModuleName) {
