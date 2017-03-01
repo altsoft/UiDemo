@@ -64,6 +64,8 @@ define(['orm', 'forms', 'forms/anchors-pane', 'forms/model-grid',
                         if (prop === 'pet' || prop === 'fromdate' || prop === 'todate' || prop === 'ispaid') {
                             grid1.changed(obj);
                             grid2.changed(obj);
+                            // In case of adding items to data, you should call grid.added(item or an array of added items)
+                            // In case of removing items to data, you should call grid.removed(item or an array of removed items)
                         }
                     }};
 
