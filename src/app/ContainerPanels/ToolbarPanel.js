@@ -59,9 +59,6 @@ function (Forms, Ui,ToolBar,Button,AddComponentContainer, ModuleName) {
             addPanel.showOnPanel(aPanel);
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

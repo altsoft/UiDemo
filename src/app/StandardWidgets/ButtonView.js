@@ -7,31 +7,23 @@ define('ButtonView', ['forms','forms/button','LabelView'], function (Forms, Butt
         var self = this
                 , form = Forms.loadForm(ModuleName);
                 
-    var button = new Button("Button");
-    button.height = 27;
-    button.width = 100;
-    var lblForm;
-    self.showOnPanel = function (aPanel) {
-        lblForm = new LabelView(button);
-        lblForm.showOnPanel(aPanel);
-    };
+        var button = new Button("Button");
+        button.height = 27;
+        button.width = 100;
+        var lblForm;
+        self.showOnPanel = function (aPanel) {
+            lblForm = new LabelView(button);
+            lblForm.showOnPanel(aPanel);
+        };
 
-    self.getDemoComponent = function () {
-        return button;
-    };
+        self.getDemoComponent = function () {
+            return button;
+        };
 
-    self.getViewComponent = function () {
-        return button;
-    };
-    
-    self.getFormHeight = function () {
-        var commonHeight = lblForm.getFormHeight()
-        if (commonHeight>form.view.height){
-            return commonHeight;
-        }else{
-            return form.view.height;
-        }
-    };
-}
+        self.getViewComponent = function () {
+            return button;
+        };
+
+    }
     return module_constructor;
 });

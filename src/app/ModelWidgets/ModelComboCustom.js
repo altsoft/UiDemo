@@ -40,9 +40,6 @@ define('ModelComboCustom', ['orm', 'forms', 'ui', 'forms/model-combo'], function
             aPanel.add(form.view);
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
         model.requery(function () {
         });
 

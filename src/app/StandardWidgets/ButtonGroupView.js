@@ -90,10 +90,6 @@ function (Forms, Ui, Env, ButtonGroup,ButtonGroupWidget, ModuleName) {
             form.grdGroupItems.data = form.mdlGroups.value.group.children();
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
-
         form.mdlGroups.onValueChange = function (event) {
             if (form.mdlGroups.value) {
                 form.grdGroupItems.data = form.mdlGroups.value.group.children();

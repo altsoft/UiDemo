@@ -146,10 +146,6 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
                     setContainer();
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-
                 form.mdlHGap.onValueChange = function (event) {
                     demoContainer.hgap = gaps.hGap;
                 };

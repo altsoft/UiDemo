@@ -52,10 +52,6 @@ define('ModelDateCustom', ['orm', 'forms', 'ui', 'forms/model-date'], function (
             aPanel.add(form.view);
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
-
         model.requery(function () {
         });
 

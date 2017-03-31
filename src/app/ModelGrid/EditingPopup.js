@@ -80,11 +80,6 @@ define(['orm', 'forms', 'ui', 'forms/border-pane', 'forms/model-combo', 'forms/m
                     return widget;
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-                // TODO : place your code here
-
                 model.requery(function () {
                     // TODO : place your code here
                 });

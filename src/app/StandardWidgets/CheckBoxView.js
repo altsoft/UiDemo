@@ -58,9 +58,6 @@ define('CheckBoxView', ['forms', 'ui', 'forms/check-box','ButtonGroupView'], fun
             checkBox.text = form.txtText.text;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

@@ -188,10 +188,6 @@ define('CommonProperties', ['orm', 'forms', 'ui', 'environment', 'logger', 'form
                     demoComponent.height = event.source.value;
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-
                 form.mdlPopup.onValueChange = function (event) {
                     if (form.mdlPopup.value) {
                         demoComponent.componentPopupMenu = form.mdlPopup.value.menu;

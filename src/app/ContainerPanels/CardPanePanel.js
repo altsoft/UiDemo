@@ -67,10 +67,6 @@ define('CardPanePanel', ['forms', 'ui', 'forms/card-pane', 'environment', 'forms
                     aPanel.add(form.view);
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-
                 form.mdlHGap.onValueChange = function (event) {
                     demoContainer.hgap = gaps.hGap;
                 };

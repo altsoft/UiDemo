@@ -155,10 +155,6 @@ define('MenuCommonProperties', ['forms', 'ui', 'logger'], function (Forms, Ui, L
             }
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
-
     }
     return module_constructor;
 });

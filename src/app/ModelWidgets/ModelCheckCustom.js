@@ -32,8 +32,6 @@ define('ModelCheckCustom', ['orm', 'forms', 'ui', 'forms/model-check-box'], func
 
         self.getViewComponent = function () {
             return mdlCheckBox;
-            //return modelCheckView.getViewComponent();
-
         };
 
         self.showOnPanel = function (aPanel) {
@@ -43,10 +41,6 @@ define('ModelCheckCustom', ['orm', 'forms', 'ui', 'forms/model-check-box'], func
         model.requery(function () {
             // TODO : place your code here
         });
-
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
 
         form.txtText.onActionPerformed = function (event) {
             mdlCheckBox.text = form.txtText.text;

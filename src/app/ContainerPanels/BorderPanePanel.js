@@ -88,10 +88,6 @@ define('BorderPanePanel', ['forms', 'ui', 'environment', 'forms/border-pane', 'f
                     demoContainer.vgap = gaps.vGap;
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-
                 form.btnAddComponent.onActionPerformed = function (event) {
                     var pnlSubject = new BorderPane();
                     if (componentSize.width) {

@@ -200,17 +200,11 @@ define('FormattedFieldView', ['forms', 'ui', 'forms/formatted-field'], function 
                 formattedField.onParse = null;
                 formattedField.onFormat = null;
             }
-//        formattedField.text = "";
-//        formattedField.value = null;
 
             formattedField.valueType = form.mcmbValueType.value.valueType;
             form.txtFormat.text = form.mcmbValueType.value.format;
             formattedField.value = form.mcmbValueType.value.value;
             formattedField.format = form.mcmbValueType.value.format;
-        };
-
-        self.getFormHeight = function () {
-            return form.view.height;
         };
 
     }

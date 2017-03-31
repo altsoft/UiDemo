@@ -37,9 +37,6 @@ define('TextAreaView', ['forms', 'ui', 'forms/text-area'], function (Forms, Ui, 
             textArea.emptyText = form.txtEmptyText.text;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

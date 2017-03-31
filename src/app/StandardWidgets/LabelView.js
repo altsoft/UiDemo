@@ -267,9 +267,6 @@ define('LabelView', ['forms', 'ui', 'forms/label', 'forms/button-group', 'resour
                     demoComponent.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
             }
             return module_constructor;
         });

@@ -58,10 +58,6 @@ define('TabbedPanePanel', ['forms', 'ui', 'forms/tabbed-pane', 'environment', 'f
                     aPanel.add(form.view);
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-
                 form.btnAddComponent.onActionPerformed = function (event) {
                     var pnlSubject = new BorderPane();
                     var colorIndex = Math.floor(Math.random() * Pallete.length);

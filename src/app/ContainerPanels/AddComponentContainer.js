@@ -50,7 +50,6 @@ define('AddComponentContainer', ['forms', 'ui', 'invoke', 'forms/border-pane', '
                     var pnlSubject = new BorderPane();
                     pnlSubject.width = form.mdlWidth.value;
                     pnlSubject.height = form.mdlHeight.value;
-                    debugger;
                     var colorIndex = Math.floor(Math.random() * Pallete.length);
                     pnlSubject.background = new Ui.Color(Pallete[colorIndex]);
                     var label = new Label();

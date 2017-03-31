@@ -43,9 +43,6 @@ define('HtmlAreaView', ['forms', 'ui', 'forms/html-area'], function (Forms, Ui, 
             form.txtSource.text = htmlArea.value;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

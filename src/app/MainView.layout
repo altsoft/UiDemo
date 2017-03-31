@@ -34,19 +34,16 @@
     <AnchorsPaneConstraints bottom="505px" left="0px" right="0px" top="0px"/>
   </Label>
   <FlowPane cursor="0" name="pnlPlayground" parent="pnlDemonstrationContent" prefHeight="120px" prefWidth="817px"/>
-  <TabbedPane cursor="0" name="tpSections" parent="pnlDemonstrationContent" prefHeight="408px" prefWidth="817px" selectedComponent="_pnlCreation"/>
-  <ScrollPane cursor="0" name="pnlCreation" parent="tpSections" prefHeight="382px" prefWidth="815px" visible="true">
-    <TabbedPaneConstraints tabTitle="Code"/>
+  <TabbedPane cursor="0" name="tpSections" parent="pnlDemonstrationContent" prefHeight="400px" prefWidth="817px" selectedComponent="pnlCreation"/>
+  <ScrollPane cursor="0" name="pnlCreation" parent="tpSections" prefHeight="374px" prefWidth="815px">
+    <TabbedPaneConstraints tabTitle="Code" tabToolTip=""/>
   </ScrollPane>
-  <BoxPane cursor="0" name="_pnlCreation" orientation="1" parent="tpSections" prefHeight="382px" prefWidth="815px">
-    <TabbedPaneConstraints tabTitle="Creation" tabToolTip=""/>
-  </BoxPane>
-  <BoxPane cursor="0" name="pnlCustomize" orientation="1" parent="tpSections" prefHeight="382px" prefWidth="815px" visible="false">
-    <TabbedPaneConstraints tabTitle="Customize" tabToolTip=""/>
-  </BoxPane>
-  <BoxPane cursor="0" name="pnlCustomProperties" orientation="1" parent="pnlCustomize" prefHeight="50px" prefWidth="815px"/>
-  <BoxPane cursor="0" name="pnlView" orientation="1" parent="tpSections" prefHeight="382px" prefWidth="815px" visible="false">
+  <BoxPane cursor="0" name="pnlView" orientation="1" parent="tpSections" prefHeight="374px" prefWidth="815px" visible="false">
     <TabbedPaneConstraints tabTitle="View" tabToolTip=""/>
   </BoxPane>
   <BoxPane cursor="0" name="pnlViewProperties" orientation="1" parent="pnlView" prefHeight="50px" prefWidth="815px"/>
+  <BoxPane cursor="0" name="pnlCustomize" orientation="1" parent="tpSections" prefHeight="374px" prefWidth="815px" visible="false">
+    <TabbedPaneConstraints tabTitle="Customize" tabToolTip=""/>
+  </BoxPane>
+  <BoxPane cursor="0" name="pnlCustomProperties" orientation="1" parent="pnlCustomize" prefHeight="50px" prefWidth="815px"/>
 </layout>

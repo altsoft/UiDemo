@@ -98,9 +98,6 @@ define('VBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                     }
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
             }
             return module_constructor;
         });

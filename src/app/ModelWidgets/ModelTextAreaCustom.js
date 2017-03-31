@@ -56,10 +56,6 @@ define('ModelTextAreaCustom', ['orm', 'forms', 'ui', 'forms/model-text-area'], f
         model.requery(function () {
             // TODO : place your code here
         });
-
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

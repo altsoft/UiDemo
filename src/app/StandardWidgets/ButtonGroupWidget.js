@@ -43,10 +43,6 @@ define('ButtonGroupWidget', ['forms'], function (Forms, ModuleName) {
             return form.view;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
-
     }
     return module_constructor;
 });

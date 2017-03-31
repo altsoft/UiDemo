@@ -111,9 +111,6 @@ define('ModelTextCustom', ['orm', 'forms', 'ui', 'forms/model-formatted-field'],
             // TODO : place your code here
         });
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

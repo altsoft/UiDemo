@@ -111,10 +111,6 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
                     aPanel.add(form.view);
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-
                 form.btnAddCheck.onActionPerformed = function (event) {
                     var item = new CheckMenuItem(form.txtText.text);
                     item.displayName = 'CheckMenuItem_' + form.txtText.text;

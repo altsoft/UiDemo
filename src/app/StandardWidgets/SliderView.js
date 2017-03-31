@@ -14,7 +14,7 @@ define('SliderView', ['forms', 'ui', 'forms/slider'], function (Forms, Ui, Slide
 
         var sliderParams = {'maximum': 100,
             'minimum': 0,
-            'value': 0};
+            'value': 60};
 
         form.mdlMaximum.data = sliderParams;
         form.mdlMaximum.field = 'maximum';
@@ -62,9 +62,6 @@ define('SliderView', ['forms', 'ui', 'forms/slider'], function (Forms, Ui, Slide
             slider.value = sliderParams.value;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

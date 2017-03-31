@@ -160,9 +160,6 @@ define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 
                     }
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
             }
             return module_constructor;
         });

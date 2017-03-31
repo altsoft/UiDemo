@@ -40,9 +40,6 @@ define('ModelSpinCustom', ['orm', 'forms', 'ui','forms/model-spin'], function (O
         // TODO : place your code here
     });
 
-    self.getFormHeight = function () {
-        return form.view.height;
-    };
     form.txtEmptyText.onActionPerformed = function (event) {
         mdlSpin.emptyText = form.txtEmptyText.text;
     };

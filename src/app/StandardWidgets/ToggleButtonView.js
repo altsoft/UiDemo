@@ -44,14 +44,6 @@ define('ToggleButtonView', ['forms', 'ui', 'forms/toggle-button','LabelView','Bu
             return toggleButton;
         };
 
-        self.getFormHeight = function () {
-            var commonHeight = lblForm.getFormHeight();
-            if (commonHeight > form.view.height) {
-                return commonHeight;
-            } else {
-                return form.view.height;
-            }
-        };
     }
     return module_constructor;
 });

@@ -90,10 +90,6 @@ define(['orm', 'forms', 'forms/anchors-pane', 'forms/model-grid',
                     return widget;
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-
                 model.requery(function () {
                 });
 

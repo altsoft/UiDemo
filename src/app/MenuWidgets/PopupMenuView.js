@@ -34,9 +34,6 @@ define('PopupMenuView', ['environment', 'forms', 'ui', 'forms/label'], function 
             return widget;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

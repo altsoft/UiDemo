@@ -45,9 +45,6 @@ define('PasswordFieldView', ['forms', 'ui', 'forms/password-field'], function (F
             passwordField.emptyText = form.txtEmptyText.text;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

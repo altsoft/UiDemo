@@ -61,10 +61,6 @@ define('DesktopPanePanel', ['forms', 'ui', 'forms/desktop-pane', 'environment','
                     addPanel.showOnPanel(aPanel);
                 };
 
-                self.getFormHeight = function () {
-                    return form.view.height;
-                };
-
                 form.btnMinimize.onActionPerformed = function (event) {
                     internalContainer.minimizeAll();
                 };

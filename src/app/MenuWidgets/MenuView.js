@@ -32,9 +32,6 @@ define('MenuView', ['forms', 'ui', 'forms/menu-bar'], function (Forms, Ui, MenuB
             return widget;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

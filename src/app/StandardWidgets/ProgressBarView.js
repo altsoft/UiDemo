@@ -16,7 +16,7 @@ define('ProgressBarView', ['forms', 'ui', 'forms/progress-bar'], function (Forms
 
         var pbParams = {'maximum': 100,
             'minimum': 0,
-            'value': 0};
+            'value': 60};
 
         form.mdlMaximum.data = pbParams;
         form.mdlMaximum.field = 'maximum';
@@ -69,10 +69,6 @@ define('ProgressBarView', ['forms', 'ui', 'forms/progress-bar'], function (Forms
                 progressBar.text = null;
             }
 
-        };
-
-        self.getFormHeight = function () {
-            return form.view.height;
         };
 
         form.tglTransition.onActionPerformed = function (event) {

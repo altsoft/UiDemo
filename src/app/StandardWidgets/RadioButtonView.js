@@ -58,9 +58,6 @@ function (Forms, Ui, RadioButton,ButtonGroupView, ModuleName) {
             radioButton.text = form.txtText.text;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

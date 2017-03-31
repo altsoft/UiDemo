@@ -48,9 +48,6 @@ define('TextFieldView', ['forms', 'ui', 'forms/text-field'], function (Forms, Ui
             textField.emptyText = form.txtEmptyText.text;
         };
 
-        self.getFormHeight = function () {
-            return form.view.height;
-        };
     }
     return module_constructor;
 });

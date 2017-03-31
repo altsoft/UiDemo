@@ -36,14 +36,6 @@ define('DropDownButtonView', ['forms', 'ui', 'forms/drop-down-button', 'forms/po
             return dropDownButton;
         };
 
-        self.getFormHeight = function () {
-            var commonHeight = lblForm.getFormHeight();
-            if (commonHeight > form.view.height) {
-                return commonHeight;
-            } else {
-                return form.view.height;
-            }
-        };
     }
     return module_constructor;
 });
