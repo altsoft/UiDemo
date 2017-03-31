@@ -697,20 +697,20 @@ define(function () {
             , hint: "ModelGrid's data can be easily filtered, riddled or sorted in developer preferred manner."
         },
 //gridTreeView
-        {name: 'Tree View'
+        {name: 'Tree'
             , parent: modelGrid
             , customForm: "ModelGrid/TreeView"
             , commonForm: "CommonProperties"
             , icon: null
-            , hint: "Tree view on top of a ModelGrid."
+            , hint: "Tree widget on top of a ModelGrid."
         },
 //gridListView 
-        {name: 'List View'
+        {name: 'List'
             , parent: modelGrid
             , customForm: "ModelGrid/ListView"
             , commonForm: "CommonProperties"
             , icon: null
-            , hint: "Simple list on top of a ModelGrid."
+            , hint: "List widget on top of a ModelGrid."
         },
 //gridOrmBinding
         {name: 'ORM Binding'

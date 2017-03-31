@@ -6,44 +6,47 @@
   <PopupMenu cursor="0" name="popupMenu"/>
   <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem2"/>
   <MenuItem cursor="0" focusable="true" horizontalTextPosition="4" name="menuItem1" parent="popupMenu" prefHeight="0px" prefWidth="0px" text="menuItem1"/>
-  <AnchorsPane cursor="0" name="view" prefHeight="584px" prefWidth="1082px"/>
-  <ModelGrid cursor="0" editable="false" name="grdDemos" parent="view" prefHeight="563px" prefWidth="220px">
-    <AnchorsPaneConstraints bottom="11px" left="10px" top="10px" width="220px"/>
-    <ModelGridColumn name="column" title="Demos" width="218px">
+  <AnchorsPane cursor="0" name="view" prefHeight="567px" prefWidth="1082px"/>
+  <ModelGrid cursor="0" editable="false" name="grdDemos" parent="view" prefHeight="550px" prefWidth="220px">
+    <AnchorsPaneConstraints bottom="7px" left="10px" top="10px" width="220px"/>
+    <ModelGridColumn name="column" title="Demos" width="217px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
   </ModelGrid>
-  <CardPane cursor="0" name="pnlDemoViews" parent="view" prefHeight="560px" prefWidth="832px">
-    <AnchorsPaneConstraints bottom="14px" left="240px" right="10px" top="10px"/>
+  <CardPane cursor="0" name="pnlDemoViews" parent="view" prefHeight="550px" prefWidth="832px">
+    <AnchorsPaneConstraints bottom="7px" left="240px" right="10px" top="10px"/>
   </CardPane>
-  <AnchorsPane cursor="0" name="pnlTextInfo" parent="pnlDemoViews" prefHeight="560px" prefWidth="832px" visible="false">
+  <AnchorsPane cursor="0" name="pnlTextInfo" parent="pnlDemoViews" prefHeight="550px" prefWidth="832px" visible="false">
     <CardPaneConstraints cardName="pnlTextInfo"/>
   </AnchorsPane>
-  <Label cursor="0" name="lblInfo" parent="pnlTextInfo" prefHeight="540px" prefWidth="812px" verticalAlignment="1">
+  <Label cursor="0" name="lblInfo" parent="pnlTextInfo" prefHeight="530px" prefWidth="812px" verticalAlignment="1">
     <AnchorsPaneConstraints bottom="10px" left="10px" right="10px" top="10px"/>
   </Label>
-  <AnchorsPane cursor="0" name="pnlDemonstration" parent="pnlDemoViews" prefHeight="560px" prefWidth="832px" visible="false">
+  <AnchorsPane cursor="0" name="pnlDemonstration" parent="pnlDemoViews" prefHeight="550px" prefWidth="832px" visible="false">
     <CardPaneConstraints cardName="pnlDemonstration"/>
   </AnchorsPane>
-  <ScrollPane cursor="0" name="scrollPane" parent="pnlDemonstration" prefHeight="560px" prefWidth="832px">
-    <AnchorsPaneConstraints bottom="0px" left="0px" right="0px" top="0px"/>
+  <ScrollPane cursor="0" name="scrollDemonstrationContent" parent="pnlDemonstration" prefHeight="540px" prefWidth="820px">
+    <AnchorsPaneConstraints bottom="0px" left="10px" right="2px" top="10px"/>
   </ScrollPane>
-  <BoxPane cursor="0" name="pnlDemonstrationContent" orientation="1" parent="scrollPane" prefHeight="558px" prefWidth="830px"/>
-  <AnchorsPane cursor="0" name="pnlShortInfo" parent="pnlDemonstrationContent" prefHeight="20px" prefWidth="830px"/>
-  <Label cursor="0" name="lblShortInfo" parent="pnlShortInfo" prefHeight="0px" prefWidth="830px" text="label">
+  <BoxPane cursor="0" name="pnlDemonstrationContent" orientation="1" parent="scrollDemonstrationContent" prefHeight="537px" prefWidth="817px"/>
+  <AnchorsPane cursor="0" name="pnlShortInfo" parent="pnlDemonstrationContent" prefHeight="20px" prefWidth="817px"/>
+  <Label cursor="0" name="lblShortInfo" parent="pnlShortInfo" prefHeight="0px" prefWidth="817px" text="label">
     <AnchorsPaneConstraints bottom="505px" left="0px" right="0px" top="0px"/>
   </Label>
-  <AnchorsPane cursor="0" name="pnlPlayground" parent="pnlDemonstrationContent" prefHeight="120px" prefWidth="830px"/>
-  <TabbedPane cursor="0" name="tpSections" parent="pnlDemonstrationContent" prefHeight="100px" prefWidth="830px" selectedComponent="pnlCreation"/>
-  <AnchorsPane cursor="0" name="pnlCreation" parent="tpSections" prefHeight="72px" prefWidth="825px">
+  <FlowPane cursor="0" name="pnlPlayground" parent="pnlDemonstrationContent" prefHeight="120px" prefWidth="817px"/>
+  <TabbedPane cursor="0" name="tpSections" parent="pnlDemonstrationContent" prefHeight="408px" prefWidth="817px" selectedComponent="_pnlCreation"/>
+  <ScrollPane cursor="0" name="pnlCreation" parent="tpSections" prefHeight="382px" prefWidth="815px" visible="true">
+    <TabbedPaneConstraints tabTitle="Code"/>
+  </ScrollPane>
+  <BoxPane cursor="0" name="_pnlCreation" orientation="1" parent="tpSections" prefHeight="382px" prefWidth="815px">
     <TabbedPaneConstraints tabTitle="Creation" tabToolTip=""/>
-  </AnchorsPane>
-  <BoxPane cursor="0" name="pnlCustomize" orientation="1" parent="tpSections" prefHeight="72px" prefWidth="825px" visible="false">
+  </BoxPane>
+  <BoxPane cursor="0" name="pnlCustomize" orientation="1" parent="tpSections" prefHeight="382px" prefWidth="815px" visible="false">
     <TabbedPaneConstraints tabTitle="Customize" tabToolTip=""/>
   </BoxPane>
-  <BoxPane cursor="0" name="pnlCustomProperties" parent="pnlCustomize" prefHeight="120px" prefWidth="825px"/>
-  <BoxPane cursor="0" name="pnlView" orientation="1" parent="tpSections" prefHeight="72px" prefWidth="825px" visible="false">
+  <BoxPane cursor="0" name="pnlCustomProperties" orientation="1" parent="pnlCustomize" prefHeight="50px" prefWidth="815px"/>
+  <BoxPane cursor="0" name="pnlView" orientation="1" parent="tpSections" prefHeight="382px" prefWidth="815px" visible="false">
     <TabbedPaneConstraints tabTitle="View" tabToolTip=""/>
   </BoxPane>
-  <BoxPane cursor="0" name="pnlViewProperties" orientation="1" parent="pnlView" prefHeight="100px" prefWidth="825px"/>
+  <BoxPane cursor="0" name="pnlViewProperties" orientation="1" parent="pnlView" prefHeight="50px" prefWidth="815px"/>
 </layout>

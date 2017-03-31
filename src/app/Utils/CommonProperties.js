@@ -3,31 +3,21 @@
  * @author user
  */
 
-define('CommonProperties', ['orm', 'forms', 'ui', 'environment', 'logger', 'forms/label', 'resource', 'PopupMenuCustom'],
-        function (Orm, Forms, Ui, Env, Logger, Label, Resource, PopupMenuCustom, ModuleName) {
+define('CommonProperties', ['orm', 'forms', 'ui', 'environment', 'logger', 'forms/label', 'resource', 'PopupMenuCustom', 'invoke'],
+        function (Orm, Forms, Ui, Env, Logger, Label, Resource, PopupMenuCustom, Invoke, ModuleName) {
             function module_constructor(aDemoComponent) {
                 var self = this
                         , model = Orm.loadModel(ModuleName)
                         , form = Forms.loadForm(ModuleName, model);
 
                 var demoComponent = aDemoComponent;
-                var onComponentResize;
-
-                var componentSize = {'width': 0,
-                    'height': 0};
-                form.mdlWidth.data = componentSize;
-                form.mdlHeight.data = componentSize;
-                form.mdlWidth.field = 'width';
-                form.mdlHeight.field = 'height';
-
 
                 form.mdlPopup.displayField = "name";
                 var demoMenuList = new PopupMenuCustom().getMenus();
                 form.mdlPopup.displayList = demoMenuList;
 
-
-
-                var cursors = [{'name': Ui.Cursor.DEFAULT},
+                var cursors = [
+                    {'name': Ui.Cursor.DEFAULT},
                     {'name': Ui.Cursor.CROSSHAIR},
                     {'name': 'help'},
                     {'name': Ui.Cursor.MOVE},
@@ -67,9 +57,10 @@ define('CommonProperties', ['orm', 'forms', 'ui', 'environment', 'logger', 'form
                     form.chEnabled.selected = demoComponent.enabled;
                     form.chFocusable.selected = demoComponent.focusable;
                     form.chOpaque.selected = demoComponent.opaque;
-                    componentSize.width = demoComponent.width;
-                    componentSize.height = demoComponent.height;
-//        form.mdlHeight.value = componentSize.height;
+                    Invoke.later(function(){
+                        form.mdlWidth.value = demoComponent.width;
+                        form.mdlHeight.value = demoComponent.height;
+                    });
 
                     if (demoComponent.componentPopupMenu) {
                         for (var menu in demoMenuList) {
@@ -184,27 +175,17 @@ define('CommonProperties', ['orm', 'forms', 'ui', 'environment', 'logger', 'form
                 };
 
                 form.ffBorder.onValueChange = function (event) {
-
                     if (Env.agent === Env.HTML5) {
                         demoComponent.element.style.border = form.ffBorder.value;
                     }
                 };
 
                 form.mdlWidth.onValueChange = function (event) {
-                    demoComponent.width = componentSize.width;
+                    demoComponent.width = event.source.value;
                 };
 
                 form.mdlHeight.onValueChange = function (event) {
-                    demoComponent.height = componentSize.height;
-                    if (onComponentResize) {
-                        if (componentSize.height) {
-                            onComponentResize(componentSize.height);
-                        }
-                    }
-                };
-
-                self.setOnComponentResize = function (aCallback) {
-                    onComponentResize = aCallback;
+                    demoComponent.height = event.source.value;
                 };
 
                 self.getFormHeight = function () {

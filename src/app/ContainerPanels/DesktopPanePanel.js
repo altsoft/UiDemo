@@ -3,7 +3,7 @@
  * @author user
  */
 define('DesktopPanePanel', ['forms', 'ui', 'forms/desktop-pane', 'environment','DesktopInnerForm','AddDesktopContainer'],
-        function (Forms, Ui, DesktopPane, Env,DesktopInnerForm, AddDesktopContainer, ModuleName) {
+        function (Forms, Ui, DesktopPane, Env, DesktopInnerForm, AddDesktopContainer, ModuleName) {
             function module_constructor() {
                 var self = this
                         , form = Forms.loadForm(ModuleName);
@@ -14,7 +14,7 @@ define('DesktopPanePanel', ['forms', 'ui', 'forms/desktop-pane', 'environment','
                 internalContainer.width = 800;
                 internalContainer.height = 400;
                 if (Env.agent == Env.HTML5) {
-                    internalContainer.element.style.border = "thin solid gray";
+                    internalContainer.element.style.border = "thin solid #ccc";
                     internalContainer.element.style.borderRadius = "5px";
                     internalContainer.element.style.background = "#345";
                 }

@@ -11,16 +11,19 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                 var lbLoad = new Label();
                 lbLoad.width = 200;
                 lbLoad.height = 200;
-                var hMargin = 10;
-                var vMargin = 10;
-                var tabTitleHeight = 50;
 
                 Ui.Icon.load('icons/loading5.gif', function (data) {
                     lbLoad.icon = data;
                     lbLoad.text = null;
                 });
 
+                form.pnlPlayground.height = null;
                 form.pnlDemonstrationContent.height = null;
+                form.pnlCreation.height = null;
+                form.pnlCustomize.height = null;
+                form.pnlCustomProperties.height = null;
+                form.pnlView.height = null;
+                form.pnlViewProperties.height = null;
 
                 form.grdDemos.data = demos;
                 form.grdDemos.column.field = "name";
@@ -51,38 +54,6 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     }
                 };
 
-                function onTabChanged() {
-                    switch (form.tpSections.selectedIndex) {
-                        case 0:
-                        {
-                            Invoke.later(function () {
-                                form.tpSections.height = form.pnlCreation.element.children[0].offsetHeight + tabTitleHeight;
-                            });
-                            break;
-                        }
-                        case 1:
-                        {
-                            form.pnlCustomProperties.height = form.grdDemos.selected[0].createdCustomForm.getFormHeight();
-                            form.pnlCustomize.height = form.pnlCustomProperties.height;
-                            form.tpSections.height = form.pnlCustomize.height + tabTitleHeight;
-                            break;
-                        }
-                        case 2:
-                        {
-                            form.pnlViewProperties.height = form.grdDemos.selected[0].createdViewForm.getFormHeight();
-                            form.pnlView.height = form.pnlViewProperties.height;
-                            form.tpSections.height = form.pnlView.height + tabTitleHeight;
-                            break;
-                        }
-                    }
-                }
-
-                var onComponentResize = function (height) {
-                    if (height) {
-                        form.pnlPlayground.height = height + hMargin * 2;
-                    }
-                };
-
                 function showDemo(custom, common) {
                     form.pnlCustomProperties.clear();
                     form.pnlViewProperties.clear();
@@ -90,33 +61,16 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     var widget = custom.getDemoComponent();
                     var demoForm = custom.getViewComponent();
                     common.setDemoComponent(widget);
-                    custom.unfolded = false;
                     common.unfolded = false;
+                    custom.unfolded = false;
                     custom.showOnPanel(form.pnlCustomProperties);
-                    form.pnlPlayground.add(demoForm, {left: hMargin,
-                        width: demoForm.width,
-                        right: hMargin,
-                        top: vMargin,
-                        height: demoForm.height,
-                        bottom: null}
-                    );
-
-                    form.pnlPlayground.height = demoForm.height + vMargin * 2;
-                    common.setOnComponentResize(onComponentResize);
+                    form.pnlPlayground.add(demoForm);
                     common.showOnPanel(form.pnlViewProperties);
-                    onTabChanged();
                 }
 
                 form.grdDemos.onItemSelected = function (event) {
-                    var w = Math.round(form.pnlPlayground.width / 2 - 100);
                     form.pnlPlayground.clear(); //Clean demo components place
-                    form.pnlPlayground.height = lbLoad.height + 2 * hMargin;
-                    form.pnlPlayground.add(lbLoad, {left: w,
-                        width: 200,
-                        right: w,
-                        top: hMargin,
-                        height: 200,
-                        bottom: hMargin});
+                    form.pnlPlayground.add(lbLoad);
                     lbLoad.visible = true;
                     //In case of parent or child - chow different card on cardpane
                     if (form.grdDemos.selected[0].parent) {
@@ -134,9 +88,6 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                             function loaded() {
                                 form.pnlCreation.element.innerHTML = '<pre><code class="javascript">' + form.grdDemos.selected[0].creationCode + '</code></pre>';
                                 hljs.highlightBlock(form.pnlCreation.element);
-                                Invoke.later(function () {
-                                    form.tpSections.height = form.pnlCreation.element.children[0].offsetHeight + tabTitleHeight;
-                                });
                                 if (!(demo.createdCustomForm && demo.createdViewForm)) {
                                     demo.createdCustomForm = new aCustom(); //form of custom proprties
                                     demo.createdViewForm = new aCommon(); //form of commom properties
@@ -173,9 +124,6 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     }
                 };
 
-                form.tpSections.onItemSelected = function (event) {
-                    onTabChanged();
-                };
             }
             return module_constructor;
         });

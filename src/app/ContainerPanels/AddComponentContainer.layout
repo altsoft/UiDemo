@@ -13,7 +13,7 @@
     <AnchorsPaneConstraints height="29px" left="170px" top="50px" width="150px"/>
   </ModelCombo>
   <Button cursor="0" name="btnDelete" parent="view" prefHeight="27px" prefWidth="60px" text="Delete">
-    <AnchorsPaneConstraints height="27px" right="21px" top="51px" width="60px"/>
+    <AnchorsPaneConstraints height="27px" left="330px" top="51px" width="60px"/>
   </Button>
   <ModelSpin cursor="0" name="mdlHeight" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
     <AnchorsPaneConstraints height="27px" left="60px" top="12px" width="100px"/>

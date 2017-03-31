@@ -30,9 +30,9 @@ function (Forms, Ui, Env, ButtonGroup,ButtonGroupWidget, ModuleName) {
         };
 
         if (Ui.agent == Env.HTML5) {
-            form.grdFreeItems.element.style.border = "thin solid LightGray";
+            form.grdFreeItems.element.style.border = "thin solid #ccc";
             form.grdFreeItems.element.style.borderRadius = "5px";
-            form.grdGroupItems.element.style.border = "thin solid LightGray";
+            form.grdGroupItems.element.style.border = "thin solid #ccc";
             form.grdGroupItems.element.style.borderRadius = "5px";
         }
         var freeItemsList = [];

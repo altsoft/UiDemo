@@ -37,7 +37,6 @@ function (Forms, Ui,ToolBar,Button,AddComponentContainer, ModuleName) {
         }
 
         function placeElement(aElement, counter) {
-            aElement.height = internalContainer.height;
             internalContainer.add(aElement);
             aElement.toolTipText = "Sample " + counter; //+ " id:" + internalContainer.count;
         }
@@ -46,18 +45,17 @@ function (Forms, Ui,ToolBar,Button,AddComponentContainer, ModuleName) {
         var b1 = new Button('One');
         internalContainer.add(b1);
         b1.height = 50;
-        b1.width = 50;
+        b1.width = 100;
         b1.itemname = b1.text;
         addPanel.addComponentTolist(b1);
         var b2 = new Button('Two');
         internalContainer.add(b2);
         b2.height = 50;
-        b2.width = 50;
+        b2.width = 100;
         b2.itemname = b2.text;
         addPanel.addComponentTolist(b2);
 
         self.showOnPanel = function (aPanel) {
-            aPanel.add(form.view);
             addPanel.showOnPanel(aPanel);
         };
 

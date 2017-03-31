@@ -34,7 +34,7 @@ define('FlowPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                 }
 
                 if (Env.agent == Env.HTML5) {
-                    internalContainer.element.style.border = "thin solid gray";
+                    internalContainer.element.style.border = "thin solid #ccc";
                     internalContainer.element.style.borderRadius = "5px";
                 }
 

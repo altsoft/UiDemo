@@ -10,7 +10,6 @@ define('MenuCommonProperties', ['forms', 'ui', 'logger'], function (Forms, Ui, L
                 , form = Forms.loadForm(ModuleName);
 
         var demoComponent = aDemoComponent;
-        var onComponentResize;
 
         self.show = function () {
             form.show();
@@ -154,10 +153,6 @@ define('MenuCommonProperties', ['forms', 'ui', 'logger'], function (Forms, Ui, L
             } else {
                 demoComponent.opaque = false;
             }
-        };
-
-        self.setOnComponentResize = function (aCallback) {
-            onComponentResize = aCallback;
         };
 
         self.getFormHeight = function () {

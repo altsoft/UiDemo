@@ -4,7 +4,7 @@
  */
 
 define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 'forms/button','AddComponentContainer'],
-        function (Forms, Ui, AnchorsPane, Env, Button,AddComponentContainer, ModuleName) {
+        function (Forms, Ui, AnchorsPane, Env, Button, AddComponentContainer, ModuleName) {
             function module_constructor() {
                 var self = this
                         , form = Forms.loadForm(ModuleName);
@@ -31,7 +31,7 @@ define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 
 
 
                 if (Env.agent === Env.HTML5) {
-                    internalContainer.element.style.border = "thin solid gray";
+                    internalContainer.element.style.border = "thin solid #ccc";
                     internalContainer.element.style.borderRadius = "5px";
                 }
 

@@ -19,11 +19,6 @@ define('TabbedPanePanel', ['forms', 'ui', 'forms/tabbed-pane', 'environment', 'f
                 internalContainer.width = 800;
                 internalContainer.height = 400;
 
-                if (Env.agent == Env.HTML5) {
-                    internalContainer.element.style.border = "thin solid gray";
-                    internalContainer.element.style.borderRadius = "5px";
-                }
-
                 self.getDemoComponent = function () {
                     return internalContainer;
                 };
