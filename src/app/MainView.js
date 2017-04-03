@@ -28,7 +28,7 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     Invoke.later(function(){
                         var scrollOnTab = form.tpSections.selectedComponent;
                         if(scrollOnTab.view)
-                            form.tpSections.height = scrollOnTab.view.height + 31;
+                            form.tpSections.height = scrollOnTab.view.height === 0 ? 31 : scrollOnTab.view.height + 40;
                         else {
                             form.tpSections.height = scrollOnTab.element.firstChild.offsetHeight + 50;
                         }

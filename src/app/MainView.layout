@@ -9,7 +9,7 @@
   <AnchorsPane cursor="0" name="view" prefHeight="567px" prefWidth="1082px"/>
   <ModelGrid cursor="0" editable="false" name="grdDemos" parent="view" prefHeight="550px" prefWidth="220px">
     <AnchorsPaneConstraints bottom="7px" left="10px" top="10px" width="220px"/>
-    <ModelGridColumn name="column" title="Demos" width="217px">
+    <ModelGridColumn name="column" title="Demos" width="218px">
       <ModelFormattedField format=""/>
     </ModelGridColumn>
   </ModelGrid>
@@ -28,24 +28,24 @@
   <ScrollPane cursor="0" name="scrollDemonstrationContent" parent="pnlDemonstration" prefHeight="540px" prefWidth="820px">
     <AnchorsPaneConstraints bottom="0px" left="10px" right="2px" top="10px"/>
   </ScrollPane>
-  <BoxPane cursor="0" name="pnlDemonstrationContent" orientation="1" parent="scrollDemonstrationContent" prefHeight="537px" prefWidth="817px"/>
-  <AnchorsPane cursor="0" name="pnlShortInfo" parent="pnlDemonstrationContent" prefHeight="20px" prefWidth="817px"/>
-  <Label cursor="0" name="lblShortInfo" parent="pnlShortInfo" prefHeight="0px" prefWidth="817px" text="label">
+  <BoxPane cursor="0" name="pnlDemonstrationContent" orientation="1" parent="scrollDemonstrationContent" prefHeight="538px" prefWidth="818px"/>
+  <AnchorsPane cursor="0" name="pnlShortInfo" parent="pnlDemonstrationContent" prefHeight="20px" prefWidth="818px"/>
+  <Label cursor="0" name="lblShortInfo" parent="pnlShortInfo" prefHeight="0px" prefWidth="818px" text="label">
     <AnchorsPaneConstraints bottom="505px" left="0px" right="0px" top="0px"/>
   </Label>
-  <FlowPane cursor="0" name="pnlPlayground" parent="pnlDemonstrationContent" prefHeight="120px" prefWidth="817px"/>
-  <TabbedPane cursor="0" name="tpSections" parent="pnlDemonstrationContent" prefHeight="100px" prefWidth="817px" selectedComponent="pnlCreation"/>
-  <ScrollPane cursor="0" name="pnlCreation" parent="tpSections" prefHeight="74px" prefWidth="815px">
+  <FlowPane cursor="0" name="pnlPlayground" parent="pnlDemonstrationContent" prefHeight="120px" prefWidth="818px"/>
+  <TabbedPane cursor="0" name="tpSections" parent="pnlDemonstrationContent" prefHeight="200px" prefWidth="818px" selectedComponent="pnlCreation"/>
+  <ScrollPane cursor="0" name="pnlCreation" parent="tpSections" prefHeight="172px" prefWidth="813px">
     <TabbedPaneConstraints tabTitle="Code" tabToolTip=""/>
   </ScrollPane>
-  <ScrollPane cursor="0" name="scrollView" parent="tpSections" prefHeight="74px" prefWidth="815px" visible="false">
-    <TabbedPaneConstraints tabTitle="View"/>
+  <ScrollPane cursor="0" name="scrollView" parent="tpSections" prefHeight="172px" prefWidth="813px" visible="false">
+    <TabbedPaneConstraints tabTitle="View" tabToolTip=""/>
   </ScrollPane>
-  <BoxPane cursor="0" name="pnlView" orientation="1" parent="scrollView" prefHeight="71px" prefWidth="812px" visible="true"/>
-  <BoxPane cursor="0" name="pnlViewProperties" orientation="1" parent="pnlView" prefHeight="50px" prefWidth="812px"/>
-  <ScrollPane cursor="0" name="scrollCustomize" parent="tpSections" prefHeight="74px" prefWidth="815px" visible="false">
-    <TabbedPaneConstraints tabTitle="Customize"/>
+  <BoxPane cursor="0" name="pnlView" orientation="1" parent="scrollView" prefHeight="170px" prefWidth="811px"/>
+  <BoxPane cursor="0" name="pnlViewProperties" orientation="1" parent="pnlView" prefHeight="50px" prefWidth="811px"/>
+  <ScrollPane cursor="0" name="scrollCustomize" parent="tpSections" prefHeight="172px" prefWidth="813px" visible="false">
+    <TabbedPaneConstraints tabTitle="Customize" tabToolTip=""/>
   </ScrollPane>
-  <BoxPane cursor="0" name="pnlCustomize" orientation="1" parent="scrollCustomize" prefHeight="71px" prefWidth="812px" visible="true"/>
-  <BoxPane cursor="0" name="pnlCustomProperties" orientation="1" parent="pnlCustomize" prefHeight="50px" prefWidth="812px"/>
+  <BoxPane cursor="0" name="pnlCustomize" orientation="1" parent="scrollCustomize" prefHeight="170px" prefWidth="811px"/>
+  <BoxPane cursor="0" name="pnlCustomProperties" orientation="1" parent="pnlCustomize" prefHeight="50px" prefWidth="811px"/>
 </layout>
