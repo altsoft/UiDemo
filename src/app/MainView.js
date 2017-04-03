@@ -24,6 +24,17 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                 form.pnlCustomProperties.height = null;
                 form.pnlView.height = null;
                 form.pnlViewProperties.height = null;
+                function snapTabsHeightToContent(){
+                    Invoke.later(function(){
+                        var scrollOnTab = form.tpSections.selectedComponent;
+                        if(scrollOnTab.view)
+                            form.tpSections.height = scrollOnTab.view.height + 31;
+                        else {
+                            form.tpSections.height = scrollOnTab.element.firstChild.offsetHeight + 50;
+                        }
+                    });
+                }
+                form.tpSections.onItemSelected = snapTabsHeightToContent;
 
                 form.grdDemos.data = demos;
                 form.grdDemos.column.field = "name";
@@ -66,6 +77,7 @@ define(['orm', 'forms', 'ui', 'environment', 'forms/label', 'invoke', 'logger', 
                     custom.showOnPanel(form.pnlCustomProperties);
                     form.pnlPlayground.add(demoForm);
                     common.showOnPanel(form.pnlViewProperties);
+                    snapTabsHeightToContent();
                 }
 
                 form.grdDemos.onItemSelected = function (event) {

@@ -14,8 +14,8 @@ define('LabelView', ['forms', 'ui', 'forms/label', 'forms/button-group', 'resour
                     var demoComponent = aDemoComponent;
                 } else {
                     var demoComponent = new Label("Label");
-                    demoComponent.height = 27;
-                    demoComponent.width = 100;
+                    demoComponent.height = 40;
+                    demoComponent.width = 120;
                 }
                 var iconGap = {'value': 0};
                 form.mdlGap.data = iconGap;

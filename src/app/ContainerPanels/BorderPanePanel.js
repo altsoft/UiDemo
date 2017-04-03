@@ -3,8 +3,8 @@
  * @author user
  */
 
-define('BorderPanePanel', ['forms', 'ui', 'environment', 'forms/border-pane', 'forms/label', 'BorderPositionSelection', 'Utils/Pallete'],
-        function (Forms, Ui, Env, BorderPane, Label, BorderPositionSelection, Pallete, ModuleName) {
+define('BorderPanePanel', ['forms', 'ui', 'environment', 'invoke', 'forms/border-pane', 'forms/label', 'BorderPositionSelection', 'Utils/Pallete'],
+        function (Forms, Ui, Env, Invoke, BorderPane, Label, BorderPositionSelection, Pallete, ModuleName) {
             function module_constructor() {
                 var self = this
                         , form = Forms.loadForm(ModuleName);
@@ -17,15 +17,6 @@ define('BorderPanePanel', ['forms', 'ui', 'environment', 'forms/border-pane', 'f
                 form.mdlHGap.field = 'hGap';
                 form.mdlVGap.data = gaps;
                 form.mdlVGap.field = 'vGap';
-
-                var componentSize = {
-                    'width': 0,
-                    'height': 0
-                };
-                form.mdlWidth.data = componentSize;
-                form.mdlWidth.field = 'width';
-                form.mdlHeight.data = componentSize;
-                form.mdlHeight.field = 'height';
 
                 form.mcmbElList.displayField = "itemname";
 
@@ -88,41 +79,33 @@ define('BorderPanePanel', ['forms', 'ui', 'environment', 'forms/border-pane', 'f
                     demoContainer.vgap = gaps.vGap;
                 };
 
+                var frmSelectPosition = new BorderPositionSelection();
                 form.btnAddComponent.onActionPerformed = function (event) {
                     var pnlSubject = new BorderPane();
-                    if (componentSize.width) {
-                        pnlSubject.width = componentSize.width;
-                    }
-                    if (componentSize.height) {
-                        pnlSubject.height = componentSize.height;
-                    }
                     var colorIndex = Math.floor(Math.random() * Pallete.length);
                     pnlSubject.background = new Ui.Color(Pallete[colorIndex]);
                     var label = new Label();
                     label.width = 50;
                     pnlSubject.add(label);
+
                     pnlSubject.onMousePressed = function (event) {
-                        componentSize.width = pnlSubject.width;
-                        componentSize.height = pnlSubject.height;
                         form.mcmbElList.value = pnlSubject;
                     };
 
-                    var position;
-                    var frmSelectPosition = new BorderPositionSelection();
-                    frmSelectPosition.showModal(function (pos) {
-                        position = pos;
+                    frmSelectPosition.showModal(function (position) {
                         pnlSubject.child(0).horizontalAlignment = Ui.HorizontalPosition.CENTER;
-                        internalContainer.add(pnlSubject, position);
 
                         switch (position) {
                             case Ui.VerticalPosition.TOP:
                             {
                                 pnlSubject.child(0).text = "TOP"
+                                pnlSubject.height = 50;
                                 break;
                             }
                             case Ui.HorizontalPosition.LEFT:
                             {
                                 pnlSubject.child(0).text = "LEFT"
+                                pnlSubject.width = 50;
                                 break;
                             }
                             case Ui.VerticalPosition.CENTER:
@@ -133,50 +116,64 @@ define('BorderPanePanel', ['forms', 'ui', 'environment', 'forms/border-pane', 'f
                             case Ui.HorizontalPosition.RIGHT:
                             {
                                 pnlSubject.child(0).text = "RIGHT"
+                                pnlSubject.width = 50;
                                 break;
                             }
                             case Ui.VerticalPosition.BOTTOM:
                             {
                                 pnlSubject.child(0).text = "BOTTOM"
+                                pnlSubject.height = 50;
                                 break;
                             }
                         }
 
+                        internalContainer.add(pnlSubject, position);
                         pnlSubject.toolTipText = pnlSubject.child(0).text;
                         pnlSubject.itemname = pnlSubject.toolTipText;
                         form.mcmbElList.displayList = demoContainer.children();
-                        form.mcmbElList.value = pnlSubject;
+                        Invoke.later(function(){
+                            form.mcmbElList.value = pnlSubject;
+                        });
                     });
 
                 };
 
                 form.btnDelete.onActionPerformed = function (event) {
                     demoContainer.remove(form.mcmbElList.value);
-                    form.mcmbElList.displayList = demoContainer.children();
-                    form.mcmbElList.value = form.mcmbElList.displayList[0];
+                    var children = demoContainer.children();
+                    form.mcmbElList.displayList = children;
+                    form.mcmbElList.value = children.length > 0 ? children[0] : null;
                     if (!form.mcmbElList.value) {
-                        componentSize.width = 0;
-                        componentSize.height = 0;
+                        form.mdlWidth.value = null;
+                        form.mdlHeight.value = null;
                     }
                 };
 
                 form.mdlHeight.onValueChange = function (event) {
-                    if (form.mcmbElList.value) {
-                        form.mcmbElList.value.height = componentSize.height;
+                    var pnlSubject = form.mcmbElList.value;
+                    if (pnlSubject && pnlSubject.height !== event.source.value) {
+                        pnlSubject.height = event.source.value;
                     }
                 };
 
                 form.mdlWidth.onValueChange = function (event) {
-                    if (form.mcmbElList.value) {
-                        form.mcmbElList.value.width = componentSize.width;
+                    var pnlSubject = form.mcmbElList.value;
+                    if (pnlSubject && pnlSubject.width !== event.source.value) {
+                        pnlSubject.width = event.source.value;
                     }
                 };
 
                 form.mcmbElList.onValueChange = function (event) {
-                    if (form.mcmbElList.value) {
-                        componentSize.height = form.mcmbElList.value.height;
-                        componentSize.width = form.mcmbElList.value.width;
+                    var pnlSubject = form.mcmbElList.value;
+                    if (pnlSubject) {
+                        form.mdlWidth.value = pnlSubject.width;
+                        form.mdlHeight.value = pnlSubject.height;
+                    } else {
+                        form.mdlWidth.value = null;
+                        form.mdlHeight.value = null;
                     }
+                    form.mdlWidth.enabled = event.source.value === internalContainer.leftComponent || event.source.value === internalContainer.rightComponent;
+                    form.mdlHeight.enabled = event.source.value === internalContainer.topComponent || event.source.value === internalContainer.bottomComponent;
                 };
 
             }

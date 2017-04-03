@@ -26,7 +26,11 @@ define('DesktopInnerForm', ['forms', 'ui'], function (Forms, Ui, ModuleName) {
 
         self.setTitle = function (aTitle) {
             form.title = aTitle;
-        }
+        };
+        
+        self.toFront = function(){
+            form.toFront();
+        };
     }
     return module_constructor;
 });

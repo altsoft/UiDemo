@@ -18,7 +18,7 @@
   <Button cursor="0" name="btnAddRadio" parent="view" prefHeight="29px" prefWidth="140px" text="Add radio item">
     <AnchorsPaneConstraints height="29px" left="280px" top="90px" width="140px"/>
   </Button>
-  <Button cursor="0" name="btnAddSeparator" parent="view" prefHeight="29px" prefWidth="140px" text="Add separator">
+  <Button cursor="0" name="btnAddSeparator" parent="view" prefHeight="29px" prefWidth="140px" text="Add separator" visible="false">
     <AnchorsPaneConstraints height="29px" left="280px" top="170px" width="140px"/>
   </Button>
   <Button cursor="0" name="btnDelItem" parent="view" prefHeight="29px" prefWidth="110px" text="Delete item">

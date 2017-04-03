@@ -8,7 +8,7 @@ define('ButtonView', ['forms','forms/button','LabelView'], function (Forms, Butt
                 , form = Forms.loadForm(ModuleName);
                 
         var button = new Button("Button");
-        button.height = 27;
+        button.height = 30;
         button.width = 100;
         var lblForm;
         self.showOnPanel = function (aPanel) {

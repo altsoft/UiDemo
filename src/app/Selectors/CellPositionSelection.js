@@ -22,7 +22,6 @@ define('CellPositionSelection', ['forms', 'ui'], function (Forms, Ui, ModuleName
         form.mdlColl.data = cellPos;
         form.mdlRow.field = 'row';
         form.mdlColl.field = 'col';
-        // TODO : place your code here
 
         self.showModal = function (aGrid, aOnSucsess) {
             onSucsess = aOnSucsess;

@@ -10,7 +10,6 @@ define('BorderPositionSelection', ['forms', 'ui','forms/button-group'],
                         , form = Forms.loadForm(ModuleName);
 
                 var onSucsess;
-//                var grid;
 
                 var btnGrpPos = new ButtonGroup();
                 btnGrpPos.add(form.rbTop);

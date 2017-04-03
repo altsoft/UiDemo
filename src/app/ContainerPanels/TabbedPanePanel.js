@@ -15,6 +15,9 @@ define('TabbedPanePanel', ['forms', 'ui', 'forms/tabbed-pane', 'environment', 'f
                 form.mcmbElList.displayList = elementsList;
 
                 var internalContainer = new TabbedPane();
+                internalContainer.onItemSelected = function(evt){
+                    form.mcmbElList.value = evt.source.selectedComponent;
+                };
                 var demoContainer = internalContainer;
                 internalContainer.width = 800;
                 internalContainer.height = 400;
@@ -32,6 +35,8 @@ define('TabbedPanePanel', ['forms', 'ui', 'forms/tabbed-pane', 'environment', 'f
 
                 function addComponentTolist(element) {
                     elementsList.push(element);
+                    form.mcmbElList.displayList = null;
+                    form.mcmbElList.displayList = elementsList;
                     form.mcmbElList.value = element;
                 }
 
@@ -86,8 +91,14 @@ define('TabbedPanePanel', ['forms', 'ui', 'forms/tabbed-pane', 'environment', 'f
 
                 form.btnDelete.onActionPerformed = function (event) {
                     internalContainer.remove(form.mcmbElList.value);
-                    elementsList.splice(elementsList.indexOf(form.mcmbElList.value), 1);
-                    form.mcmbElList.value = elementsList[0];
+                    var pos = elementsList.indexOf(form.mcmbElList.value);
+                    elementsList.splice(pos, 1);
+                    form.mcmbElList.displayList = null;
+                    form.mcmbElList.displayList = elementsList;
+                    if (elementsList.length > 0) {
+                        form.mcmbElList.value = elementsList[pos < elementsList.length ? pos : pos - 1];
+                    } else
+                        form.mcmbElList.value = null;
                 };
 
                 form.mcmbElList.onValueChange = function (event) {

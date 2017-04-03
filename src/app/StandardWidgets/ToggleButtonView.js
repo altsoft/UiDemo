@@ -9,7 +9,7 @@ define('ToggleButtonView', ['forms', 'ui', 'forms/toggle-button','LabelView','Bu
 
         var toggleButton = new ToggleButton("Toggle button");
         toggleButton.name = "Toggle button";
-        toggleButton.height = 27;
+        toggleButton.height = 30;
         toggleButton.width = 100;
         var lblForm;
         self.showOnPanel = function (aPanel) {

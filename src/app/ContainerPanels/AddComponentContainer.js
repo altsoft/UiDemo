@@ -79,7 +79,8 @@ define('AddComponentContainer', ['forms', 'ui', 'invoke', 'forms/border-pane', '
                     form.mcmbElList.displayList = elementsList;
                     if(elementsList.length > 0){
                         form.mcmbElList.value = elementsList[pos < elementsList.length ? pos : pos - 1];
-                    }
+                    } else
+                        form.mcmbElList.value = null;
                 };
 
                 self.deleteAll = function (event) {

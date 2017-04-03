@@ -4,14 +4,14 @@
   <ButtonGroup name="buttonGroup1"/>
   <ButtonGroup name="buttonGroup2"/>
   <AnchorsPane cursor="0" name="view" prefHeight="168px" prefWidth="806px"/>
-  <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="17px" prefWidth="50px" text="Text">
-    <AnchorsPaneConstraints height="17px" left="10px" top="50px" width="50px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="27px" prefWidth="80px" text="Text">
+    <AnchorsPaneConstraints height="27px" left="10px" top="40px" width="80px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="96px" text="IconTextGap">
-    <AnchorsPaneConstraints height="17px" left="10px" top="90px" width="96px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="27px" prefWidth="80px" text="IconTextGap">
+    <AnchorsPaneConstraints height="27px" left="10px" top="80px" width="80px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="label1" parent="view" prefHeight="17px" prefWidth="34px" text="Icon">
-    <AnchorsPaneConstraints height="17px" left="10px" top="130px" width="34px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label1" parent="view" prefHeight="27px" prefWidth="80px" text="Icon">
+    <AnchorsPaneConstraints height="27px" left="10px" top="120px" width="80px"/>
   </Label>
   <TextField cursor="0" name="txtText" parent="view" prefHeight="27px" prefWidth="120px" text="textField">
     <AnchorsPaneConstraints height="27px" left="110px" top="40px" width="120px"/>

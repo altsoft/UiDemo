@@ -43,9 +43,9 @@ define('ModelTextCustom', ['orm', 'forms', 'ui', 'forms/model-formatted-field'],
         function onParseEmail(event) {
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             if (re.test(event.text)) {
-                mdlText.background = Ui.Color.WHITE;
+                mdlText.element.style.border = '';
             } else {
-                mdlText.background = Ui.Color.PINK;
+                mdlText.element.style.border = "solid #d5719b 1px";
             }
             return event.text;
         }

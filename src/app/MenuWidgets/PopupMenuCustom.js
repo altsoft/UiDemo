@@ -29,19 +29,12 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
                 };
                 var demoPane = self.getDemoComponent();
                 var mdlItemsList = menuView.getCombo();
-//    mdlItemsList.data = allItemsList;
                 mdlItemsList.displayList = allItemsList;
                 mdlItemsList.displayField = 'name';
-//    mdlItemsList.field = 'menu';
 
-
-
-//    form.mdlMenus.data = demoMenuList;
                 form.mdlMenus.displayField = "name";
                 form.mdlMenus.displayList = demoMenuList;
-//    form.mdlMenus.field = "menu";
                 form.mdlItem.displayField = "name";
-//    form.mdlItem.field = "menu";
 
                 function btnsAvaliability(isEnable) {
                     form.btnAddItem.enabled = isEnable;
@@ -56,17 +49,17 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
                 allItemsList.push(element);
                 form.mdlMenus.value = element;
                 mdlItemsList.value = element;
-                var item = new MenuItem('PopupItem_DemoMenu');
-                item.displayName = 'PopupItem_DemoMenu';
+                var item = new MenuItem('PopupItem');
+                item.displayName = 'PopupItem';
                 addItem(item);
-                item = new MenuSeparator()
-                item.displayName = 'PopupSeparator_DemoMenu';
+                item = new MenuSeparator();
+                item.displayName = 'PopupSeparator';
                 addItem(item);
-                item = new CheckMenuItem('CheckMenuItem_DemoMenu');
-                item.displayName = 'PopupCheckItem_DemoMenu';
+                item = new CheckMenuItem('CheckMenuItem');
+                item.displayName = 'PopupCheckItem';
                 addItem(item);
-                item = new RadioMenuItem('RadioMenuItem_DemoMenu');
-                item.displayName = 'PopupRadioItem_DemoMenu';
+                item = new RadioMenuItem('RadioMenuItem');
+                item.displayName = 'PopupRadioItem';
                 addItem(item);
 
                 menu = new PopupMenu();
@@ -76,26 +69,26 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
                 allItemsList.push(element);
                 form.mdlMenus.value = element;
                 mdlItemsList.value = element;
-                item = new MenuItem('MenuItem_DemoMenu');
-                item.displayName = 'PopupItem_DemoMenu';
+                item = new MenuItem('MenuItem');
+                item.displayName = 'PopupItem';
                 addItem(item);
-                item = new MenuSeparator()
-                item.displayName = 'PopupSeparator_DemoMenu';
+                item = new MenuSeparator();
+                item.displayName = 'PopupSeparator';
                 addItem(item);
-                item = new CheckMenuItem('CheckMenuItem_DemoMenu');
-                item.displayName = 'PopupCheckItem_DemoMenu';
+                item = new CheckMenuItem('CheckMenuItem');
+                item.displayName = 'PopupCheckItem';
                 addItem(item);
                 var btnGroup = new ButtonGroup();
-                item = new RadioMenuItem('RadioMenuItem_DemoMenu');
-                item.displayName = 'PopupRadioItem_DemoMenu_1';
+                item = new RadioMenuItem('RadioMenuItem');
+                item.displayName = 'PopupRadioItem';
                 addItem(item);
                 btnGroup.add(item);
-                item = new RadioMenuItem('RadioMenuItem_DemoMenu');
-                item.displayName = 'PopupRadioItem_DemoMenu_2';
+                item = new RadioMenuItem('RadioMenuItem');
+                item.displayName = 'PopupRadioItem';
                 btnGroup.add(item);
                 addItem(item);
-                item = new RadioMenuItem('RadioMenuItem_DemoMenu');
-                item.displayName = 'PopupRadioItem_DemoMenu_3';
+                item = new RadioMenuItem('RadioMenuItem');
+                item.displayName = 'PopupRadioItem';
                 btnGroup.add(item);
                 addItem(item);
 
@@ -113,14 +106,14 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
 
                 form.btnAddCheck.onActionPerformed = function (event) {
                     var item = new CheckMenuItem(form.txtText.text);
-                    item.displayName = 'CheckMenuItem_' + form.txtText.text;
+                    item.displayName = 'CheckMenuItem: ' + form.txtText.text;
                     addItem(item);
                 };
 
                 form.btnAddMenu.onActionPerformed = function (event) {
                     var menu = new PopupMenu();
                     demoPane.componentPopupMenu = menu;
-                    var element = {name: 'PopupMenu_' + form.txtText.text, menu: menu, childlist: []};
+                    var element = {name: 'PopupMenu: ' + form.txtText.text, menu: menu, childlist: []};
                     demoMenuList.push(element);
                     allItemsList.push(element);
                     form.mdlMenus.value = element;
@@ -132,8 +125,10 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
                     var element = {name: item.displayName, menu: item};
                     form.mdlMenus.value.childlist.push(element);
                     allItemsList.push(element);
+                    mdlItemsList.displayList = null;
+                    mdlItemsList.displayList = allItemsList;
                     mdlItemsList.value = element;
-//        form.mdlItem.data = form.mdlMenus.value.childlist;
+                    form.mdlItem.displayList = null;
                     form.mdlItem.displayList = form.mdlMenus.value.childlist;
                     form.mdlItem.value = element;
                     item.onActionPerformed = function (event) {
@@ -146,12 +141,12 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
                                 }
                             }
                         }
-                    }
+                    };
                 }
 
                 form.btnAddItem.onActionPerformed = function (event) {
                     var item = new MenuItem(form.txtText.text);
-                    item.displayName = 'MenuItem_' + form.txtText.text;
+                    item.displayName = 'MenuItem: ' + form.txtText.text;
                     addItem(item);
                 };
 
@@ -162,28 +157,9 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
                         btnsAvaliability(true);
                     }
                     if (form.mdlMenus.value) {
-//            form.mdlItem.data = form.mdlMenus.value.childlist;
                         form.mdlItem.displayList = form.mdlMenus.value.childlist;
                         form.mdlItem.value = form.mdlMenus.value.childlist[0];
                         demoPane.componentPopupMenu = form.mdlMenus.value.menu;
-                    }
-                };
-
-                form.btnDelMenu.onActionPerformed = function (event) {
-                    if (demoMenuList.length != 0) {
-                        for (var item in form.mdlMenus.value.childlist) {
-                            allItemsList.splice(allItemsList.indexOf(form.mdlMenus.value.childlist[item]), 1)
-                            form.mdlMenus.value.childlist.splice(item, 1);
-                        }
-                        form.mdlMenus.value.childlist = [];
-                        allItemsList.splice(allItemsList.indexOf(form.mdlMenus.value), 1);
-                        mdlItemsList.value = allItemsList[0];
-                        form.mdlItem.value = form.mdlMenus.value.childlist[0];
-                        demoMenuList.splice(demoMenuList.indexOf(form.mdlMenus.value), 1);
-                        form.mdlMenus.value = demoMenuList[0];
-                        if (form.mdlMenus.value) {
-                            form.mdlItem.value = form.mdlMenus.value.childlist[0];
-                        }
                     }
                 };
 
@@ -191,20 +167,24 @@ define('PopupMenuCustom', ['forms', 'ui', 'forms/popup-menu', 'forms/menu-item',
                     if (form.mdlItem.value) {
                         form.mdlMenus.value.menu.remove(form.mdlItem.value.menu);
                         allItemsList.splice(allItemsList.indexOf(form.mdlItem.value), 1);
+                        mdlItemsList.displayList = null;
+                        mdlItemsList.displayList = allItemsList;
                         mdlItemsList.value = allItemsList[0];
                         form.mdlMenus.value.childlist.splice(form.mdlMenus.value.childlist.indexOf(form.mdlItem.value), 1);
+                        form.mdlItem.displayList = null;
+                        form.mdlItem.displayList = form.mdlMenus.value.childlist;
                         form.mdlItem.value = form.mdlMenus.value.childlist[0];
                     }
                 };
                 form.btnAddRadio.onActionPerformed = function (event) {
                     var item = new RadioMenuItem(form.txtText.text);
-                    item.displayName = 'RadioMenuItem_' + form.txtText.text;
+                    item.displayName = 'RadioMenuItem: ' + form.txtText.text;
                     addItem(item);
                 };
 
                 form.btnAddSeparator.onActionPerformed = function (event) {
                     var item = new MenuSeparator();
-                    item.displayName = 'MenuSeparator_' + form.txtText.text;
+                    item.displayName = 'MenuSeparator: ' + form.txtText.text;
                     addItem(item);
                 };
 

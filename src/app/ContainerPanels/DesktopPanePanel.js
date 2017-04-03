@@ -55,7 +55,6 @@ define('DesktopPanePanel', ['forms', 'ui', 'forms/desktop-pane', 'environment','
                 formModule.setTitle(formModule.itemname);
                 addPanel.addComponentTolist(formModule);
 
-
                 self.showOnPanel = function (aPanel) {
                     aPanel.add(form.view);
                     addPanel.showOnPanel(aPanel);

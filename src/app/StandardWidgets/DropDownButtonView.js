@@ -13,7 +13,7 @@ define('DropDownButtonView', ['forms', 'ui', 'forms/drop-down-button', 'forms/po
             alert('Action from \"'+  evt.source.text + '\"');
         };
         dropDownButton.name = "DropDown button";
-        dropDownButton.height = 27;
+        dropDownButton.height = 30;
         dropDownButton.width = 150;
         dropDownButton.dropDownMenu = new PopupMenu();
         var item1 = new MenuItem('Menu item');

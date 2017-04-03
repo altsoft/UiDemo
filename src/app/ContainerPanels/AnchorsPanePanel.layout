@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><layout title="" view="view">
-  <AnchorsPane cursor="0" name="view" prefHeight="100px" prefWidth="342px"/>
-  <Label cursor="0" horizontalAlignment="10" name="label14" parent="view" prefHeight="17px" prefWidth="60px" text="Bottom">
+  <AnchorsPane cursor="0" name="view" prefHeight="50px" prefWidth="371px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label14" parent="view" prefHeight="17px" prefWidth="60px" text="Bottom" visible="false">
     <AnchorsPaneConstraints height="17px" left="170px" top="55px" width="60px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="label13" parent="view" prefHeight="17px" prefWidth="42px" text="Top">
-    <AnchorsPaneConstraints height="17px" left="170px" top="18px" width="42px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label13" parent="view" prefHeight="27px" prefWidth="42px" text="Top">
+    <AnchorsPaneConstraints height="27px" left="180px" top="10px" width="42px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="label12" parent="view" prefHeight="17px" prefWidth="38px" text="Right">
+  <Label cursor="0" horizontalAlignment="10" name="label12" parent="view" prefHeight="17px" prefWidth="38px" text="Right" visible="false">
     <AnchorsPaneConstraints height="17px" left="12px" top="55px" width="38px"/>
   </Label>
-  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="38px" text="Left">
-    <AnchorsPaneConstraints height="17px" left="12px" top="18px" width="38px"/>
+  <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="27px" prefWidth="40px" text="Left">
+    <AnchorsPaneConstraints height="27px" left="10px" top="10px" width="40px"/>
   </Label>
-  <ModelSpin cursor="0" name="mdlLeft" parent="view" prefHeight="27px" prefWidth="100px">
-    <AnchorsPaneConstraints height="27px" left="60px" top="12px" width="100px"/>
+  <ModelSpin cursor="0" name="mdlLeft" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="70px" top="10px" width="100px"/>
   </ModelSpin>
-  <ModelSpin cursor="0" name="mdlRight" parent="view" prefHeight="27px" prefWidth="100px">
+  <ModelSpin cursor="0" name="mdlRight" parent="view" prefHeight="27px" prefWidth="100px" visible="false">
     <AnchorsPaneConstraints height="27px" left="60px" top="50px" width="100px"/>
   </ModelSpin>
-  <ModelSpin cursor="0" name="mdlTop" parent="view" prefHeight="27px" prefWidth="100px">
-    <AnchorsPaneConstraints height="27px" left="230px" top="12px" width="100px"/>
+  <ModelSpin cursor="0" name="mdlTop" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
+    <AnchorsPaneConstraints height="27px" left="230px" top="10px" width="100px"/>
   </ModelSpin>
-  <ModelSpin cursor="0" name="mdlBottom" parent="view" prefHeight="27px" prefWidth="100px">
+  <ModelSpin cursor="0" name="mdlBottom" parent="view" prefHeight="27px" prefWidth="100px" visible="false">
     <AnchorsPaneConstraints height="27px" left="230px" top="50px" width="100px"/>
   </ModelSpin>
 </layout>

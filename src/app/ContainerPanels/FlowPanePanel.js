@@ -58,7 +58,7 @@ define('FlowPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                 }
 
                 function deleteElement(aElement) {
-                    internalContainer.remove(aElement);
+                    demoContainer.remove(aElement);
                 }
 
                 function placeElement(aElement, counter) {

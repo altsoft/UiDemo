@@ -16,13 +16,7 @@ define('VBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                 internalContainer.width = 800;
                 internalContainer.height = 400;
 
-                var gaps = {'vGap': 0,
-                    'hGap': 0};
-                form.mdlHGap.data = gaps;
-                form.mdlHGap.field = 'hGap';
-                form.mdlVGap.data = gaps;
-                form.mdlVGap.field = 'vGap';
-
+                form.mdlVGap.value = 0;
 
                 if (form.chbIsScroll.selected) {
                     scrollContainer.add(demoContainer);
@@ -51,7 +45,7 @@ define('VBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                     form.show();
                 };
 
-                function getPosition(aElement) {
+                function updatePosition(aElement) {
                     subject = aElement;
                 }
 
@@ -64,12 +58,10 @@ define('VBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                     demoContainer.add(aElement);
                     aElement.toolTipText = "Sample " + counter;// + " id:" + demoContainer.count;
                 }
-                ;
 
-                addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
+                addPanel = new AddComponentContainer(updatePosition, deleteElement, placeElement);
                 var comp = new Button('Sample');
                 comp.height = 30;
-                comp.width = 120;
                 demoContainer.add(comp);
                 comp.itemname = comp.text;
                 addPanel.addComponentTolist(comp);
@@ -80,12 +72,8 @@ define('VBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                     addPanel.showOnPanel(aPanel);
                 };
 
-                form.mdlHGap.onValueChange = function (event) {
-                    demoContainer.hgap = gaps.hGap;
-                };
-
                 form.mdlVGap.onValueChange = function (event) {
-                    demoContainer.vgap = gaps.vGap;
+                    demoContainer.vgap = event.source.value;
                 };
 
                 form.chbIsScroll.onActionPerformed = function (event) {

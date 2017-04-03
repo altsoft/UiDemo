@@ -6,10 +6,10 @@
   <Label cursor="0" horizontalAlignment="10" name="label11" parent="view" prefHeight="17px" prefWidth="50px" text="VGap">
     <AnchorsPaneConstraints height="17px" left="10px" top="18px" width="50px"/>
   </Label>
-  <ModelSpin cursor="0" name="mdlVGap" parent="view" prefHeight="27px" prefWidth="100px">
+  <ModelSpin cursor="0" name="mdlVGap" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
     <AnchorsPaneConstraints height="27px" left="60px" top="12px" width="100px"/>
   </ModelSpin>
-  <ModelSpin cursor="0" name="mdlHGap" parent="view" prefHeight="27px" prefWidth="100px">
+  <ModelSpin cursor="0" name="mdlHGap" nullable="false" parent="view" prefHeight="27px" prefWidth="100px">
     <AnchorsPaneConstraints height="27px" left="60px" top="50px" width="100px"/>
   </ModelSpin>
   <Label cursor="0" horizontalAlignment="10" name="label" parent="view" prefHeight="17px" prefWidth="50px" text="Height">

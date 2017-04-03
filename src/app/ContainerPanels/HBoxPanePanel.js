@@ -18,12 +18,7 @@ define('HBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                 internalContainer.width = 800;
                 internalContainer.height = 400;
 
-                var gaps = {'vGap': 0,
-                    'hGap': 0};
-                form.mdlHGap.data = gaps;
-                form.mdlHGap.field = 'hGap';
-                form.mdlVGap.data = gaps;
-                form.mdlVGap.field = 'vGap';
+                form.mdlHGap.value = 0;
 
                 if (form.chbIsScroll.selected) {
                     scrollContainer.add(demoContainer);
@@ -68,8 +63,7 @@ define('HBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
 
                 addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
                 var comp = new Button('Sample');
-                comp.height = 30;
-                comp.width = 120;
+                comp.width = 60;
                 demoContainer.add(comp);
                 comp.itemname = comp.text;
                 addPanel.addComponentTolist(comp);
@@ -91,13 +85,8 @@ define('HBoxPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/scroll-pane'
                 };
 
                 form.mdlHGap.onValueChange = function (event) {
-                    demoContainer.hgap = gaps.hGap;
+                    demoContainer.hgap = event.source.value;
                 };
-
-                form.mdlVGap.onValueChange = function (event) {
-                    demoContainer.vgap = gaps.vGap;
-                };
-
             }
             return module_constructor;
         });

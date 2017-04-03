@@ -2,8 +2,8 @@
  * 
  * @author user
  */
-define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 'environment', 'forms/label', 'forms/button', 'Utils/Pallete'],
-        function (Forms, Ui, BorderPane, GridPane, Env, Label, Button, Pallete, ModuleName) {
+define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 'environment', 'forms/label', 'forms/button', 'Utils/Pallete', 'CellPositionSelection'],
+        function (Forms, Ui, BorderPane, GridPane, Env, Label, Button, Pallete, CellPositionSelection, ModuleName) {
             function module_constructor() {
                 var self = this
                         , form = Forms.loadForm(ModuleName);
@@ -38,13 +38,6 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
                 form.mcmbElList.displayField = "itemname";
                 form.mcmbElList.displayList = elementsList;
 
-                var componentSize = {'width': 0,
-                    'height': 0};
-                form.mdlWidth.data = componentSize;
-                form.mdlWidth.field = 'width';
-                form.mdlHeight.data = componentSize;
-                form.mdlHeight.field = 'height';
-
                 var internalContainer = new BorderPane();//1x1
                 var demoContainer = new GridPane(grid.rows, grid.colls, gaps.hGap, gaps.vGap);
 
@@ -65,7 +58,7 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
                     return internalContainer;
                 };
 
-                function getPosition(aElement) {
+                function updatePosition(aElement) {
                     subject = aElement;
                 }
 
@@ -75,9 +68,21 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
 
                 function addComponentTolist(element) {
                     elementsList.push(element);
+                    form.mcmbElList.displayList = null;
+                    form.mcmbElList.displayList = elementsList;
                     form.mcmbElList.value = element;
                 }
 
+                function placeBtnElement(aRow, aCol) {
+                    var btn = new Button('Cell ' + aRow + '.' + aCol);
+                    demoContainer.add(btn, aRow, aCol);
+                    btn.itemname = btn.text;
+                    addComponentTolist(btn);
+                    btn.onActionPerformed = function (event) {
+                        form.mcmbElList.value = btn;
+                    };
+                }
+                
                 function placePnlElement(color, row, col) {
                     var pnlSubject = new BorderPane();
                     pnlSubject.background = new Ui.Color(color);
@@ -87,6 +92,12 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
                     label.horizontalAlignment = Ui.HorizontalPosition.CENTER;
                     pnlSubject.add(label);
                     pnlSubject.itemname = label.text;
+                    label.onMousePressed = function (event) {
+                        form.mcmbElList.value = pnlSubject;
+                    };
+                    pnlSubject.onMousePressed = function (event) {
+                        form.mcmbElList.value = pnlSubject;
+                    };
                     demoContainer.add(pnlSubject, row, col);
                     addComponentTolist(pnlSubject);
                 }
@@ -111,22 +122,13 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
 
                 placePnlElement('#2980b9', 0, 0);
                 placePnlElement('#1dd2af', 0, 1);
-                var btn1 = new Button('Cell 0.2');
-                demoContainer.add(btn1, 0, 2);
-                btn1.itemname = btn1.text;
-                addComponentTolist(btn1);
+                placeBtnElement(0, 2);
 
                 placePnlElement('#40d47e', 1, 0);
-                var btn2 = new Button('Cell 1.1');
-                btn2.itemname = btn2.text;
-                demoContainer.add(btn2, 1, 1);
-                addComponentTolist(btn2);
+                placeBtnElement(1, 1);
                 placePnlElement('#9b50ba', 1, 2);
 
-                var btn3 = new Button('Cell 2.0');
-                btn3.itemname = btn3.text;
-                demoContainer.add(btn3, 2, 0);
-                addComponentTolist(btn3);
+                placeBtnElement(2, 0);
                 placePnlElement('#D35400', 2, 1);
                 placePnlElement('#E74C3C', 2, 2);
 
@@ -134,7 +136,7 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
                     aPanel.add(form.view);
                 };
 
-                function setContainer() {
+                function resetContainer() {
                     internalContainer.clear();
                     elementsList = [];
                     form.mcmbElList.displayList = elementsList;
@@ -143,7 +145,7 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
                 }
 
                 form.btnSetGrid.onActionPerformed = function (event) {
-                    setContainer();
+                    resetContainer();
                 };
 
                 form.mdlHGap.onValueChange = function (event) {
@@ -154,20 +156,17 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
                     demoContainer.vgap = gaps.vGap;
                 };
 
-
-
                 form.btnAddComponent.onActionPerformed = function (event) {
                     var pnlSubject = new BorderPane();
-                    pnlSubject.width = componentSize.width;
-                    pnlSubject.height = componentSize.height;
                     var colorIndex = Math.floor(Math.random() * Pallete.length);
                     pnlSubject.background = new Ui.Color(Pallete[colorIndex]);
                     var label = new Label();
                     label.width = 50;
                     pnlSubject.add(label);
+                    label.onMousePressed = function (event) {
+                        form.mcmbElList.value = pnlSubject;
+                    };
                     pnlSubject.onMousePressed = function (event) {
-                        componentSize.width = pnlSubject.width;
-                        componentSize.height = pnlSubject.height;
                         form.mcmbElList.value = pnlSubject;
                     };
                     placeElement(pnlSubject, counter);
@@ -177,30 +176,12 @@ define('GridPanePanel', ['forms', 'ui', 'forms/border-pane', 'forms/grid-pane', 
                 form.btnDelete.onActionPerformed = function (event) {
                     deleteElement(form.mcmbElList.value);
                     elementsList.splice(elementsList.indexOf(form.mcmbElList.value), 1);
-                    form.mcmbElList.value = elementsList[0];
-                };
-
-                form.mdlHeight.onValueChange = function (event) {
-                    if (form.mcmbElList.value) {
-                        form.mcmbElList.value.height = componentSize.height;
-                    }
-                };
-
-                form.mdlWidth.onValueChange = function (event) {
-                    if (form.mcmbElList.value) {
-                        form.mcmbElList.value.width = componentSize.width;
-                    }
+                    form.mcmbElList.value = elementsList.length > 0 ? elementsList[0] : null;
                 };
 
                 form.mcmbElList.onValueChange = function (event) {
                     if (form.mcmbElList.value) {
-                        if (form.mcmbElList.value.height) {
-                            componentSize.height = form.mcmbElList.value.height;
-                        }
-                        if (form.mcmbElList.value.width) {
-                            componentSize.width = form.mcmbElList.value.width;
-                        }
-                        getPosition(form.mcmbElList.value);
+                        updatePosition(form.mcmbElList.value);
                     }
                 };
 

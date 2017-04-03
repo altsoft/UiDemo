@@ -3,8 +3,8 @@
  * @author user
  */
 
-define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 'forms/button','AddComponentContainer'],
-        function (Forms, Ui, AnchorsPane, Env, Button, AddComponentContainer, ModuleName) {
+define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 'invoke', 'forms/button', 'AddComponentContainer'],
+        function (Forms, Ui, AnchorsPane, Env, Invoke, Button, AddComponentContainer, ModuleName) {
             function module_constructor() {
                 var self = this
                         , form = Forms.loadForm(ModuleName);
@@ -13,22 +13,6 @@ define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 
                 var internalContainer = new AnchorsPane();
                 internalContainer.width = 800;
                 internalContainer.height = 400;
-
-                var position = {'left': 0,
-                    'right': 0,
-                    'top': 0,
-                    'bottom': 0};
-
-                form.mdlTop.data = position;
-                form.mdlBottom.data = position;
-                form.mdlLeft.data = position;
-                form.mdlRight.data = position;
-
-                form.mdlTop.field = 'top';
-                form.mdlBottom.field = 'bottom';
-                form.mdlLeft.field = 'left';
-                form.mdlRight.field = 'right';
-
 
                 if (Env.agent === Env.HTML5) {
                     internalContainer.element.style.border = "thin solid #ccc";
@@ -50,12 +34,12 @@ define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 
                     form.show();
                 };
 
-                function getPosition(aElement) {
+                function updatePosition(aElement) {
                     subject = aElement;
-                    position.left = aElement.left;
-                    position.top = aElement.top;
-                    position.bottom = aElement.bottom;
-                    position.right = aElement.right;
+                    form.mdlTop.value = aElement.top;
+                    form.mdlBottom.value = aElement.bottom;
+                    form.mdlLeft.value = aElement.left;
+                    form.mdlRight.value = aElement.right;
                 }
 
                 function deleteElement(aElement) {
@@ -71,14 +55,14 @@ define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 
                             //event.stopPropagation();
                             aElement.left = event.x - leftOffset;
                             aElement.top = event.y - topOffset;
-                            getPosition(aElement);
+                            updatePosition(aElement);
                         };
 
                         internalContainer.onMouseReleased = function (event) {
                             //event.stopPropagation();
                             aElement.left = event.x - leftOffset;
                             aElement.top = event.y - topOffset;
-                            getPosition(aElement);
+                            updatePosition(aElement);
                             internalContainer.onMouseMoved = null;
                             internalContainer.onMouseReleased = null;
                             aElement.onMouseReleased = null;
@@ -94,41 +78,41 @@ define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 
                 }
 
                 function placeElement(aElement, counter) {
-                    subject = aElement;
-                    position.left = 0;
-                    position.right = 0;
-                    position.top = 0;
-                    position.bottom = 0;
-
-                    internalContainer.add(aElement
-                            , {left: position.left,
-                                width: aElement.width,
-                                right: position.right,
-                                top: position.top,
-                                height: aElement.height,
-                                bottom: position.bottom});
+                    updatePosition(aElement);
+                    internalContainer.add(aElement);
+                    /*
+                     , {
+                     left: position.left,
+                     width: aElement.width,
+                     right: position.right,
+                     top: position.top,
+                     height: aElement.height,
+                     bottom: position.bottom
+                     });
+                     */
                     aElement.toolTipText = "Sample " + counter; //+ " id:" + internalContainer.count;
-                    aElement.child(0).text = "Drag&Drop me!"
+                    aElement.child(0).text = "Drag & Drop me!"
                     setDragDrop(aElement);
 
                 }
 
-                addPanel = new AddComponentContainer(getPosition, deleteElement, placeElement);
+                addPanel = new AddComponentContainer(updatePosition, deleteElement, placeElement);
                 var comp = new Button('Sample');
                 comp.height = 30;
                 comp.width = 120;
                 internalContainer.add(comp,
-                        {left: 10,
+                        {
+                            left: 10,
                             width: comp.width,
-                            right: 0,
                             top: 10,
                             height: comp.height,
-                            bottom: 0});
+                        });
                 comp.itemname = 'Sample';
                 setDragDrop(comp);
                 addPanel.addComponentTolist(comp);
-                position.left = 10;
-                position.top = 10;
+                Invoke.later(function(){
+                    updatePosition(comp);
+                });
 
 
                 self.showOnPanel = function (aPanel) {
@@ -138,25 +122,25 @@ define('AnchorsPanePanel', ['forms', 'ui', 'forms/anchors-pane', 'environment', 
 
                 form.mdlTop.onValueChange = function (event) {
                     if (subject) {
-                        subject.top = position.top;
+                        subject.top = event.source.value;
                     }
                 };
 
                 form.mdlBottom.onValueChange = function (event) {
                     if (subject) {
-                        subject.bottom = position.bottom;
+                        subject.bottom = event.source.value;
                     }
                 };
 
                 form.mdlRight.onValueChange = function (event) {
                     if (subject) {
-                        subject.right = position.right;
+                        subject.right = event.source.value;
                     }
                 };
 
                 form.mdlLeft.onValueChange = function (event) {
                     if (subject) {
-                        subject.left = position.left;
+                        subject.left = event.source.value;
                     }
                 };
 

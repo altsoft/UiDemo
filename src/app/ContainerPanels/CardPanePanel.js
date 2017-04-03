@@ -26,7 +26,7 @@ define('CardPanePanel', ['forms', 'ui', 'forms/card-pane', 'environment', 'forms
                 internalContainer.width = 800;
                 internalContainer.height = 400;
 
-                if (Env.agent == Env.HTML5) {
+                if (Env.agent === Env.HTML5) {
                     internalContainer.element.style.border = "thin solid #ccc";
                     internalContainer.element.style.borderRadius = "5px";
                 }
@@ -44,6 +44,8 @@ define('CardPanePanel', ['forms', 'ui', 'forms/card-pane', 'environment', 'forms
 
                 function addComponentTolist(element) {
                     elementsList.push(element);
+                    form.mcmbElList.displayList = null;
+                    form.mcmbElList.displayList = elementsList;
                     form.mcmbElList.value = element;
                 }
 
@@ -57,6 +59,8 @@ define('CardPanePanel', ['forms', 'ui', 'forms/card-pane', 'environment', 'forms
                     pnlSubject.toolTipText = aName;
                     internalContainer.add(pnlSubject, label.text);
                     addComponentTolist(pnlSubject);
+                    form.mcmbElList.displayList = null;
+                    form.mcmbElList.displayList = elementsList;
                 }
                 createCard('#49a7f0', 'Sample A');
                 createCard('#67eacc', 'Sample B');
@@ -95,11 +99,10 @@ define('CardPanePanel', ['forms', 'ui', 'forms/card-pane', 'environment', 'forms
                     }
                     for (var itm in internalContainer.children()) {
                         if (internalContainer.child(itm).toolTipText === cardName) {
-                            alert("Card with same name allready exist");
+                            alert("Card with same name already exist");
                             return;
                         }
                     }
-
                     internalContainer.add(pnlSubject, cardName);
                     pnlSubject.toolTipText = cardName;
                     pnlSubject.itemname = cardName;
@@ -110,8 +113,14 @@ define('CardPanePanel', ['forms', 'ui', 'forms/card-pane', 'environment', 'forms
 
                 form.btnDelete.onActionPerformed = function (event) {
                     internalContainer.remove(form.mcmbElList.value);
-                    elementsList.splice(elementsList.indexOf(form.mcmbElList.value), 1);
-                    form.mcmbElList.value = elementsList[0];
+                    var pos = elementsList.indexOf(form.mcmbElList.value);
+                    elementsList.splice(pos, 1);
+                    form.mcmbElList.displayList = null;
+                    form.mcmbElList.displayList = elementsList;
+                    if (elementsList.length > 0) {
+                        form.mcmbElList.value = elementsList[pos < elementsList.length ? pos : pos - 1];
+                    } else
+                        form.mcmbElList.value = null;
                 };
 
                 form.mcmbElList.onValueChange = function (event) {

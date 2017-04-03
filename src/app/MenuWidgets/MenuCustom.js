@@ -27,8 +27,6 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
                     return menuView.getDemoComponent();
                 };
 
-
-
                 var menuBar = self.getDemoComponent();
                 var mdlItemsList = menuView.getCombo();
 
@@ -47,17 +45,17 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
 
                 var menu = new Menu("Demo");
                 menuBar.add(menu);
-                var element = {name: 'Menu_Demo menu 1', menu: menu, childlist: []};
+                var element = {name: 'Menu: Demo menu 1', menu: menu, childlist: []};
                 menuList.push(element);
                 allItemsList.push(element);
                 form.mdlMenus.value = element;
                 mdlItemsList.value = element;
 
-                var item = new MenuItem('MenuItem_DemoMenu 1');
-                item.displayName = 'MenuItem_DemoMenu 1';
+                var item = new MenuItem('MenuItem 1');
+                item.displayName = 'MenuItem 1';
                 addItem(item);
 
-                var subMenu = new Menu('Submenu_1');
+                var subMenu = new Menu('Sub menu 1');
                 subMenu.text = 'Sub menu';
                 subMenu.add(new MenuItem("Sub item 1"));
                 subMenu.add(new MenuItem("Sub item 2"));
@@ -65,42 +63,42 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
                 addItem(subMenu);
 
                 item = new MenuSeparator()
-                item.displayName = 'MenuSeparator_DemoMenu';
+                item.displayName = 'MenuSeparator';
                 addItem(item);
-                item = new CheckMenuItem('CheckMenuItem_DemoMenu');
-                item.displayName = 'CheckMenuItem_DemoMenu';
+                item = new CheckMenuItem('CheckMenuItem');
+                item.displayName = 'CheckMenuItem';
                 addItem(item);
-                item = new RadioMenuItem('RadioMenuItem_DemoMenu');
-                item.displayName = 'RadioMenuItem_DemoMenu';
+                item = new RadioMenuItem('RadioMenuItem');
+                item.displayName = 'RadioMenuItem';
                 addItem(item);
 
                 menu = new Menu("Demo 2");
                 menuBar.add(menu);
-                element = {name: 'Menu_Demo menu 2', menu: menu, childlist: []};
+                element = {name: 'Menu: Demo menu 2', menu: menu, childlist: []};
                 menuList.push(element);
                 allItemsList.push(element);
                 form.mdlMenus.value = element;
                 mdlItemsList.value = element;
-                item = new MenuItem('MenuItem_DemoMenu 2');
-                item.displayName = 'MenuItem_DemoMenu 2';
+                item = new MenuItem('MenuItem');
+                item.displayName = 'MenuItem';
                 addItem(item);
                 item = new MenuSeparator()
-                item.displayName = 'MenuSeparator_DemoMenu';
+                item.displayName = 'MenuSeparator';
                 addItem(item);
-                item = new CheckMenuItem('CheckMenuItem_DemoMenu');
-                item.displayName = 'CheckMenuItem_DemoMenu';
+                item = new CheckMenuItem('CheckMenuItem');
+                item.displayName = 'CheckMenuItem';
                 addItem(item);
                 var btnGroup = new ButtonGroup();
-                item = new RadioMenuItem('RadioMenuItem_DemoMenu');
-                item.displayName = 'RadioMenuItem_DemoMenu_1';
+                item = new RadioMenuItem('RadioMenuItem');
+                item.displayName = 'RadioMenuItem';
                 addItem(item);
                 btnGroup.add(item);
-                item = new RadioMenuItem('RadioMenuItem_DemoMenu');
-                item.displayName = 'RadioMenuItem_DemoMenu_2';
+                item = new RadioMenuItem('RadioMenuItem');
+                item.displayName = 'RadioMenuItem';
                 btnGroup.add(item);
                 addItem(item);
-                item = new RadioMenuItem('RadioMenuItem_DemoMenu');
-                item.displayName = 'RadioMenuItem_DemoMenu_3';
+                item = new RadioMenuItem('RadioMenuItem');
+                item.displayName = 'RadioMenuItem';
                 btnGroup.add(item);
                 addItem(item);
 
@@ -125,17 +123,21 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
 
                 form.btnAddCheck.onActionPerformed = function (event) {
                     var item = new CheckMenuItem(form.txtText.text);
-                    item.displayName = 'CheckMenuItem_' + form.txtText.text;
+                    item.displayName = 'CheckMenuItem ' + form.txtText.text;
                     addItem(item);
                 };
 
                 form.btnAddMenu.onActionPerformed = function (event) {
                     var menu = new Menu(form.txtText.text);
                     menuBar.add(menu);
-                    var element = {name: 'Menu_' + form.txtText.text, menu: menu, childlist: []};
+                    var element = {name: 'Menu: ' + form.txtText.text, menu: menu, childlist: []};
                     menuList.push(element);
                     allItemsList.push(element);
+                    form.mdlMenus.displayList = null;
+                    form.mdlMenus.displayList = menuList;
                     form.mdlMenus.value = element;
+                    mdlItemsList.displayList = null;
+                    mdlItemsList.displayList = allItemsList;
                     mdlItemsList.value = element;
                 };
 
@@ -143,9 +145,13 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
                     form.mdlMenus.value.menu.add(item);
                     var element = {name: item.displayName, menu: item};
                     form.mdlMenus.value.childlist.push(element);
+                    form.mdlMenus.displayList = null;
+                    form.mdlMenus.displayList = menuList;
                     allItemsList.push(element);
+                    mdlItemsList.displayList = null;
+                    mdlItemsList.displayList = allItemsList;
                     mdlItemsList.value = element;
-//        form.mdlItem.data = form.mdlMenus.value.childlist;
+                    form.mdlItem.displayList = null;
                     form.mdlItem.displayList = form.mdlMenus.value.childlist;
                     form.mdlItem.value = element;
                     item.onActionPerformed = function (event) {
@@ -163,7 +169,7 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
 
                 form.btnAddItem.onActionPerformed = function (event) {
                     var item = new MenuItem(form.txtText.text);
-                    item.displayName = 'MenuItem_' + form.txtText.text;
+                    item.displayName = 'MenuItem: ' + form.txtText.text;
                     addItem(item);
                 };
 
@@ -189,9 +195,13 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
                         }
                         form.mdlMenus.value.childlist = [];
                         allItemsList.splice(allItemsList.indexOf(form.mdlMenus.value), 1);
+                        mdlItemsList.displayList = null;
+                        mdlItemsList.displayList = allItemsList;
                         mdlItemsList.value = allItemsList[0];
                         form.mdlItem.value = form.mdlMenus.value.childlist[0];
                         menuList.splice(menuList.indexOf(form.mdlMenus.value), 1);
+                        form.mdlMenus.displayList = null;
+                        form.mdlMenus.displayList = menuList;
                         form.mdlMenus.value = menuList[0];
                         if (form.mdlMenus.value) {
                             form.mdlItem.value = form.mdlMenus.value.childlist[0];
@@ -203,6 +213,8 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
                     if (form.mdlItem.value) {
                         form.mdlMenus.value.menu.remove(form.mdlItem.value.menu);
                         allItemsList.splice(allItemsList.indexOf(form.mdlItem.value), 1);
+                        mdlItemsList.displayList = null;
+                        mdlItemsList.displayList = allItemsList;
                         mdlItemsList.value = allItemsList[0];
                         form.mdlMenus.value.childlist.splice(form.mdlMenus.value.childlist.indexOf(form.mdlItem.value), 1);
                         form.mdlItem.value = form.mdlMenus.value.childlist[0];
@@ -210,13 +222,13 @@ define('MenuCustom', ['forms', 'ui', 'forms/menu', 'forms/menu-item',
                 };
                 form.btnAddRadio.onActionPerformed = function (event) {
                     var item = new RadioMenuItem(form.txtText.text);
-                    item.displayName = 'RadioMenuItem_' + form.txtText.text;
+                    item.displayName = 'RadioMenuItem: ' + form.txtText.text;
                     addItem(item);
                 };
 
                 form.btnAddSeparator.onActionPerformed = function (event) {
                     var item = new MenuSeparator();
-                    item.displayName = 'MenuSeparator_' + form.txtText.text;
+                    item.displayName = 'MenuSeparator: ' + form.txtText.text;
                     addItem(item);
                 };
 
